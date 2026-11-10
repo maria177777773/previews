@@ -48,7 +48,7 @@ const site = id => SITES.find(s => s.id === id)
 const NAV = [
   { name: 'programs', label: 'Главное', icon: 'list' },
   { name: 'materials', label: 'Материалы', icon: 'folder' },
-  { name: 'calendar', label: 'Календарь', icon: 'month' },
+  { name: 'calendar', label: 'Календарь мероприятий', icon: 'month' },
   { name: 'mailplan', label: 'График рассылок', icon: 'calendar' },
   { name: 'library', label: 'Фото', icon: 'image' },
   { name: 'drafts', label: 'Черновики', icon: 'file' },
@@ -133,9 +133,9 @@ function pageLink(it) {
   if (it.type === 'mailing') return null
   return h('span', { class: 'badge warn' }, 'Без страницы')
 }
+const openEditor = it => toast(`В панели откроется редактор: «${it.title}»`)
 function actions(it) {
   const a = []
-  const open = () => toast(`В панели откроется редактор: «${it.title}»`)
   if (it.type === 'page') {
     if (it.status === 'draft') a.push(h('button', { class: 'btn primary', type: 'button', onclick: () => publishModal(it) }, ico('globe'), 'Опубликовать'))
     else if (it.sites.length < SITES.length) a.push(h('button', { class: 'btn', type: 'button', onclick: () => publishModal(it) }, ico('globe'), 'На другой сайт'))
@@ -144,12 +144,15 @@ function actions(it) {
   if (it.type === 'letter' && it.status === 'draft') a.push(h('button', { class: 'btn primary', type: 'button', onclick: () => sendModal(it) }, ico('send'), 'Отправить'))
   if (it.type === 'card' && it.status !== 'onsite') a.push(h('button', { class: 'btn primary', type: 'button', onclick: () => cardPublishModal(it) }, ico('upload'), 'В каталог'))
   if ((it.type === 'letter' || it.type === 'card') && !it.page) a.push(h('button', { class: 'btn', type: 'button', onclick: () => linkModal(it) }, ico('link'), 'Привязать к странице'))
-  a.push(h('button', { class: 'btn ghost', type: 'button', onclick: open }, ico('edit'), 'Открыть'))
+  a.push(h('button', { class: 'btn ghost', type: 'button', onclick: () => openEditor(it) }, ico('edit'), 'Редактировать'))
   return h('div', { class: 'acts' }, a)
 }
 function itemCard(it, showType) {
   const T = TYPE[it.type]
-  return h('article', { class: 'card item', dataset: { id: it.id, type: it.type } },
+  const skip = e => e.target.closest('button, a, details, input, select, label')
+  return h('article', { class: 'card item clickable', tabindex: '0', title: 'Открыть редактор', dataset: { id: it.id, type: it.type },
+    onclick: e => { if (!skip(e)) openEditor(it) },
+    onkeydown: e => { if ((e.key === 'Enter' || e.key === ' ') && e.target === e.currentTarget) { e.preventDefault(); openEditor(it) } } },
     h('div', { class: `kind ${T.cls}` }, ico(T.ico)),
     h('div', { class: 'main' },
       h('div', { class: 'row' }, showType ? h('span', { class: 'typetag' }, T.one) : null, badge(it), it.type === 'letter' && it.service && it.status !== 'draft' ? h('span', { class: 'meta' }, it.service) : null),
@@ -193,12 +196,15 @@ function letterModal(pageId = '') {
     field('Для какого сайта', sel('f-site', SITES.map(s => [s.id, s.name]))),
     field('Тон письма', sel('f-tone', [['1', 'Деловой'], ['2', 'Тёплый'], ['3', 'Короткий']])))
   root.querySelector('#f-page').value = pageId
-  modal('Создать письмо', root, close => [cancel(close), h('button', { class: 'btn primary', type: 'button', onclick: () => {
+  const make = () => {
     const page = root.querySelector('#f-page').value || null
     const subj = root.querySelector('#f-subj').value.trim() || (page ? `Письмо: ${byId(page).title}` : 'Новое письмо без темы')
-    items.unshift({ id: 'M' + (++uid), type: 'letter', title: subj, page, sites: [root.querySelector('#f-site').value], status: 'draft', date: TODAY, hist: [D(TODAY, page ? 'Создан черновик письма к странице' : 'Создан черновик без страницы')] })
-    close(); st.tab = 'letters'; st.filter = 'any'; go('materials/letters'); toast('Письмо создано черновиком. Отправить можно сейчас или позже')
-  } }, 'Создать черновик')])
+    const it = { id: 'M' + (++uid), type: 'letter', title: subj, page, sites: [root.querySelector('#f-site').value], status: 'draft', date: TODAY, hist: [D(TODAY, page ? 'Создан черновик письма к странице' : 'Создан черновик без страницы')] }
+    items.unshift(it); return it
+  }
+  modal('Создать письмо', root, close => [cancel(close),
+    h('button', { class: 'btn', type: 'button', onclick: () => { make(); close(); go('drafts'); toast('Письмо сохранено в «Черновики». Отправить можно позже') } }, ico('file'), 'В черновики'),
+    h('button', { class: 'btn primary', type: 'button', onclick: () => { const it = make(); close(); st.tab = 'letters'; st.filter = 'any'; go('materials/letters'); sendModal(it) } }, ico('send'), 'Отправить сейчас')])
 }
 function pageModal() {
   const root = h('div', { class: 'stack' },
@@ -222,6 +228,19 @@ function cardModal() {
     items.unshift({ id: 'C' + (++uid), type: 'card', title: root.querySelector('#f-title').value.trim() || (page ? byId(page).title : 'Новая карточка'), page, sites: [], status: page ? 'draft' : 'reserve', date: TODAY, hist: [D(TODAY, page ? 'Создана к странице' : 'Создана на будущее, без страницы')] })
     close(); st.tab = 'cards'; st.filter = 'any'; go('materials/cards'); toast('Карточка сохранена. В каталог её можно выложить позже')
   } }, 'Создать карточку')])
+}
+function mailingModal() {
+  const root = h('div', { class: 'stack' },
+    field('Название рассылки', h('input', { id: 'f-title', placeholder: 'Например: Еженедельное письмо с расписанием' })),
+    field('С какого сайта', sel('f-site', SITES.map(s => [s.id, s.name]))),
+    field('Привязать к странице', sel('f-page', pageOptions('Без страницы')), 'Для цепочки писем по программе выберите её страницу'))
+  const make = now => {
+    const page = root.querySelector('#f-page').value || null
+    items.unshift({ id: 'R' + (++uid), type: 'mailing', title: root.querySelector('#f-title').value.trim() || 'Новая рассылка', page, sites: [root.querySelector('#f-site').value], status: now ? 'running' : 'draft', note: now ? 'Запущена, первое письмо уходит сегодня' : 'Расписание ещё не задано', date: TODAY, hist: [D(TODAY, now ? 'Создана и запущена' : 'Сохранена в черновики')] })
+  }
+  modal('Создать рассылку', root, close => [cancel(close),
+    h('button', { class: 'btn', type: 'button', onclick: () => { make(false); close(); go('drafts'); toast('Рассылка сохранена в «Черновики»') } }, ico('file'), 'В черновики'),
+    h('button', { class: 'btn primary', type: 'button', onclick: () => { make(true); close(); st.tab = 'mailings'; st.filter = 'any'; go('materials/mailings'); toast('Рассылка запущена') } }, ico('send'), 'Запустить сейчас')])
 }
 function publishModal(it) {
   const root = h('div', { class: 'stack' }, h('p', {}, h('b', {}, it.title)), siteChecks('s', SITES.filter(s => !it.sites.includes(s.id)), SITES.filter(s => !it.sites.includes(s.id)).slice(0, 1).map(s => s.id)))
@@ -273,13 +292,20 @@ function visible() {
     && (st.site === 'any' || (i.sites || []).includes(st.site))
     && (!st.q || i.title.toLowerCase().includes(st.q.toLowerCase())))
 }
+const CREATE = { page: () => pageModal(), letter: () => letterModal(), mailing: () => mailingModal(), card: () => cardModal() }
+function createButtons(all) {
+  const t = all ? null : TABS.find(x => x[0] === st.tab)[2]
+  if (t) return h('div', { class: 'create-row' },
+    h('button', { class: 'btn primary', type: 'button', id: 'b-add', onclick: CREATE[t] }, ico('plus'), TYPE[t].one))
+  return h('div', { class: 'create-row' },
+    h('button', { class: 'btn primary', type: 'button', id: 'b-letter', onclick: () => letterModal() }, ico('mail'), 'Создать письмо'),
+    h('button', { class: 'btn primary', type: 'button', id: 'b-page', onclick: pageModal }, ico('globe'), 'Создать страницу'),
+    h('button', { class: 'btn primary', type: 'button', id: 'b-card', onclick: cardModal }, ico('card'), 'Создать карточку'))
+}
 function renderMaterials(root) {
   root.append(
     h('div', { class: 'screen-head' }, h('h1', {}, 'Материалы'),
-      h('div', { class: 'create-row' },
-        h('button', { class: 'btn primary', type: 'button', id: 'b-letter', onclick: () => letterModal() }, ico('mail'), 'Создать письмо'),
-        h('button', { class: 'btn primary', type: 'button', id: 'b-page', onclick: pageModal }, ico('globe'), 'Создать страницу'),
-        h('button', { class: 'btn primary', type: 'button', id: 'b-card', onclick: cardModal }, ico('card'), 'Создать карточку'))),
+      createButtons()),
     h('div', { class: 'intro' }, h('p', {}, h('b', {}, 'Всё, что сделано, лежит здесь, и каждую вещь можно создать отдельно. '), 'На «Главном» программа по-прежнему создаётся пакетом: страница, карточка и письмо вместе. Здесь можно сделать только письмо, только страницу или карточку на будущее, а потом отправить, опубликовать или привязать одно к другому.')))
   const tabs = h('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Разделы материалов' }, TABS.map(([id, label, type]) =>
     h('button', { type: 'button', role: 'tab', 'aria-selected': String(id === st.tab), dataset: { tab: id }, onclick: () => { st.tab = id; st.filter = 'any'; go(id === 'all' ? 'materials' : `materials/${id}`) } },
@@ -304,6 +330,13 @@ function renderMaterials(root) {
 }
 
 /* ── оболочка и маршруты ── */
+const isDraft = i => i.status === 'draft' || i.status === 'reserve'
+function renderDrafts(root) {
+  const v = items.filter(isDraft)
+  root.append(h('div', { class: 'screen-head' }, h('h1', {}, 'Черновики'), createButtons(true)),
+    h('p', { class: 'hint', style: 'margin:-12px 0 20px' }, 'Здесь все черновики из «Материалов»: страницы, письма, рассылки и карточки. Любой можно доделать и опубликовать или отправить.'),
+    h('div', { class: 'list' }, v.length ? v.map(i => itemCard(i, true)) : h('div', { class: 'empty' }, h('h2', {}, 'Черновиков нет'), h('p', {}, 'Всё опубликовано или отправлено.'))))
+}
 function go(path) { location.hash = '#/' + path; if (location.hash === '#/' + path) render() }
 function route() {
   const [name, sub] = location.hash.replace(/^#\/?/, '').split('/')
@@ -319,6 +352,7 @@ function render() {
       h('button', { class: 'nav rail-end', type: 'button', onclick: () => toast('В макете выход не нужен') }, ico('logout'), h('span', {}, 'Выйти'))))
   const main = h('main', {})
   if (name === 'materials') renderMaterials(main)
+  else if (name === 'drafts') renderDrafts(main)
   else {
     const n = [...NAV, { name: 'settings', label: 'Настройки' }].find(x => x.name === name) || { label: 'Раздел' }
     main.append(h('div', { class: 'screen-head' }, h('h1', {}, n.label)),

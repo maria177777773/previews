@@ -74,3 +74,7 @@
   .ov .ft .btn { flex: 1 1 100%; }
   .filters .searchbox { max-width: none; }
 }
+.item.clickable { cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+.item.clickable:hover { border-color: var(--blue); box-shadow: 0 2px 12px rgba(16, 24, 40, .06); }
+.item.clickable:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.item .hist summary { cursor: pointer; }
