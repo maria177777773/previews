@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Карточка сделки amoCRM: было и стало</title>
+<style>
+*{box-sizing:border-box}
+:root{--g:#0aba59;--gd:#078a42;--ink:#14171a;--mut:#5d666f;--line:#e3e7ea;--bg:#f5f7f8;--red:#d93a3a;--amb:#b7791f;--blue:#2563eb}
+html{-webkit-text-size-adjust:100%}
+body{overflow-wrap:break-word}
+.rt b,.chip{overflow-wrap:anywhere}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 Roboto,-apple-system,"Segoe UI",Arial,sans-serif}
+.wrap{max-width:1400px;margin:0 auto;padding:20px 16px 80px}
+h1{font-size:30px;line-height:1.2;margin:8px 0 6px}
+h2{font-size:24px;line-height:1.25;margin:44px 0 14px}
+h3{font-size:19px;margin:22px 0 10px}
+p{margin:0 0 12px}
+.sub{color:var(--mut);margin:0 0 18px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 8px}
+nav a{display:inline-block;padding:12px 18px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:500;min-height:48px}
+.sum{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
+.k{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.k .big{font-size:34px;font-weight:700;line-height:1.1}
+.k .big s{color:#9aa3ab;font-weight:500;text-decoration:none}
+.k .big s::after{content:" \2192 ";color:#9aa3ab}
+.k .big em{color:var(--gd);font-style:normal}
+.k .l{color:var(--mut);font-size:16px;margin-top:4px}
+.cols{display:grid;grid-template-columns:1fr;gap:28px}
+.col{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px}
+.col.new{border:2px solid var(--g)}
+.ch{display:flex;align-items:center;gap:10px;margin:0 0 6px}
+.pill{font-size:15px;font-weight:700;padding:6px 14px;border-radius:999px;background:#eceff1;color:var(--mut)}
+.new .pill{background:var(--g);color:#fff}
+.col h2{margin:0;font-size:24px}
+.hint{color:var(--mut);font-size:16px;margin:0 0 14px}
+.r{padding:14px 0;border-top:1px solid var(--line)}
+.rt{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.rt b{font-size:17px;word-break:break-word}
+.rs{color:var(--mut);font-size:15px;margin-top:2px}
+.rn{font-size:16px;margin-top:6px}
+.tag{flex:none;font-size:14px;font-weight:700;padding:5px 12px;border-radius:999px;white-space:nowrap}
+.tag.keep{background:#e5f7ec;color:var(--gd)}
+.tag.auto{background:#e6eefc;color:var(--blue)}
+.tag.merge{background:#fbf0d9;color:var(--amb)}
+.tag.hide{background:#eceff1;color:#4b545c}
+.tag.del{background:#fbe5e5;color:var(--red)}
+details{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:700;font-size:18px;min-height:48px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:26px;color:var(--mut)}
+details[open] summary::after{content:"\2212"}
+summary small{font-weight:400;color:var(--mut);font-size:15px;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 14px}
+.chip{background:#eceff1;border-radius:10px;padding:8px 12px;font-size:15px}
+.chip i{font-style:normal;color:#7b848c;margin-left:8px;font-size:13px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+/* новая карточка */
+.card{border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 16px;background:#fff}
+.card h3{margin:0 0 14px;font-size:20px}
+.f{margin:0 0 20px}
+.f label,.f .lb{display:block;font-size:16px;font-weight:700;margin:0 0 8px}
+.f .lb span{font-weight:400;color:var(--mut)}
+input[type=text],textarea,.fake{width:100%;font:inherit;font-size:18px;padding:14px;border:1.5px solid #cfd6db;border-radius:12px;background:#fff;min-height:54px;color:var(--ink)}
+textarea{min-height:96px;resize:vertical}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{border:1.5px solid #cfd6db;border-radius:12px;padding:14px 12px;font-size:18px;text-align:center;background:#fff;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:center;font-family:inherit;color:var(--ink)}
+.opt.on{background:var(--g);border-color:var(--g);color:#fff;font-weight:700}
+.auto-box{background:#eef3fd;border:1.5px dashed #9db8ee;border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.auto-box b{font-size:19px}
+.auto-box span{font-size:14px;font-weight:700;color:var(--blue);background:#fff;padding:5px 12px;border-radius:999px}
+.note{font-size:15px;color:var(--mut);margin-top:8px}
+.chk{display:flex;align-items:center;gap:14px;border:1.5px solid #cfd6db;border-radius:12px;padding:14px;min-height:60px;cursor:pointer;user-select:none}
+.chk .box{flex:none;width:32px;height:32px;border:2.5px solid #9aa3ab;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;background:#fff}
+.chk.on{border-color:var(--g);background:#f1fbf5}
+.chk.on .box{background:var(--g);border-color:var(--g)}
+.chk b{font-size:19px}
+.row2{display:grid;grid-template-columns:1fr;gap:0}
+.req{color:var(--red);font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th,td{text-align:left;padding:12px 10px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:14px;color:var(--mut);border-top:0;font-weight:700}
+.tw{background:#fff;border:1px solid var(--line);border-radius:16px;padding:6px 10px;overflow-x:auto}
+ol.st{padding-left:0;list-style:none;counter-reset:s;margin:0}
+ol.st li{counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 16px 16px 64px;margin:0 0 12px;position:relative}
+ol.st li::before{content:counter(s);position:absolute;left:16px;top:14px;width:36px;height:36px;border-radius:50%;background:var(--g);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+ol.st b{display:block;margin-bottom:4px}
+ol.st span{color:var(--mut);font-size:16px}
+.warn{background:#fff8e6;border:1px solid #f0d58a;border-radius:16px;padding:16px;margin:18px 0}
+.ok{background:#f1fbf5;border:1px solid #b9e6cb;border-radius:16px;padding:16px;margin:18px 0}
+@media(max-width:700px){
+ .tw table,.tw tbody,.tw tr,.tw td{display:block;width:100%}
+ .tw tr:first-child{display:none}
+ .tw tr{padding:12px 0;border-top:1px solid var(--line)}
+ .tw tr:nth-child(2){border-top:0}
+ .tw td{border:0;padding:3px 6px}
+ .tw td::before{content:attr(data-l);display:block;font-size:13px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-top:6px}
+ .tw td:first-child::before{display:none}
+ .tw td:first-child{font-size:18px}
+}
+@media(min-width:900px){
+ body{font-size:18px}
+ .wrap{padding:28px 32px 100px}
+ h1{font-size:38px}
+ .sum{grid-template-columns:repeat(4,1fr)}
+ .cols{grid-template-columns:1fr 1fr;align-items:start}
+  .row2{grid-template-columns:1fr 1fr;column-gap:16px}
+ .opts{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Карточка сделки amoCRM: было и стало</h1>
+<p class="sub">Данные взяты из живой amoCRM Каталиста (только чтение, ничего не менял). Воронка «ВОРОНКА 2026». Для согласования.</p>
+<nav>
+<a href="#was">Было</a><a href="#new">Стало</a><a href="#how">Как обратились</a><a href="#src">Источник само</a><a href="#todo">Что поменять</a>
+</nav>
+
+<div class="sum">
+<div class="k"><div class="big"><s>55</s><em>11</em></div><div class="l">полей в карточке: сделка и контакт</div></div>
+<div class="k"><div class="big"><s>6</s><em>2</em></div><div class="l">обязательных полей на этапе «Отправили КП»</div></div>
+<div class="k"><div class="big"><s>3</s><em>1</em></div><div class="l">поля «компания или агентство» стали одной галочкой</div></div>
+<div class="k"><div class="big"><s>19</s><em>0</em></div><div class="l">меток рекламы (UTM и др.) в карточке, они скрыты</div></div>
+</div>
+
+<div class="warn"><b>Почему так перегружено.</b> Сайт Tilda создаёт в сделке по 3 поля на один вопрос: например про число участников их три («Кол-во участников», «УЧАСТНИКИ», «СКОЛЬКО_ПЛАНИРУЕТСЯ…»). Поле «Источник» заполнено только в 74 из 750 последних сделок: менеджеры его пропускают, потому что понять источник им нечем.</div>
+
+<h2 id="was">Слева было, справа стало</h2>
+<div class="cols">
+
+<section class="col">
+<div class="ch"><span class="pill">БЫЛО</span><h2>Сейчас в amoCRM</h2></div>
+<p class="hint">Сделка: 45 полей. Контакт: 10 полей. Справа от названия: что с полем будет. «Заполнено» считал по 750 последним сделкам.</p>
+<div class="legend"><span class="tag keep">Остаётся</span><span class="tag auto">Само</span><span class="tag merge">Слить</span><span class="tag hide">Скрыть</span><span class="tag del">Удалить</span></div>
+
+<details open class="dt"><summary><div>Сделка: рабочие поля, 7<small>это то, что менеджеры видят и заполняют</small></div></summary>
+<div class='r'><div class='rt'><b>Программа</b><span class='tag keep'>Остаётся</span></div><div class='rs'>текст · <span class='cnt'>заполнено 518 из 750</span></div><div class='rn'>Остаётся. Обязательное только на этапе «Отправили КП».</div></div><div class='r'><div class='rt'><b>Кол-во участников</b><span class='tag keep'>Остаётся</span></div><div class='rs'>текст · <span class='cnt'>заполнено 531 из 750</span></div><div class='rn'>Остаётся. Обязательное на «Отправили КП». Сюда же сливаются 2 дубля ниже.</div></div><div class='r'><div class='rt'><b>Площадка</b><span class='tag keep'>Остаётся</span></div><div class='rs'>текст · <span class='cnt'>заполнено 530 из 750</span></div><div class='rn'>Остаётся, но уже не обязательное.</div></div><div class='r'><div class='rt'><b>Дата мероприятия</b><span class='tag keep'>Остаётся</span></div><div class='rs'>дата · <span class='cnt'>заполнено 426 из 750</span></div><div class='rn'>Остаётся.</div></div><div class='r'><div class='rt'><b>Агентство</b><span class='tag merge'>Слить</span></div><div class='rs'>текст «да/нет» · <span class='cnt'>заполнено 507 из 750</span></div><div class='rn'>Становится галочкой «Агентство». Старые «да» превратятся в галочку.</div></div><div class='r'><div class='rt'><b>Компания</b><span class='tag del'>Удалить</span></div><div class='rs'>текст «да/нет» · <span class='cnt'>заполнено 452 из 750</span></div><div class='rn'>Удалить. Название компании хранится в стандартной карточке «Компания» amoCRM.</div></div><div class='r'><div class='rt'><b>Источник</b><span class='tag auto'>Само</span></div><div class='rs'>список из 14 · <span class='cnt'>заполнено 74 из 750</span></div><div class='rn'>Переименовать в «Источник рекламы». Заполняется само, руками не выбирается.</div></div>
+</details>
+<details class="dt"><summary><div>Сделка: дубли и поля формы Tilda, 19<small>почти никто не заполняет, часть дублирует друг друга</small></div></summary>
+<div class='r'><div class='rt'><b>УЧАСТНИКИ</b><span class='tag del'>Удалить</span></div><div class='rs'>текст · <span class='cnt'>заполнено 146 из 750</span></div><div class='rn'>Дубль «Кол-во участников». Данные переносим, поле удаляем.</div></div><div class='r'><div class='rt'><b>СКОЛЬКО_ПЛАНИРУЕТСЯ_УЧАСТНИКОВ</b><span class='tag del'>Удалить</span></div><div class='rs'>текст · <span class='cnt'>заполнено 27 из 750</span></div><div class='rn'>Дубль «Кол-во участников».</div></div><div class='r'><div class='rt'><b>ГДЕ_ПЛАНИРУЕТЕ_ПРОВОДИТЬ_МЕРОПРИЯТИЕ</b><span class='tag del'>Удалить</span></div><div class='rs'>текст · <span class='cnt'>заполнено 26 из 750</span></div><div class='rn'>Дубль «Площадка».</div></div><div class='r'><div class='rt'><b>ВЫ_ПРЕДСТАВЛЯЕТЕ_КОМПАНИЮ_ИЛИ_АГЕНТСТВО</b><span class='tag auto'>Само</span></div><div class='rs'>текст · <span class='cnt'>заполнено 27 из 750</span></div><div class='rn'>Сам ставит галочку «Агентство», поле удаляем.</div></div><div class='r'><div class='rt'><b>РАССКАЖИТЕ_О_СВОИХ_ПОЖЕЛАНИЯХ</b><span class='tag merge'>Слить</span></div><div class='rs'>текст · <span class='cnt'>заполнено 23 из 750</span></div><div class='rn'>Сливается в одно поле «Пожелания клиента».</div></div><div class='r'><div class='rt'><b>MESSAGE</b><span class='tag merge'>Слить</span></div><div class='rs'>текст · <span class='cnt'>заполнено 26 из 750</span></div><div class='rn'>Сливается в «Пожелания клиента».</div></div><div class='r'><div class='rt'><b>TEXTAREA</b><span class='tag del'>Удалить</span></div><div class='rs'>текст · <span class='cnt'>заполнено 1 из 750</span></div><div class='rn'>Пустое тестовое поле формы.</div></div><div class='r'><div class='rt'><b>INPUT</b><span class='tag del'>Удалить</span></div><div class='rs'>текст · <span class='cnt'>заполнено 1 из 750</span></div><div class='rn'>Пустое тестовое поле формы.</div></div><div class='r'><div class='rt'><b>INPUT_2</b><span class='tag del'>Удалить</span></div><div class='rs'>текст · <span class='cnt'>заполнено 1 из 750</span></div><div class='rn'>Пустое тестовое поле формы.</div></div><div class='r'><div class='rt'><b>КАНАЛ</b><span class='tag auto'>Само</span></div><div class='rs'>текст · <span class='cnt'>заполнено 27 из 750</span></div><div class='rn'>Сам заполняет «Как обратились» (Telegram, Max, звонок, e-mail).</div></div><div class='r'><div class='rt'><b>MESSENGER-TYPE</b><span class='tag auto'>Само</span></div><div class='rs'>текст · <span class='cnt'>заполнено 28 из 750</span></div><div class='rn'>Сам заполняет «Как обратились = Мессенджер».</div></div><div class='r'><div class='rt'><b>MESSENGER-ID</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст · <span class='cnt'>заполнено 28 из 750</span></div><div class='rn'>Переезжает в поле «Мессенджер» контакта.</div></div><div class='r'><div class='rt'><b>MAX</b><span class='tag del'>Удалить</span></div><div class='rs'>текст · <span class='cnt'>заполнено 1 из 750</span></div><div class='rn'>Дубль мессенджера, он есть в контакте.</div></div><div class='r'><div class='rt'><b>REFERER</b><span class='tag auto'>Само</span></div><div class='rs'>ссылка · <span class='cnt'>заполнено 89 из 750</span></div><div class='rn'>Питает «Источник рекламы», в карточке скрыть.</div></div><div class='r'><div class='rt'><b>FORMID</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст · <span class='cnt'>заполнено 26 из 750</span></div><div class='rn'>Техническое поле формы. Скрыть.</div></div><div class='r'><div class='rt'><b>FORMNAME</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст · <span class='cnt'>заполнено 3 из 750</span></div><div class='rn'>Техническое поле формы. Скрыть.</div></div><div class='r'><div class='rt'><b>cvid</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст · <span class='cnt'>заполнено 0 из 750</span></div><div class='rn'>Техническое. Скрыть.</div></div><div class='r'><div class='rt'><b>Код с сайта</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст · <span class='cnt'>заполнено 1 из 750</span></div><div class='rn'>Техническое, как просили. Скрыть.</div></div><div class='r'><div class='rt'><b>ПОДПИСАТЬСЯ_НА_РАССЫЛКУ</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст · <span class='cnt'>заполнено 0 из 750</span></div><div class='rn'>Не нужно менеджеру. Скрыть.</div></div>
+</details>
+<details class="dt"><summary><div>Сделка: метки рекламы, 19<small>UTM, Метрика, roistat. Удалить нельзя, можно скрыть. Число: у скольких сделок из 750 заполнено</small></div></summary>
+<div class="r"><div class="rt"><b>Все 19 меток</b><span class="tag hide">Скрыть</span></div><div class="rn">Из карточки уходят. В разделе «Статистика» сделки остаются для отчётов. Из них само считается «Источник рекламы».</div></div>
+<div class="chips"><span class='chip'>utm_source<i>14</i></span><span class='chip'>utm_medium<i>14</i></span><span class='chip'>utm_campaign<i>12</i></span><span class='chip'>utm_term<i>11</i></span><span class='chip'>utm_content<i>12</i></span><span class='chip'>utm_referrer<i>96</i></span><span class='chip'>referrer<i>100</i></span><span class='chip'>yclid<i>11</i></span><span class='chip'>gclid<i>1</i></span><span class='chip'>_ym_uid<i>131</i></span><span class='chip'>_ym_counter<i>64</i></span><span class='chip'>roistat<i>35</i></span><span class='chip'>from<i>1</i></span><span class='chip'>gclientid<i>0</i></span><span class='chip'>fbclid<i>0</i></span><span class='chip'>openstat_service<i>0</i></span><span class='chip'>openstat_campaign<i>0</i></span><span class='chip'>openstat_ad<i>0</i></span><span class='chip'>openstat_source<i>0</i></span></div>
+</details>
+<details class="dt"><summary><div>Контакт: 10 полей<small>телефон, email и мессенджеры нужны, остальное лишнее</small></div></summary>
+<div class='r'><div class='rt'><b>Телефон</b><span class='tag keep'>Остаётся</span></div><div class='rs'>мульти</div><div class='rn'>Остаётся.</div></div><div class='r'><div class='rt'><b>Email</b><span class='tag keep'>Остаётся</span></div><div class='rs'>мульти</div><div class='rn'>Остаётся.</div></div><div class='r'><div class='rt'><b>Telegram</b><span class='tag merge'>Слить</span></div><div class='rs'>текст</div><div class='rn'>Станет полем «Мессенджер» (Telegram или Max).</div></div><div class='r'><div class='rt'><b>Мгн. сообщения</b><span class='tag hide'>Скрыть</span></div><div class='rs'>мульти</div><div class='rn'>Системное, удалить нельзя. Скрыть.</div></div><div class='r'><div class='rt'><b>WhatsApp</b><span class='tag del'>Удалить</span></div><div class='rs'>текст</div><div class='rn'>Не используем. Max вместо него.</div></div><div class='r'><div class='rt'><b>Должность</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст</div><div class='rn'>Системное. Скрыть.</div></div><div class='r'><div class='rt'><b>Комментарии</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст</div><div class='rn'>Дубль примечаний к сделке. Скрыть.</div></div><div class='r'><div class='rt'><b>Источник трафика</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст</div><div class='rn'>Дубль источника сделки. Скрыть.</div></div><div class='r'><div class='rt'><b>Трекинг</b><span class='tag hide'>Скрыть</span></div><div class='rs'>ссылка</div><div class='rn'>Техническое. Скрыть.</div></div><div class='r'><div class='rt'><b>cvid</b><span class='tag hide'>Скрыть</span></div><div class='rs'>текст</div><div class='rn'>Техническое. Скрыть.</div></div>
+</details>
+<details class="dt"><summary><div>Обязательные поля сейчас<small>всплывают, когда сделку двигают по воронке</small></div></summary>
+<div class="r"><div class="rt"><b>Этап «Отправили КП»: 6 обязательных</b></div><div class="rn">Площадка, Кол-во участников, Агентство, Программа, Компания, Источник.</div></div>
+<div class="r"><div class="rt"><b>Ещё 6 этапов: Источник обязателен</b></div><div class="rn">В работе, Хороший интерес, Подтверждено, Согласование документов, Предоплата, Проведено.</div></div>
+</details>
+</section>
+
+<section class="col new" id="new">
+<div class="ch"><span class="pill">СТАЛО</span><h2>Новая карточка</h2></div>
+<p class="hint">Рабочий макет: нажимайте варианты и галочку. Сделка: 8 полей, контакт: 3 поля.</p>
+
+<div class="card">
+<h3>Сделка</h3>
+
+<div class="f">
+<div class="lb">Как обратились <span>выбирает менеджер, если не подставилось само</span></div>
+<div class="opts" id="how-opts">
+<button class="opt" type="button">Звонок</button>
+<button class="opt on" type="button">Заявка с сайта</button>
+<button class="opt" type="button">Мессенджер</button>
+<button class="opt" type="button">СМС</button>
+<button class="opt" type="button">Напрямую / рекомендация</button>
+<button class="opt" type="button">Повторный клиент</button>
+</div>
+<div class="note">С сайта и из мессенджера подставляется само. Менеджер выбирает, только если сделку завёл руками.</div>
+</div>
+
+<div class="f">
+<div class="lb">Источник рекламы <span>само, руками не выбирается</span></div>
+<div class="auto-box"><b>Директ поиск</b><span>АВТО по меткам</span></div>
+<div class="note">Считается по UTM, yclid и странице, с которой пришёл клиент. Не определилось: «Не определён».</div>
+</div>
+
+<div class="f">
+<div class="chk" id="ag" role="checkbox" aria-checked="false" tabindex="0"><div class="box"></div><div><b>Агентство</b><div class="note" style="margin:2px 0 0" id="agn">Не отмечено: клиент это компания</div></div></div>
+</div>
+
+<div class="row2">
+<div class="f"><label>Программа <span class="req">*</span></label><div class="fake">Квест в городе</div></div>
+<div class="f"><label>Кол-во участников <span class="req">*</span></label><div class="fake">80</div></div>
+<div class="f"><label>Дата мероприятия</label><div class="fake">12.12.2026</div></div>
+<div class="f"><label>Площадка</label><div class="fake">Москва, пока выбираем</div></div>
+</div>
+
+<div class="f"><label>Пожелания клиента</label><div class="fake" style="min-height:96px">Нужен welcome-кофе и ведущий</div></div>
+<p class="note" style="margin:0"><span class="req">*</span> обязательные, только на этапе «Отправили КП». Бюджет, ответственный и компания остаются стандартными полями amoCRM.</p>
+</div>
+
+<div class="card">
+<h3>Контакт</h3>
+<div class="f"><label>Телефон</label><div class="fake">+7 900 000-00-00</div></div>
+<div class="f"><label>Email</label><div class="fake">name@company.ru</div></div>
+<div class="f" style="margin:0"><label>Мессенджер <span style="font-weight:400;color:var(--mut)">Telegram или Max</span></label><div class="fake">@username</div></div>
+</div>
+</section>
+</div>
+
+<h2 id="how">Поле «Как обратились»: 6 вариантов</h2>
+<p class="sub">Сейчас в «Источнике» смешаны два разных вопроса: откуда клиент (реклама) и как он вышел на связь (звонок, напрямую). Развожу их по двум полям.</p>
+<div class="tw"><table>
+<tr><th>Вариант</th><th>Когда ставится</th><th>Кто ставит</th></tr>
+<tr><td data-l=""><b>Звонок</b></td><td data-l="Когда ставится">Входящий звонок, в том числе по номеру с сайта</td><td data-l="Кто ставит">Само по звонку из телефонии. Руками, если телефонии нет в сделке</td></tr>
+<tr><td data-l=""><b>Заявка с сайта</b></td><td data-l="Когда ставится">Форма Tilda</td><td data-l="Кто ставит">Само</td></tr>
+<tr><td data-l=""><b>Мессенджер</b></td><td data-l="Когда ставится">Telegram или Max</td><td data-l="Кто ставит">Само, если пришло через интеграцию. Иначе руками</td></tr>
+<tr><td data-l=""><b>СМС</b></td><td data-l="Когда ставится">Написали СМС на номер</td><td data-l="Кто ставит">Менеджер</td></tr>
+<tr><td data-l=""><b>Напрямую / рекомендация</b></td><td data-l="Когда ставится">Нашли менеджера лично, пришли по совету, написали на почту</td><td data-l="Кто ставит">Менеджер</td></tr>
+<tr><td data-l=""><b>Повторный клиент</b></td><td data-l="Когда ставится">Уже работали, пришёл снова (вместо «Старая база»)</td><td data-l="Кто ставит">Менеджер, или само, если контакт уже есть в базе</td></tr>
+</table></div>
+
+<h2 id="src">Источник рекламы: что подтягивается само</h2>
+<p class="sub">Менеджер поле не трогает. Правила предлагаю такие, любое можно поправить.</p>
+<div class="tw"><table>
+<tr><th>Если в сделке</th><th>Источник рекламы</th></tr>
+<tr><td data-l="">yclid или utm_source=yandex и utm_medium=cpc</td><td data-l="Источник рекламы"><b>Директ поиск</b></td></tr>
+<tr><td data-l="">Те же метки, но площадка сети (РСЯ)</td><td data-l="Источник рекламы"><b>Директ РСЯ</b></td></tr>
+<tr><td data-l="">Нет меток, пришёл с yandex.ru</td><td data-l="Источник рекламы"><b>SEO Яндекс</b></td></tr>
+<tr><td data-l="">Нет меток, пришёл с google</td><td data-l="Источник рекламы"><b>SEO Google</b></td></tr>
+<tr><td data-l="">Пришёл с t.me, vk.com</td><td data-l="Источник рекламы"><b>Telegram, ВКонтакте</b></td></tr>
+<tr><td data-l="">Пришёл из ChatGPT, Perplexity и подобных</td><td data-l="Источник рекламы"><b>Нейросети</b></td></tr>
+<tr><td data-l="">Прямой заход без метки</td><td data-l="Источник рекламы"><b>Органика</b></td></tr>
+<tr><td data-l="">Ничего не определилось</td><td data-l="Источник рекламы"><b>Не определён</b> (виден в отчёте, чтобы чинить метки)</td></tr>
+</table></div>
+<div class="warn"><b>Важное условие.</b> Метки сейчас доходят в amoCRM плохо: utm_source заполнен у 14 сделок из 750, referrer у 100. Если ничего не менять, «Источник рекламы» будет часто «Не определён». Поэтому шаг 4 ниже (передача меток) обязателен.</div>
+
+<h2 id="todo">Что поменять в amoCRM, чтобы так стало</h2>
+<p class="sub">Ничего из этого пока не выполнено. Делаю после вашего «ок».</p>
+<ol class="st">
+<li><b>Создать два новых поля сделки</b><span>«Как обратились» (список из 6 вариантов выше) и «Агентство» (тип «Флаг»). Старое текстовое «Агентство» сначала переименовать в «Агентство (старое)».</span></li>
+<li><b>Перенести данные скриптом</b><span>«да», «Да», «ДА» и названия агентств (Corporate Travel, Аэроклуб Тур) → галочка «Агентство». «УЧАСТНИКИ» и «СКОЛЬКО…» → «Кол-во участников», где оно пустое. Сначала пробный прогон на 20 сделках, потом остальные.</span></li>
+<li><b>Переделать обязательные поля</b><span>Настройки → Сделки → Поля. Снять «обязательное» с Площадки, Агентства, Компании, Источника. Оставить на этапе «Отправили КП» только Программу и Кол-во участников.</span></li>
+<li><b>Починить передачу меток</b><span>В форме Tilda и в Callibri должны уходить utm, yclid и referrer. В карточке Callibri синхронизация с amoCRM записана как «выключена»: проверить и включить.</span></li>
+<li><b>Автозаполнение двух полей</b><span>Робот в воронке или наш вебхук (catalyst-amo уже принимает события amoCRM) ставит «Источник рекламы» по таблице выше, а «Как обратились» по каналу заявки. В Tilda в форме поле «Вы представляете компанию или агентство» привязать к галочке.</span></li>
+<li><b>Убрать лишнее из карточки</b><span>Настроить карточку: скрыть 19 меток, технические поля формы Tilda и 6 полей контакта. Удалить только пустые и дубли (Компания, INPUT, TEXTAREA, MAX, WhatsApp). Остальное сначала скрыть, удалить через 2 недели, когда убедимся, что ничего не потерялось.</span></li>
+<li><b>Порядок полей и проверка</b><span>Порядок в карточке: Как обратились, Источник, Агентство, Программа, Участники, Дата, Площадка, Пожелания. Проверить на 5 новых заявках: сайт, звонок, Telegram, Max, рекомендация.</span></li>
+</ol>
+<div class="ok"><b>Что нужно от вас:</b> «ок» на состав полей справа, на 6 вариантов «Как обратились» и на то, что поля-дубли сначала скрываются, а удаляются позже. Удаление данных безвозвратное, поэтому ждёт отдельного «ок».</div>
+</div>
+
+<script>
+document.querySelectorAll('#how-opts .opt').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#how-opts .opt').forEach(function(x){x.classList.remove('on')});b.classList.add('on')})});
+(function(){var c=document.getElementById('ag'),n=document.getElementById('agn');
+function t(){c.classList.toggle('on');var on=c.classList.contains('on');c.setAttribute('aria-checked',on);c.querySelector('.box').textContent=on?'✓':'';n.textContent=on?'Отмечено: клиент это агентство':'Не отмечено: клиент это компания'}
+c.addEventListener('click',t);c.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();t()}})})();
+if(window.innerWidth>=900)document.querySelectorAll('details.dt').forEach(function(d){d.open=true});
+</script>
+</body>
+</html>
