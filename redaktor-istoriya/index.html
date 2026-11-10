@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Редактор: черновик, отмена, история версий</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,Segoe UI,Roboto,sans-serif;background:#f2f4f6;color:#1d2329}
+.wrap{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:24px;margin:8px 0 4px}.sub{color:#5c6670;margin:0 0 16px}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#fff;border:1px solid #dde2e6;border-radius:14px;padding:10px 12px;position:sticky;top:8px;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.ic{width:48px;height:48px;border:1px solid #dde2e6;border-radius:12px;background:#fff;font-size:22px;cursor:pointer}
+.ic:disabled{opacity:.35;cursor:default}
+.state{display:flex;align-items:center;gap:8px;padding:0 10px;font-size:15px;color:#5c6670}
+.dot{width:10px;height:10px;border-radius:50%;background:#f0a020}
+.dot.ok{background:#0aba59}
+.sp{flex:1}
+.btn{height:48px;padding:0 18px;border-radius:12px;border:1px solid #dde2e6;background:#fff;font:inherit;font-weight:600;cursor:pointer}
+.btn.main{background:#0aba59;border-color:#0aba59;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 340px;gap:16px;margin-top:16px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid #dde2e6;border-radius:14px;padding:16px}
+.cover{aspect-ratio:16/9;border-radius:10px;background:linear-gradient(135deg,#0d4f3c,#0aba59);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;position:relative}
+.cover .t{font-size:clamp(22px,4vw,38px);font-weight:700;line-height:1.1;outline:2px dashed rgba(255,255,255,.7);outline-offset:6px;align-self:flex-start}
+.cover .d{margin-top:12px;font-size:18px;opacity:.9}
+.badge{position:absolute;top:14px;left:14px;background:#fff;color:#b26a00;font-size:14px;font-weight:600;padding:4px 10px;border-radius:20px}
+.cmp{display:flex;gap:8px;margin-top:12px}.cmp .btn{flex:1}
+h2{font-size:18px;margin:0 0 10px}
+.v{display:flex;gap:10px;padding:10px;border-radius:10px;cursor:pointer;border:2px solid transparent}
+.v:hover{background:#f5f7f8}.v.on{border-color:#f07c00;background:#fff7ee}
+.v .m{width:64px;height:36px;border-radius:6px;flex:none;background:linear-gradient(135deg,#0d4f3c,#0aba59)}
+.v .m.b{background:linear-gradient(135deg,#2b3a67,#4f7cff)}
+.v .w{font-size:15px}.v .w b{display:block}.v .w span{color:#5c6670;font-size:14px}
+.live{font-size:12px;font-weight:700;color:#0a7a3c;background:#e3f7ec;border-radius:10px;padding:1px 8px;margin-left:6px}
+.vrow{display:flex;gap:8px;margin-top:10px}.vrow .btn{flex:1;height:44px}
+.toast{margin-top:16px;background:#1d2329;color:#fff;border-radius:12px;padding:12px 16px;display:flex;gap:12px;align-items:center}
+.toast button{background:none;border:0;color:#7fe0a8;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer}
+.notes{margin-top:24px}.notes li{margin:6px 0}
+</style></head><body><div class="wrap">
+<h1>Как будет работать редактор</h1>
+<p class="sub">Макет. Кнопки живые: подвигайте надпись стрелками «назад/вперёд», откройте версии.</p>
+
+<div class="bar">
+  <button class="ic" id="undo" title="Назад (Ctrl+Z)" aria-label="Назад">↶</button>
+  <button class="ic" id="redo" title="Вперёд (Ctrl+Shift+Z)" aria-label="Вперёд">↷</button>
+  <div class="state"><span class="dot" id="dot"></span><span id="st">Черновик · сохранено 16:05</span></div>
+  <div class="sp"></div>
+  <button class="btn" id="copy">Сделать копию</button>
+  <button class="btn main" id="pub">Опубликовать</button>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="cover" id="cv"><span class="badge" id="bd">Черновик: на сайте пока старая</span>
+      <div class="t" id="tt">Корпоративный тимбилдинг</div><div class="d">12–14 декабря · Москва</div></div>
+    <div class="cmp"><button class="btn" id="big">Крупнее</button><button class="btn" id="small">Мельче</button><button class="btn" id="color">Другой фон</button></div>
+    <div class="cmp"><button class="btn" id="diff">Сравнить с тем, что на сайте</button></div>
+  </div>
+  <div class="card">
+    <h2>История версий</h2>
+    <div id="vl"></div>
+    <div class="vrow"><button class="btn" id="back">Вернуть эту версию</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden><span id="tm"></span><button id="tu">Отменить</button></div>
+
+<div class="card notes"><h2>Что тут главное</h2><ol>
+<li><b>Сохранять не надо.</b> Всё пишется само каждую секунду. Закрыла окно, вернулась завтра: всё на месте.</li>
+<li><b>Черновик и сайт раздельно.</b> Правки видишь только ты, пока не нажмёшь «Опубликовать». Плашка честно говорит, что на сайте сейчас.</li>
+<li><b>Назад и вперёд</b> для мелочи прямо сейчас: сдвинула, увеличила, передумала. 50 шагов, переживает перезагрузку.</li>
+<li><b>История версий</b> для «откатить на вчера»: каждая публикация и каждые 10 минут работы. Возврат ничего не стирает, а делает новую версию.</li>
+<li><b>Копия</b> для экспериментов: попробовать другой вариант, не ломая рабочий.</li>
+<li><b>Удаление</b> всегда с «Отменить» внизу и в архив, не насовсем.</li>
+</ol></div>
+</div>
+<script>
+const tt=document.getElementById('tt'),cv=document.getElementById('cv');
+let st={size:38,bg:0},past=[],fut=[];
+const bgs=['linear-gradient(135deg,#0d4f3c,#0aba59)','linear-gradient(135deg,#2b3a67,#4f7cff)','linear-gradient(135deg,#5a1e3a,#e0466e)'];
+const versions=[{t:'Сейчас (черновик)',s:'ты, 16:05',m:''},{t:'Опубликовано',s:'сегодня 14:20',m:'',live:1},{t:'Автосохранение',s:'сегодня 13:50',m:'b'},{t:'Опубликовано',s:'вчера 18:02',m:'b'}];
+let vsel=0;
+function paint(){tt.style.fontSize=`clamp(20px,${st.size/10}vw,${st.size}px)`;cv.style.background=bgs[st.bg];
+undo.disabled=!past.length;redo.disabled=!fut.length}
+function saved(){dot.className='dot';stEl.textContent='Сохраняю…';setTimeout(()=>{stEl.textContent='Черновик · сохранено '+new Date().toTimeString().slice(0,5)},500)}
+const stEl=document.getElementById('st');
+function change(f){past.push({...st});fut=[];f();paint();saved()}
+big.onclick=()=>change(()=>st.size=Math.min(56,st.size+4));
+small.onclick=()=>change(()=>st.size=Math.max(24,st.size-4));
+color.onclick=()=>change(()=>st.bg=(st.bg+1)%bgs.length);
+undo.onclick=()=>{if(!past.length)return;fut.push({...st});st=past.pop();paint();saved()};
+redo.onclick=()=>{if(!fut.length)return;past.push({...st});st=fut.pop();paint();saved()};
+document.onkeydown=e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();(e.shiftKey?redo:undo).onclick()}};
+function vpaint(){vl.innerHTML=versions.map((v,i)=>`<div class="v${i===vsel?' on':''}" data-i="${i}"><div class="m ${v.m}"></div><div class="w"><b>${v.t}${v.live?'<span class="live">на сайте</span>':''}</b><span>${v.s}</span></div></div>`).join('');
+vl.querySelectorAll('.v').forEach(x=>x.onclick=()=>{vsel=+x.dataset.i;vpaint()})}
+function toast(m){tm.textContent=m;document.getElementById('toast').hidden=false}
+back.onclick=()=>{if(!vsel)return;const v=versions[vsel];change(()=>st.bg=v.m?1:0);toast(`Вернула версию «${v.t}, ${v.s}». Текущая сохранена в истории`)};
+tu.onclick=()=>{undo.onclick();document.getElementById('toast').hidden=true};
+pub.onclick=()=>{dot.className='dot ok';stEl.textContent='Опубликовано '+new Date().toTimeString().slice(0,5)+' · черновик совпадает с сайтом';bd.textContent='Это сейчас на сайте';versions.splice(1,0,{t:'Опубликовано',s:'сегодня '+new Date().toTimeString().slice(0,5),m:st.bg?'b':'',live:1});versions.forEach((v,i)=>{if(i>1)delete v.live});vpaint();toast('Опубликовано в лендинг, карточку и письмо')};
+copy.onclick=()=>toast('Копия «Корпоративный тимбилдинг (2)» в Черновиках');
+diff.onclick=()=>toast('Слева будет сайт, справа черновик: отличия подсвечены');
+paint();vpaint();
+</script></body></html>
