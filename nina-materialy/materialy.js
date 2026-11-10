@@ -46,7 +46,7 @@ const site = id => SITES.find(s => s.id === id)
 
 /* ── меню: «Материалы» сразу под «Главным», «Письма» внутри него ── */
 const NAV = [
-  { name: 'programs', label: 'Главное', icon: 'list' },
+  { name: 'programs', label: 'Главная', icon: 'list' },
   { name: 'materials', label: 'Материалы', icon: 'folder' },
   { name: 'calendar', label: 'Календарь мероприятий', icon: 'month' },
   { name: 'mailplan', label: 'График рассылок', icon: 'calendar' },
