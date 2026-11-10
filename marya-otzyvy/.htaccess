@@ -1,0 +1,27 @@
+AddDefaultCharset utf-8
+# Свои правила перезаписи: не наследовать правила HR-панели из корня
+RewriteEngine On
+# Каноничный адрес: https://baikalfeya888.ru без www. Признак https от балансировщика Timeweb: X-HTTPS = 1
+# (%{HTTPS} за балансировщиком не работает, проверено на catalystrussia.ru 16.09.2026).
+RewriteCond %{HTTP_HOST} ^www\.(baikalfeya888\.ru)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^baikalfeya888\.ru$ [NC]
+RewriteCond %{HTTP:X-HTTPS} !1
+RewriteRule ^(.*)$ https://baikalfeya888.ru/$1 [R=301,L]
+AddType font/woff2 .woff2
+DirectoryIndex index.html
+Options -Indexes
+<IfModule mod_headers.c>
+  # сайт Марьи индексируется (в корне hr-bot.online стоит noindex)
+  Header always unset X-Robots-Tag
+  Header unset X-Robots-Tag
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(jpe?g|png|webp|gif|svg|mp4|mp3|woff2?|js)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
+<FilesMatch "\.bak$">
+  Require all denied
+</FilesMatch>
