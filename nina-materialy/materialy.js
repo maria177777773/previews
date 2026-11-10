@@ -306,7 +306,7 @@ function renderMaterials(root) {
   root.append(
     h('div', { class: 'screen-head' }, h('h1', {}, 'Материалы'),
       createButtons()),
-    h('div', { class: 'intro' }, h('p', {}, h('b', {}, 'Всё, что сделано, лежит здесь, и каждую вещь можно создать отдельно. '), 'На «Главном» программа по-прежнему создаётся пакетом: страница, карточка и письмо вместе. Здесь можно сделать только письмо, только страницу или карточку на будущее, а потом отправить, опубликовать или привязать одно к другому.')))
+    h('div', { class: 'intro' }, h('p', {}, h('b', {}, 'Всё, что сделано, лежит здесь, и каждую вещь можно создать отдельно. '), 'На «Главной» программа по-прежнему создаётся пакетом: страница, карточка и письмо вместе. Здесь можно сделать только письмо, только страницу или карточку на будущее, а потом отправить, опубликовать или привязать одно к другому.')))
   const tabs = h('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Разделы материалов' }, TABS.map(([id, label, type]) =>
     h('button', { type: 'button', role: 'tab', 'aria-selected': String(id === st.tab), dataset: { tab: id }, onclick: () => { st.tab = id; st.filter = 'any'; go(id === 'all' ? 'materials' : `materials/${id}`) } },
       label, h('span', { class: 'cnt' }, String(items.filter(i => !type || i.type === type).length)))))
