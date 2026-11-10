@@ -141,7 +141,6 @@ function actions(it) {
     else if (it.sites.length < SITES.length) a.push(h('button', { class: 'btn', type: 'button', onclick: () => publishModal(it) }, ico('globe'), 'На другой сайт'))
     if (!items.some(x => x.type === 'letter' && x.page === it.id)) a.push(h('button', { class: 'btn ghost', type: 'button', onclick: () => letterModal(it.id) }, ico('mail'), 'Создать письмо'))
   }
-  if (it.type === 'letter' && it.status === 'draft') a.push(h('button', { class: 'btn primary', type: 'button', onclick: () => sendModal(it) }, ico('send'), 'Отправить'))
   if (it.type === 'card' && it.status !== 'onsite') a.push(h('button', { class: 'btn primary', type: 'button', onclick: () => cardPublishModal(it) }, ico('upload'), 'В каталог'))
   if ((it.type === 'letter' || it.type === 'card') && !it.page) a.push(h('button', { class: 'btn', type: 'button', onclick: () => linkModal(it) }, ico('link'), 'Привязать к странице'))
   a.push(h('button', { class: 'btn ghost', type: 'button', onclick: () => openEditor(it) }, ico('edit'), 'Редактировать'))
