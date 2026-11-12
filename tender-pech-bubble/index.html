@@ -1,0 +1,45 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Пузырь и шрифт</title>
+<link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=Kurale&family=Yeseva+One&family=Underdog&family=Neucha&family=Oranienbaum&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+body{margin:0;background:#0f1a3a;color:#f3e6c0;font:20px/1.4 system-ui}
+.wrap{max-width:1300px;margin:0 auto;padding:30px 16px}
+h1{color:#e8c25a}
+.card{background:#1b2a55;border-radius:16px;padding:16px;margin:26px 0}
+.card h2{margin:0 0 10px;color:#e8c25a;font-size:28px}
+.scene{position:relative;width:100%;aspect-ratio:3/2;background:#000 center/cover no-repeat;border-radius:12px;overflow:hidden}
+.bub{position:absolute;width:38%;aspect-ratio:1.7}
+.bub svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:14px}
+.solo{background:#2a3b6e;border-radius:12px;padding:14px}
+</style></head><body><div class="wrap">
+<h1>Пузырь с русским орнаментом: выбери номер</h1>
+<p>Один и тот же пузырь будет во всех сценах. Отличаются шрифт и узор по кругу.</p>
+<div id="list"></div></div>
+<script>
+const IMG="https://maria177777773.github.io/previews/tender-pech-v60-kadry2/s08-208-a.png";
+const V=[
+ {n:1,font:"Ruslan Display",size:30,fill:"#fff6e0",ring:"#b8232b",ring2:"#d9a520",motif:"flower",ink:"#7a1218",t:"Старорусский, как в заголовках"},
+ {n:2,font:"Kurale",size:34,fill:"#fff8e8",ring:"#c0392b",ring2:"#e0b040",motif:"rhomb",ink:"#5a1a10",t:"Книжный старинный"},
+ {n:3,font:"Yeseva One",size:32,fill:"#fffaf0",ring:"#c99a2e",ring2:"#9b1c22",motif:"dot",ink:"#4a1d0c",t:"Сказочный нарядный"},
+ {n:4,font:"Underdog",size:34,fill:"#ffffff",ring:"#1f4fa8",ring2:"#7fa7e6",motif:"flower",ink:"#173a7a",t:"Весёлый, гжель как печь"},
+ {n:5,font:"Neucha",size:38,fill:"#fff7e6",ring:"#b8232b",ring2:"#2f7a3a",motif:"leaf",ink:"#3b1a0a",t:"Рукописный, хохлома"},
+ {n:6,font:"Oranienbaum",size:38,fill:"#fff9ec",ring:"#a8781c",ring2:"#c0392b",motif:"rhomb",ink:"#3a2208",t:"Изящный, золото"}];
+function motif(m,c,c2){
+ if(m=="flower")return `<g><circle r="4.2" fill="${c2}"/>${[0,72,144,216,288].map(a=>`<ellipse rx="3" ry="6.5" cy="-7" fill="${c}" transform="rotate(${a})"/>`).join("")}<circle r="2.4" fill="#fff3c4"/></g>`;
+ if(m=="rhomb")return `<g><path d="M0,-8 L6,0 L0,8 L-6,0Z" fill="${c}"/><path d="M0,-4 L3,0 L0,4 L-3,0Z" fill="${c2}"/></g>`;
+ if(m=="leaf")return `<g><path d="M0,-9 C6,-4 6,4 0,9 C-6,4 -6,-4 0,-9Z" fill="${c2}"/><circle r="3" fill="${c}"/></g>`;
+ return `<g><circle r="5" fill="${c}"/><circle r="2.2" fill="${c2}"/></g>`;}
+function bubble(v,text,tail){
+ const W=340,H=200,cx=170,cy=96,rx=158,ry=86,N=26;let ms="";
+ for(let i=0;i<N;i++){const a=i/N*2*Math.PI;const x=cx+(rx-14)*Math.cos(a),y=cy+(ry-14)*Math.sin(a);const deg=a*180/Math.PI+90;ms+=`<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) rotate(${deg.toFixed(0)}) scale(.95)">${motif(v.motif,v.ring,v.ring2)}</g>`;}
+ const lines=text.split("|");const fs=v.size;const y0=cy-(lines.length-1)*fs*0.6;
+ const tl=tail=="left"?`M${cx-70},${cy+70} L${cx-110},${cy+125} L${cx-25},${cy+80}Z`:`M${cx+40},${cy+78} L${cx+95},${cy+128} L${cx+80},${cy+70}Z`;
+ return `<svg viewBox="0 0 ${W} ${H+40}"><path d="${tl}" fill="${v.fill}" stroke="${v.ring}" stroke-width="5" stroke-linejoin="round"/>
+ <ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${v.fill}" stroke="${v.ring}" stroke-width="7"/>
+ <ellipse cx="${cx}" cy="${cy}" rx="${rx-5}" ry="${ry-5}" fill="none" stroke="${v.ring2}" stroke-width="2.5"/>
+ ${ms}<ellipse cx="${cx}" cy="${cy}" rx="${rx-27}" ry="${ry-27}" fill="none" stroke="${v.ring2}" stroke-width="1.5" stroke-dasharray="2 5"/>
+ ${lines.map((l,i)=>`<text x="${cx}" y="${y0+i*fs*1.2}" text-anchor="middle" dominant-baseline="middle" font-family="'${v.font}'" font-size="${fs}" fill="${v.ink}">${l}</text>`).join("")}</svg>`;}
+document.getElementById("list").innerHTML=V.map(v=>`<div class="card"><h2>${v.n} · ${v.font} · ${v.t}</h2>
+ <div class="scene" style="background-image:url(${IMG})"><div class="bub" style="right:3%;top:4%">${bubble(v,"Внесём|в дашборды!","left")}</div></div>
+ <div class="row"><div class="solo">${bubble(v,"Скоро, скоро,|матушка!","right")}</div><div class="solo">${bubble(v,"Где смета?!","right")}</div><div class="solo">${bubble(v,"Добавим|Jarvis!","left")}</div></div></div>`).join("");
+</script></body></html>
