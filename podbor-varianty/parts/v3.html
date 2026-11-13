@@ -1,0 +1,241 @@
+<!-- concept: конструктор фразы | approach: запрос собирается как предложение «Нужен [зимний] тимбилдинг [на выезде], бюджет [до 4 000 ₽]», слова-слоты открывают меню, выдача живая | label: Конструктор фразы -->
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Подбор программы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap&subset=cyrillic">
+<style>
+@font-face{font-family:TTCommonsPro;src:url(https://catalystrussia.ru/fonts/TT-Commons-Pro.woff) format('woff');font-display:swap}
+:root{--g:#0aba59;--gh:#14cc67;--ink:#0a0a0a;--txt:#030303;--mut:#5f6368;--line:#e1e1e1;--card:#f2f4f9;--panel:#eff8ef;--ph:#e4e7ec;--tt:TTCommonsPro,Arial,sans-serif;--rb:Roboto,Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font:400 17px/1.7 var(--rb);color:var(--txt);background:#fff}
+button,input,select{font-family:inherit}
+[hidden]{display:none!important}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.podbor{padding:48px 0}
+.podbor h2{font:700 42px/1.14 var(--tt);color:var(--ink);margin:0;letter-spacing:-.4px}
+.gr{color:var(--g)}
+.sub{font:400 20px/1.4 var(--rb);color:var(--mut);max-width:750px;margin:12px 0 0}
+.hd{margin-bottom:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:35px;background:var(--g);color:#fff;font:700 18px/1.1 var(--tt);border:2px solid var(--g);cursor:pointer;text-decoration:none;text-align:center}
+.btn:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.alt{background:#fff;color:var(--ink);border-color:var(--ink)}
+.btn.alt:hover{background:var(--ink);color:#fff}
+.opt{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:35px;border:1px solid var(--line);background:#fff;font:600 17px/1.1 var(--tt);color:var(--ink);cursor:pointer;text-align:center}
+.opt:hover{border-color:var(--ink)}
+.opt[aria-pressed="true"]{background:var(--g);border-color:var(--g);color:#fff}
+.opt[aria-pressed="true"]:hover{background:var(--ink);border-color:var(--ink)}
+.btn:focus-visible,.opt:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.ph{aspect-ratio:16/9;background:var(--ph);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center}
+.ph span{font:600 18px/1.2 var(--tt);color:var(--mut)}
+.pbody{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pbody h3{font:700 22px/1.2 var(--tt);color:var(--ink);margin:0;overflow-wrap:anywhere}
+.meta{margin:0;font:400 16px/1.45 var(--rb);color:var(--mut)}
+.near{margin:0;font:500 15px/1.35 var(--rb);color:#234438;background:var(--panel);border-left:3px solid var(--g);border-radius:0 10px 10px 0;padding:6px 10px}
+.pact{margin-top:auto;padding-top:10px;display:flex;flex-direction:column;gap:10px}
+.pact .btn{width:100%}
+.more{font:700 18px/1.2 var(--tt);color:var(--g);text-decoration:none;text-align:center;min-height:30px}
+.more:hover{color:var(--ink)}
+.sum{margin:0 0 18px;font:400 18px/1.45 var(--rb);color:var(--mut)}
+.sum b{font:700 20px/1.3 var(--tt);color:var(--ink);margin-right:8px}
+.note{margin:0 0 18px;font:400 17px/1.45 var(--rb);color:#234438;background:var(--panel);border-left:3px solid var(--g);border-radius:0 10px 10px 0;padding:10px 14px}
+.kp-ov{position:fixed;inset:0;background:rgba(10,10,10,.6);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px}
+.kp{position:relative;background:#fff;border-radius:16px;width:100%;max-width:480px;max-height:100%;overflow:auto;padding:28px}
+.kp h3{font:700 26px/1.2 var(--tt);color:var(--ink);margin:0 40px 6px 0}
+.kp-prog{margin:0 0 18px;color:var(--mut);font-size:17px}
+.kp label{display:block;font:500 16px/1.3 var(--rb);color:var(--mut);margin-bottom:14px}
+.kp input{display:block;width:100%;min-height:48px;margin-top:6px;padding:0 14px;border:1px solid var(--line);border-radius:12px;font:400 17px var(--rb);color:var(--txt);background:#fff}
+.kp-err{color:#b3261e;margin:0 0 10px;min-height:0;font-size:16px}
+.kp form .btn{width:100%}
+.kp-ok{font:500 19px/1.4 var(--rb);color:var(--ink);margin:0}
+.kp-x{position:absolute;top:12px;right:12px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:26px;line-height:1;cursor:pointer;color:var(--ink)}
+.kp-x:hover{background:var(--ink);color:#fff}
+@media(max-width:900px){.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.wrap{padding:0 16px}.podbor{padding:32px 0}.podbor h2{font-size:30px}.sub{font-size:18px}.grid3{grid-template-columns:1fr;gap:16px}.sum b{display:block;margin:0 0 4px}}
+
+
+.pills{margin-bottom:28px}
+.phrase{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:36px 32px;margin-bottom:32px;font:700 40px/1.9 var(--tt);color:var(--ink);letter-spacing:-.4px}
+.slot{position:relative;display:inline-block}
+.sbtn{font:inherit;letter-spacing:inherit;color:var(--g);background:#fff;border:2px solid var(--g);border-radius:14px;padding:0 14px;line-height:1.5;cursor:pointer;display:inline-flex;align-items:center;gap:10px;vertical-align:baseline}
+.sbtn:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.sbtn i{width:10px;height:10px;border-right:3px solid currentColor;border-bottom:3px solid currentColor;transform:rotate(45deg) translateY(-3px)}
+.smenu{position:absolute;left:0;top:calc(100% + 6px);z-index:20;margin:0;padding:8px;list-style:none;background:#fff;border:1px solid var(--line);border-radius:16px;min-width:240px;font:600 19px/1.2 var(--tt)}
+.smenu button{width:100%;text-align:left;min-height:48px;padding:0 14px;border:0;border-radius:10px;background:transparent;font:inherit;color:var(--ink);cursor:pointer}
+.smenu button:hover{background:var(--ink);color:#fff}
+.smenu button[aria-selected="true"]{color:var(--g)}
+.smenu button[aria-selected="true"]:hover{color:#fff}
+@media(max-width:900px){.phrase{font-size:30px}}
+@media(max-width:640px){.phrase{font-size:23px;padding:20px 16px;line-height:2}.smenu{min-width:200px;font-size:17px}.slot{display:inline}.smenu{left:0}}
+</style>
+</head>
+<body>
+<section class="podbor"><div class="wrap">
+<div class="hd"><h2>Что у <span class="gr">вас</span>?</h2><p class="sub">Соберите запрос как фразу: нажимайте на зелёные слова и меняйте их. Программы под фразой обновляются сразу.</p></div>
+<div class="row pills" id="pills"></div>
+<div class="phrase" id="phrase"></div>
+<div id="res" aria-live="polite"></div>
+</div></section>
+<!-- данные программ из programmy-priznaki.csv, пустые значения оставлены пустыми -->
+<script type="application/json" id="programs-data">[{"slug": "art-fun-sport", "name": "Art&Fun&Sport", "lyudi": "50-500", "vremya": "2 часа", "cena": 3300, "cena_za": "за гостя", "mesto": "улица", "sezon": "", "format": "спорт", "vyezd": "", "ofis": ""}, {"slug": "boom-time", "name": "Оркестр", "lyudi": "", "vremya": "", "cena": null, "cena_za": "", "mesto": "помещение", "sezon": "", "format": "творчество", "vyezd": "", "ofis": ""}, {"slug": "cepnaya-reakciya", "name": "Машина Голдберга", "lyudi": "60-500", "vremya": "2,5 часа", "cena": 3300, "cena_za": "за гостя", "mesto": "оба", "sezon": "", "format": "бизнес-игра; конструирование", "vyezd": "да", "ofis": "да"}, {"slug": "challenge", "name": "Спортивный квест", "lyudi": "50-500", "vremya": "2,5 часа", "cena": 3500, "cena_za": "за гостя", "mesto": "улица", "sezon": "", "format": "спорт", "vyezd": "да", "ofis": ""}, {"slug": "ekipazh", "name": "Экипаж", "lyudi": "40-100", "vremya": "2,5 часа", "cena": 3500, "cena_za": "за гостя", "mesto": "оба", "sezon": "", "format": "бизнес-игра", "vyezd": "да", "ofis": "да"}, {"slug": "festival-fudtrakov", "name": "Фестиваль Фудтраков", "lyudi": "60-500", "vremya": "3,5-4 часа", "cena": 3700, "cena_za": "за гостя", "mesto": "улица", "sezon": "", "format": "бизнес-игра; конструирование; кулинария", "vyezd": "да", "ofis": ""}, {"slug": "festival-morozhenogo", "name": "Фестиваль Мороженого", "lyudi": "100-1000", "vremya": "2,5-3 часа", "cena": 3500, "cena_za": "за гостя", "mesto": "улица", "sezon": "лето", "format": "конструирование; кулинария", "vyezd": "", "ofis": ""}, {"slug": "formula-1", "name": "Гонки Формула-1", "lyudi": "60-300", "vremya": "2,5 часа", "cena": 3300, "cena_za": "за гостя", "mesto": "оба", "sezon": "лето; зима", "format": "конструирование", "vyezd": "да", "ofis": ""}, {"slug": "fort-boyard", "name": "Форт Боярд", "lyudi": "50-200", "vremya": "2,5 часа", "cena": 3300, "cena_za": "за гостя", "mesto": "улица", "sezon": "", "format": "спорт", "vyezd": "", "ofis": ""}, {"slug": "gde-logika", "name": "Где логика", "lyudi": "60-400", "vremya": "2,5 часа", "cena": 3500, "cena_za": "за гостя", "mesto": "оба", "sezon": "лето; зима; Новый год", "format": "бизнес-игра", "vyezd": "да", "ofis": "да"}, {"slug": "gorodskaya-strojka", "name": "Мегаполис", "lyudi": "60-500", "vremya": "2,5-3 часа", "cena": 3200, "cena_za": "за гостя", "mesto": "оба", "sezon": "зима", "format": "бизнес-игра", "vyezd": "да", "ofis": ""}, {"slug": "hand-made_cheese", "name": "Сыроварня", "lyudi": "60-150", "vremya": "2,5-3 часа", "cena": 3500, "cena_za": "за гостя", "mesto": "оба", "sezon": "", "format": "кулинария", "vyezd": "да", "ofis": ""}, {"slug": "intellectualnii-kviz", "name": "Интеллектуальный квиз", "lyudi": "50-1000", "vremya": "2,5 часа", "cena": null, "cena_za": "", "mesto": "помещение", "sezon": "", "format": "бизнес-игра", "vyezd": "", "ofis": ""}, {"slug": "kannskiye-lvi", "name": "Камера! Мотор!", "lyudi": "50-200", "vremya": "2,5 часа", "cena": 3500, "cena_za": "за гостя", "mesto": "оба", "sezon": "", "format": "творчество", "vyezd": "да", "ofis": "да"}, {"slug": "kofejnyj-sindikat", "name": "Кофейный синдикат", "lyudi": "", "vremya": "", "cena": null, "cena_za": "", "mesto": "помещение", "sezon": "", "format": "бизнес-игра", "vyezd": "", "ofis": ""}, {"slug": "korporativnyj-bodibilding", "name": "Корпоративный флешмоб", "lyudi": "", "vremya": "", "cena": 3200, "cena_za": "за гостя", "mesto": "помещение", "sezon": "", "format": "творчество", "vyezd": "", "ofis": ""}, {"slug": "kosmicheskaya-stancina", "name": "Космическая станция", "lyudi": "", "vremya": "", "cena": null, "cena_za": "", "mesto": "помещение", "sezon": "", "format": "бизнес-игра; конструирование", "vyezd": "", "ofis": ""}, {"slug": "marionetka", "name": "Театр Марионеток", "lyudi": "60-400", "vremya": "2,5 часа", "cena": 3200, "cena_za": "за гостя", "mesto": "оба", "sezon": "", "format": "творчество", "vyezd": "да", "ofis": ""}, {"slug": "monster_traki", "name": "Монстер Траки", "lyudi": "25-500", "vremya": "", "cena": null, "cena_za": "", "mesto": "улица", "sezon": "", "format": "спорт", "vyezd": "", "ofis": ""}, {"slug": "muzikalni_leibl", "name": "Музыкальный Лейбл", "lyudi": "50-200", "vremya": "2-2,5 часа", "cena": 3400, "cena_za": "за гостя", "mesto": "оба", "sezon": "", "format": "нейросети", "vyezd": "", "ofis": ""}, {"slug": "neiro-kalendar", "name": "Нейрокалендарь", "lyudi": "50-200", "vremya": "2-2,5 часа", "cena": null, "cena_za": "", "mesto": "помещение", "sezon": "Новый год", "format": "нейросети", "vyezd": "", "ofis": ""}, {"slug": "neiro-kino", "name": "Нейро-Кино", "lyudi": "20-100", "vremya": "2 часа", "cena": 230000, "cena_za": "за программу", "mesto": "помещение", "sezon": "круглый год", "format": "нейросети", "vyezd": "", "ofis": ""}, {"slug": "parfyumernaya-kompaniya", "name": "Парфюмерный бренд", "lyudi": "60-200", "vremya": "2,5 часа", "cena": 3500, "cena_za": "за гостя", "mesto": "оба", "sezon": "", "format": "творчество", "vyezd": "да", "ofis": "да"}, {"slug": "recordsmeni", "name": "Рекордсмены", "lyudi": "", "vremya": "", "cena": null, "cena_za": "", "mesto": "оба", "sezon": "", "format": "спорт", "vyezd": "", "ofis": ""}, {"slug": "soap-box-derby", "name": "Гонки Чаплина", "lyudi": "60-200", "vremya": "2,5 часа", "cena": 4700, "cena_za": "за гостя", "mesto": "оба", "sezon": "", "format": "спорт; конструирование", "vyezd": "да", "ofis": ""}, {"slug": "sound-designer", "name": "Озвучка 2.0", "lyudi": "50-200", "vremya": "2,5 часа", "cena": 3300, "cena_za": "за гостя", "mesto": "помещение", "sezon": "", "format": "творчество", "vyezd": "", "ofis": "да"}, {"slug": "super-nindzya", "name": "Супер Ниндзя", "lyudi": "50-200", "vremya": "2,5 часа", "cena": null, "cena_za": "", "mesto": "оба", "sezon": "", "format": "спорт", "vyezd": "", "ofis": ""}, {"slug": "svyazka", "name": "Связка", "lyudi": "20-200", "vremya": "3 часа", "cena": 250000, "cena_za": "за программу", "mesto": "оба", "sezon": "", "format": "бизнес-игра", "vyezd": "да", "ofis": ""}, {"slug": "teambuilding-obshaya-kartina", "name": "Корпоративная картина", "lyudi": "60-500", "vremya": "2,5 часа", "cena": 3200, "cena_za": "за гостя", "mesto": "оба", "sezon": "", "format": "творчество", "vyezd": "да", "ofis": "да"}, {"slug": "timbilding-piramida", "name": "Пирамида", "lyudi": "", "vremya": "", "cena": 3200, "cena_za": "за гостя", "mesto": "", "sezon": "", "format": "бизнес-игра; конструирование", "vyezd": "", "ofis": ""}, {"slug": "uzhin-s-ulikami", "name": "Ужин с уликами", "lyudi": "30-150", "vremya": "2,5 часа", "cena": 260000, "cena_za": "за программу", "mesto": "помещение", "sezon": "", "format": "", "vyezd": "", "ofis": ""}, {"slug": "vodnaya-odisseya", "name": "Гонки на плотах", "lyudi": "60-500", "vremya": "2,5 часа", "cena": 3600, "cena_za": "за гостя", "mesto": "улица", "sezon": "лето", "format": "конструирование; творчество; спорт", "vyezd": "", "ofis": ""}, {"slug": "wool-teambuilding", "name": "Шерстяной тимбилдинг", "lyudi": "", "vremya": "30 минут", "cena": null, "cena_za": "", "mesto": "помещение", "sezon": "", "format": "творчество", "vyezd": "", "ofis": ""}, {"slug": "wow-bashnya", "name": "WOW Башня", "lyudi": "10-500", "vremya": "около 2 часов", "cena": 450000, "cena_za": "за программу", "mesto": "оба", "sezon": "", "format": "конструирование", "vyezd": "", "ofis": ""}, {"slug": "wow-pizza", "name": "WOW Пицца", "lyudi": "50-200", "vremya": "2,5 часа", "cena": 3200, "cena_za": "за гостя", "mesto": "улица", "sezon": "", "format": "кулинария", "vyezd": "да", "ofis": ""}, {"slug": "zoombie-kvest", "name": "Зомби квест", "lyudi": "100-300", "vremya": "3 часа", "cena": 3500, "cena_za": "за гостя", "mesto": "улица", "sezon": "", "format": "спорт", "vyezd": "да", "ofis": ""}]</script>
+<script id="pb-lib">
+(function(){
+var PROGRAMS=JSON.parse(document.getElementById('programs-data').textContent);
+var TOPICS=[{id:'any',label:'Любой повод'},{id:'ny',label:'Новый год'},{id:'zima',label:'Зима'},{id:'leto',label:'Лето'},{id:'sport',label:'Спорт'},{id:'tvorch',label:'Творчество'}];
+var PLACES=[{id:'any',label:'Не важно'},{id:'room',label:'В помещении'},{id:'street',label:'На улице'},{id:'trip',label:'Выезд за город'}];
+var BUDGETS=[{id:'3300',label:'до 3 300 ₽'},{id:'3500',label:'до 3 500 ₽'},{id:'4000',label:'до 4 000 ₽'},{id:'any',label:'Без ограничений'}];
+var SCENARIOS=[
+{id:'trip',label:'Выезд за город',state:{place:'trip'}},
+{id:'venue',label:'Подобрать площадку',state:{},note:true},
+{id:'ny',label:'Новый год',state:{topic:'ny'}},
+{id:'zima',label:'Зимний тимбилдинг',state:{topic:'zima'}},
+{id:'leto',label:'Летний на природе',state:{topic:'leto',place:'street'}},
+{id:'room',label:'В офисе или зале',state:{place:'room'}},
+{id:'sport',label:'Спортивный',state:{topic:'sport'}},
+{id:'tvorch',label:'Творческий',state:{topic:'tvorch'}}
+];
+var BASE='https://catalystrussia.ru/teambuilding/vse-programmy/';
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function money(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+function plural(n,f){var a=Math.abs(n)%100,b=a%10;if(a>10&&a<20)return f[2];if(b>1&&b<5)return f[1];if(b===1)return f[0];return f[2]}
+function full(p){var s={topic:'any',place:'any',budget:'any',_scn:'',_note:false};for(var k in p)s[k]=p[k];return s}
+function scn(id){var o=SCENARIOS.filter(function(x){return x.id===id})[0];var s=full(o.state);s._scn=id;s._note=!!o.note;return s}
+function setQ(st,q,v){st[q]=v;st._scn='';st._note=false;return st}
+function lab(list,id){var o=list.filter(function(x){return x.id===id})[0];return o?o.label:''}
+function budgetMax(id){return id==='any'||id==null||id===''?null:Number(id)}
+function budgetLabel(id){var l=lab(BUDGETS,id);return l||('до '+money(id)+' ₽')}
+function lower(s){return String(s||'').toLowerCase()}
+function topicMatch(p,t){
+ if(t==='any')return {ok:true,exact:false};
+ if(t==='sport'||t==='tvorch'){return {ok:lower(p.format).indexOf(t==='sport'?'спорт':'творчество')>-1,exact:false}}
+ var key={ny:'новый год',zima:'зима',leto:'лето'}[t],s=lower(p.sezon);
+ if(s.indexOf(key)>-1||s.indexOf('круглый')>-1)return {ok:true,exact:true};
+ if(!s){if((t==='ny'||t==='zima')&&p.mesto==='улица')return {ok:false,exact:false};return {ok:true,exact:false}}
+ return {ok:false,exact:false}
+}
+function placeMatch(p,pl){
+ if(pl==='any')return true;
+ if(pl==='trip')return p.vyezd==='да';
+ if(pl==='room')return p.mesto==='помещение'||p.mesto==='оба'||p.ofis==='да';
+ if(pl==='street')return p.mesto==='улица'||p.mesto==='оба';
+ return true
+}
+var W={topic:4,place:3,budget:2};
+function search(st){
+ var mx=budgetMax(st.budget);
+ var rows=PROGRAMS.map(function(p){
+  var un=[],t=topicMatch(p,st.topic);
+  if(!t.ok)un.push('topic');
+  if(!placeMatch(p,st.place))un.push('place');
+  if(mx!=null&&!(p.cena!=null&&p.cena_za==='за гостя'&&p.cena<=mx))un.push('budget');
+  var w=0;un.forEach(function(u){w+=W[u]});
+  var comp=(p.lyudi?1:0)+(p.vremya?1:0)+(p.cena!=null?1:0);
+  var pg=(p.cena!=null&&p.cena_za==='за гостя')?p.cena:1e9;
+  return {p:p,unmet:un,w:w,exact:t.exact,comp:comp,pg:pg}
+ });
+ rows.sort(function(a,b){return a.w-b.w||(b.exact-a.exact)||b.comp-a.comp||a.pg-b.pg||a.p.name.localeCompare(b.p.name,'ru')});
+ return {all:rows,strict:rows.filter(function(r){return !r.unmet.length}).length}
+}
+function count(st){return search(st).strict}
+function priceText(p){if(p.cena==null)return 'цена по запросу';return 'от '+money(p.cena)+' ₽'+(p.cena_za==='за гостя'?' за гостя':p.cena_za==='за программу'?' за программу':'')}
+function metaText(p){var a=[];if(p.lyudi)a.push(p.lyudi+' человек');if(p.vremya)a.push(p.vremya);a.push(priceText(p));return a.join(' · ')}
+function unmetText(r,st){
+ var a=[];
+ r.unmet.forEach(function(u){
+  if(u==='topic')a.push(st.topic==='sport'||st.topic==='tvorch'?'другой формат':'другой сезон');
+  if(u==='place')a.push('другое место');
+  if(u==='budget')a.push(r.pg<1e9?'чуть выше бюджета':'цену уточним в КП');
+ });
+ return a.join(', ')
+}
+function cardHTML(r,st){
+ var p=r.p,near=r.unmet.length?'<p class="near">Ближайшее по условиям: '+esc(unmetText(r,st||{}))+'</p>':'';
+ return '<article class="pcard" data-pcard="'+esc(p.slug)+'"><div class="ph" role="img" aria-label="Фото: '+esc(p.name)+'"><span>'+esc(p.name)+'</span></div><div class="pbody"><h3>'+esc(p.name)+'</h3><p class="meta">'+esc(metaText(p))+'</p>'+near+'<div class="pact"><button class="btn" type="button" data-kp="'+esc(p.slug)+'">Получить КП за 10 минут</button><a class="more" href="'+BASE+esc(p.slug)+'/" target="_blank" rel="noopener">О программе →</a></div></div></article>'
+}
+function cardsHTML(rows,st){return rows.map(function(r){return cardHTML(r,st)}).join('')}
+function stateLabel(st){
+ var a=[];
+ if(st.topic!=='any')a.push(lab(TOPICS,st.topic));
+ if(st.place!=='any')a.push(lab(PLACES,st.place));
+ if(st.budget!=='any')a.push(budgetLabel(st.budget)+' за гостя');
+ return a.length?a.join(' · '):'без условий'
+}
+var NOTE='Площадку подберём под выбранную программу: напишите пожелания в форме КП.';
+function summaryText(res,st){
+ var n=res.strict,k=Math.min(3,res.all.length);
+ if(n>=3)return 'Подобрали '+k+' '+plural(k,['программу','программы','программ'])+' из '+n+' подходящих';
+ if(n>0)return 'Точных совпадений: '+n+', остальное ближайшее';
+ return 'Точных совпадений нет, показываем ближайшие'
+}
+function summaryHTML(res,st){return '<p class="sum"><b>'+esc(summaryText(res,st))+'</b><span>'+esc(stateLabel(st))+'</span></p>'+(st._note?'<p class="note">'+NOTE+'</p>':'')}
+function chips(q,list,cur){return list.map(function(o){return '<button type="button" class="opt" data-q="'+q+'" data-v="'+o.id+'" aria-pressed="'+(String(cur)===o.id)+'">'+esc(o.label)+'</button>'}).join('')}
+function scnCount(id){var n=count(scn(id));return n+' '+plural(n,['программа','программы','программ'])}
+var modal=null,curProg=null;
+function ensureModal(){
+ if(modal)return modal;
+ modal=document.createElement('div');modal.className='kp-ov';modal.hidden=true;
+ modal.innerHTML='<div class="kp" role="dialog" aria-modal="true" aria-labelledby="kp-t"><button class="kp-x" type="button" aria-label="Закрыть">×</button><h3 id="kp-t">Получить КП за 10 минут</h3><p class="kp-prog"></p><form novalidate><label>Сколько гостей<input name="n" type="number" min="1" inputmode="numeric" autocomplete="off"></label><label>Как к вам обращаться<input name="name" type="text" autocomplete="name"></label><label>Телефон или e-mail<input name="c" type="text" autocomplete="off"></label><p class="kp-err" role="alert"></p><button class="btn" type="submit">Получить КП</button></form><p class="kp-ok" hidden></p></div>';
+ document.body.appendChild(modal);
+ modal.addEventListener('click',function(e){if(e.target===modal||e.target.closest('.kp-x'))closeKP()});
+ modal.querySelector('form').addEventListener('submit',function(e){
+  e.preventDefault();var f=e.target,n=Number(f.n.value),c=f.c.value.trim(),err=modal.querySelector('.kp-err');
+  if(!(n>0)){err.textContent='Укажите, сколько будет гостей';return}
+  if(!c){err.textContent='Укажите телефон или e-mail';return}
+  err.textContent='';f.hidden=true;var ok=modal.querySelector('.kp-ok');ok.hidden=false;
+  ok.textContent='Заявка принята. Пришлём КП по программе «'+(curProg?curProg.name:'')+'» на '+n+' гостей.'
+ });
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)closeKP()});
+ return modal
+}
+function openKP(slug){
+ var p=PROGRAMS.filter(function(x){return x.slug===slug})[0];if(!p)return;curProg=p;
+ var m=ensureModal();m.querySelector('.kp-prog').textContent='Программа «'+p.name+'»';
+ var f=m.querySelector('form');f.reset();f.hidden=false;m.querySelector('.kp-ok').hidden=true;m.querySelector('.kp-err').textContent='';
+ m.hidden=false;try{f.n.focus()}catch(e){}
+}
+function closeKP(){if(modal)modal.hidden=true}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-kp]');if(b){e.preventDefault();openKP(b.getAttribute('data-kp'))}});
+function reveal(el){if(el&&el.scrollIntoView){try{el.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(e){}}}
+window.PB={PROGRAMS:PROGRAMS,TOPICS:TOPICS,PLACES:PLACES,BUDGETS:BUDGETS,SCENARIOS:SCENARIOS,esc:esc,money:money,plural:plural,full:full,scn:scn,setQ:setQ,lab:lab,search:search,count:count,priceText:priceText,metaText:metaText,cardHTML:cardHTML,cardsHTML:cardsHTML,stateLabel:stateLabel,summaryHTML:summaryHTML,summaryText:summaryText,chips:chips,scnCount:scnCount,budgetLabel:budgetLabel,openKP:openKP,reveal:reveal,NOTE:NOTE,lower:lower};
+})();
+</script>
+<script id="pb-variant">
+(function(){
+var PB=window.PB,st=PB.full({topic:'zima',place:'trip',budget:'4000'}),$=function(s){return document.querySelector(s)};
+var ADJ=[{id:'any',label:'любой'},{id:'ny',label:'новогодний'},{id:'zima',label:'зимний'},{id:'leto',label:'летний'},{id:'sport',label:'спортивный'},{id:'tvorch',label:'творческий'}];
+var WH=[{id:'any',label:'в любом месте'},{id:'room',label:'в помещении'},{id:'street',label:'на улице'},{id:'trip',label:'на выезде за городом'}];
+var BU=[{id:'3300',label:'до 3 300 ₽'},{id:'3500',label:'до 3 500 ₽'},{id:'4000',label:'до 4 000 ₽'},{id:'any',label:'любого размера'}];
+$('#pills').innerHTML=PB.SCENARIOS.map(function(s){return '<button type="button" class="opt" data-scn="'+s.id+'" aria-pressed="false">'+PB.esc(s.label)+'</button>'}).join('');
+function slot(q,list){
+ var cur=list.filter(function(o){return o.id===st[q]})[0]||list[0];
+ return '<span class="slot"><button type="button" class="sbtn" data-slot="'+q+'" aria-haspopup="listbox" aria-expanded="false">'+PB.esc(cur.label)+'<i aria-hidden="true"></i></button><ul class="smenu" role="listbox" hidden>'+list.map(function(o){return '<li><button type="button" role="option" aria-selected="'+(o.id===cur.id)+'" data-q="'+q+'" data-v="'+o.id+'">'+PB.esc(o.label)+'</button></li>'}).join('')+'</ul></span>'
+}
+function render(){
+ document.querySelectorAll('#pills .opt').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-scn')===st._scn))});
+ $('#phrase').innerHTML='Нужен '+slot('topic',ADJ)+' тимбилдинг '+slot('place',WH)+', бюджет '+slot('budget',BU)+(st.budget!=='any'?' за гостя':'');
+ var r=PB.search(st);
+ $('#res').innerHTML=PB.summaryHTML(r,st)+'<div class="grid3">'+PB.cardsHTML(r.all.slice(0,3),st)+'</div>';
+}
+function closeAll(){document.querySelectorAll('.smenu').forEach(function(m){m.hidden=true});document.querySelectorAll('.sbtn').forEach(function(b){b.setAttribute('aria-expanded','false')})}
+document.addEventListener('click',function(e){
+ var t=e.target.closest('[data-scn]');
+ if(t){st=PB.scn(t.getAttribute('data-scn'));render();return}
+ var o=e.target.closest('.smenu [data-q]');
+ if(o){PB.setQ(st,o.getAttribute('data-q'),o.getAttribute('data-v'));render();return}
+ var b=e.target.closest('.sbtn');
+ if(b){var m=b.nextElementSibling,was=m.hidden;closeAll();m.hidden=!was;b.setAttribute('aria-expanded',String(was));return}
+ closeAll();
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()});
+render();
+})();
+</script>
+</body>
+</html>
