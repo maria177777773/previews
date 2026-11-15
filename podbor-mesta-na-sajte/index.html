@@ -23,10 +23,25 @@ html body main>.hero p.rotating-headline .headline-mobile-break{display:none}
 @media(max-width:640px){.zb-v2{--pd:16px;--pt:24px;--pb:20px}.zb-v2 .zb-card{border-radius:20px}.zb-v2 .zb-actions{flex-direction:column;align-items:stretch;gap:14px;margin-top:22px}.zb-v2 .zb-note{font-size:16px}}
 .zb-v2{--fh:1.75em;--px:0.5em;--arw:1.5em}@media(max-width:640px){.zb-v2{--fh:1.95em;--px:0.35em;--arw:1.20em}}
 .zb-home{margin-top:48px}
-.zb-in-menu{width:100%;max-width:none;margin:0 0 22px;padding:0 0 18px;border-bottom:1px solid #e1e1e1}
-.zb-in-menu .zb-card{padding:0;background:none;border-radius:0}
-.zb-in-menu{--pd:0px;--pt:0px;--pb:0px;--fm1:20px;--fm3:20px}
-.zb-in-menu .zb-actions{margin-top:10px;justify-content:flex-start}
+.zb-in-menu{width:100%;max-width:none;margin:0 0 22px;--pd:0px;--pt:0px;--pb:0px;--fm1:22px;--fm3:22px;--lh:2.3}
+.zb-in-menu .zb-card{background:#f3f3ee;border:1px solid #e6e8eb;border-radius:16px;padding:18px 22px 20px}
+.zb-in-menu .zb-phrase{white-space:normal;color:#141414}
+/* слова как в исходном подборе: белые с зелёной рамкой и стрелкой вниз */
+.zb-v2.zb-in-menu .zb-f{border:2px solid #0aba59;border-radius:12px;background:#fff;color:#0aba59;overflow:visible}
+.zb-v2.zb-in-menu .zb-ar{border-left:0;background:transparent;color:#0aba59;width:1.3em}
+.zb-v2.zb-in-menu .zb-ch{width:.42em;height:.42em;border-right:3px solid currentColor;border-bottom:3px solid currentColor;transform:translateY(-.12em) rotate(45deg)}
+.zb-v2.zb-in-menu .zb-f:hover,.zb-v2.zb-in-menu .zb-cu:focus-within{background:#141414;border-color:#141414;color:#fff}
+.zb-v2.zb-in-menu .zb-f:hover .zb-ar{background:transparent;color:#fff}
+.zb-in-menu .zb-actions{margin-top:12px;justify-content:flex-start}
+
+details[data-kind=programs] .mega-results>#zb-m{grid-area:1/1/2/-1}
+details[data-kind=programs] .mega-results>h4,details[data-kind=programs] .mega-results>.mega-all-category{grid-row:2}
+details[data-kind=programs] .mega-results>p{grid-row:3}
+details[data-kind=programs] .mega-results>.mega-links{grid-row:4}
+.zb-v2.zb-in-menu .zb-f{border:2px solid #0aba59!important;border-radius:12px!important}
+.zb-v2.zb-in-menu .zb-f:hover{border-color:#141414!important}
+.zb-v2.zb-in-menu .zb-ch{border-right:3px solid currentColor!important;border-bottom:3px solid currentColor!important}
+.zb-in-menu .zb-go{border:0!important}
 .pv-note{position:fixed;left:12px;bottom:12px;z-index:9999;background:#0a0a0a;color:#fff;font:500 14px/1.35 Roboto,Arial,sans-serif;padding:10px 14px;border-radius:10px;max-width:340px}
 .zb-link{display:none}
 </style></head><body><svg width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none"><defs><filter id="foodtruck-paper-edge" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="9" result="expanded"/><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="12" result="paperNoise"/><feDisplacementMap in="expanded" in2="paperNoise" scale="5" xChannelSelector="R" yChannelSelector="G" result="roughEdge"/><feFlood flood-color="white" result="paper"/><feComposite in="paper" in2="roughEdge" operator="in" result="outline"/><feMerge><feMergeNode in="outline"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>
