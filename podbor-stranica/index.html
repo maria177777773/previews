@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<head><!--CATALYST-NAVIGATION:START--><script>window.addEventListener('click',function(e){
+<head><base href="https://catalystrussia.ru/"><script>(function(){var rs=history.replaceState,ps=history.pushState;function fix(u){return(typeof u==="string"&&u.charAt(0)==="#")?location.href.split("#")[0]+u:u}history.replaceState=function(a,b,u){return rs.call(history,a,b,fix(u))};history.pushState=function(a,b,u){return ps.call(history,a,b,fix(u))};document.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href^="#"]');if(!a||e.defaultPrevented)return;var h=a.getAttribute("href");if(!h||h.length<2)return;var el=null;try{el=document.getElementById(decodeURIComponent(h.slice(1)))}catch(x){}e.preventDefault();if(el)el.scrollIntoView();rs.call(history,null,"",location.href.split("#")[0]+h)})})();</script><!--CATALYST-NAVIGATION:START--><script>window.addEventListener('click',function(e){
  const trigger=e.composedPath().find(n=>n instanceof Element&&n.matches('a,button,[role="button"]'));if(!trigger)return;
  const host=document.getElementById('catalyst-site-navigation');if(!host?.dataset.formsReady||host.shadowRoot.contains(trigger))return;
  const text=trigger.textContent.trim();let kind=null;
@@ -1113,7 +1113,7 @@ html body .ccc-ov.ccl-chatm .ccc-f{display:contents!important}
 html body .ccc-ov.ccl-chatm .ccc-f .ccc-btn{order:3;margin-left:auto;flex:none!important;width:auto!important;height:42px!important;padding:0 18px!important;border-radius:999px!important;border:1.5px solid #cfd8d3!important;background:#fff!important;color:#141414!important;font:600 14px Roboto,Arial,sans-serif!important}
 html body .ccc-ov.ccl-chatm .ccc-f .ccc-btn:hover{border-color:var(--rd-g)!important;color:#07904a!important}
 </style>
-</head>
+<style id="pbp-css">#pbp-badge{position:fixed;left:12px;bottom:12px;z-index:2147483000;max-width:calc(100vw - 24px);padding:8px 14px;border-radius:12px;background:#141414;color:#fff;font:600 13px/1.3 Roboto,Arial,sans-serif;letter-spacing:0;box-shadow:none;pointer-events:none}</style></head>
 <body>
 
 <div id="catMenuV4" class="mv mv-1"><div class="mv-veil"></div><div class="mv-top"><div class="mv-wrap mv-topin"><nav class="mv-tl" aria-label="Разделы сайта"><a class="tl-narrow rd-link" href="https://catalystrussia.ru/cases/">Портфолио</a><a class="tl-narrow" href="https://catalystrussia.ru/novogodnij-korporativ/" data-mv-dd="ny" aria-haspopup="true">Новый год 2027</a><a class="tl-narrow" href="https://catalystrussia.ru/about/" data-mv-dd="ab" aria-haspopup="true">О компании</a><a href="https://catalystrussia.ru/cases/">Кейсы</a><a href="https://catalystrussia.ru/reviews/">Отзывы</a><a class="tl-wide" href="https://catalystrussia.ru/teambuilding-video/">Видео</a><a class="tl-wide" href="https://catalystrussia.ru/blog/">Блог</a><a class="tl-wide" href="https://catalystrussia.ru/foragencies/">Агентствам</a></nav><div class="mv-tc"><span class="mv-hours tl-wide">Ежедневно с 8:00 до 22:00</span><a class="mv-phone" href="tel:+79911501001">+7 991 150-10-01</a></div></div></div><div class="mv-wrap mv-main"><div class="mv-cap"><span class="logo"><a href="https://catalystrussia.ru/"><img src="https://catalystrussia.ru/img-menu-logo.png" alt="Каталист"></a></span><span class="mv-catdd"><button type="button" class="mv-btn" aria-haspopup="true" aria-expanded="false"><svg class="ic-open" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="2" y="2" width="9" height="9" rx="2.4"/><rect x="13" y="2" width="9" height="9" rx="2.4"/><rect x="2" y="13" width="9" height="9" rx="2.4"/><rect x="13" y="13" width="9" height="9" rx="2.4"/></svg><svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span class="lbl-l">Каталог программ</span><span class="lbl-s">Каталог</span></button><span class="panel mega mega-tb"><span class="megafoot mf-top"><span class="mf-t"><i class="gi"><svg viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></i>Каталог программ</span><a class="mega-all" href="https://catalystrussia.ru/#katalog-programm">Все тимбилдинги →</a><span class="mega-note">50+ программ: подберём под задачу, число гостей и бюджет</span></span>
@@ -1262,6 +1262,31 @@ html body .ccc-ov.ccl-chatm .ccc-f .ccc-btn:hover{border-color:var(--rd-g)!impor
 .pb-done{border:1px solid var(--g);background:var(--panel);border-radius:16px;padding:32px;margin-top:48px}
 .pb-root .pb-done h3{font:var(--fw) 30px/1.2 var(--tt)!important;color:var(--ink);margin:0 0 8px!important}
 .pb-done p{font:400 18px/1.45 var(--rb);margin:0 0 6px!important}
+.pb-ph.pb-has{padding:0;background:#e4e7ec}
+.pb-ph img{display:block;width:100%;height:100%;object-fit:cover}
+.pb-dry{margin:0 0 14px!important;padding:8px 12px;border:1px dashed var(--ink);border-radius:10px;font:var(--fs) 15px/1.35 var(--rb);color:var(--ink);background:#fff}
+.pb-acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+.pb-acts .pb-btn,.pb-acts .pb-opt{min-height:52px;padding:0 24px;font:var(--fw) 17px/1.1 var(--tt)!important}
+.pb-acts .pb-opt{border:2px solid var(--g);color:var(--ink);text-decoration:none}
+.pb-acts .pb-opt:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.pb-c .pb-hd{margin-bottom:16px}
+.pb-c .pb-pills{display:none}
+.pb-root.pb-c .pb-h2{font-size:32px!important}
+.pb-c .pb-sub{font-size:18px;margin-top:8px!important}
+.pb-c .pb-phrase{font-size:26px;line-height:2.05;padding:20px 22px;margin-bottom:12px}
+.pb-c .pb-sechd{font-size:22px!important;margin:16px 0 6px!important}
+.pb-c .pb-grid3{gap:16px}
+.pb-c .pb-ph{aspect-ratio:16/9}
+.pb-root.pb-c .pb-pbody h3{font-size:19px!important}
+.pb-c .pb-pbody{padding:14px 16px 16px;gap:6px}
+.pb-c .pb-form{margin-top:20px;padding:24px}
+.pb-c .pb-done{margin-top:20px;padding:24px}
+html body .p4c .tags span.pb-cp{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:15px;background:#0aba59!important;color:#fff!important;border:0!important;font:700 14px/1.25 Roboto,Arial,sans-serif!important}
+html body .p4c .tags span.pb-cp.pb-nr{background:#fff!important;color:#141414!important;border:1px solid #e6e8eb!important;padding:6px 12px}
+.pb-cp.pb-nr{background:#fff;color:var(--ink);border:1px solid var(--line);height:auto;padding:6px 12px;line-height:1.25}
+.pb-cp{display:inline-flex;align-items:center;min-height:30px;padding:0 12px;border-radius:15px;background:var(--g);color:#fff;font:var(--fw) 14px/1 var(--tt)}
+@media(max-width:1000px){.pb-c .pb-phrase{font-size:22px}}
+@media(max-width:640px){.pb-root.pb-c .pb-h2{font-size:24px!important}.pb-c .pb-phrase{font-size:19px;padding:14px 12px;line-height:2.2}.pb-acts .pb-btn,.pb-acts .pb-opt{width:100%}.pb-c .pb-form,.pb-c .pb-done{padding:18px 14px}}
 @media(max-width:1000px){.pb-phrase{font-size:27px}.pb-grid3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.pb-root .pb-h2{font-size:28px!important}.pb-sub{font-size:18px}.pb-phrase{font-size:21px;padding:18px 12px;line-height:2.2}.pb-smenu{min-width:200px;font-size:17px}.pb-grid3{grid-template-columns:1fr;gap:16px}.pb-fgrid{grid-template-columns:1fr}.pb-form,.pb-done{padding:20px 16px}.pb-sechd{font-size:25px!important}.pb-sum b{display:block;margin:0 0 4px}.pb-inp.pb-m{width:5.4em}}
 .pb-root{margin-top:32px}.pb-in{max-width:none;padding:0}
@@ -1286,12 +1311,21 @@ var ROOT=document.getElementById('pb-root');
 if(!ROOT)return;
 var PROGRAMS=JSON.parse(document.getElementById('pb-programs').textContent);
 var BASE='https://catalystrussia.ru/teambuilding/vse-programmy/';
-/* Заявка уходит так же, как у формы-модалки главной (forms-chat.js, submit()): POST JSON на /api/lead/
+/* ВАЖНО: _lead.js на живом сайте перехватывает (capture + stopImmediatePropagation) клики по кнопкам с текстом «отправить заявку», «оставить заявку»,
+   «заказать звонок», «получить КП», «рассчитать стоимость»: поэтому у кнопок компонента другие надписи («Отправить запрос», «Запросить расчёт»).
+   Заявка уходит так же, как у формы-модалки главной (forms-chat.js, submit()): POST JSON на /api/lead/
    с полями {name,phone,contact,channel,comment,program,source,page}. На catalystrussia.ru адрес относительный
    (тогда /_lead.js сам дописывает атрибуцию и ClientID), на превью абсолютный (CORS на приёмнике открыт). */
 var HOST=location.hostname;
 var ENDPOINT=window.CATALYST_LEAD_ENDPOINT||((HOST==='catalystrussia.ru'||HOST==='www.catalystrussia.ru')?'/api/lead/':'https://catalystrussia.ru/api/lead/');
-var DRY=/[?&]pb_dry=1/.test(location.search);
+/* на превью (любой хост, кроме catalystrussia.ru) заявки НЕ отправляются: режим «сухой» включён всегда; на живом сайте его можно включить параметром ?pb_dry=1 */
+var IS_LIVE=(HOST==='catalystrussia.ru'||HOST==='www.catalystrussia.ru');
+var DRY=/[?&]pb_dry=1/.test(location.search)||!IS_LIVE;
+var MODE=ROOT.getAttribute('data-pb-mode')||'page';
+var COMPACT=MODE!=='page';
+var EXCL=ROOT.getAttribute('data-pb-exclude')||'';
+var PAGE_REL=ROOT.getAttribute('data-pb-page')||'';
+var NOPHOTO={'marionetka':1,'hand-made_cheese':1,'kofejnyj-sindikat':1};
 var $=function(s){return ROOT.querySelector(s)};
 var ADJ=[{id:'any',label:'любой'},{id:'sport',label:'спортивный'},{id:'tvorch',label:'творческий'},{id:'biz',label:'бизнес-игра'},{id:'cook',label:'кулинарный'},{id:'neuro',label:'с нейросетями'},{id:'ny',label:'новогодний'},{id:'zima',label:'зимний'},{id:'leto',label:'летний'}];
 var WH=[{id:'any',label:'в любом месте'},{id:'room',label:'в помещении'},{id:'street',label:'на улице'},{id:'trip',label:'на выезде'}];
@@ -1310,7 +1344,7 @@ var SCN=[
 ];
 /* budget: число или null («не важно»); pc/bc: слот людей/бюджета показан полем ввода («Свой вариант…») */
 var st={topic:'any',place:'any',people:100,budget:300000,pc:false,bc:false,scn:'',note:false};
-var selected={},touched=false,lastList=[];
+var selected={},touched=false,lastList=[],applied=(MODE!=='catalog'),formOpen=false,catHooked=false;
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function k(n){return money(Math.round(n/1000)*1000)}
 function lab(l,id){var o=l.filter(function(x){return x.id===id})[0];return o?o.label:''}
@@ -1339,7 +1373,7 @@ function placeOk(p,pl){
 }
 function search(){
  var n=st.people,B=st.budget;
- var rows=PROGRAMS.map(function(p){
+ var rows=PROGRAMS.filter(function(p){return !EXCL||p.slug!==EXCL}).map(function(p){
   var un=[],r=range(p),tot=total(p,n),w=0;
   if(!topicOk(p,st.topic)){un.push((st.topic==='ny'||st.topic==='zima'||st.topic==='leto')?'другой сезон':'другой формат');w+=4}
   if(!placeOk(p,st.place)){un.push('другое место');w+=3}
@@ -1364,11 +1398,16 @@ function search(){
  return {exact:exact,near:near.slice(0,need)}
 }
 function metaText(p){var a=[],r=range(p);if(r)a.push(r[0]+' до '+r[1]+' человек');else a.push('число участников уточним в заявке');if(p.vremya)a.push(p.vremya);return a.join(' · ')}
+function photoHTML(p){
+ if(NOPHOTO[p.slug])return '<div class="pb-ph" role="img" aria-label="'+esc(p.name)+'"><span>'+esc(p.name)+'</span></div>';
+ return '<div class="pb-ph pb-has"><img src="https://catalystrussia.ru/rd-assets/p/'+esc(p.slug)+'/00.webp" alt="'+esc(p.name)+'" loading="lazy" decoding="async"></div>'
+}
 function cardHTML(r){
  var p=r.p,sl=esc(p.slug);
  var price=r.tot!=null?'<p class="pb-tot">≈ '+k(r.tot)+' ₽ на вашу группу</p>':'<p class="pb-tot pb-no">цену посчитаем в заявке</p>';
  var near=r.un.length?'<p class="pb-near">Ближайшее: '+esc(r.un.join(', '))+'</p>':'';
- return '<article class="pb-pcard" data-pcard="'+sl+'"><div class="pb-ph" role="img" aria-label="Фото: '+esc(p.name)+'"><span>'+esc(p.name)+'</span></div><div class="pb-pbody"><h3>'+esc(p.name)+'</h3><p class="pb-meta">'+esc(metaText(p))+'</p>'+price+near+'<a class="pb-more" href="'+BASE+sl+'/" target="_blank" rel="noopener">О программе →</a><label class="pb-chk"><input type="checkbox" data-add="'+sl+'"'+(selected[p.slug]?' checked':'')+'>Добавить в заявку</label></div></article>'
+ var chk=COMPACT?'':'<label class="pb-chk"><input type="checkbox" data-add="'+sl+'"'+(selected[p.slug]?' checked':'')+'>Добавить в заявку</label>';
+ return '<article class="pb-pcard" data-pcard="'+sl+'">'+photoHTML(p)+'<div class="pb-pbody"><h3>'+esc(p.name)+'</h3><p class="pb-meta">'+esc(metaText(p))+'</p>'+price+near+'<a class="pb-more" href="'+BASE+sl+'/" target="_blank" rel="noopener">О программе →</a>'+chk+'</div></article>'
 }
 function menuHTML(q,list,curId){
  return '<ul class="pb-smenu" role="listbox" hidden>'+list.map(function(o){return '<li><button type="button" role="option" aria-selected="'+(o.id===curId)+'" data-q="'+q+'" data-v="'+o.id+'">'+esc(o.label)+'</button></li>'}).join('')+'</ul>'
@@ -1391,7 +1430,7 @@ function phraseText(){
  return 'Нужен '+lab(ADJ,st.topic)+' тимбилдинг '+lab(WH,st.place)+' на '+st.people+' человек, '+budgetText()
 }
 function renderPhrase(){
- $('#pb-pills').innerHTML=SCN.map(function(s){return '<button type="button" class="pb-opt" data-scn="'+s.id+'" aria-pressed="'+(st.scn===s.id)+'">'+esc(s.label)+'</button>'}).join('');
+ $('#pb-pills').innerHTML=COMPACT?'':SCN.map(function(s){return '<button type="button" class="pb-opt" data-scn="'+s.id+'" aria-pressed="'+(st.scn===s.id)+'">'+esc(s.label)+'</button>'}).join('');
  var bud=st.budget==null?'бюджет '+numSlot('budget'):'бюджет до '+numSlot('budget')+' ₽ всего';
  $('#pb-phrase').innerHTML='Нужен '+slot('topic',ADJ)+' тимбилдинг '+slot('place',WH)+' на '+numSlot('people')+' человек, '+bud
 }
@@ -1405,6 +1444,68 @@ function renderRes(){
  if(st.note)h+='<p class="pb-note">Площадку подберём под выбранную программу: напишите пожелания в заявке.</p>';
  if(r.exact.length)h+='<div class="pb-grid3">'+r.exact.map(cardHTML).join('')+'</div>';
  if(r.near.length)h+=(r.exact.length?'<h4 class="pb-grp">Ближайшие по условиям</h4>':'')+'<div class="pb-grid3">'+r.near.map(cardHTML).join('')+'</div>';
+ if(COMPACT){renderCompact(r,list);return}
+ $('#pb-res').innerHTML=h;
+ renderForm()
+}
+function pageUrl(){
+ if(!PAGE_REL)return '#';
+ var u;try{u=new URL(PAGE_REL,location.href).href}catch(e){u=PAGE_REL}
+ return u+'?mesto='+encodeURIComponent(st.place)+'&lyudi='+st.people+'&byudzhet='+(st.budget==null?'any':st.budget)+'&format='+encodeURIComponent(st.topic)
+}
+function slugOf(h){var m=/vse-programmy\/([^\/?#]+)/.exec(h||'');return m?m[1]:''}
+function applyCatalog(r){
+ var cards=document.querySelectorAll('.cgrid .p4c');if(!cards.length)return;
+ var on=document.querySelector('.cfil .chip.on'),cat=on?on.getAttribute('data-cat'):'all';
+ var arr=r.exact.concat(r.near),show={},cnt={};
+ arr.forEach(function(x){show[x.p.slug]=x});
+ var shown=0;
+ cards.forEach(function(c){
+  var sl=slugOf(c.getAttribute('href')),hit=!applied||!!show[sl],cc=c.getAttribute('data-cat');
+  var inCat=(cat==='all'||cc===cat);
+  c.style.display=(hit&&inCat)?'':'none';
+  if(hit&&inCat)shown++;
+  if(hit){cnt.all=(cnt.all||0)+1;cnt[cc]=(cnt[cc]||0)+1}
+  var old=c.querySelector('.pb-cp');if(old)old.parentNode.removeChild(old);
+  if(applied&&show[sl]){
+   var tags=c.querySelector('.tags');
+   if(tags){var s=document.createElement('span');s.className='pb-cp';var x=show[sl],pr=x.tot!=null?'≈ '+k(x.tot)+' ₽ на '+st.people+' чел.':'цену посчитаем в заявке';s.textContent=x.ok?pr:pr+', '+x.un[0];if(!x.ok)s.className='pb-cp pb-nr';tags.appendChild(s)}
+  }
+ });
+ document.querySelectorAll('.cfil .chip').forEach(function(ch){
+  var b=ch.querySelector('b');if(!b)return;
+  if(!b.hasAttribute('data-pb-n'))b.setAttribute('data-pb-n',b.textContent);
+  var key=ch.getAttribute('data-cat');
+  b.textContent=applied?String(cnt[key]||0):b.getAttribute('data-pb-n')
+ });
+ return shown
+}
+function hookCatalog(){
+ if(catHooked)return;catHooked=true;
+ document.querySelectorAll('.cfil .chip').forEach(function(c){c.addEventListener('click',function(){applyCatalog(search())})});
+ window.addEventListener('hashchange',function(){applyCatalog(search())})
+}
+function catalogReady(fn){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fn);else fn()}
+function actsHTML(){
+ return '<div class="pb-acts"><button type="button" class="pb-btn" data-open-form>Запросить расчёт</button>'+(MODE==='catalog'?'<button type="button" class="pb-opt" data-reset>Показать все программы</button>':'<a class="pb-opt" href="'+esc(pageUrl())+'">Все подходящие программы</a>')+'</div>'
+}
+function renderCompact(r,list){
+ var h='';
+ if(MODE==='catalog'){
+  if(!applied){h='<p class="pb-sum"><span>Выберите условия: в каталоге ниже останутся подходящие программы с ценой на вашу группу.</span></p>'}
+  else{
+   var total=PROGRAMS.length;
+   h='<p class="pb-sum"><b>'+(r.exact.length?('Подходит '+r.exact.length+' из '+total+' программ'):'Точных совпадений нет, показываем ближайшие')+'</b><span>'+(r.exact.length&&r.near.length?'ещё '+r.near.length+' ближайших по условиям, они с пометкой. ':'')+'цена на '+st.people+' человек, '+esc(budgetText())+'</span></p>'+actsHTML()
+  }
+  $('#pb-res').innerHTML=h;
+  if(!applied)$('#pb-formbox').innerHTML='';
+  catalogReady(function(){hookCatalog();applyCatalog(r)});
+  renderForm();
+  return
+ }
+ var top=list.slice(0,3);
+ h='<p class="pb-sum"><b>'+(r.exact.length?((st.budget==null?'Подходят по людям: ':'Вписались в бюджет и по людям: ')+r.exact.length):'Точных совпадений нет, показываем ближайшие')+'</b><span>цена на '+st.people+' человек, '+esc(budgetText())+'</span></p>';
+ h+='<div class="pb-grid3">'+top.map(cardHTML).join('')+'</div>'+actsHTML();
  $('#pb-res').innerHTML=h;
  renderForm()
 }
@@ -1417,9 +1518,10 @@ function autoHTML(){
 function renderForm(){
  var box=$('#pb-formbox');
  if(sent)return;
+ if(COMPACT&&!formOpen){box.innerHTML='';return}
  var f=box.querySelector('form');
  if(f){var a=box.querySelector('#pb-auto');if(a)a.outerHTML=autoHTML();return}
- box.innerHTML='<div class="pb-form"><h3>Оставить заявку</h3>'+autoHTML()+'<form novalidate><div class="pb-fgrid"><label>Имя<input type="text" name="name" autocomplete="name"></label><label>Телефон<input type="tel" name="contact" autocomplete="tel" inputmode="tel" placeholder="+7 (999) 123-45-67"></label><label>Куда написать<select name="messenger"><option>Telegram</option><option>Max</option></select></label><label>Дата мероприятия, если известна<input type="date" name="date"></label><label class="pb-full">Комментарий<textarea name="comment"></textarea></label></div><p class="pb-err" id="pb-ferr" hidden></p><button class="pb-btn" type="submit">Отправить заявку</button><p class="pb-priv">Нажимая кнопку, вы соглашаетесь с <a href="https://catalystrussia.ru/politika-confidencialnosti/" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p></form></div>'
+ box.innerHTML='<div class="pb-form"><h3>Оставить заявку</h3>'+(DRY?'<p class="pb-dry">превью: заявки не отправляются</p>':'')+autoHTML()+'<form novalidate><div class="pb-fgrid"><label>Имя<input type="text" name="name" autocomplete="name"></label><label>Телефон<input type="tel" name="contact" autocomplete="tel" inputmode="tel" placeholder="+7 (999) 123-45-67"></label><label>Куда написать<select name="messenger"><option>Telegram</option><option>Max</option></select></label><label>Дата мероприятия, если известна<input type="date" name="date"></label><label class="pb-full">Комментарий<textarea name="comment"></textarea></label></div><p class="pb-err" id="pb-ferr" hidden></p><button class="pb-btn" type="submit">Отправить запрос</button><p class="pb-priv">Нажимая кнопку, вы соглашаетесь с <a href="https://catalystrussia.ru/politika-confidencialnosti/" target="_blank" rel="noopener">политикой конфиденциальности</a>.</p></form></div>'
 }
 /* маска телефона: копия formatPhone из /interaction-update-20261105/forms-chat.js, строки 22-33 */
 function formatPhone(value){
@@ -1469,6 +1571,7 @@ function submit(form){
  function done(dup){
   sending=false;sent=true;
   if(!dup){goal('form_proposal');goal('lead_sent')}
+  if(DRY){$('#pb-formbox').innerHTML='<div class="pb-done" role="status"><h3>Превью: заявка собрана, но не отправлена</h3><p>'+esc(phraseText())+'</p><p>Телефон в заявке: '+esc(phone)+'. На живом сайте здесь будет «Спасибо, ваш запрос отправлен».</p></div>';return}
   $('#pb-formbox').innerHTML='<div class="pb-done" role="status"><h3>Спасибо, ваш запрос отправлен</h3><p>'+esc(phraseText())+'</p><p>Перезвоним вам по номеру '+esc(phone)+'.</p><p>Работаем ежедневно с 8:00 до 22:00.</p></div>'
  }
  window.__pbLast=payload;
@@ -1483,17 +1586,24 @@ function parseNum(s){var v=parseInt(String(s).replace(/\D/g,''),10);return isNaN
 function setNum(key,raw,max){
  var v=parseNum(raw),e=$('#pb-err');
  if(v==null||v<1||v>max){e.textContent=key==='people'?'Укажите число человек от 1 до '+max:'Укажите бюджет числом, например 250 000';e.hidden=false;return false}
- e.hidden=true;st[key]=v;st.scn='';st.note=false;return true
+ e.hidden=true;st[key]=v;st.scn='';st.note=false;applied=true;return true
 }
 function closeAll(){ROOT.querySelectorAll('.pb-smenu').forEach(function(m){m.hidden=true});ROOT.querySelectorAll('[data-slot]').forEach(function(b){b.setAttribute('aria-expanded','false')})}
 function rerender(){renderPhrase();renderRes()}
+/* lead.js сайта ловит на document (capture) любые кнопки с текстом «Отправить заявку» и открывает свой поп-ап вместо отправки формы.
+   Перехватываем раньше него на window (capture) и не пускаем клик дальше: отправка формы (действие по умолчанию) не отменяется. */
+window.addEventListener('click',function(e){if(e.target&&e.target.closest&&e.target.closest('#pb-formbox button[type=submit]'))e.stopPropagation()},true);
 ROOT.addEventListener('click',function(e){
  var t=e.target.closest('[data-scn]');
- if(t){var s=SCN.filter(function(x){return x.id===t.getAttribute('data-scn')})[0];st.topic=s.s.topic||'any';st.place=s.s.place||'any';st.scn=s.id;st.note=!!s.note;touched=false;rerender();return}
+ if(t){var s=SCN.filter(function(x){return x.id===t.getAttribute('data-scn')})[0];st.topic=s.s.topic||'any';st.place=s.s.place||'any';st.scn=s.id;st.note=!!s.note;touched=false;applied=true;rerender();return}
+ var of=e.target.closest('[data-open-form]');
+ if(of){formOpen=true;renderForm();var fb=$('#pb-formbox');try{fb.scrollIntoView({block:'nearest',behavior:'smooth'})}catch(x){}var nm=fb.querySelector('input[name=name]');if(nm)nm.focus({preventScroll:true});return}
+ var rs=e.target.closest('[data-reset]');
+ if(rs){applied=false;formOpen=false;st.topic='any';st.place='any';st.people=100;st.budget=300000;st.pc=false;st.bc=false;st.scn='';touched=false;rerender();return}
  var o=e.target.closest('.pb-smenu [data-q]');
  if(o){
   var q=o.getAttribute('data-q'),v=o.getAttribute('data-v');
-  $('#pb-err').hidden=true;
+  $('#pb-err').hidden=true;applied=true;
   if(q==='people'||q==='budget'){
    var ck=q==='people'?'pc':'bc';
    if(v==='custom'){if(st[q]==null)st[q]=300000;st[ck]=true;st.scn='';st.note=false;rerender();var inp=$(q==='people'?'#pb-in-n':'#pb-in-m');if(inp){inp.focus();inp.select()}return}
@@ -1526,6 +1636,23 @@ ROOT.addEventListener('keydown',function(e){
  if(e.key==='Enter'&&(e.target.id==='pb-in-n'||e.target.id==='pb-in-m')){e.preventDefault();e.target.dispatchEvent(new Event('change',{bubbles:true}))}
 });
 ROOT.addEventListener('submit',function(e){e.preventDefault();submit(e.target)});
+function readUrl(){
+ var q={};
+ location.search.replace(/^\?/,'').split('&').forEach(function(p){
+  if(!p)return;var kv=p.split('=');
+  try{q[decodeURIComponent(kv[0])]=decodeURIComponent((kv[1]||'').replace(/\+/g,' '))}catch(e){}
+ });
+ var got=false;
+ if(q.format&&ADJ.some(function(o){return o.id===q.format})){st.topic=q.format;got=true}
+ if(q.mesto&&WH.some(function(o){return o.id===q.mesto})){st.place=q.mesto;got=true}
+ if(q.lyudi){var n=parseInt(q.lyudi,10);if(n>=1&&n<=100000){st.people=n;st.pc=!PEOPLE_L.some(function(o){return o.id===String(n)});got=true}}
+ if(q.byudzhet){
+  if(q.byudzhet==='any'||q.byudzhet==='0'){st.budget=null;st.bc=false;got=true}
+  else{var m=parseInt(q.byudzhet,10);if(m>=1&&m<=1000000000){st.budget=m;st.bc=!BUDGET_L.some(function(o){return o.id===String(m)});got=true}}
+ }
+ return got
+}
+if((MODE==='page'||MODE==='catalog')&&readUrl()){applied=true;st.scn='';touched=false}
 window.__pb={st:st,search:search,phraseText:phraseText,render:rerender,selected:function(){return selected},endpoint:ENDPOINT};
 rerender();
 })();
@@ -1953,5 +2080,5 @@ mo.observe(document.body,{childList:true,subtree:true})})();</script><script>(fu
   add();
 })();
 </script>
-</body>
+<div id="pbp-badge" role="note">превью: заявки не отправляются</div></body>
 </html>
