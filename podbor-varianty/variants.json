@@ -1,7 +1,7 @@
 {
   "topic": "Подбор программы",
   "prefix": "П",
-  "next": 9,
+  "next": 10,
   "created": "2026-11-13",
   "brand": "",
   "approved_file": "",
@@ -109,6 +109,19 @@
       "label": "Минимал-поиск",
       "concept": "минимал-поиск с подсказками",
       "approach": "одна строка ввода: текст разбирается на повод, место и бюджет (метки «Поняли так»), подсказки при вводе, выдача живая; входы-сценарии как частые запросы"
+    },
+    {
+      "n": 9,
+      "id": "v9",
+      "status": "active",
+      "added": "2026-11-15",
+      "kind": "iframe",
+      "file": "parts/v9.html",
+      "height": 1400,
+      "source": "/home/claude-work/previews/podbor-varianty/parts-src/10-phrase-people-budget.html",
+      "label": "Фраза: люди и бюджет",
+      "concept": "конструктор фразы v2",
+      "approach": "люди + общий бюджет + заявка"
     }
   ]
 }

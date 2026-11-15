@@ -68,7 +68,8 @@ main{padding:32px;display:flex;flex-direction:column;gap:48px}
 <a href="#v5" data-to="v5">П5</a>
 <a href="#v6" data-to="v6">П6</a>
 <a href="#v7" data-to="v7">П7</a>
-<a href="#v8" data-to="v8">П8</a><button class="btn" id="restore" hidden>Вернуть скрытые</button></nav></header>
+<a href="#v8" data-to="v8">П8</a>
+<a href="#v9" data-to="v9">П9</a><button class="btn" id="restore" hidden>Вернуть скрытые</button></nav></header>
 <main>
 <section class="v" id="v1" data-variant="П1">
   <div class="vh">
@@ -166,8 +167,20 @@ main{padding:32px;display:flex;flex-direction:column;gap:48px}
   <div class="vb"><iframe src="parts/v8.html" style="height:1100px" loading="lazy" title="v8"></iframe></div>
   
 </section>
+<section class="v" id="v9" data-variant="П9">
+  <div class="vh">
+    <div class="num">П9</div>
+    <div class="cap"><b>Фраза: люди и бюджет</b><span>концепция: конструктор фразы v2 · подход: люди + общий бюджет + заявка</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="П-9">Утвердить П-9</button>
+      <button class="btn x" data-x="v9" data-name="П9" aria-label="Убрать П9 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v9.html" style="height:1400px" loading="lazy" title="v9"></iframe></div>
+  
+</section>
 </main>
-<aside id="vt"><div class="drag-handle"><span class="grip"></span>Варианты: <span id="cnt">8</span>
+<aside id="vt"><div class="drag-handle"><span class="grip"></span>Варианты: <span id="cnt">9</span>
 <button class="btn" id="vt-min" aria-label="Свернуть панель">−</button></div>
 <div class="list"><a href="#v1" data-to="v1">П1 · Плитки и выдвижная панель</a>
 <a href="#v2" data-to="v2">П2 · Пошаговый квиз</a>
@@ -176,7 +189,8 @@ main{padding:32px;display:flex;flex-direction:column;gap:48px}
 <a href="#v5" data-to="v5">П5 · Bento-плитки</a>
 <a href="#v6" data-to="v6">П6 · Чат-подборщик</a>
 <a href="#v7" data-to="v7">П7 · Таблица сравнения</a>
-<a href="#v8" data-to="v8">П8 · Минимал-поиск</a></div></aside>
+<a href="#v8" data-to="v8">П8 · Минимал-поиск</a>
+<a href="#v9" data-to="v9">П9 · Фраза: люди и бюджет</a></div></aside>
 <div id="toast" role="status"></div>
 <script src="drag-panel.js"></script>
 <script>
