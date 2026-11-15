@@ -1,0 +1,21 @@
+<!-- concept: карточка с чёрной шапкой · поля-плитки · кнопка на всю ширину | approach: Чем хорош: выглядит как настоящая форма заказа: шапка, серые плитки полей с чёрной нижней линией и стрелкой, большая кнопка на всю ширину карточки. | label: Бланк заказа с шапкой -->
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Вариант 5</title>
+<style>
+body{margin:0;background:#fff;color:#0a0a0a;font:400 16px/1.4 Roboto,Arial,sans-serif;padding:8px 4px 24px}
+.lab{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 8px;font:700 17px/1.2 Arial,sans-serif;color:#5f6368}
+.lab a{font-weight:700;color:#0aba59}
+.pc{position:relative;width:100%;overflow:hidden;border:1px solid #e1e1e1;border-radius:12px;background:#fff}
+.pc iframe{position:absolute;left:0;top:0;width:1440px;height:507px;border:0;transform-origin:0 0;background:#fff}
+.ph{width:392px;max-width:100%;overflow:hidden;border:1px solid #e1e1e1;border-radius:16px;background:#fff}
+.ph iframe{display:block;width:390px;height:546px;border:0;background:#fff}
+</style></head><body>
+<div class="lab">Компьютер, 1440 px <span style="font-weight:400">(на узком экране уменьшено, всё нажимается)</span><a href="../strips/v5.html" target="_blank">открыть крупно</a></div>
+<div class="pc" id="pc"><iframe id="fpc" src="../strips/v5.html" title="Вариант 5 на компьютере" scrolling="no"></iframe></div>
+<div class="lab">Телефон, 390 px</div>
+<div class="ph"><iframe src="../strips/v5.html" title="Вариант 5 на телефоне" scrolling="no"></iframe></div>
+<script>
+(function(){var b=document.getElementById('pc'),f=document.getElementById('fpc'),H=507;
+function fit(){var s=Math.min(1,b.clientWidth/1440);f.style.transform='scale('+s+')';b.style.height=Math.round(H*s)+'px'}
+fit();window.addEventListener('resize',fit)})();
+</script></body></html>

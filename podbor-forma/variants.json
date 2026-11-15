@@ -1,0 +1,88 @@
+{
+  "topic": "Полоса подбора на главной",
+  "prefix": "П",
+  "next": 7,
+  "created": "2026-11-15",
+  "brand": "brand.json",
+  "approved_file": "",
+  "variants": [
+    {
+      "n": 1,
+      "id": "v1",
+      "status": "active",
+      "added": "2026-11-15",
+      "kind": "iframe",
+      "file": "parts/v1.html",
+      "height": 1335,
+      "source": "/home/claude-work/tmp/claude-1000/-home-claude-work-projects/1624b61d-4f78-49cb-ad6e-7bb11a4935ad/scratchpad/forma/src/1-podcherk.html",
+      "label": "Подчёркнутые слова",
+      "concept": "карточка-форма · поля как слова с подчёркиванием и стрелкой",
+      "approach": "Чем хорош: самый лёгкий и «фразовый»: зелёное слово с подчёркиванием и стрелкой читается как выбор, при наведении подсвечивается; кнопка под фразой слева."
+    },
+    {
+      "n": 2,
+      "id": "v2",
+      "status": "active",
+      "added": "2026-11-15",
+      "kind": "iframe",
+      "file": "parts/v2.html",
+      "height": 1291,
+      "source": "/home/claude-work/tmp/claude-1000/-home-claude-work-projects/1624b61d-4f78-49cb-ad6e-7bb11a4935ad/scratchpad/forma/src/2-ramka-select.html",
+      "label": "Рамка-селект со стрелкой в ячейке (рекомендую)",
+      "concept": "серая карточка · поля как привычные выпадающие списки",
+      "approach": "Чем хорош: самый очевидный «это список»: рамка и отдельная ячейка со стрелкой, при наведении ячейка зеленеет; кнопка справа в нижней строке, слева подсказка."
+    },
+    {
+      "n": 3,
+      "id": "v3",
+      "status": "active",
+      "added": "2026-11-15",
+      "kind": "iframe",
+      "file": "parts/v3.html",
+      "height": 1354,
+      "source": "/home/claude-work/tmp/claude-1000/-home-claude-work-projects/1624b61d-4f78-49cb-ad6e-7bb11a4935ad/scratchpad/forma/src/3-temnaya-pilyuli.html",
+      "label": "Тёмная карточка и пилюли",
+      "concept": "чёрный блок · зелёные пилюли со стрелкой",
+      "approach": "Чем хорош: самый заметный на светлой главной: чёрная карточка, поля-пилюли с зелёной рамкой и стрелкой, при наведении заливаются белым; зелёная кнопка видна сразу."
+    },
+    {
+      "n": 4,
+      "id": "v4",
+      "status": "active",
+      "added": "2026-11-15",
+      "kind": "iframe",
+      "file": "parts/v4.html",
+      "height": 1302,
+      "source": "/home/claude-work/tmp/claude-1000/-home-claude-work-projects/1624b61d-4f78-49cb-ad6e-7bb11a4935ad/scratchpad/forma/src/4-odna-liniya.html",
+      "label": "Фраза и кнопка в одной линии",
+      "concept": "зелёная плашка · белые пилюли с кружком-стрелкой",
+      "approach": "Чем хорош: самая компактная полоса: на компьютере фраза и чёрная кнопка в одной строке, кружок со стрелкой в каждом поле; на телефоне кнопка под фразой."
+    },
+    {
+      "n": 5,
+      "id": "v5",
+      "status": "active",
+      "added": "2026-11-15",
+      "kind": "iframe",
+      "file": "parts/v5.html",
+      "height": 1243,
+      "source": "/home/claude-work/tmp/claude-1000/-home-claude-work-projects/1624b61d-4f78-49cb-ad6e-7bb11a4935ad/scratchpad/forma/src/5-blank-zakaza.html",
+      "label": "Бланк заказа с шапкой",
+      "concept": "карточка с чёрной шапкой · поля-плитки · кнопка на всю ширину",
+      "approach": "Чем хорош: выглядит как настоящая форма заказа: шапка, серые плитки полей с чёрной нижней линией и стрелкой, большая кнопка на всю ширину карточки."
+    },
+    {
+      "n": 6,
+      "id": "v6",
+      "status": "active",
+      "added": "2026-11-15",
+      "kind": "iframe",
+      "file": "parts/v6.html",
+      "height": 1333,
+      "source": "/home/claude-work/tmp/claude-1000/-home-claude-work-projects/1624b61d-4f78-49cb-ad6e-7bb11a4935ad/scratchpad/forma/src/6-po-tsentru.html",
+      "label": "По центру, поля-кнопки",
+      "concept": "бежевая карточка по центру · поля с толстым низом, как нажимаемые кнопки",
+      "approach": "Чем хорош: спокойная композиция по центру как у остальных блоков главной; поля с толстой зелёной нижней гранью выглядят нажимаемыми и заливаются зелёным при наведении."
+    }
+  ]
+}
