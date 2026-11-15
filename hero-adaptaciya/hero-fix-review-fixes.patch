@@ -1,0 +1,11 @@
+--- review-fixes.js	2026-11-15 12:19:35.709546809 +0000
++++ review-fixes.patched.js	2026-11-15 12:23:11.973771303 +0000
+@@ -36,7 +36,7 @@
+     copy.append(actions);stage.style.height='';
+     const hero=document.querySelector('.hero');
+     hero.style.setProperty('--hero-header-height',(document.querySelector('#header').offsetHeight-1)+'px');
+-    const scale=Math.min(1.2,body.clientWidth/1232,(hero.clientHeight-60)/502.744);
++    const heroK=Math.min(1.6,Math.max(1,.45+.55*innerWidth/1440));const scale=Math.min(1.2*heroK,body.clientWidth/1232,(hero.clientHeight-60)/502.744);
+     const areaRight=body.getBoundingClientRect().right-hero.getBoundingClientRect().left;
+     const areaWidth=627.151*scale;
+     collage.style.setProperty('--scene-scale',scale);

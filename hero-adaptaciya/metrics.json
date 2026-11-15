@@ -1,0 +1,357 @@
+{
+ "longest": "болид Формулы-1",
+ "out": [
+  {
+   "w": 1280,
+   "h": 800,
+   "dev": "Ноутбук 13\"",
+   "mobile": false,
+   "was": {
+    "fs": 52,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 539,
+    "teamPct": 42,
+    "sw": 1280,
+    "iw": 1280,
+    "statsB": 708,
+    "heroB": 708,
+    "vh": 800,
+    "file": "was-1280x800.png"
+   },
+   "stalo": {
+    "fs": 52,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 539,
+    "teamPct": 42,
+    "sw": 1280,
+    "iw": 1280,
+    "statsB": 708,
+    "heroB": 708,
+    "vh": 800,
+    "file": "stalo-1280x800.png"
+   }
+  },
+  {
+   "w": 1440,
+   "h": 900,
+   "dev": "MacBook 14\"",
+   "mobile": false,
+   "was": {
+    "fs": 52,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 610,
+    "teamPct": 42,
+    "sw": 1440,
+    "iw": 1440,
+    "statsB": 808,
+    "heroB": 808,
+    "vh": 900,
+    "file": "was-1440x900.png"
+   },
+   "stalo": {
+    "fs": 52,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 610,
+    "teamPct": 42,
+    "sw": 1440,
+    "iw": 1440,
+    "statsB": 808,
+    "heroB": 808,
+    "vh": 900,
+    "file": "stalo-1440x900.png"
+   }
+  },
+  {
+   "w": 1536,
+   "h": 864,
+   "dev": "Ноутбук Windows 1536×864",
+   "mobile": false,
+   "was": {
+    "fs": 52,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 620,
+    "teamPct": 40,
+    "sw": 1536,
+    "iw": 1536,
+    "statsB": 772,
+    "heroB": 772,
+    "vh": 864,
+    "file": "was-1536x864.png"
+   },
+   "stalo": {
+    "fs": 53.9,
+    "lines": 3,
+    "textL": 58,
+    "teamW": 652,
+    "teamPct": 42,
+    "sw": 1536,
+    "iw": 1536,
+    "statsB": 808,
+    "heroB": 808,
+    "vh": 864,
+    "file": "stalo-1536x864.png"
+   }
+  },
+  {
+   "w": 1800,
+   "h": 1100,
+   "dev": "Монитор 1800",
+   "mobile": false,
+   "was": {
+    "fs": 52,
+    "lines": 3,
+    "textL": 117,
+    "teamW": 654,
+    "teamPct": 36,
+    "sw": 1800,
+    "iw": 1800,
+    "statsB": 862,
+    "heroB": 862,
+    "vh": 1100,
+    "file": "was-1800x1100.png"
+   },
+   "stalo": {
+    "fs": 59.1,
+    "lines": 3,
+    "textL": 125,
+    "teamW": 744,
+    "teamPct": 41,
+    "sw": 1800,
+    "iw": 1800,
+    "statsB": 961,
+    "heroB": 961,
+    "vh": 1100,
+    "file": "stalo-1800x1100.png"
+   }
+  },
+  {
+   "w": 1920,
+   "h": 1080,
+   "dev": "Full HD",
+   "mobile": false,
+   "was": {
+    "fs": 52,
+    "lines": 3,
+    "textL": 177,
+    "teamW": 654,
+    "teamPct": 34,
+    "sw": 1920,
+    "iw": 1920,
+    "statsB": 862,
+    "heroB": 862,
+    "vh": 1080,
+    "file": "was-1920x1080.png"
+   },
+   "stalo": {
+    "fs": 61.5,
+    "lines": 3,
+    "textL": 161,
+    "teamW": 772,
+    "teamPct": 40,
+    "sw": 1920,
+    "iw": 1920,
+    "statsB": 988,
+    "heroB": 988,
+    "vh": 1080,
+    "file": "stalo-1920x1080.png"
+   }
+  },
+  {
+   "w": 2560,
+   "h": 1440,
+   "dev": "QHD 2560",
+   "mobile": false,
+   "was": {
+    "fs": 52,
+    "lines": 3,
+    "textL": 497,
+    "teamW": 654,
+    "teamPct": 26,
+    "sw": 2560,
+    "iw": 2560,
+    "statsB": 862,
+    "heroB": 862,
+    "vh": 1440,
+    "file": "was-2560x1440.png"
+   },
+   "stalo": {
+    "fs": 74.2,
+    "lines": 3,
+    "textL": 353,
+    "teamW": 885,
+    "teamPct": 35,
+    "sw": 2560,
+    "iw": 2560,
+    "statsB": 1170,
+    "heroB": 1170,
+    "vh": 1440,
+    "file": "stalo-2560x1440.png"
+   }
+  },
+  {
+   "w": 360,
+   "h": 780,
+   "dev": "Android 360",
+   "mobile": true,
+   "was": {
+    "fs": 30.3,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 273,
+    "teamPct": 76,
+    "sw": 360,
+    "iw": 360,
+    "statsB": 803,
+    "heroB": 847,
+    "vh": 780,
+    "file": "was-360x780.png"
+   },
+   "stalo": {
+    "fs": 27.8,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 273,
+    "teamPct": 76,
+    "sw": 360,
+    "iw": 360,
+    "statsB": 796,
+    "heroB": 840,
+    "vh": 780,
+    "file": "stalo-360x780.png"
+   }
+  },
+  {
+   "w": 375,
+   "h": 812,
+   "dev": "iPhone SE/mini 375",
+   "mobile": true,
+   "was": {
+    "fs": 31.7,
+    "lines": 4,
+    "textL": 24,
+    "teamW": 285,
+    "teamPct": 76,
+    "sw": 375,
+    "iw": 375,
+    "statsB": 850,
+    "heroB": 894,
+    "vh": 812,
+    "file": "was-375x812.png"
+   },
+   "stalo": {
+    "fs": 29.1,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 285,
+    "teamPct": 76,
+    "sw": 375,
+    "iw": 375,
+    "statsB": 812,
+    "heroB": 856,
+    "vh": 812,
+    "file": "stalo-375x812.png"
+   }
+  },
+  {
+   "w": 390,
+   "h": 844,
+   "dev": "iPhone 390",
+   "mobile": true,
+   "was": {
+    "fs": 33.2,
+    "lines": 4,
+    "textL": 24,
+    "teamW": 296,
+    "teamPct": 76,
+    "sw": 390,
+    "iw": 390,
+    "statsB": 867,
+    "heroB": 911,
+    "vh": 844,
+    "file": "was-390x844.png"
+   },
+   "stalo": {
+    "fs": 30.4,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 296,
+    "teamPct": 76,
+    "sw": 390,
+    "iw": 390,
+    "statsB": 827,
+    "heroB": 871,
+    "vh": 844,
+    "file": "stalo-390x844.png"
+   }
+  },
+  {
+   "w": 414,
+   "h": 896,
+   "dev": "iPhone Plus 414",
+   "mobile": true,
+   "was": {
+    "fs": 35.5,
+    "lines": 4,
+    "textL": 24,
+    "teamW": 314,
+    "teamPct": 76,
+    "sw": 414,
+    "iw": 414,
+    "statsB": 894,
+    "heroB": 938,
+    "vh": 896,
+    "file": "was-414x896.png"
+   },
+   "stalo": {
+    "fs": 32.6,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 314,
+    "teamPct": 76,
+    "sw": 414,
+    "iw": 414,
+    "statsB": 852,
+    "heroB": 896,
+    "vh": 896,
+    "file": "stalo-414x896.png"
+   }
+  },
+  {
+   "w": 430,
+   "h": 932,
+   "dev": "iPhone Pro Max 430",
+   "mobile": true,
+   "was": {
+    "fs": 37.1,
+    "lines": 4,
+    "textL": 24,
+    "teamW": 326,
+    "teamPct": 76,
+    "sw": 430,
+    "iw": 430,
+    "statsB": 914,
+    "heroB": 958,
+    "vh": 932,
+    "file": "was-430x932.png"
+   },
+   "stalo": {
+    "fs": 34,
+    "lines": 3,
+    "textL": 24,
+    "teamW": 326,
+    "teamPct": 76,
+    "sw": 430,
+    "iw": 430,
+    "statsB": 870,
+    "heroB": 914,
+    "vh": 932,
+    "file": "stalo-430x932.png"
+   }
+  }
+ ]
+}
