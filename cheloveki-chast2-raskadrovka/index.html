@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Раскадровка: ролик «Человеки», часть 2</title>
+<link rel="icon" href="data:,">
+<style>
+@font-face{font-family:Unbounded;font-weight:900;src:url(fonts/unbounded-cyrillic-900-normal-_ZC4uVSi.woff2) format('woff2');unicode-range:U+0400-04FF,U+0301,U+20BD}
+@font-face{font-family:Unbounded;font-weight:900;src:url(fonts/unbounded-latin-900-normal-DrIEwloP.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:Unbounded;font-weight:700;src:url(fonts/unbounded-cyrillic-700-normal-BnWDpkfm.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:"Golos Text";font-weight:600;src:url(fonts/golos-text-cyrillic-600-normal-lpQ9rVRR.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:"Golos Text";font-weight:600;src:url(fonts/golos-text-latin-600-normal-Bhk8uV1U.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Golos Text";font-weight:700;src:url(fonts/golos-text-cyrillic-700-normal-BKmY45Ip.woff2) format('woff2');unicode-range:U+0400-04FF}
+:root{--bg:#fff;--surface:#fff0f7;--text:#111;--muted:#5a4a52;--line:#ffc2e0;--accent:#d1105a;--r:16px;--btn-h:48px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--text);font:600 18px/1.5 "Golos Text",system-ui,sans-serif}
+.top{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:10px 32px;flex-wrap:wrap}
+.top img{height:36px;width:auto;display:block}
+.top h1{font:700 20px/1.2 Unbounded,sans-serif;margin:0}
+.top nav{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.top nav a,.btn{display:inline-flex;align-items:center;justify-content:center;height:var(--btn-h);padding:0 18px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);text-decoration:none;font:600 17px/1 "Golos Text",sans-serif;cursor:pointer;white-space:nowrap}
+.top nav a.done{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.main{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.x{width:var(--btn-h);padding:0;font-size:24px}
+[hidden]{display:none!important}
+main{padding:32px;max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:64px}
+.intro{background:var(--surface);border-radius:var(--r);padding:24px 28px}
+.intro p{margin:0 0 8px}.intro p:last-child{margin:0}
+.scene>header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.scene h2{font:900 32px/1.2 Unbounded,sans-serif;margin:0}
+.scene h2 span{color:var(--accent)}
+.scene .dur{color:var(--muted)}
+.scene .voice{color:var(--muted);font-size:16px;margin:0 0 24px;max-width:1100px}
+.v{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:32px}
+.v.ok{border:3px solid var(--accent)}
+.vh{display:flex;align-items:center;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap;background:var(--bg)}
+.vh .num{font:900 30px/1 Unbounded,sans-serif;color:var(--accent);min-width:70px}
+.vh .cap{flex:1;min-width:240px;display:flex;flex-direction:column;gap:4px}
+.vh .cap b{font-size:22px;line-height:1.25}
+.vh .cap span{color:var(--muted);font-size:17px}
+.vh .acts{display:flex;gap:8px}
+.vb{padding:24px;background:var(--surface);display:flex;flex-direction:column;gap:24px}
+.fr{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;align-items:start}
+.fr svg{display:block;width:100%;height:auto;border-radius:12px;background:#0B0610}
+.fr .id{display:inline-block;font:900 26px/1 Unbounded,sans-serif;background:#111;color:#fff;padding:10px 14px;border-radius:10px;margin-bottom:14px}
+.fr .say{font:700 24px/1.35 "Golos Text",sans-serif;margin:0 0 6px}
+.fr .lbl{font-size:15px;color:var(--accent);margin:0 0 4px}
+.fr .mv{font-size:17px;color:var(--muted);margin:14px 0 0;line-height:1.45}
+.fr .mv b{color:var(--text)}
+svg .th{font-family:Unbounded,sans-serif;font-weight:900}
+svg .tb{font-family:"Golos Text",sans-serif;font-weight:700}
+.back{margin-top:-16px}
+#vt{width:250px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);z-index:60;font-size:16px}
+#vt .drag-handle{display:flex;align-items:center;gap:8px;padding:12px 14px;cursor:grab;border-bottom:1px solid var(--line);font-weight:700;user-select:none}
+#vt .list{display:flex;flex-direction:column;gap:8px;padding:12px}
+#vt .list a{color:var(--text);text-decoration:none;display:flex;justify-content:space-between;padding:6px 4px}
+#vt .list a b{color:var(--accent)}
+#vt.min .list{display:none}
+#toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:var(--accent);color:#fff;padding:14px 20px;border-radius:12px;z-index:99;display:none}
+@media (min-width:1500px){main{margin-right:290px}}
+@media (max-width:1000px){.fr{grid-template-columns:1fr}.top{padding:10px 16px}main{padding:16px}.vb{padding:12px}#vt{display:none}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<radialGradient id="bg" cx="50%" cy="42%" r="75%"><stop offset="0" stop-color="#2a0a22"/><stop offset="1" stop-color="#0B0610"/></radialGradient>
+<radialGradient id="bgd" cx="50%" cy="42%" r="75%"><stop offset="0" stop-color="#211c27"/><stop offset="1" stop-color="#0a090c"/></radialGradient>
+<radialGradient id="gp"><stop offset="0" stop-color="#fff"/><stop offset=".25" stop-color="#FF2E93" stop-opacity=".9"/><stop offset="1" stop-color="#FF2E93" stop-opacity="0"/></radialGradient>
+<radialGradient id="gw"><stop offset="0" stop-color="#fff"/><stop offset=".25" stop-color="#FFC2E0" stop-opacity=".8"/><stop offset="1" stop-color="#FFC2E0" stop-opacity="0"/></radialGradient>
+<radialGradient id="gg"><stop offset="0" stop-color="#cfc8d6"/><stop offset=".25" stop-color="#786e82" stop-opacity=".6"/><stop offset="1" stop-color="#786e82" stop-opacity="0"/></radialGradient>
+<linearGradient id="gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".13"/><stop offset="1" stop-color="#FF2E93" stop-opacity=".07"/></linearGradient>
+<linearGradient id="glh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset="1" stop-color="#FF2E93" stop-opacity=".22"/></linearGradient>
+<linearGradient id="gs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC2E0" stop-opacity=".9"/><stop offset=".5" stop-color="#FF2E93" stop-opacity=".25"/><stop offset="1" stop-color="#FF2E93" stop-opacity=".8"/></linearGradient>
+<linearGradient id="bt"><stop offset="0" stop-color="#FF2E93"/><stop offset="1" stop-color="#D1105A"/></linearGradient>
+<linearGradient id="br"><stop offset="0" stop-color="#D1105A"/><stop offset="1" stop-color="#FF2E93"/></linearGradient>
+<linearGradient id="sp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".42"/><stop offset="1" stop-color="#FFC2E0" stop-opacity=".06"/></linearGradient>
+<filter id="tg" x="-20%" y="-50%" width="140%" height="200%"><feDropShadow dx="0" dy="0" stdDeviation="14" flood-color="#FF2E93" flood-opacity=".9"/></filter>
+</defs></svg>
+<div class="top"><img src="logo-mark.webp" alt="Человеки"><h1>Раскадровка, часть 2</h1><nav id="nav"></nav></div>
+<main id="main">
+<div class="intro">
+<p>Это ключевые кадры сцен 2-9 до анимации, стиль «Ночной пульт». Сцену 1 с живой Настей здесь не рисуем.</p>
+<p>У каждого кадра свой номер, например «5Б-2». Справа от кадра написано, что голос говорит в этот момент и что на экране двигается.</p>
+<p>В сценах 4-8 по три варианта. Нажми «Беру» у нужного, потом «Скопировать выбор» и вставь в чат. Правки пиши по номерам кадров: «в 5Б-2 убери…».</p>
+</div>
+</main>
+<div id="vt"><div class="drag-handle"><span>⠿</span> Мой выбор</div><div class="list" id="pick"></div></div>
+<div id="toast"></div>
+<script src="lib.js"></script><script src="scenes1.js"></script><script src="scenes2.js"></script><script src="scenes3.js"></script>
+<script src="drag-panel.js"></script>
+<script>
+(function(){
+const KEY='raskadrovka-chast2-vybor',main=document.getElementById('main'),nav=document.getElementById('nav');
+let pick={};try{pick=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+let hid={};try{hid=JSON.parse(localStorage.getItem(KEY+'-hid')||'{}')}catch(e){}
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+let html='';
+SCENES.forEach(sc=>{const multi=sc.variants.length>1;
+ html+=`<section class="scene" id="s${sc.n}"><header><h2><span>Сцена ${sc.n}.</span> ${esc(sc.name)}</h2><span class="dur">${sc.dur} с</span></header><p class="voice">Голос Насти: ${esc(sc.variants[0].frames.map(f=>f.v).join(' '))}</p>`;
+ sc.variants.forEach(v=>{const id=sc.n+v.k;
+  html+=`<div class="v" id="v${id}" data-s="${sc.n}" data-k="${v.k}">`+(multi?`<div class="vh"><span class="num">${id}</span><span class="cap"><b>${esc(v.name)}</b><span>${esc(v.ap)}</span></span><span class="acts"><button class="btn main take" data-s="${sc.n}" data-k="${v.k}">Беру ${id}</button><button class="btn x hide" title="Скрыть вариант" data-id="${id}">×</button></span></div>`:'')+'<div class="vb">';
+  v.frames.forEach((f,i)=>{html+=`<div class="fr" id="f${id}-${i+1}"><div class="pic">${f.d()}</div><div class="txt"><span class="id">${id}-${i+1}</span><p class="lbl">Голос в этот момент</p><p class="say">${esc(f.v)}</p><p class="mv"><b>Движение:</b> ${esc(f.m)}</p></div></div>`});
+  html+='</div></div>'});
+ if(multi)html+=`<button class="btn back" data-s="${sc.n}" hidden>Вернуть скрытые варианты сцены ${sc.n}</button>`;
+ html+='</section>'});
+main.insertAdjacentHTML('beforeend',html);
+nav.innerHTML=SCENES.map(s=>`<a href="#s${s.n}" data-s="${s.n}">${s.n}</a>`).join('');
+const toast=t=>{const e=document.getElementById('toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2600)};
+const copy=t=>{(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('Скопировано, вставь в чат: '+t),()=>toast('Выбор запомнен: '+t))};
+const multiS=SCENES.filter(s=>s.variants.length>1);
+function paint(){
+ document.querySelectorAll('.v').forEach(e=>{const s=e.dataset.s,k=e.dataset.k;e.classList.toggle('ok',!!k&&pick[s]===k);e.hidden=!!hid[s+k]});
+ document.querySelectorAll('.take').forEach(b=>{const on=pick[b.dataset.s]===b.dataset.k;b.textContent=(on?'Выбран ':'Беру ')+b.dataset.s+b.dataset.k});
+ document.querySelectorAll('.back').forEach(b=>b.hidden=!Object.keys(hid).some(k=>hid[k]&&k[0]===b.dataset.s));
+ nav.querySelectorAll('a').forEach(a=>a.classList.toggle('done',!!pick[a.dataset.s]));
+ document.getElementById('pick').innerHTML=multiS.map(s=>`<a href="#s${s.n}"><span>Сцена ${s.n}</span><b>${pick[s.n]?s.n+pick[s.n]:'не выбран'}</b></a>`).join('')+'<button class="btn main" id="cp">Скопировать выбор</button>';
+ try{localStorage.setItem(KEY,JSON.stringify(pick));localStorage.setItem(KEY+'-hid',JSON.stringify(hid))}catch(e){}}
+document.addEventListener('click',e=>{const t=e.target;
+ if(t.classList.contains('take')){const s=t.dataset.s,k=t.dataset.k;pick[s]=pick[s]===k?undefined:k;paint();if(pick[s])copy('Беру '+s+k)}
+ else if(t.classList.contains('hide')){hid[t.dataset.id]=1;paint()}
+ else if(t.classList.contains('back')){Object.keys(hid).forEach(k=>{if(k[0]===t.dataset.s)delete hid[k]});paint()}
+ else if(t.id==='cp'){const p=multiS.filter(s=>pick[s.n]).map(s=>s.n+pick[s.n]);p.length?copy('Раскадровка, беру: '+p.join(', ')):toast('Сначала нажми «Беру» у вариантов')}});
+paint();
+if(window.DragPanel)DragPanel.make(document.getElementById('vt'),{key:'vt-raskadrovka-chast2',handle:'.drag-handle',side:'right',top:100});
+/* вписать длинные надписи по ширине */
+function fit(){document.querySelectorAll('svg text[data-max]').forEach(t=>{const m=+t.dataset.max,w=t.getComputedTextLength();if(w>m)t.setAttribute('font-size',Math.floor(+t.getAttribute('font-size')*m/w*10)/10)});document.documentElement.dataset.ready='1'}
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>requestAnimationFrame(fit));
+})();
+</script></body></html>
