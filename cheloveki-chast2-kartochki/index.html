@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Человеки, часть 2: карточки людей вместо силуэтов</title>
+<link rel="icon" href="data:,">
+<style>
+@font-face{font-family:"Golos Text";font-weight:600;src:url(fonts/golos-text-cyrillic-600-normal-lpQ9rVRR.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:"Golos Text";font-weight:600;src:url(fonts/golos-text-latin-600-normal-Bhk8uV1U.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Golos Text";font-weight:700;src:url(fonts/golos-text-cyrillic-700-normal-BKmY45Ip.woff2) format('woff2');unicode-range:U+0400-04FF}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111;font:600 18px/1.5 "Golos Text",system-ui,sans-serif}
+main{max-width:1400px;margin:0 auto;padding:32px 16px 80px;display:flex;flex-direction:column;gap:56px}
+h1{font-size:32px;line-height:1.2;margin:0 0 8px}
+.lead{margin:0;color:#5a4a52;max-width:900px}
+.k h2{font-size:24px;margin:0 0 4px}
+.k .voice{margin:0 0 16px;color:#5a4a52}
+.k .voice b{color:#d1105a}
+/* кадр 16:9, все размеры внутри в em: 1em = 1% ширины кадра */
+.f{container-type:inline-size;border-radius:16px;overflow:hidden}
+.s{font-size:1cqw;aspect-ratio:16/9;position:relative;background:#150B18;color:#fff;overflow:hidden}
+.s.fux{background:#E0146A}
+.s>*{position:absolute}
+.t{font-weight:700;line-height:1.1;letter-spacing:-.01em}
+.small{font-weight:600;opacity:.75}
+/* карточка человека */
+.p{background:#fff;color:#16101a;border-radius:1.1em;display:flex;align-items:center;gap:.9em;padding:.7em .9em;box-shadow:0 .4em 1.4em rgba(0,0,0,.28)}
+.p img{width:3.6em;height:3.6em;border-radius:50%;object-fit:cover;flex:none}
+.p .n{font-size:1.25em;font-weight:700;line-height:1.15}
+.p .r{font-size:.95em;font-weight:600;color:#6a5d70;line-height:1.2}
+.p .st{margin-left:auto;font-size:.9em;font-weight:700;padding:.35em .7em;border-radius:2em;white-space:nowrap}
+.ok{background:#E3F8EA;color:#0a8a43}.wait{background:#F1EDF3;color:#7b6f82}.bad{background:#FDE7E7;color:#c62828}.new{background:#FFE1EF;color:#d1105a}
+.p.ghost{background:transparent;color:#fff;border:.15em dashed rgba(255,255,255,.35);box-shadow:none}
+.p.ghost .av{width:3.6em;height:3.6em;border-radius:50%;border:.15em dashed rgba(255,255,255,.35);flex:none}
+.p.ghost .r{color:rgba(255,255,255,.6)}
+.p.off{opacity:.45;filter:grayscale(1)}
+.star{color:#f5a400}
+/* телефон */
+.ph{background:#F6F2F7;border-radius:3em;border:.5em solid #0c0710;padding:1.6em 1.1em 1.1em;display:flex;flex-direction:column;gap:.6em;box-shadow:0 1.5em 4em rgba(0,0,0,.45)}
+.ph .hd{color:#16101a;font-weight:700;font-size:1.5em;line-height:1.15;padding:0 .3em}
+.ph .sub{color:#6a5d70;font-size:.95em;font-weight:600;padding:0 .45em;margin-top:-.3em}
+.ph .p{box-shadow:0 .1em .5em rgba(0,0,0,.08);padding:.55em .7em}
+.ph .p img{width:2.9em;height:2.9em}.ph .p .n{font-size:1.05em}.ph .p .r{font-size:.82em}.ph .p .st{font-size:.76em}
+.bar{height:.6em;border-radius:1em;background:#e6dfe9;overflow:hidden;margin:0 .4em}.bar i{display:block;height:100%;background:#E0146A;border-radius:1em}
+.ivan{display:flex;flex-direction:column;align-items:center;gap:.8em}
+.ivan img{width:15em;border-radius:.6em;display:block}
+.ivan span{font-size:1.5em;font-weight:700;background:#fff;color:#16101a;padding:.3em .9em;border-radius:2em}
+.deal{background:#fff;color:#16101a;border-radius:1.4em;padding:1.6em 1.8em;box-shadow:0 1em 3em rgba(0,0,0,.35)}
+.deal .lb{font-size:1em;color:#0a8a43;font-weight:700}
+.deal .tt{font-size:2.3em;font-weight:700;line-height:1.1;margin:.2em 0 .6em}
+.deal .row{display:flex;align-items:center;gap:.8em;padding:.7em 0;border-top:1px solid #ece6ef;font-size:1.3em;font-weight:700}
+.deal .row b{color:#E0146A;font-size:1.3em;min-width:1.2em}
+.deal .faces{margin-left:auto;display:flex}
+.deal .faces img,.deal .faces i{width:2.2em;height:2.2em;border-radius:50%;margin-left:-.5em;border:.14em solid #fff;object-fit:cover}
+.deal .faces i{border:.14em dashed #c9bfce;background:#faf7fb}
+.logo{background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.logo img{width:78%}
+.wall{display:grid;grid-template-columns:repeat(4,1fr);gap:1em}
+.note{background:#fff0f7;border-radius:16px;padding:20px 24px}
+.note p{margin:0 0 8px}.note p:last-child{margin:0}
+</style></head><body><main>
+<div>
+<h1>Карточки людей вместо силуэтов</h1>
+<p class="lead">4 кадра для примерки. Человечки-иконки заменены карточками, как в настоящем приложении: фото, имя, роль, оценка, статус. Шрифт один, свечений нет. Последний кадр показан на розовом фоне, чтобы сравнить с тёмным.</p>
+</div>
+
+<section class="k"><h2>1. Сцена 3. Ивану нужны люди</h2>
+<p class="voice">Голос: <b>«А ещё нужны шесть промо-моделей, четыре аниматора и аниматоры на детские мастер-классы».</b> Движение: пустые кружки по одному заполняются лицами на удар музыки.</p>
+<div class="f"><div class="s">
+ <div class="ivan" style="left:7em;top:13em"><img src="ivan-golova.png" alt=""><span>Менеджер Иван</span></div>
+ <div class="deal" style="left:34em;top:8em;width:58em">
+  <div class="lb">Сделка подтверждена</div>
+  <div class="tt">Корпоратив на 100 человек</div>
+  <div class="row"><b>6</b>Промо-модели<div class="faces"><img src="p1.jpg"><img src="p2.jpg"><img src="p3.jpg"><i></i><i></i><i></i></div></div>
+  <div class="row"><b>4</b>Аниматоры<div class="faces"><i></i><i></i><i></i><i></i></div></div>
+  <div class="row"><b>?</b>Аниматоры на детские мастер-классы<div class="faces"><i></i><i></i></div></div>
+ </div>
+</div></div></section>
+
+<section class="k"><h2>2. Сцена 4. Команда собирается в телефоне</h2>
+<p class="voice">Голос: <b>«А в телефоне видно, как собирается команда».</b> Движение: карточки въезжают снизу по одной, статус меняется с «ищем» на «подтвердила».</p>
+<div class="f"><div class="s">
+ <div class="t" style="left:7em;top:16em;font-size:5.4em;left:1.3em;top:2.9em">Команда<br><span style="color:#FF2E93">собирается</span></div>
+ <div class="t small" style="left:7em;top:33em;font-size:1.6em;left:4.4em;top:20.5em">Промо-модели 3 из 6<br>Аниматоры 2 из 4</div>
+ <div class="ph" style="left:56em;top:4em;width:31em;height:60em">
+  <div class="hd">Корпоратив на 100 человек</div>
+  <div class="sub">Собрано 5 из 10</div>
+  <div class="bar"><i style="width:50%"></i></div>
+  <div class="p"><img src="p1.jpg"><div><div class="n">Аня</div><div class="r">Промо-модель · <span class="star">★</span> 4,9</div></div><span class="st ok">подтвердила</span></div>
+  <div class="p"><img src="p2.jpg"><div><div class="n">Катя</div><div class="r">Промо-модель · <span class="star">★</span> 4,8</div></div><span class="st ok">подтвердила</span></div>
+  <div class="p"><img src="p3.jpg"><div><div class="n">Даша</div><div class="r">Промо-модель · <span class="star">★</span> 5,0</div></div><span class="st ok">подтвердила</span></div>
+  <div class="p"><img src="p5.jpg"><div><div class="n">Тимур</div><div class="r">Аниматор, пират · <span class="star">★</span> 4,9</div></div><span class="st ok">подтвердил</span></div>
+  <div class="p"><img src="p6.jpg"><div><div class="n">Алина</div><div class="r">Аниматор, фея · <span class="star">★</span> 4,7</div></div><span class="st ok">подтвердила</span></div>
+  <div class="p"><img src="p4.jpg"><div><div class="n">Лера</div><div class="r">Промо-модель · <span class="star">★</span> 4,8</div></div><span class="st wait">отвечает…</span></div>
+  <div class="p" style="opacity:.5"><img src="p7.jpg"><div><div class="n">Гоша</div><div class="r">Аниматор, клоун · <span class="star">★</span> 4,6</div></div><span class="st wait">ищем</span></div>
+ </div>
+</div></div></section>
+
+<section class="k"><h2>3. Сцена 8. Дед Мороз заболел</h2>
+<p class="voice">Голос: <b>«Заболел Дед Мороз? Замена уже едет».</b> Движение: карточка сереет и уезжает, на удар сверху падает новая со статусом «замена найдена».</p>
+<div class="f"><div class="s">
+ <div class="t" style="font-size:5.4em;left:1.3em;top:1.4em">Без персонала<br><span style="color:#FF2E93">не останетесь</span></div>
+ <div class="p off" style="left:8em;top:27em;width:38em;transform:rotate(-4deg)"><img src="p9.jpg"><div><div class="n">Сергей Петрович</div><div class="r">Дед Мороз · <span class="star">★</span> 4,9</div></div><span class="st bad">заболел</span></div>
+ <div class="p" style="left:50em;top:22em;width:42em;font-size:1.25em;left:42em;top:18em"><img src="p10.jpg"><div><div class="n">Андрей</div><div class="r">Дед Мороз · <span class="star">★</span> 4,8 · 212 выходов</div></div><span class="st new">замена найдена</span></div>
+ <div class="t small" style="font-size:1.6em;left:33em;top:26em">За 14 минут. Заказчик ничего не заметил.</div>
+ <div class="logo" style="right:4em;top:4em;width:11em;height:11em"><img src="logo-mark.webp" alt="Человеки"></div>
+</div></div></section>
+
+<section class="k"><h2>4. Сцена 5. База проверенных людей (розовый фон)</h2>
+<p class="voice">Голос: <b>«Аниматоры, хостес, Деды Морозы: все в одном месте».</b> Движение: стена карточек медленно едет вверх, камера отъезжает, карточек становится сотни.</p>
+<div class="f"><div class="s fux">
+ <div class="t" style="font-size:5em;left:1.3em;top:.9em">Все в одном месте</div>
+ <div class="wall" style="left:6.5em;top:17em;width:87em">
+  <div class="p"><img src="p1.jpg"><div><div class="n">Аня</div><div class="r">Промо-модель · <span class="star">★</span> 4,9</div></div></div>
+  <div class="p"><img src="p5.jpg"><div><div class="n">Тимур</div><div class="r">Аниматор · <span class="star">★</span> 4,9</div></div></div>
+  <div class="p"><img src="p9.jpg"><div><div class="n">Сергей Петрович</div><div class="r">Дед Мороз · <span class="star">★</span> 4,9</div></div></div>
+  <div class="p"><img src="p2.jpg"><div><div class="n">Катя</div><div class="r">Хостес · <span class="star">★</span> 4,8</div></div></div>
+  <div class="p"><img src="p6.jpg"><div><div class="n">Алина</div><div class="r">Аниматор · <span class="star">★</span> 4,7</div></div></div>
+  <div class="p"><img src="p11.jpg"><div><div class="n">Миша</div><div class="r">Официант · <span class="star">★</span> 4,8</div></div></div>
+  <div class="p"><img src="p3.jpg"><div><div class="n">Даша</div><div class="r">Промо-модель · <span class="star">★</span> 5,0</div></div></div>
+  <div class="p"><img src="p8.jpg"><div><div class="n">Соня</div><div class="r">Мастер-классы · <span class="star">★</span> 4,9</div></div></div>
+  <div class="p"><img src="p10.jpg"><div><div class="n">Андрей</div><div class="r">Дед Мороз · <span class="star">★</span> 4,8</div></div></div>
+  <div class="p"><img src="p4.jpg"><div><div class="n">Лера</div><div class="r">Хостес · <span class="star">★</span> 4,8</div></div></div>
+  <div class="p"><img src="p7.jpg"><div><div class="n">Гоша</div><div class="r">Аниматор · <span class="star">★</span> 4,6</div></div></div>
+  <div class="p"><img src="p12.jpg"><div><div class="n">Вика</div><div class="r">Координатор · <span class="star">★</span> 4,9</div></div></div>
+ </div>
+</div></div></section>
+
+<div class="note">
+<p><b>Что здесь придумано мной и требует твоего слова:</b> имена, оценки, «212 выходов», «за 14 минут», роли «официант» и «координатор». Лица сгенерированы нейросетью, это не реальные люди из базы.</p>
+<p>Если у Насти есть настоящие фото персонала с согласием на показ, ставлю их: будет честнее и сильнее.</p>
+</div>
+</main></body></html>
