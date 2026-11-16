@@ -1,0 +1,53 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Аудит замков</title>
+<style>:root{--bg:#fff;--fg:#111;--mu:#666;--b:#ddd;--c:#d92d20;--s:#b54708;--f:#067647}
+@media(prefers-color-scheme:dark){:root{--bg:#111;--fg:#eee;--mu:#999;--b:#333;--c:#ff6b5e;--s:#f0a04b;--f:#4cc38a}}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif;margin:0;padding:24px 16px;max-width:1100px;margin:auto}
+h1{font-size:28px}h2{margin-top:36px}table{border-collapse:collapse;width:100%;font-size:14px;display:block;overflow-x:auto}
+td,th{border:1px solid var(--b);padding:8px;text-align:left;vertical-align:top}th{background:rgba(128,128,128,.12)}
+.critical{color:var(--c);font-weight:700}.standard{color:var(--s);font-weight:700}.fast{color:var(--f);font-weight:700}
+.box{border:2px solid var(--c);padding:12px 16px;border-radius:8px}code{background:rgba(128,128,128,.15);padding:1px 4px;border-radius:4px}</style></head><body>
+<h1>Аудит замков 16.11.2026</h1>
+<p>Только чтение, ничего не менялось. Секреты не печатались.</p>
+<div class="box"><b>Главное.</b> Ночные задачи и фоновые агенты идут с <code>--permission-mode bypassPermissions</code> (<code>~/bin/noch-run</code>). В <code>~/.claude/settings.json</code> на VPS нет блоков <code>permissions</code> (allow 0, deny 0, ask 0) и подключён один хук: <code>agent-sloty.py</code> (нагрузка сервера). Хуки secrets-gate, publish-gate, pakety-gate, suk-gate, gotovo-gate, edits-guard, repeat-guard лежат в <code>Personalization/hooks</code> и прописаны только в Mac-конфиге (<code>/Users/maria/...</code>). На сервере они не работают. С 11.11 Мак не используем, так что ворота сейчас не стоят нигде, где живёт работа.</div>
+
+<h2>1. Правила и разрешения: что не закрыто</h2>
+<table><tr><th>#</th><th>Правило / риск</th><th>Чем держится сейчас</th><th>Что предлагаю</th><th>Риск</th></tr>
+<tr><td>1</td><td>Секреты не в контекст (67)</td><td>secrets-gate.py есть, но только Mac. Тест: <code>cat ~/vault/github-token-repo.txt</code> стоп; <code>cat ~/vault/yahoo-pochta-claude.txt</code> ПРОПУЩЕН; <code>grep -r . .secrets/</code>, <code>sed -n 1p .secrets/a.txt</code>, <code>cat ~/.ssh/id_ed25519</code>, <code>printenv</code> ПРОПУЩЕНЫ</td><td>Хук: подключить на VPS, расширить на <code>~/vault/*</code>, <code>~/.ssh</code>, grep/sed/awk/printenv/env</td><td class="critical">critical</td></tr>
+<tr><td>2</td><td>Деньги и безвозвратное удаление (11.1, 11.2, трата больше $2)</td><td>Только текст. <code>rm -rf</code>, платные API без остановки (bypass)</td><td>Хук PreToolUse Bash: <code>rm -rf</code> вне <code>~/tmp</code> и scratchpad, <code>shred</code>, <code>DROP</code>/<code>DELETE FROM</code> на проде. Платежи: запрет в settings (deny на платёжные эндпоинты не выразить, нужен хук по URL)</td><td class="critical">critical</td></tr>
+<tr><td>3</td><td>Git: push в main, force push, <code>reset --hard</code>, <code>stash</code>, <code>clean -fd</code></td><td>Ни правила, ни хука. <code>pokazat</code> сам пушит в main previews (это норма). Тест: <code>git push --force origin main</code> ПРОПУЩЕН обоими хуками</td><td>Settings deny: <code>Bash(git push --force*)</code>, <code>Bash(git push -f*)</code>, <code>Bash(git reset --hard*)</code>, <code>Bash(git stash*)</code>, <code>Bash(git clean -f*)</code>. Но deny в bypass-режиме работает, это его плюс. Исключение для ~/previews не нужно: pokazat делает обычный push</td><td class="critical">critical</td></tr>
+<tr><td>4</td><td>Прод-выкатка без гейта (59)</td><td>publish-gate.py ловит выкатку, но только Mac и только по изменённым HTML. Тест: <code>vercel --prod</code> в чистой папке ПРОПУЩЕН. Vercel запрещён с 21.10, ловца нет</td><td>Хук: подключить на VPS; deny <code>vercel</code>; <code>vykatka-sayta</code> и так вызывает гейты, закрыть прямой FTP-заливкой мимо скрипта</td><td class="standard">standard</td></tr>
+<tr><td>5</td><td>Claude-артефакты никогда (4.2): инструмент Artifact, claude.ai/artifact, Claude Docs</td><td>Только текст. Инструменты <code>Artifact</code> и <code>mcp__claude_ai_Claude_Docs__*</code> доступны в этой сессии</td><td>Settings deny: <code>Artifact</code>, <code>mcp__claude_ai_Claude_Docs__*</code>, <code>ArtifactData</code>, <code>ArtifactComments</code></td><td class="critical">critical</td></tr>
+<tr><td>6</td><td>Запрещены <code>mcp__playwright__browser_*</code> и <code>chrome-devtools</code> (4); при этом правило «Браузер сам» разрешает headless Playwright</td><td>Только текст, и два правила спорят друг с другом</td><td>Развести: запрет относится к видимому Chrome Маши. Settings deny на <code>mcp__chrome-devtools__*</code>; playwright оставить, правку текста правила 4 дать Маше на решение</td><td class="standard">standard</td></tr>
+<tr><td>7</td><td>Каталист кириллицей, длинные тире, вертикальные фото, WhatsApp никогда, запрет 3 программ в фото (17, 26)</td><td>publish-gate.py только при выкатке, только Mac. WhatsApp и запрет программ: ни хука, ни проверки. photo-guard это скилл, не хук</td><td>Хук Stop или pre-commit на папках публикации: grep <code>WhatsApp</code>, <code>Catalyst</code> в видимом тексте, тире, имена запретных программ</td><td class="standard">standard</td></tr>
+<tr><td>8</td><td>Мак не трогаем (с 11.11)</td><td>Только текст; <code>ssh mac-tunnel</code> разрешён всем</td><td>Оставить текстом, это мягкий запрет. Хук не нужен</td><td class="fast">fast</td></tr>
+<tr><td>9</td><td>Живой прогон бота только на chat_id Маши (21), деплой после превью и ОК (15)</td><td>Текст и скилл <code>bot-na-hetzner</code> (<code>say</code> зашит на её chat_id)</td><td>Оставить скиллом: путь один, зашит в инструмент</td><td class="fast">fast</td></tr>
+<tr><td>10</td><td><code>/compact</code> без явного «да» запрещён; хендофф не на 200k</td><td>Только текст; kontekst-strazh.py лишь напоминает (и только Mac)</td><td>Оставить текстом, подключить kontekst-strazh на VPS</td><td class="fast">fast</td></tr>
+<tr><td>11</td><td>Звонки t2 и архив не чистить</td><td>Только memory-запись</td><td>Хук: deny <code>rm</code>/<code>find -delete</code> по пути архива звонков на Hetzner</td><td class="standard">standard</td></tr>
+<tr><td>12</td><td>Агент без model и effort (71)</td><td>agent-marshrut-gate.py есть, тест ок (без model: exit 2, с model: пропуск). Но только Mac</td><td>Хук: подключить на VPS. Сейчас субагенты наследуют дорогую модель</td><td class="standard">standard</td></tr>
+<tr><td>13</td><td>Слово «готово» без улики (45)</td><td>gotovo-gate, edits-guard, goal-guard (Stop), только Mac. Работают лишь на ботов КП, Договор, HR-панель</td><td>Подключить на VPS. Для ночного режима Stop-хук вредит: может не отпустить процесс. Сначала режим «лог без блока»</td><td class="standard">standard</td></tr>
+</table>
+
+<h2>2. Хуки и их тесты</h2>
+<p>Отдельного набора тестов у хуков нет: в <code>tools/</code> лежат только <code>agent-fon-test.py</code> и <code>skill-router-test.py</code> (для скилл-роутера). Ниже мой разовый прогон: команду, которую хук обязан остановить, и похожую, которую обязан пропустить.</p>
+<table><tr><th>Хук</th><th>Подключён на VPS</th><th>Тест «стоп»</th><th>Тест «пропуск»</th><th>Тест в репозитории</th></tr>
+<tr><td>agent-sloty.py</td><td>да (4 события)</td><td>не прогонял (ждёт нагрузку, тест = нагрузка)</td><td>—</td><td class="critical">нет</td></tr>
+<tr><td>secrets-gate.py</td><td>нет</td><td>стоп: ок для <code>cat ~/vault/github-token-repo.txt</code>, <code>.credentials.json</code>. Провал: vault/yahoo, grep, sed, ssh-ключ, printenv</td><td>ок: README, echo</td><td class="critical">нет</td></tr>
+<tr><td>publish-gate.py</td><td>нет</td><td>провал: <code>vercel --prod</code> и force push пропущены</td><td>ок: <code>git status</code></td><td class="critical">нет</td></tr>
+<tr><td>pakety-gate.py</td><td>нет</td><td>не прогонял (ходит в базу уязвимостей по сети)</td><td>ок: <code>npm install</code> без пакета, <code>npm uninstall</code></td><td class="critical">нет</td></tr>
+<tr><td>suk-gate.py</td><td>нет</td><td>молчит без локального прокси в окружении (так и задумано); тест «стоп» невозможен без HTTPS_PROXY</td><td>ок: <code>ls</code></td><td class="standard">нет</td></tr>
+<tr><td>agent-marshrut-gate.py</td><td>нет</td><td>ок: без model и effort, exit 2</td><td>ок: с sonnet и medium, exit 0</td><td class="standard">нет</td></tr>
+<tr><td>zhdi-gate.py</td><td>нет</td><td>подсказка срабатывает на <code>sleep 300</code> (не блокирует)</td><td>—</td><td class="fast">нет</td></tr>
+<tr><td>gotovo-gate, edits-guard, goal-guard, preshow-guard, og-link-guard</td><td>нет</td><td>Stop-хуки, не прогонял</td><td>—</td><td class="standard">нет</td></tr>
+<tr><td>repeat-guard, skill-router, raskladka-guard, petlya-napominanie, ssylki-auto, kontekst-strazh</td><td>нет</td><td>подсказчики, не блокируют</td><td>—</td><td class="fast">нет (кроме skill-router-test.py)</td></tr>
+</table>
+
+<h2>3. Порядок работ</h2>
+<ol>
+<li><b>critical, 30 минут.</b> В <code>~/.claude/settings.json</code> добавить deny: force push, <code>reset --hard</code>, <code>stash</code>, <code>clean -f</code>, <code>Artifact</code>, Claude Docs, <code>chrome-devtools</code>. Проверить, что <code>pokazat</code>, <code>noch</code>, <code>vykatka</code> работают.</li>
+<li><b>critical.</b> Подключить на VPS secrets-gate (пути с <code>/Users/maria</code> заменить на <code>/home/claude-work</code>), дописать <code>~/vault</code>, <code>~/.ssh</code>, grep/sed/printenv. Тест на 10 команд из таблицы.</li>
+<li><b>critical.</b> Хук на <code>rm -rf</code> вне рабочих папок и на архив звонков.</li>
+<li><b>standard.</b> Подключить agent-marshrut-gate, pakety-gate, publish-gate на VPS; Stop-хуки только в режиме лога.</li>
+<li><b>standard.</b> Один файл <code>tools/hooks-test.sh</code>: пары «стоп/пропуск» для каждого хука, запуск раз в сутки, итог в Telegram.</li>
+</ol>
+<p>Не согласен с одним: «правила только текстом» не всегда плохо. Правила 8 и 9 лучше оставить текстом: хук даст ложные срабатывания дороже, чем ошибка.</p>
+</body></html>
