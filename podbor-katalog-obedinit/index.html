@@ -146,6 +146,24 @@ html body #catalog .kv-occ button{min-height:44px;padding:0 20px;border:1.5px so
 html body #catalog .kv-occ button:hover{border-color:#0aba59!important;color:#0aba59}
 html body #catalog .kv-occ button[aria-pressed="true"]{background:#0aba59;border-color:#0aba59!important;color:#fff}
 @media (max-width:700px){#catalog .kv-occ{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}html body #catalog .kv-occ button{flex:none;white-space:nowrap}}
+
+/* кнопка и окно «Получить подборку» */
+html body #catalog .kv-occ .kv-send{margin-left:auto;min-height:52px;padding:0 30px;border:0!important;border-radius:999px!important;background:#141414;color:#fff;font:700 18px/1 Roboto,Arial,sans-serif;cursor:pointer}
+html body #catalog .kv-occ .kv-send:hover{background:#0aba59;color:#fff}
+@media (max-width:700px){#catalog .kv-occ{flex-wrap:wrap!important;overflow:visible!important}html body #catalog .kv-occ .kv-send{margin:6px 0 0;width:100%;flex:0 0 100%}}
+.kv-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;padding:16px}
+.kv-modal-in{position:relative;width:min(100%,520px);max-height:calc(100vh - 32px);overflow:auto;background:#fff;border-radius:24px;padding:28px;font:400 17px/1.45 Roboto,Arial,sans-serif;color:#141414}
+.kv-modal-in h3{margin:0 40px 8px 0;font:700 28px/1.15 TTCommonsPro,Arial,sans-serif}
+.kv-modal-sum{margin:0 0 14px;padding:10px 14px;background:#e3f7ea;border-radius:12px;font-weight:500}
+.kv-modal-l{margin:0 0 6px}.kv-modal-in ul{margin:0 0 16px;padding-left:20px}
+.kv-modal-way{display:flex;gap:8px;margin:0 0 10px}
+.kv-modal-way button{flex:1;min-height:48px;border:1.5px solid #141414;border-radius:999px;background:#fff;color:#141414;font:500 16px/1 Roboto,Arial,sans-serif;cursor:pointer}
+.kv-modal-way button[aria-pressed="true"]{background:#141414;color:#fff}
+.kv-modal-inp{display:block;width:100%;box-sizing:border-box;height:56px;margin:0 0 10px;padding:0 18px;border:1.5px solid #141414;border-radius:16px;font:500 18px/1 Roboto,Arial,sans-serif}
+.kv-modal-go{display:block;width:100%;min-height:56px;border:0;border-radius:999px;background:#0aba59;color:#fff;font:700 18px/1 Roboto,Arial,sans-serif;cursor:pointer}
+.kv-modal-go:hover{background:#141414}
+.kv-modal-x{position:absolute;right:16px;top:14px;width:44px;height:44px;border:0;border-radius:50%;background:#f3f2ed;font-size:26px;line-height:1;cursor:pointer}
+.kv-modal-note{margin:12px 0 0;font-size:14px;color:#5f6368}
 /* V7, V8: фраза сверху + колонка категорий */
 #catalog .kv78{margin-top:24px}
 #catalog .kv8{grid-template-columns:minmax(0,1fr) 300px}
@@ -1053,7 +1071,7 @@ var NOTES={
 6:{t:'Вариант 6. Фраза в заголовке',lead:'Заголовок сам стал формой: «Выберите программу для команды на [100] человек». Остальное строкой ниже.',plus:['Самый запоминающийся вариант, заголовок сразу работает','Главный параметр (сколько людей) не пропустить'],minus:['Выпадашка размером с заголовок тяжело выглядит на телефоне','Заголовок меняется при выборе, для поиска Яндекса текст H2 нестабилен'],score:'7 из 10'},
 7:{t:'Вариант 7. Фраза сверху, категории слева',lead:'Варианты 1 и 4 вместе: сверху фраза про группу и бюджет, под ней слева колонка категорий, справа карточки. Выбор во фразе и в колонке сразу меняет карточки.',plus:['Все категории видны сразу, без прокрутки вкладок','Колонка слева как в меню «Каталог программ»: посетитель уже знает такую раскладку','Фраза сверху читается первой и отвечает на «сколько нас и сколько денег»'],minus:['Карточки становятся уже: 3 в ряд вместо плитки на всю ширину','На телефоне колонка превращается в строку вкладок над карточками'],score:'9 из 10, рекомендую'},
 8:{t:'Вариант 8. Фраза сверху, категории справа',lead:'То же, что вариант 7, но колонка категорий справа от карточек.',plus:['Карточки начинаются слева, взгляд сразу падает на фото','Колонка справа не спорит с фразой за внимание'],minus:['Категории справа замечают позже: глаз читает слева направо','В меню сайта категории слева, здесь раскладка другая'],score:'7 из 10'},
-9:{t:'Вариант 9. Как 7 + повод кружочками',lead:'Под фразой ряд круглых кнопок с поводом: тимбилдинг, корпоратив, день рождения компании, Новый год. Ниже колонка категорий и карточки.',plus:['Повод виден сразу, один клик','Фраза остаётся короткой','Кнопки можно дополнять новыми поводами без переделки'],minus:['Ещё один ряд управления над карточками','Пока по данным отбирает только «Новый год»: остальные поводы ждут разметки программ'],score:'9 из 10, рекомендую'},
+9:{t:'Вариант 9. Как 7 + повод кружочками',lead:'Под фразой ряд круглых кнопок с поводом: тимбилдинг, корпоратив, день рождения компании, Новый год. Ниже колонка категорий и карточки.',plus:['Повод виден сразу, один клик','Фраза остаётся короткой','Кнопки можно дополнять новыми поводами без переделки'],minus:['Ещё один ряд управления над карточками','Пока по данным отбирает только «Новый год»: на остальных поводах меняется порядок карточек, состав тот же, до разметки программ'],score:'9 из 10, рекомендую'},
 10:{t:'Вариант 10. Как 7 + повод словом во фразе',lead:'Повод встроен во фразу: «Нужна программа на [корпоратив] для команды на [100] человек…».',plus:['Всё в одном предложении, без лишнего ряда','Читается как просьба менеджеру'],minus:['Фраза длиннее, на телефоне на строку больше','Повод спрятан в списке, его замечают реже'],score:'7 из 10'}
 };
 var ROOT=null,ORIG=null,TABS_SRC={};
@@ -1079,12 +1097,14 @@ function placeOk(p,pl){
  return true
 }
 function match(s){
- return P.filter(function(p){
+ var r0=P.filter(function(p){
   if(!catOk(p,s.cat)||!placeOk(p,s.place)||!occOk(p,s.occ))return false;
   var r=range(p);if(r&&(s.people<r[0]||s.people>r[1]))return false;
   var t=total(p,s.people);if(s.budget!=null&&t!=null&&t>s.budget)return false;
   return true
- })
+ });
+ if(s.occ&&s.occ!=='any'){var h=function(x){var k=0,t=x+'|'+s.occ;for(var i=0;i<t.length;i++)k=(k*31+t.charCodeAt(i))>>>0;return k};r0=r0.slice().sort(function(a,b){return h(a.n)-h(b.n)})}
+ return r0
 }
 function plural(n,a,b,c){var m=n%10,h=n%100;if(m===1&&h!==11)return a;if(m>=2&&m<=4&&(h<12||h>14))return b;return c}
 function progs(n){return n+' '+plural(n,'программа','программы','программ')}
@@ -1109,7 +1129,26 @@ function slot(q){
  var cur=list.filter(function(o){return o.id===curId})[0]||list[0];
  return '<span class="kv-slot" data-k="'+q+'"><button type="button" class="kv-f" data-slot="'+q+'" aria-haspopup="listbox" aria-expanded="false" aria-label="'+ARIA[q]+': '+esc(cur.label)+'"><span class="kv-v">'+esc(cur.label)+'</span><span class="kv-ar"><i class="kv-ch"></i></span></button>'+menu(q,list,curId)+'</span>'
 }
-function occChips(){return '<div class="kv-occ" aria-label="Повод"><span class="kv-occ-l">Повод:</span>'+OCC.map(function(o){return '<button type="button" data-occ="'+o.id+'" aria-pressed="'+(st.occ===o.id)+'">'+esc(o.id==='any'?'Любой':o.label.charAt(0).toUpperCase()+o.label.slice(1))+'</button>'}).join('')+'</div>'}
+function occChips(){return '<div class="kv-occ" aria-label="Повод"><span class="kv-occ-l">Повод:</span>'+OCC.map(function(o){return '<button type="button" data-occ="'+o.id+'" aria-pressed="'+(st.occ===o.id)+'">'+esc(o.id==='any'?'Любой':o.label.charAt(0).toUpperCase()+o.label.slice(1))+'</button>'}).join('')+'<button type="button" class="kv-send" data-send>Получить подборку</button></div>'}
+function sendSummary(){
+ var pl=WH.filter(function(o){return o.id===st.place})[0].label,oc=OCC.filter(function(o){return o.id===st.occ})[0].label;
+ return (st.cat==='Все'?'Все программы':st.cat)+', '+oc+', '+st.people+' человек, '+pl+', бюджет '+(st.budget==null?'не знаем':'до '+money(st.budget)+' ₽')
+}
+function openSend(){
+ var list=match(st),old=document.getElementById('kv-modal');if(old)old.remove();
+ var m=document.createElement('div');m.id='kv-modal';m.className='kv-modal';m.setAttribute('role','dialog');m.setAttribute('aria-modal','true');m.setAttribute('aria-label','Получить подборку');
+ m.innerHTML='<div class="kv-modal-in"><button type="button" class="kv-modal-x" data-x aria-label="Закрыть">×</button><h3>Пришлём подборку вам</h3><p class="kv-modal-sum">'+esc(sendSummary())+'</p>'+
+  (list.length?'<p class="kv-modal-l">В подборке '+progs(list.length)+' с ценой на вашу группу:</p><ul>'+list.slice(0,8).map(function(p){return '<li>'+esc(p.n)+'</li>'}).join('')+(list.length>8?'<li>и ещё '+(list.length-8)+'</li>':'')+'</ul>':'<p class="kv-modal-l">Под такой выбор программ нет. Менеджер подберёт варианты вручную.</p>')+
+  '<div class="kv-modal-way" role="group" aria-label="Куда прислать"><button type="button" data-way="max" aria-pressed="true">В Max</button><button type="button" data-way="tg" aria-pressed="false">В Telegram</button><button type="button" data-way="mail" aria-pressed="false">На почту</button></div>'+
+  '<input class="kv-modal-inp" type="tel" placeholder="Телефон" aria-label="Контакт"><button type="button" class="kv-modal-go" data-go>Прислать подборку</button><p class="kv-modal-note">Это превью: кнопка ничего не отправляет. На сайте подборка уйдёт вам и менеджеру.</p></div>';
+ document.body.appendChild(m);
+ m.addEventListener('click',function(e){
+  if(e.target===m||e.target.closest('[data-x]')){m.remove();return}
+  var w=e.target.closest('[data-way]');if(w){m.querySelectorAll('[data-way]').forEach(function(b){b.setAttribute('aria-pressed',String(b===w))});var i=m.querySelector('.kv-modal-inp'),mail=w.getAttribute('data-way')==='mail';i.type=mail?'email':'tel';i.placeholder=mail?'Почта':'Телефон';i.focus();return}
+  if(e.target.closest('[data-go]')){m.querySelector('.kv-modal-note').innerHTML='<b>Готово.</b> На сайте здесь будет «Подборка отправлена».'}
+ });
+ var inp=m.querySelector('.kv-modal-inp');if(inp)inp.focus()
+}
 function budgetPart(){var any=st.budget==null;return 'бюджет '+(any?'':'до ')+slot('budget')+(any?'':' ₽')}
 /* ---------- вкладки ---------- */
 function tabInner(c){return TABS_SRC[c]||esc(c)}
@@ -1162,16 +1201,16 @@ function help(){return HELP}
 function head(inner){return '<div class="catalog-heading"><div><h2 id="catalog-title"'+(st.v===6?' class="kv6-h"':'')+'>'+inner+'</h2></div></div>'}
 /* ---------- 6 раскладок ---------- */
 var LAYOUT={
-1:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+tabs()+count()+grid()},
+1:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+' '+budgetPart()+'</p></div>'+tabs()+count()+grid()},
 2:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Покажите '+slot('cat')+' для команды '+slot('place')+' на '+slot('people')+' человек, '+budgetPart()+'</p></div><div class="kv-row">'+count()+'<a class="kv-link" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></div>'+grid()},
 3:function(){return head('Выберите программу для команды')+'<div class="kv-card"><div class="kv-phrase"><span class="kv3-word">Покажите</span>'+inlineTabs()+'для команды '+slot('place')+' на '+slot('people')+' человек, '+budgetPart()+'</div></div>'+count()+grid()},
 4:function(){return head('Выберите программу для команды')+'<div class="kv4"><aside class="kv4-side" aria-label="Подбор"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><div class="kv4-fields"><div><span class="kv4-lbl">Где</span>'+slot('place')+'</div><div><span class="kv4-lbl">Сколько человек</span>'+slot('people')+'</div><div><span class="kv4-lbl">Бюджет на всех, ₽</span>'+slot('budget')+'</div></div></aside><div class="kv4-main">'+count()+grid()+'</div></div>'},
 5:function(){return head('Выберите программу для команды')+tabs()+'<div class="kv5-bar"><p class="kv-phrase">'+slot('place')+' на '+slot('people')+' человек, '+budgetPart()+'</p>'+count()+'</div>'+grid()},
-6:function(){return head('Выберите программу для команды на '+slot('people')+' человек')+'<p class="kv6-sub">'+slot('place')+', '+budgetPart()+'</p>'+tabs()+count()+grid()},
-7:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+'<div class="kv4 kv78">'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'<div class="kv4-main">'+count()+grid()+'</div></div>'},
-8:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+'<div class="kv4 kv78 kv8"><div class="kv4-main">'+count()+grid()+'</div>'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'</div>'},
-9:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+occChips()+'<div class="kv4 kv78">'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'<div class="kv4-main">'+count()+grid()+'</div></div>'},
-10:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Нужна программа на '+slot('occ')+' для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+'<div class="kv4 kv78">'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'<div class="kv4-main">'+count()+grid()+'</div></div>'}
+6:function(){return head('Выберите программу для команды на '+slot('people')+' человек')+'<p class="kv6-sub">'+slot('place')+' '+budgetPart()+'</p>'+tabs()+count()+grid()},
+7:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+' '+budgetPart()+'</p></div>'+'<div class="kv4 kv78">'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'<div class="kv4-main">'+count()+grid()+'</div></div>'},
+8:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+' '+budgetPart()+'</p></div>'+'<div class="kv4 kv78 kv8"><div class="kv4-main">'+count()+grid()+'</div>'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'</div>'},
+9:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+' '+budgetPart()+'</p></div>'+occChips()+'<div class="kv4 kv78">'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'<div class="kv4-main">'+count()+grid()+'</div></div>'},
+10:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Нужна программа на '+slot('occ')+' для команды на '+slot('people')+' человек '+slot('place')+' '+budgetPart()+'</p></div>'+'<div class="kv4 kv78">'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'<div class="kv4-main">'+count()+grid()+'</div></div>'}
 };
 function note(){
  var n=NOTES[st.v],el=document.getElementById('kv-note');if(!el)return;
@@ -1207,7 +1246,8 @@ function bind(){
  ROOT.addEventListener('click',function(e){
   var o=e.target.closest('.kv-menu [data-q]');if(o){pick(o.getAttribute('data-q'),o.getAttribute('data-v'));return}
   var b=e.target.closest('[data-slot]');if(b){openMenu(b);return}
-  var oc=e.target.closest('[data-occ]');if(oc){st.occ=oc.getAttribute('data-occ');st.more=false;render();return}
+  var sd=e.target.closest('[data-send]');if(sd){openSend();return}
+   var oc=e.target.closest('[data-occ]');if(oc){st.occ=oc.getAttribute('data-occ');st.more=false;render();return}
    var c=e.target.closest('[data-cat]');if(c){st.cat=c.getAttribute('data-cat');st.more=false;render('cat');return}
   var s=e.target.closest('[data-sug]');if(s){var x=(ROOT.__sug||[])[+s.getAttribute('data-sug')];if(x){Object.assign(st,x.ch);st.more=false;render()}return}
   if(e.target.closest('[data-more]')){st.more=true;render();return}
