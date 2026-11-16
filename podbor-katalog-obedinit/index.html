@@ -129,6 +129,23 @@ html body .kv-bar button:hover{background:#0aba59;color:#fff}
 
 #catalog .catalog-heading{position:relative;z-index:21}
 
+/* стрелка в зелёном квадрате: видна всегда */
+html body #catalog .kv-ar{background:#c9f0d6!important;width:1.5em!important}
+html body #catalog .kv-ch{display:block!important;box-sizing:border-box!important;width:max(.42em,9px)!important;height:max(.42em,9px)!important;min-width:0!important;border:0 solid #141414!important;border-right-width:max(.13em,2px)!important;border-bottom-width:max(.13em,2px)!important;transform:translateY(-.1em) rotate(45deg)!important;background:none!important;opacity:1!important;visibility:visible!important;position:static!important;margin:0!important;padding:0!important}
+html body #catalog [aria-expanded="true"] .kv-ch{transform:translateY(.1em) rotate(225deg)!important}
+html body #catalog .kv-f:hover .kv-ch,html body #catalog .kv-cu:focus-within .kv-ch{border-color:#fff!important}
+/* свой вариант: поле без лишних полос */
+html body #catalog .kv-cu{align-items:stretch!important;background:#fff!important}
+html body #catalog .kv-inp{height:auto!important;min-height:0!important;align-self:stretch!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;outline:0!important;background:transparent!important;font:inherit!important;color:inherit!important;line-height:1!important;padding:0 .3em!important;text-align:right}
+html body #catalog .kv-inp::placeholder{color:#9aa0a6;font-weight:400}
+html body #catalog button.kv-ar{align-self:stretch!important;height:auto!important}
+/* поводы кружочками */
+#catalog .kv-occ{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:20px 0 0}
+#catalog .kv-occ-l{font:500 16px/1.2 Roboto,Arial,sans-serif;color:#5f6368;margin-right:4px}
+html body #catalog .kv-occ button{min-height:44px;padding:0 20px;border:1.5px solid #141414!important;border-radius:999px!important;background:#fff;color:#141414;font:500 16px/1 Roboto,Arial,sans-serif;cursor:pointer;box-shadow:none}
+html body #catalog .kv-occ button:hover{border-color:#0aba59!important;color:#0aba59}
+html body #catalog .kv-occ button[aria-pressed="true"]{background:#0aba59;border-color:#0aba59!important;color:#fff}
+@media (max-width:700px){#catalog .kv-occ{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}html body #catalog .kv-occ button{flex:none;white-space:nowrap}}
 /* V7, V8: фраза сверху + колонка категорий */
 #catalog .kv78{margin-top:24px}
 #catalog .kv8{grid-template-columns:minmax(0,1fr) 300px}
@@ -1019,12 +1036,13 @@ var P=JSON.parse(document.getElementById('kv-data').textContent);
 var CATS=['Хиты','Бизнес-игры','Творческие','Спортивные','Кулинарные','С нейросетями','Новогодние','Необычные'];
 var CAT_L=[{id:'Все',label:'все программы'},{id:'Хиты',label:'хиты'},{id:'Бизнес-игры',label:'бизнес-игры'},{id:'Творческие',label:'творческие программы'},{id:'Спортивные',label:'спортивные программы'},{id:'Кулинарные',label:'кулинарные программы'},{id:'С нейросетями',label:'программы с нейросетями'},{id:'Новогодние',label:'новогодние программы'},{id:'Необычные',label:'необычные программы'}];
 var FMT={'Бизнес-игры':'бизнес-игра','Творческие':'творчество','Спортивные':'спорт','Кулинарные':'кулинария','С нейросетями':'нейросети'};
-var WH=[{id:'any',label:'в любом месте'},{id:'room',label:'в помещении'},{id:'street',label:'на улице'},{id:'trip',label:'на выезде'}];
+var WH=[{id:'any',label:'в любом месте'},{id:'office',label:'в офисе'},{id:'room',label:'в зале или лофте'},{id:'street',label:'на улице'},{id:'trip',label:'на выезде за город'}];
+var OCC=[{id:'any',label:'любой повод'},{id:'tb',label:'тимбилдинг'},{id:'corp',label:'корпоратив'},{id:'bday',label:'день рождения компании'},{id:'ny',label:'Новый год'},{id:'trip',label:'выездное мероприятие'},{id:'conf',label:'конференция'}];
 function money(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
 var PEOPLE_L=[20,30,50,100,150,200,300,500,1000].map(function(v){return {id:String(v),label:String(v)}}).concat([{id:'custom',label:'Свой вариант'}]);
-var BUDGET_L=[150000,200000,300000,500000,700000,1000000,2000000].map(function(v){return {id:String(v),label:money(v)}}).concat([{id:'any',label:'не важно'},{id:'custom',label:'Свой вариант'}]);
-var ARIA={cat:'Какие программы',place:'Где',people:'Сколько человек',budget:'Бюджет'};
-var DEF={cat:'Хиты',place:'any',people:100,budget:500000,pc:false,bc:false};
+var BUDGET_L=[300000,500000,700000,1000000,1500000,2000000,3000000].map(function(v){return {id:String(v),label:money(v)}}).concat([{id:'any',label:'не знаем'},{id:'custom',label:'Свой вариант'}]);
+var ARIA={occ:'Повод',cat:'Какие программы',place:'Где',people:'Сколько человек',budget:'Бюджет'};
+var DEF={cat:'Хиты',place:'any',occ:'any',people:100,budget:500000,pc:false,bc:false};
 var st=JSON.parse(JSON.stringify(DEF));st.v=1;st.more=false;
 var NOTES={
 1:{t:'Вариант 1. Фраза над вкладками',lead:'Сначала фраза про группу, ниже привычные вкладки категорий. Самый спокойный переход от нынешней главной.',plus:['Вкладки остаются как сейчас, посетитель ничего не переучивает','Фраза отвечает на «сколько нас и сколько денег», вкладки на «что за программа»','Легко выкатить: вкладки и плитка не меняются'],minus:['Два ряда управления подряд, блок выше на 90 пикселей'],score:'9 из 10, рекомендую'},
@@ -1034,7 +1052,9 @@ var NOTES={
 5:{t:'Вариант 5. Липкая полоса',lead:'Вкладки сверху, а фраза в тонкой полосе, которая прилипает к меню при прокрутке плитки.',plus:['Условия всегда перед глазами, пока листаете карточки','Полоса заодно показывает, сколько программ подходит'],minus:['Ещё одна липкая полоса под меню, на телефоне закрывает часть экрана'],score:'8 из 10, хороший второй шаг после варианта 1'},
 6:{t:'Вариант 6. Фраза в заголовке',lead:'Заголовок сам стал формой: «Выберите программу для команды на [100] человек». Остальное строкой ниже.',plus:['Самый запоминающийся вариант, заголовок сразу работает','Главный параметр (сколько людей) не пропустить'],minus:['Выпадашка размером с заголовок тяжело выглядит на телефоне','Заголовок меняется при выборе, для поиска Яндекса текст H2 нестабилен'],score:'7 из 10'},
 7:{t:'Вариант 7. Фраза сверху, категории слева',lead:'Варианты 1 и 4 вместе: сверху фраза про группу и бюджет, под ней слева колонка категорий, справа карточки. Выбор во фразе и в колонке сразу меняет карточки.',plus:['Все категории видны сразу, без прокрутки вкладок','Колонка слева как в меню «Каталог программ»: посетитель уже знает такую раскладку','Фраза сверху читается первой и отвечает на «сколько нас и сколько денег»'],minus:['Карточки становятся уже: 3 в ряд вместо плитки на всю ширину','На телефоне колонка превращается в строку вкладок над карточками'],score:'9 из 10, рекомендую'},
-8:{t:'Вариант 8. Фраза сверху, категории справа',lead:'То же, что вариант 7, но колонка категорий справа от карточек.',plus:['Карточки начинаются слева, взгляд сразу падает на фото','Колонка справа не спорит с фразой за внимание'],minus:['Категории справа замечают позже: глаз читает слева направо','В меню сайта категории слева, здесь раскладка другая'],score:'7 из 10'}
+8:{t:'Вариант 8. Фраза сверху, категории справа',lead:'То же, что вариант 7, но колонка категорий справа от карточек.',plus:['Карточки начинаются слева, взгляд сразу падает на фото','Колонка справа не спорит с фразой за внимание'],minus:['Категории справа замечают позже: глаз читает слева направо','В меню сайта категории слева, здесь раскладка другая'],score:'7 из 10'},
+9:{t:'Вариант 9. Как 7 + повод кружочками',lead:'Под фразой ряд круглых кнопок с поводом: тимбилдинг, корпоратив, день рождения компании, Новый год. Ниже колонка категорий и карточки.',plus:['Повод виден сразу, один клик','Фраза остаётся короткой','Кнопки можно дополнять новыми поводами без переделки'],minus:['Ещё один ряд управления над карточками','Пока по данным отбирает только «Новый год»: остальные поводы ждут разметки программ'],score:'9 из 10, рекомендую'},
+10:{t:'Вариант 10. Как 7 + повод словом во фразе',lead:'Повод встроен во фразу: «Нужна программа на [корпоратив] для команды на [100] человек…».',plus:['Всё в одном предложении, без лишнего ряда','Читается как просьба менеджеру'],minus:['Фраза длиннее, на телефоне на строку больше','Повод спрятан в списке, его замечают реже'],score:'7 из 10'}
 };
 var ROOT=null,ORIG=null,TABS_SRC={};
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
@@ -1048,17 +1068,19 @@ function catOk(p,c){
  if(c==='Новогодние')return low(p.sezon).indexOf('новый год')>-1;
  return false
 }
+function occOk(p,o){if(o==='ny')return low(p.sezon).indexOf('новый год')>-1||p.c.indexOf('Новогодние')>-1;return true}
 function placeOk(p,pl){
  if(pl==='any')return true;
  if(!p.mesto)return false;
  if(pl==='trip')return p.vyezd==='да';
+ if(pl==='office')return p.ofis==='да';
  if(pl==='room')return p.mesto==='помещение'||p.mesto==='оба'||p.ofis==='да';
  if(pl==='street')return p.mesto==='улица'||p.mesto==='оба';
  return true
 }
 function match(s){
  return P.filter(function(p){
-  if(!catOk(p,s.cat)||!placeOk(p,s.place))return false;
+  if(!catOk(p,s.cat)||!placeOk(p,s.place)||!occOk(p,s.occ))return false;
   var r=range(p);if(r&&(s.people<r[0]||s.people>r[1]))return false;
   var t=total(p,s.people);if(s.budget!=null&&t!=null&&t>s.budget)return false;
   return true
@@ -1076,16 +1098,18 @@ function slot(q){
  var list,curId;
  if(q==='cat'){list=CAT_L;curId=st.cat}
  else if(q==='place'){list=WH;curId=st.place}
+ else if(q==='occ'){list=OCC;curId=st.occ}
  else{
   var isP=q==='people';list=isP?PEOPLE_L:BUDGET_L;var cust=isP?st.pc:st.bc;
   curId=cust?'custom':(st[q]==null?'any':String(st[q]));
   if(cust){
-   return '<span class="kv-slot" data-k="'+q+'"><span class="kv-f kv-cu"><input class="kv-inp'+(isP?'':' kv-m')+'" data-inp="'+q+'" type="text" inputmode="numeric" autocomplete="off" maxlength="'+(isP?4:9)+'" aria-label="'+(isP?'Число человек':'Бюджет, рублей')+'" value="'+(isP?st.people:money(st.budget))+'"><button type="button" class="kv-ar" data-slot="'+q+'" aria-haspopup="listbox" aria-expanded="false" aria-label="Выбрать из списка"><i class="kv-ch"></i></button></span>'+menu(q,list,curId)+'</span>'
+   return '<span class="kv-slot" data-k="'+q+'"><span class="kv-f kv-cu"><input class="kv-inp'+(isP?'':' kv-m')+'" data-inp="'+q+'" type="text" inputmode="numeric" autocomplete="off" maxlength="'+(isP?4:9)+'" aria-label="'+(isP?'Число человек':'Бюджет, рублей')+'" value="'+(st.emp===q?'':(isP?st.people:money(st.budget)))+'" placeholder="'+(isP?'сколько':'сумма')+'"><button type="button" class="kv-ar" data-slot="'+q+'" aria-haspopup="listbox" aria-expanded="false" aria-label="Выбрать из списка"><i class="kv-ch"></i></button></span>'+menu(q,list,curId)+'</span>'
   }
  }
  var cur=list.filter(function(o){return o.id===curId})[0]||list[0];
  return '<span class="kv-slot" data-k="'+q+'"><button type="button" class="kv-f" data-slot="'+q+'" aria-haspopup="listbox" aria-expanded="false" aria-label="'+ARIA[q]+': '+esc(cur.label)+'"><span class="kv-v">'+esc(cur.label)+'</span><span class="kv-ar"><i class="kv-ch"></i></span></button>'+menu(q,list,curId)+'</span>'
 }
+function occChips(){return '<div class="kv-occ" aria-label="Повод"><span class="kv-occ-l">Повод:</span>'+OCC.map(function(o){return '<button type="button" data-occ="'+o.id+'" aria-pressed="'+(st.occ===o.id)+'">'+esc(o.id==='any'?'Любой':o.label.charAt(0).toUpperCase()+o.label.slice(1))+'</button>'}).join('')+'</div>'}
 function budgetPart(){var any=st.budget==null;return 'бюджет '+(any?'':'до ')+slot('budget')+(any?'':' ₽')}
 /* ---------- вкладки ---------- */
 function tabInner(c){return TABS_SRC[c]||esc(c)}
@@ -1145,7 +1169,9 @@ var LAYOUT={
 5:function(){return head('Выберите программу для команды')+tabs()+'<div class="kv5-bar"><p class="kv-phrase">'+slot('place')+' на '+slot('people')+' человек, '+budgetPart()+'</p>'+count()+'</div>'+grid()},
 6:function(){return head('Выберите программу для команды на '+slot('people')+' человек')+'<p class="kv6-sub">'+slot('place')+', '+budgetPart()+'</p>'+tabs()+count()+grid()},
 7:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+'<div class="kv4 kv78">'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'<div class="kv4-main">'+count()+grid()+'</div></div>'},
-8:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+'<div class="kv4 kv78 kv8"><div class="kv4-main">'+count()+grid()+'</div>'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'</div>'}
+8:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+'<div class="kv4 kv78 kv8"><div class="kv4-main">'+count()+grid()+'</div>'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'</div>'},
+9:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+occChips()+'<div class="kv4 kv78">'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'<div class="kv4-main">'+count()+grid()+'</div></div>'},
+10:function(){return head('Выберите программу для команды')+'<div class="kv-card"><p class="kv-phrase">Нужна программа на '+slot('occ')+' для команды на '+slot('people')+' человек '+slot('place')+', '+budgetPart()+'</p></div>'+'<div class="kv4 kv78">'+'<aside class="kv4-side kv78-side" aria-label="Категории"><span class="kv4-lbl">Какие программы</span><div class="kv4-cats">'+['Все'].concat(CATS).map(function(c){return '<button type="button" data-cat="'+esc(c)+'" aria-pressed="'+(st.cat===c)+'">'+(c==='Все'?'Все программы':tabInner(c))+'</button>'}).join('')+'</div><a class="kv78-all" href="https://catalystrussia.ru/timbilding/">Все 50+ программ</a></aside>'+'<div class="kv4-main">'+count()+grid()+'</div></div>'}
 };
 function note(){
  var n=NOTES[st.v],el=document.getElementById('kv-note');if(!el)return;
@@ -1171,7 +1197,8 @@ function pick(q,v){
  st.more=false;
  if(q==='people'||q==='budget'){
   var ck=q==='people'?'pc':'bc';
-  if(v==='custom'){if(st[q]==null)st[q]=500000;st[ck]=true;render();var inp=ROOT.querySelector('[data-inp="'+q+'"]');if(inp){inp.focus();inp.select()}return}
+  if(v==='custom'){if(st[q]==null)st[q]=500000;st[ck]=true;st.emp=q;render();var inp=ROOT.querySelector('[data-inp="'+q+'"]');if(inp){inp.focus()}return}
+  st.emp=null;
   st[ck]=false;st[q]=v==='any'?null:+v
  }else st[q]=v;
  render(q)
@@ -1180,7 +1207,8 @@ function bind(){
  ROOT.addEventListener('click',function(e){
   var o=e.target.closest('.kv-menu [data-q]');if(o){pick(o.getAttribute('data-q'),o.getAttribute('data-v'));return}
   var b=e.target.closest('[data-slot]');if(b){openMenu(b);return}
-  var c=e.target.closest('[data-cat]');if(c){st.cat=c.getAttribute('data-cat');st.more=false;render('cat');return}
+  var oc=e.target.closest('[data-occ]');if(oc){st.occ=oc.getAttribute('data-occ');st.more=false;render();return}
+   var c=e.target.closest('[data-cat]');if(c){st.cat=c.getAttribute('data-cat');st.more=false;render('cat');return}
   var s=e.target.closest('[data-sug]');if(s){var x=(ROOT.__sug||[])[+s.getAttribute('data-sug')];if(x){Object.assign(st,x.ch);st.more=false;render()}return}
   if(e.target.closest('[data-more]')){st.more=true;render();return}
   var h=e.target.closest('.kv-help-btn');if(h){var ob=ORIG&&ORIG.querySelector('.catalog-help button');if(ob)ob.click();return}
@@ -1191,7 +1219,8 @@ function bind(){
  ROOT.addEventListener('change',function(e){
   var t=e.target;if(!t.matches||!t.matches('[data-inp]'))return;
   var q=t.getAttribute('data-inp'),v=parseInt(String(t.value).replace(/\D/g,''),10),max=q==='people'?9999:99999999;
-  if(isNaN(v)||v<1||v>max){t.value=q==='people'?st.people:money(st.budget);return}
+  if(isNaN(v)||v<1||v>max){t.value='';return}
+   st.emp=null;
   st[q]=v;st.more=false;render();var ni=ROOT.querySelector('[data-inp="'+q+'"]');if(ni)ni.blur()
  });
  ROOT.addEventListener('keydown',function(e){
@@ -1215,13 +1244,13 @@ function init(){
  if(oh){var cl=oh.cloneNode(true);var cb=cl.querySelector('button');if(cb){cb.removeAttribute('data-brief');cb.classList.add('kv-help-btn')}HELP=cl.outerHTML}
  bind();
  var bar=document.createElement('nav');bar.className='kv-bar';bar.setAttribute('aria-label','Варианты');
- bar.innerHTML='<span>Вариант</span>'+[1,2,3,4,5,6,7,8].map(function(v){return '<button type="button" data-v="'+v+'" aria-pressed="false">'+v+'</button>'}).join('')+'<button type="button" data-empty="1">Пусто</button>';
+ bar.innerHTML='<span>Вариант</span>'+[1,2,3,4,5,6,7,8,9,10].map(function(v){return '<button type="button" data-v="'+v+'" aria-pressed="false">'+v+'</button>'}).join('')+'<button type="button" data-empty="1">Пусто</button>';
  document.body.appendChild(bar);
  bar.addEventListener('click',function(e){
   var b=e.target.closest('[data-v]');if(b){setV(+b.getAttribute('data-v'),true);return}
   if(e.target.closest('[data-empty]')){Object.assign(st,{cat:'Новогодние',place:'street',people:20,budget:150000,pc:false,bc:false,more:false});setV(st.v,true)}
  });
- var hv=/^#v([1-8])$/.exec(location.hash);
+ var hv=/^#v(10|[1-9])$/.exec(location.hash);
  setV(hv?+hv[1]:1,false);
  setTimeout(function(){var n=document.getElementById('kv-note');if(n)n.scrollIntoView({behavior:'instant',block:'start'})},400);
  window.__kv={st:st,setV:setV,pick:pick,match:match,render:render,DEF:DEF}
