@@ -56,7 +56,7 @@ const A8=[
 function list8(st){let s=T('Команда на ивент',-180,-300,28,{max:360});
  [['Аниматоры',0],['Хостес',0],['Дед Мороз',1]].forEach((r,i)=>{const y=-240+i*124,bad=r[1]&&st===0,hot=r[1]&&st>0;
   s+=bad?`<rect x="-185" y="${y}" width="370" height="104" rx="22" fill="rgba(138,128,148,.16)" stroke="${C.gry}" stroke-width="2.5" stroke-dasharray="8 8"/>`:glass(-185,y,370,104,22,hot);
-  s+=r[1]?santa(-135,y+92,.78,st===0?'off':st===1?'half':'on'):man(-135,y+90,.85,1,i?C.pink:C.fux);
+  s+=r[1]?santa(-135,y+92,.78,st===0?'off':st===1?'half':'on'):(i===1?hostess(-135,y+90,.85,1,C.pink):man(-135,y+90,.85,1,C.fux));
   s+=T(r[0],-88,y+(r[1]?36:52),26,{b:1,c:bad?C.gry:C.wht});
   if(r[1])s+=T(st===0?'не придёт':st===1?'замена найдена':'на месте',-88,y+72,22,{b:1,c:bad?C.gry:C.pink});
   if(!bad&&!(r[1]&&st===1))s+=check(150,y+52,18);if(bad)s+=T('!',150,y+52,44,{a:'middle',c:C.gry})});

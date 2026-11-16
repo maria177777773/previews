@@ -21,12 +21,32 @@ function man(x,y,s,f=0,col=C.fux,o={}){const d=manD(x,y,s);
  if(f>=1)r+=G(x,y-36*s,74*s,col===C.fux||col===C.mal?'gp':'gw',.9)+`<path d="${d}" fill="${col}"/>`;
  else if(f>0){const id='c'+(uid++);r+=`<clipPath id="${id}"><rect x="${R(x-32*s)}" y="${R(y-82*s*f)}" width="${R(64*s)}" height="${R(82*s*f+2)}"/></clipPath><path d="${d}" fill="${col}" clip-path="url(#${id})"/>`}
  return r+`<path d="${d}" fill="none" stroke="${o.st||'rgba(255,194,224,.65)'}" stroke-width="2"${o.dash?' stroke-dasharray="6 6"':''}/>`}
-/* Дед Мороз: человечек с шапкой и бородой. st: on, off, half */
-function santa(x,y,s,st='on'){const off=st==='off',half=st==='half';const col=off?C.gry:C.fux,wh=off?'rgba(138,128,148,.5)':C.wht;
- let r=off?man(x,y,s,0,C.gry,{dead:1}):man(x,y,s,half?.5:1,C.fux);
- r+=`<path d="M${R(x-17*s)},${R(y-56*s)}Q${R(x)},${R(y-10*s)} ${R(x+17*s)},${R(y-56*s)}Q${R(x)},${R(y-44*s)} ${R(x-17*s)},${R(y-56*s)}Z" fill="${half?'rgba(255,255,255,.55)':wh}"/>`;
- r+=`<path d="M${R(x-21*s)},${R(y-72*s)}Q${R(x-6*s)},${R(y-116*s)} ${R(x+26*s)},${R(y-98*s)}L${R(x+21*s)},${R(y-72*s)}Z" fill="${off?'rgba(138,128,148,.35)':half?'rgba(255,46,147,.55)':col}" stroke="${off?C.gry:C.pink}" stroke-width="2"/>`;
- r+=`<rect x="${R(x-23*s)}" y="${R(y-78*s)}" width="${R(46*s)}" height="${R(10*s)}" rx="${R(5*s)}" fill="${wh}"/><circle cx="${R(x+27*s)}" cy="${R(y-98*s)}" r="${R(7*s)}" fill="${wh}"/>`;
+/* Дед Мороз: красная шапка с белой меховой опушкой и помпоном, борода, усы. st: on, off, half */
+function santa(x,y,s,st='on'){const off=st==='off',half=st==='half';
+ const red=off?'rgba(138,128,148,.45)':half?'rgba(227,38,46,.6)':'#E3262E',fur=off?'rgba(170,160,180,.6)':half?'rgba(255,255,255,.7)':'#FFFFFF';
+ let r=off?man(x,y,s,0,C.gry,{dead:1}):man(x,y,s,half?.5:1,off?C.gry:'#E3262E',{st:'rgba(255,194,224,.65)'});
+ /* шуба: белая опушка по низу и по центру */
+ if(!off)r+=`<rect x="${R(x-30*s)}" y="${R(y-8*s)}" width="${R(60*s)}" height="${R(8*s)}" rx="${R(4*s)}" fill="${fur}"/><rect x="${R(x-4*s)}" y="${R(y-40*s)}" width="${R(8*s)}" height="${R(34*s)}" fill="${fur}"/>`;
+ /* борода и усы */
+ r+=`<path d="M${R(x-19*s)},${R(y-62*s)}Q${R(x-22*s)},${R(y-30*s)} ${R(x)},${R(y-22*s)}Q${R(x+22*s)},${R(y-30*s)} ${R(x+19*s)},${R(y-62*s)}Q${R(x)},${R(y-50*s)} ${R(x-19*s)},${R(y-62*s)}Z" fill="${fur}"/>`;
+ r+=`<path d="M${R(x-13*s)},${R(y-58*s)}Q${R(x-6*s)},${R(y-64*s)} ${R(x)},${R(y-59*s)}Q${R(x+6*s)},${R(y-64*s)} ${R(x+13*s)},${R(y-58*s)}Q${R(x)},${R(y-54*s)} ${R(x-13*s)},${R(y-58*s)}Z" fill="${fur}" stroke="${off?C.gry:'#f0d6e2'}" stroke-width="1"/>`;
+ /* шапка: колпак, свисающий вбок, помпон */
+ r+=`<path d="M${R(x-22*s)},${R(y-74*s)}Q${R(x-16*s)},${R(y-112*s)} ${R(x+8*s)},${R(y-112*s)}Q${R(x+34*s)},${R(y-110*s)} ${R(x+40*s)},${R(y-86*s)}Q${R(x+30*s)},${R(y-96*s)} ${R(x+20*s)},${R(y-92*s)}L${R(x+22*s)},${R(y-74*s)}Z" fill="${red}"/>`;
+ r+=`<path d="M${R(x-12*s)},${R(y-104*s)}Q${R(x+4*s)},${R(y-110*s)} ${R(x+18*s)},${R(y-100*s)}" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="${R(3*s)}" stroke-linecap="round"/>`;
+ let fz='';for(let i=0;i<7;i++)fz+=`<circle cx="${R(x-24*s+i*8*s)}" cy="${R(y-74*s+(i%2?1.5:-1.5)*s)}" r="${R(6.2*s)}" fill="${fur}"/>`;
+ r+=fz+`<circle cx="${R(x+41*s)}" cy="${R(y-84*s)}" r="${R(9*s)}" fill="${fur}"/>`;
+ return r}
+/* хостес: человечек с длинными волосами, лифчиком в стразах и на шпильках */
+function hostess(x,y,s,f=1,col=C.pink){const hair=`<path d="M${R(x-22*s)},${R(y-60*s)}Q${R(x-26*s)},${R(y-94*s)} ${R(x)},${R(y-86*s)}Q${R(x+26*s)},${R(y-94*s)} ${R(x+22*s)},${R(y-60*s)}Q${R(x+26*s)},${R(y-30*s)} ${R(x+16*s)},${R(y-34*s)}Q${R(x+18*s)},${R(y-58*s)} ${R(x)},${R(y-74*s)}Q${R(x-18*s)},${R(y-58*s)} ${R(x-16*s)},${R(y-34*s)}Q${R(x-26*s)},${R(y-30*s)} ${R(x-22*s)},${R(y-60*s)}Z" fill="${C.mal}"/>`;
+ let r=man(x,y,s,f,col)+hair;
+ /* лифчик: две чашечки и бретельки, усыпанные стразами */
+ const cup=(cx)=>`<path d="M${R(cx-10*s)},${R(y-28*s)}Q${R(cx)},${R(y-16*s)} ${R(cx+10*s)},${R(y-28*s)}Q${R(cx)},${R(y-36*s)} ${R(cx-10*s)},${R(y-28*s)}Z" fill="#fff" stroke="#FFE36E" stroke-width="${R(1.6*s)}"/>`;
+ r+=`<path d="M${R(x-18*s)},${R(y-30*s)}L${R(x-12*s)},${R(y-42*s)}M${R(x+18*s)},${R(y-30*s)}L${R(x+12*s)},${R(y-42*s)}" stroke="#fff" stroke-width="${R(2*s)}"/>`+cup(x-10*s)+cup(x+10*s);
+ let st='';[[-15,-28],[-10,-25],[-5,-28],[-10,-31],[5,-28],[10,-25],[15,-28],[10,-31],[0,-27]].forEach(([dx,dy],i)=>{st+=G(x+dx*s,y+dy*s,5*s,'gw',.9)+`<circle cx="${R(x+dx*s)}" cy="${R(y+dy*s)}" r="${R(1.9*s)}" fill="${i%3?'#FFF6C8':'#BDF4FF'}"/>`});
+ /* искра-блик на стразах */
+ st+=`<path d="M${R(x+20*s)},${R(y-44*s)}l${R(2*s)},${R(5*s)}l${R(5*s)},${R(2*s)}l${R(-5*s)},${R(2*s)}l${R(-2*s)},${R(5*s)}l${R(-2*s)},${R(-5*s)}l${R(-5*s)},${R(-2*s)}l${R(5*s)},${R(-2*s)}Z" fill="#fff"/>`;
+ /* шпильки */
+ r+=st+`<path d="M${R(x-16*s)},${R(y)}l${R(-6*s)},${R(10*s)}h${R(10*s)}M${R(x+16*s)},${R(y)}l${R(6*s)},${R(10*s)}h${R(-10*s)}" stroke="${C.mal}" stroke-width="${R(3*s)}" fill="none" stroke-linecap="round"/>`;
  return r}
 /* кот из части 1 */
 function cat(x,y,s,col=C.fux,eye=C.wht){return `<g transform="translate(${x},${y}) scale(${s})"><path d="M24,-8Q62,-10 60,-52" fill="none" stroke="${col}" stroke-width="9" stroke-linecap="round"/><ellipse cx="0" cy="-28" rx="30" ry="30" fill="${col}"/><circle cx="0" cy="-70" r="23" fill="${col}"/><path d="M-22,-78L-19,-106L-3,-88ZM22,-78L19,-106L3,-88Z" fill="${col}"/><ellipse cx="-9" cy="-72" rx="4" ry="6" fill="${eye}"/><ellipse cx="9" cy="-72" rx="4" ry="6" fill="${eye}"/></g>`}
