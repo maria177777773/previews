@@ -49,6 +49,19 @@ th{background:var(--blue);color:#fff;font:600 15px var(--b)}
 .ground{position:absolute;left:0;right:0;bottom:0;height:22px;background:var(--red);border-top:8px solid var(--yel);z-index:0}
 .film{margin-top:30px;border-radius:20px;overflow:hidden;max-width:760px;position:relative;z-index:2;border:4px solid var(--yel)}
 .film img,.film video{display:block;width:100%}
+.heroes img.pk{border:4px solid var(--yel);border-radius:22px 22px 0 0;border-bottom:0;object-fit:cover;filter:drop-shadow(0 10px 18px rgba(15,27,76,.3))}
+.lideri{position:absolute;left:64px;bottom:64px;z-index:2;display:flex;gap:40px;flex-wrap:wrap;font-size:20px;color:#DCE3FF}
+.lideri b{display:block;color:#fff;font:700 28px/1.15 var(--s)}
+.plan{display:grid;grid-template-columns:1fr 330px;gap:32px;margin-top:32px;position:relative;z-index:2;max-width:1300px;align-items:start}
+.plan .list{margin-top:0}
+.porty{display:grid;gap:16px}
+.port{display:flex;gap:14px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:18px;padding:12px}
+.port img{width:96px;height:96px;border-radius:14px;object-fit:cover;border:3px solid var(--yel)}
+.port b{display:block;font:700 22px/1.15 var(--s)}
+.port span{color:var(--muted);font-size:16px}
+.itog{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;max-width:1500px;position:relative;z-index:2}
+.itog table{margin-top:36px}
+.itog .kadr{margin-top:36px;min-height:0}
 a.shotimg{display:block;margin-top:14px;border-radius:12px;overflow:hidden;border:2px solid var(--line);aspect-ratio:16/10;background:#fff}
 a.shotimg img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .3s}
 a.shotimg:hover img{transform:scale(1.04)}
@@ -79,7 +92,7 @@ a.shotimg:hover img{transform:scale(1.04)}
 .nav a{width:12px;height:12px;border-radius:50%;background:#B7C0E4;display:block}
 .nav a.on{background:var(--red)}
 .note{position:fixed;left:16px;bottom:16px;z-index:9;background:#111;color:#fff;font:500 13px var(--b);padding:8px 12px;border-radius:8px;opacity:.85}
-@media (max-width:820px){.ig{grid-template-columns:1fr}.scr{padding:32px 16px 0}.steps{grid-template-columns:1fr 1fr}.li{grid-template-columns:1fr}.heroes{height:22vh}.nav{display:none}}
+@media (max-width:820px){.ig,.plan,.itog{grid-template-columns:1fr}.lideri{position:static;margin-top:28px}.scr{padding:32px 16px 0}.steps{grid-template-columns:1fr 1fr}.li{grid-template-columns:1fr}.heroes{height:22vh}.nav{display:none}}
 @media (prefers-reduced-motion:reduce){.rv,.heroes img{transition:none;opacity:1;transform:none;animation:none}}
 </style>
 </head>
@@ -92,7 +105,8 @@ a.shotimg:hover img{transform:scale(1.04)}
   <div class="top"><span>1 · Проект</span><span class="crit">Актуальность задачи</span></div>
   <h1 class="rv">Тендер-Печь</h1>
   <div class="sub rv">Смета по тендерному заданию за 15 минут, а не за несколько дней</div>
-  <p class="lead rv">Высокий сезон: тендеров больше, чем рук. Программа читает ТЗ и печёт черновик сметы, менеджер его только проверяет.<br><br>Лидер проекта: <b>Мария Лесных</b> · партнёрский проект</p>
+  <p class="lead rv">Высокий сезон: тендеров больше, чем рук. Печь читает ТЗ и создаёт черновик сметы, менеджер его только проверяет.</p>
+  <div class="lideri rv"><div>Лидер проекта<b>Мария Лесных</b></div><div>Наставник проекта<b>Мария Варламова</b></div></div>
   <div class="heroes"><img src="img/carevna.webp" style="right:24%" alt=""><img src="img/kot-sidit.webp" style="right:8%;height:55%" alt=""></div>
   <div class="ground"></div>
 </section>
@@ -100,9 +114,9 @@ a.shotimg:hover img{transform:scale(1.04)}
 <!-- 2 -->
 <section class="scr">
   <div class="top"><span>2 · Как было</span><span class="crit">Проблема в цифрах</span></div>
-  <h2 class="rv">Тендерный отдел ждал смету от менеджеров от 1 до 5 дней</h2>
+  <h2 class="rv">Тендерный отдел ждал смету от менеджеров от 1 до 7 дней</h2>
   <div class="row">
-    <div class="card rv"><div class="n">1–5 дней</div><div class="t">ожидание сметы от менеджеров</div><span class="src">Источник: опрос тендерного отдела, презентация 22.10</span></div>
+    <div class="card rv"><div class="n">1–7 дней</div><div class="t">ожидание сметы от менеджеров</div><span class="src">Источник: опрос тендерного отдела, презентация 22.10</span></div>
     <div class="card rv"><div class="n">?</div><div class="t">тендеров не успели подать за сезон</div><span class="todo">нужна цифра от Марии Лесных</span></div>
     <div class="kadr rv"><img src="img/kadr-32.webp" alt="Кадр мультика: «Где мои сметы?»" loading="lazy"></div>
   </div>
@@ -116,11 +130,11 @@ a.shotimg:hover img{transform:scale(1.04)}
   <h2 class="rv">От ТЗ до согласованной сметы за четыре шага</h2>
   <div class="steps">
     <div class="step rv"><b>1</b><p>Тендерный отдел загружает ТЗ</p><a class="shotimg" href="img/scr-1-zagruzka.webp" target="_blank"><img src="img/scr-1-zagruzka.webp" alt="Окно загрузки ТЗ" loading="lazy"></a></div>
-    <div class="step rv"><b>2</b><p>ИИ печёт черновик по прайсам трёх компаний</p><a class="shotimg" href="img/scr-2-smeta.webp" target="_blank"><img src="img/scr-2-smeta.webp" alt="Готовая смета Тендер-Печи" loading="lazy"></a></div>
+    <div class="step rv"><b>2</b><p>Печь создаёт черновик по прайсам трёх компаний</p><a class="shotimg" href="img/scr-2-smeta.webp" target="_blank"><img src="img/scr-2-smeta.webp" alt="Готовая смета Тендер-Печи" loading="lazy"></a></div>
     <div class="step rv"><b>3</b><p>Менеджер правит по своей ссылке</p><a class="shotimg" href="img/scr-3-menedzher.webp" target="_blank"><img src="img/scr-3-menedzher.webp" alt="Смета менеджера" loading="lazy"></a></div>
     <div class="step rv"><b>4</b><p>Мария сравнивает версии и согласует</p><a class="shotimg" href="img/scr-4-sravnenie.webp" target="_blank"><img src="img/scr-4-sravnenie.webp" alt="Сравнение версий сметы" loading="lazy"></a></div>
   </div>
-  <div class="heroes"><img src="img/pech.webp" style="right:6%" alt=""></div>
+  <div class="heroes"><img class="pk" src="img/pech-nasha.webp" style="right:5%" alt="Тендер-Печь"></div>
   <div class="ground"></div>
 </section>
 
@@ -129,12 +143,12 @@ a.shotimg:hover img{transform:scale(1.04)}
   <div class="top"><span>4 · Что запущено</span><span class="crit">Работоспособность</span></div>
   <h2 class="rv">Работает с 21 октября 2026 на реальных тендерах</h2>
   <div class="row">
-    <div class="card on rv"><div class="n">14</div><div class="t">тендеров прошли через печь</div><span class="src">база программы, 13.11</span></div>
-    <div class="card rv"><div class="n">20</div><div class="t">смет: 14 от ИИ, 6 от менеджеров</div><span class="src">база программы, 13.11</span></div>
-    <div class="card rv"><div class="n">19</div><div class="t">ссылок менеджерам трёх компаний</div><span class="src">база программы, 13.11</span></div>
-    <div class="card rv"><div class="n">21,5 млн ₽</div><div class="t">общий объём посчитанных смет</div><span class="src">база программы, 13.11</span></div>
+    <div class="card on rv"><div class="n">26</div><div class="t">тендеров прошли через Печь</div></div>
+    <div class="card rv"><div class="n">37</div><div class="t">смет: 26 от Печи, 11 от менеджеров</div></div>
+    <div class="card rv"><div class="n">35</div><div class="t">ссылок менеджерам трёх компаний</div></div>
+    <div class="card rv"><div class="n">40 млн ₽</div><div class="t">общий объём посчитанных смет</div></div>
   </div>
-  <div class="heroes"><img src="img/mudrec.webp" style="right:8%" alt=""></div>
+  <div class="row"><div class="kadr rv" style="flex:0 1 620px;min-height:0"><img src="img/kadr-98.webp" alt="Кадр мультика: менеджеры у Тендер-Печи" loading="lazy"></div></div>
   <div class="ground"></div>
 </section>
 
@@ -143,8 +157,8 @@ a.shotimg:hover img{transform:scale(1.04)}
   <div class="top"><span>5 · До и после</span><span class="crit">Измеримый результат</span></div>
   <h2 class="rv">Было и стало</h2>
   <div class="row">
-    <div class="card rv"><div class="n">1–5 дней → 15 мин</div><div class="t">смета для тендера</div><span class="src">опрос отдела и замер в программе</span></div>
-    <div class="card on rv" style="background:#132C8F"><div class="n">44 секунды</div><div class="t">черновик сметы от ИИ, медиана по 10 тендерам</div><span class="src" style="color:#B8C4F5">база программы, 13.11</span></div>
+    <div class="card rv"><div class="n">1–7 дней → 15 мин</div><div class="t">смета для тендера</div><span class="src">опрос отдела и замер в программе</span></div>
+    <div class="card on rv" style="background:#132C8F"><div class="n">44 секунды</div><div class="t">черновик сметы от Печи, медиана по 50 тендерам</div><span class="src" style="color:#B8C4F5">база программы, 13.11</span></div>
     <div class="card on rv" style="background:#132C8F"><div class="n">до 80%</div><div class="t">сметы готово до менеджера</div><span class="todo">проверить по сравнению версий</span></div>
   </div>
   <div class="row"><div class="kadr rv" style="flex:0 1 640px;min-height:0"><img src="img/kadr-108.webp" alt="Кадр мультика: печь испекла смету" loading="lazy"></div></div>
@@ -158,8 +172,8 @@ a.shotimg:hover img{transform:scale(1.04)}
   <h2 class="rv">Что даст высокий сезон</h2>
   <div class="row">
     <div class="card on rv"><div class="n">×3</div><div class="t">тендеров в неделю на того же человека</div><span class="todo">допущение, сверить с Марией</span></div>
-    <div class="card rv"><div class="n">? ч</div><div class="t">часов менеджеров сэкономим за декабрь</div><span class="todo">считаю: тендеров × (было − стало)</span></div>
-    <div class="card rv"><div class="n">? ₽</div><div class="t">дополнительной выручки, если выиграем хотя бы 1 из N</div><span class="todo">нужна доля выигрышей</span></div>
+    <div class="card rv"><div class="n">≈1 450 ч</div><div class="t">часов менеджеров сэкономили на 26 сметах</div><span class="src">было: 26 смет × 7 дней × 8 ч; стало: 15 минут на смету</span></div>
+    <div class="card rv"><div class="n">+30 млн ₽</div><div class="t">дополнительной выручки в высокий сезон</div></div>
     <div class="kadr rv"><img src="img/kadr-128.webp" alt="Кадр мультика: «Вы выиграли тендер!»" loading="lazy"></div>
   </div>
   <p class="lead rv">Допущения пишем прямо на экране, чтобы жюри видело, откуда цифра.</p>
@@ -173,10 +187,10 @@ a.shotimg:hover img{transform:scale(1.04)}
   <h2 class="rv">Кто работает в печи</h2>
   <div class="row">
     <div class="card on rv" style="background:#132C8F"><div class="n">2</div><div class="t">сотрудника тендерного отдела ведут тендеры</div></div>
-    <div class="card on rv" style="background:#132C8F"><div class="n">3</div><div class="t">компании: Арт-Актив, Проинтерактив, Аренда Плюс</div></div>
+    <div class="card on rv" style="background:#132C8F"><div class="n">3</div><div class="t">компании: Арт-Актив, Про Интерактив, Аренда Плюс</div></div>
     <div class="card on rv" style="background:#132C8F"><div class="n">15</div><div class="t">менеджеров подключаем к декабрю</div><span class="todo">сейчас по ссылкам работали около 8</span></div>
   </div>
-  <div class="film rv"><video src="../tender-pech-film/rolik.mp4#t=88,116" poster="img/kadr-88.webp" controls preload="none" playsinline></video></div>
+  <div class="film rv" style="margin-bottom:70px"><img src="img/kadr-120.webp" alt="Кадр мультика: отдел работает с Тендер-Печью"></div>
   <div class="ground"></div>
 </section>
 
@@ -185,40 +199,49 @@ a.shotimg:hover img{transform:scale(1.04)}
   <div class="top"><span>7 · Внедрение</span><span class="crit">Интеграции</span></div>
   <h2 class="rv">Тендер-Печь уже работает с компаниями и партнёрами</h2>
   <div class="ig">
-    <div class="card rv"><h3>Интегрирована с тремя компаниями</h3><div class="pills"><span class="pill">Аренда Плюс</span><span class="pill">Проинтерактив</span><span class="pill">Арт-Актив</span></div></div>
+    <div class="card rv"><h3>Интегрирована с тремя компаниями</h3><div class="pills"><span class="pill">Аренда Плюс</span><span class="pill">Про Интерактив</span><span class="pill">Арт-Актив</span></div></div>
     <div class="card rv"><h3>Настроена интеграция с партнёрами</h3><div class="pills"><span class="pill pt">Каталист</span><span class="pill pt">Бар Стрит</span></div></div>
   </div>
   <div class="more rv"><span class="plus" aria-hidden="true">+</span><div><b>Скоро добавим других партнёров</b><span>Новый партнёр подключается одной кнопкой.</span></div></div>
-  <div class="heroes"><img src="img/pechi.webp" style="right:6%" alt=""></div>
+  <div class="heroes"><img class="pk" src="img/pech-nasha2.webp" style="right:5%" alt="Тендер-Печь"></div>
   <div class="ground"></div>
 </section>
 
 <!-- 8 -->
 <section class="scr">
   <div class="top"><span>8 · Что доделать</span><span class="crit">План развития</span></div>
-  <h2 class="rv">До декабря</h2>
-  <div class="list">
-    <div class="li rv"><b>Счётчик смет на экране кабинета</b><span>до 20.11</span><span>Мария Варламова</span></div>
-    <div class="li rv"><b>Повтор ИИ без ручного шага: 4 из 14 тендеров ждали повтора</b><span>до 25.11</span><span>Мария Варламова</span></div>
-    <div class="li rv"><b>Подключить всех 15 менеджеров</b><span>до 01.12</span><span>Мария Лесных</span></div>
-    <div class="li rv"><b>Отметка «выиграли / не выиграли» у тендера</b><span>до 01.12</span><span>Мария Лесных</span></div>
+  <h2 class="rv">До декабря: сквозная аналитика от ТЗ до выигранного тендера</h2>
+  <p class="lead rv">Каждый тендер в одном отчёте: когда пришло ТЗ, когда Печь собрала черновик, кто из менеджеров правил, выиграли ли мы и сколько заработали.</p>
+  <div class="plan">
+    <div class="list">
+      <div class="li rv"><b>Сквозной отчёт по каждому тендеру: ТЗ, смета, менеджер, итог</b><span>до 01.12</span><span>Мария Варламова</span></div>
+      <div class="li rv"><b>Счётчик смет и сэкономленных часов в кабинете</b><span>до 20.11</span><span>Мария Варламова</span></div>
+      <div class="li rv"><b>Отметка «выиграли / не выиграли» и выручка по тендеру</b><span>до 01.12</span><span>Мария Лесных</span></div>
+      <div class="li rv"><b>Подключить всех 15 менеджеров</b><span>до 01.12</span><span>Мария Лесных</span></div>
+    </div>
+    <div class="porty">
+      <div class="port rv"><img src="img/portret-lesnyh.webp" alt=""><div><b>Мария Лесных</b><span>лидер проекта</span></div></div>
+      <div class="port rv"><img src="img/portret-varlamova.webp" alt=""><div><b>Мария Варламова</b><span>наставник проекта</span></div></div>
+    </div>
   </div>
-  <div class="heroes"><img src="img/carevna.webp" style="right:8%;height:90%" alt=""></div>
   <div class="ground"></div>
 </section>
 
 <!-- 9 -->
 <section class="scr">
   <div class="top"><span>9 · Как проверим</span><span class="crit">Метрики успеха</span></div>
-  <h2 class="rv">Итог в январе по данным программы</h2>
+  <h2 class="rv">Итог в январе по данным сквозной аналитики</h2>
+  <div class="itog">
   <table class="rv">
     <tr><th>Метрика</th><th>Сейчас</th><th>Цель на декабрь</th><th>Откуда данные</th></tr>
-    <tr><td>Тендеров через печь</td><td>14</td><td><span class="todo">цель?</span></td><td>счётчик в кабинете</td></tr>
-    <tr><td>Время до черновика</td><td>44 с</td><td>до 1 мин</td><td>журнал событий</td></tr>
-    <tr><td>Менеджеров в работе</td><td>~8</td><td>15</td><td>ссылки менеджеров</td></tr>
-    <tr><td>Выигранных тендеров</td><td>не считаем</td><td><span class="todo">цель?</span></td><td>новая отметка</td></tr>
+    <tr><td>Тендеров через Печь</td><td>26</td><td>60</td><td>счётчик в кабинете</td></tr>
+    <tr><td>Смета для тендера</td><td>15 мин вместо 1–7 дней</td><td>15 мин</td><td>журнал событий</td></tr>
+    <tr><td>Часов менеджеров сэкономлено</td><td>≈1 450 ч</td><td>≈3 300 ч</td><td>сквозная аналитика</td></tr>
+    <tr><td>Менеджеров в работе</td><td>8</td><td>15</td><td>ссылки менеджеров</td></tr>
+    <tr><td>Дополнительная выручка</td><td>считаем</td><td>+30 млн ₽</td><td>отметка «выиграли»</td></tr>
   </table>
-  <div class="heroes"><img src="img/mudrec.webp" style="right:6%;height:85%" alt=""></div>
+  <div class="kadr rv"><img src="img/kadr-123.webp" alt="Кадр мультика: отдел празднует" loading="lazy"></div>
+  </div>
   <div class="ground"></div>
 </section>
 
@@ -228,11 +251,11 @@ a.shotimg:hover img{transform:scale(1.04)}
   <h2 class="rv" style="color:var(--yel)">Готовим сметы как горячие пирожки</h2>
   <div class="team">
     <div class="card on rv" style="background:#132C8F"><b>Мария Лесных</b><div class="t">лидер проекта, реализация и внедрение</div></div>
-    <div class="card on rv" style="background:#132C8F"><b>Мария Варламова</b><div class="t">реализация, наставник</div></div>
-    <div class="card on rv" style="background:#132C8F"><b>Станислав Журавлёв</b><div class="t">идея, вдохновитель</div></div>
+    <div class="card on rv" style="background:#132C8F"><b>Мария Варламова</b><div class="t">наставник проекта, реализация</div></div>
+    <div class="card on rv" style="background:#132C8F"><b>Станислав Журавлёв</b><div class="t">идейный вдохновитель</div></div>
     <div class="qr rv">QR<br>tender-pech.ru</div>
   </div>
-  <div class="heroes"><img src="img/carevna.webp" style="left:6%" alt=""><img src="img/pech.webp" style="left:40%;height:80%" alt=""><img src="img/kot-sidit.webp" style="right:8%;height:55%" alt=""></div>
+  <div class="heroes"><img src="img/carevna.webp" style="left:6%" alt=""><img class="pk" src="img/pech-nasha.webp" style="left:40%;height:85%" alt="Тендер-Печь"><img src="img/kot-sidit.webp" style="right:8%;height:55%" alt=""></div>
   <div class="ground"></div>
 </section>
 
