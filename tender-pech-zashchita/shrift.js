@@ -1,0 +1,5 @@
+(function(){var f=new URLSearchParams(location.search).get('f');if(!f)return;
+var V={1:['Kurale','Kurale','PT Sans',400],2:['Yeseva One','Lora','PT Sans',700],3:['Old Standard TT','Old Standard TT','PT Sans',700],4:['Forum','Philosopher','Philosopher',700],5:['Underdog','Neucha','Rubik',400],6:['Kelly Slab','Kelly Slab','Rubik',400],7:['Russo One','Rubik','Rubik',700],8:['Oswald','Oswald','PT Sans',700],9:['Alice','Alice','PT Sans',400]}[f];if(!V)return;
+var fam=[...new Set(V.slice(0,3))].map(n=>'family='+n.replace(/ /g,'+')+(/Lora|Old Standard|Philosopher|Rubik|Oswald|PT Sans/.test(n)?':wght@400;700':'')).join('&');
+var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?'+fam+'&display=swap';document.head.appendChild(l);
+var s=document.createElement('style');s.textContent=":root{--h:'"+V[0]+"';--s:'"+V[1]+"';--b:'"+V[2]+"'}h2,.sub,.big,.card .n,.lideri b,.step b,.port b,.pill,.ig .card h3{font-weight:"+V[3]+"!important}.note{display:none}";document.head.appendChild(s);})();
