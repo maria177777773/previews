@@ -1,8 +1,8 @@
 /* Сцены 2, 3, 4 */
 const SCENES=[];
 /* ---------- общие детали ---------- */
-/* Иван: тело человечка + вырезанная голова из мема (ivan-golova.png) */
-function ivan(x,y,s,tag=1){const hw=78*s,hh=hw*326/372;return G(x,y-40*s,95*s,'gw',.55)+`<path d="M${R(x-30*s)},${R(y)}V${R(y-12*s)}A${R(30*s)},${R(30*s)} 0 0 1 ${R(x+30*s)},${R(y-12*s)}V${R(y)}Z" fill="#fff"/><image href="ivan-golova.png" x="${R(x-hw/2)}" y="${R(y-38*s-hh)}" width="${R(hw)}" height="${R(hh)}"/>`+(tag?glass(x-90,y+18,180,56,18)+T('Иван',x,y+47,28,{b:1,a:'middle'}):'')}
+/* Иван: только вырезанное фото из мема (ivan-golova.png) и подпись, без фигурки (Маша 16.11.2026) */
+function ivan(x,y,s,tag=1){const hw=118*s,hh=hw*296/296;return `<image href="ivan-golova.png" x="${R(x-hw/2)}" y="${R(y-hh)}" width="${R(hw)}" height="${R(hh)}"/>`+(tag?glass(x-135,y+18,270,56,18)+T('Менеджер Иван',x,y+47,26,{b:1,a:'middle',max:240}):'')}
 /* окно сделки в системе «Тони Старк» */
 function stark(x,y,w,h,o={}){const bw=w-80,by=y+h-80;
  let s=`<g${o.op?` opacity="${o.op}"`:''}>`+dark(x,y,w,h,28,.72)+glass(x,y,w,h,28);
