@@ -1,0 +1,9 @@
+@font-face{font-family:Unbounded;font-weight:900;src:url(fonts/unbounded-cyrillic-900-normal-_ZC4uVSi.woff2) format('woff2');unicode-range:U+0400-04FF,U+0301}
+@font-face{font-family:Unbounded;font-weight:900;src:url(fonts/unbounded-latin-900-normal-DrIEwloP.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Golos Text";font-weight:600;src:url(fonts/golos-text-cyrillic-600-normal-lpQ9rVRR.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:"Golos Text";font-weight:600;src:url(fonts/golos-text-latin-600-normal-Bhk8uV1U.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Golos Text";font-weight:700;src:url(fonts/golos-text-cyrillic-700-normal-BKmY45Ip.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:"Shantell Sans";font-weight:800;src:url(fonts/ShantellSans-800.ttf) format('truetype')}
+html,body{margin:0;height:100%;overflow:hidden}
+body{display:flex;align-items:center;justify-content:center}
+canvas{display:block}
