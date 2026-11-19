@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Человеки · одностраничник, макет 1">
+<meta property="og:description" content="Человеки: макет одностраничника">
+<meta name="description" content="Человеки: макет одностраничника">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maria177777773.github.io/cheloveki/lending/">
+<meta property="og:image" content="https://maria177777773.github.io/cheloveki/platforma/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://maria177777773.github.io/cheloveki/platforma/og.jpg">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0;font:14px system-ui;background:#f7f7f5}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Человеки · одностраничник, макет 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Golos+Text:wght@400;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--malina:#C20D52;--fuchsia:#FF2E93;--baby:#FFC2E0;--blush:#FFE3F0;--ink:#111;--muted:#5a4a52}
+body{font-family:'Golos Text',sans-serif;color:var(--ink);background:#fff;font-size:18px;line-height:1.5}
+h1,h2,h3,.big{font-family:'Unbounded',sans-serif;line-height:1.05;letter-spacing:-.01em}
+h2{font-size:clamp(34px,4.6vw,64px);font-weight:900;margin-bottom:28px}
+h3{font-size:22px;font-weight:700;margin-bottom:10px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+section{padding:110px 0;position:relative}
+.tag{position:absolute;top:18px;left:18px;font:600 12px/1 'Golos Text';background:#111;color:#fff;padding:7px 10px;border-radius:6px;letter-spacing:.04em;z-index:20}
+.tag b{color:var(--baby)}
+.note{display:inline-block;background:#fff6c2;border:1px dashed #b59b00;color:#5c4d00;font-size:14px;padding:4px 10px;border-radius:6px;margin-top:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-width:280px;height:64px;padding:0 28px;border-radius:40px;font:700 18px 'Golos Text';text-decoration:none;cursor:pointer;border:0}
+.btn.pri{background:var(--ink);color:#fff}.btn.pri:hover{background:var(--malina)}
+.btn.sec{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.pink{background:var(--fuchsia);color:#fff}
+.lead{font-size:22px;color:var(--muted);max-width:760px}
+
+/* меню */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,194,224,.92);backdrop-filter:blur(8px);border-bottom:1px solid #f3a9cc}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:72px}
+.nav img{height:30px}
+.nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:16px}
+.nav .sp{flex:1}
+.nav .btn{min-width:0;height:46px;font-size:16px}
+
+/* 1 заставка */
+.hero{padding:0;background:linear-gradient(var(--malina) 0 58%,var(--fuchsia) 58% 100%);color:var(--baby);overflow:hidden;min-height:820px}
+.hero .top{display:flex;justify-content:space-between;font:500 15px/1 monospace;letter-spacing:.18em;text-transform:uppercase;padding:64px 0 0}
+.hero h1{font-size:clamp(90px,15.5vw,230px);font-weight:900;text-align:center;margin:24px 0 0;color:var(--baby);animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero .sub{text-align:center;color:#fff;font-size:24px;margin-top:6px;animation:rise .9s .2s both}
+.crowd{position:relative;height:430px;margin-top:10px;display:flex;justify-content:center;align-items:flex-end;gap:0}
+.crowd img{height:380px;margin:0 -26px;filter:drop-shadow(0 10px 20px rgba(0,0,0,.25));animation:pop .7s cubic-bezier(.2,1.4,.4,1) both, bob 4s ease-in-out infinite;transform-origin:bottom center}
+.crowd img:nth-child(odd){height:350px}
+.crowd img:nth-child(1){animation-delay:.5s,1.2s}.crowd img:nth-child(2){animation-delay:.62s,1.6s}.crowd img:nth-child(3){animation-delay:.74s,1.1s}.crowd img:nth-child(4){animation-delay:.86s,1.9s}.crowd img:nth-child(5){animation-delay:.98s,1.4s}.crowd img:nth-child(6){animation-delay:1.1s,1.7s}.crowd img:nth-child(7){animation-delay:1.22s,1.3s}
+.crowd img:hover{animation-play-state:paused;transform:translateY(-14px) rotate(-2deg)}
+.roles{position:relative;z-index:5;margin:-26px auto 0;background:#111;color:#fff;border-radius:14px;overflow:hidden;white-space:nowrap}
+.roles div{display:inline-block;padding:16px 0;font-weight:600;font-size:20px;animation:marquee 26s linear infinite}
+.hero .cta{display:flex;gap:16px;justify-content:center;padding:34px 0 56px}
+.hero .cta .sec{box-shadow:none}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:translateY(120px) scale(.8)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* 2 о нас */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.about .photo{border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--blush);display:flex;align-items:center;justify-content:center;color:var(--muted);text-align:center;padding:30px;border:2px dashed #f3a9cc}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.fact{background:var(--blush);border-radius:18px;padding:22px}
+.fact .big{font-size:44px;font-weight:900;color:var(--malina)}
+
+/* 3 как работает */
+.how{background:var(--blush)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{background:#fff;border-radius:22px;padding:30px 26px;min-height:300px;position:relative}
+.step:before{counter-increment:s;content:counter(s);font:900 64px/1 'Unbounded';color:var(--fuchsia);display:block;margin-bottom:18px}
+.step p{color:var(--muted)}
+.track{margin-top:28px;background:#111;color:#fff;border-radius:18px;padding:22px 28px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-weight:600}
+.track span{background:#2a2a2a;padding:8px 14px;border-radius:30px}.track span.on{background:var(--fuchsia)}
+
+/* 4 выгода */
+.gain{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{border:2px solid var(--ink);border-radius:22px;padding:30px}
+.card .ic{width:56px;height:56px;border-radius:50%;background:var(--baby);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:18px}
+.card p{color:var(--muted)}
+
+/* 5 цены */
+.price{background:var(--malina);color:#fff}
+.price h2{color:var(--baby)}
+.price .lead{color:#ffd7ea}
+table{width:100%;border-collapse:collapse;margin-top:30px;background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;font-size:18px}
+th,td{padding:18px 22px;text-align:left;border-bottom:1px solid #f3d2e2}
+th{background:var(--baby);font-weight:700}
+td.ours{font-weight:700;color:var(--malina);font-size:20px}
+td.mk{color:#999}
+.calc{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.calc .chip{background:#fff;color:var(--ink);padding:12px 20px;border-radius:30px;font-weight:600}
+
+/* 6 проверка */
+.check{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.ladder li{list-style:none;display:flex;gap:18px;padding:20px 0;border-bottom:2px solid var(--blush)}
+.ladder b{font:900 18px 'Unbounded';background:var(--ink);color:#fff;min-width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ladder p{color:var(--muted);font-size:17px}
+.badge{background:var(--fuchsia);color:#fff;border-radius:24px;padding:36px;position:sticky;top:110px}
+.badge .big{font-size:40px;font-weight:900;margin-bottom:14px}
+.profile{background:#fff;color:var(--ink);border-radius:18px;padding:18px;display:flex;gap:16px;align-items:center;margin-top:22px}
+.profile img{width:76px;height:76px;object-fit:cover;object-position:top;border-radius:50%;background:var(--blush)}
+.stars{color:var(--fuchsia);font-size:20px}
+
+/* 7 без рисков */
+.risk{background:#111;color:#fff}
+.risk h2{color:var(--baby)}
+.rgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.rcard{background:#1f1c20;border-radius:22px;padding:30px;border-left:6px solid var(--fuchsia)}
+.rcard p{color:#cbbcc4}
+
+/* 8 партнёрам */
+.join{background:var(--baby)}
+.joingrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.jcard{background:#fff;border-radius:26px;padding:38px;display:flex;flex-direction:column;gap:14px}
+.jcard ul{padding-left:22px;color:var(--muted)}
+.jcard .btn{margin-top:auto;align-self:flex-start}
+.jcard.dark{background:#111;color:#fff}.jcard.dark ul{color:#cbbcc4}
+.form{display:grid;gap:12px;margin:8px 0}
+.form input,.form select{height:56px;border-radius:14px;border:2px solid #f3a9cc;padding:0 18px;font:17px 'Golos Text'}
+
+/* 9 доп */
+.faq details{border-bottom:2px solid var(--blush);padding:22px 0}
+.faq summary{font:700 21px 'Golos Text';cursor:pointer}
+.faq p{color:var(--muted);margin-top:10px}
+
+/* 10 контакты */
+.contacts{background:var(--fuchsia);color:#fff;padding-bottom:0;overflow:hidden}
+.contacts h2{color:#fff;font-size:clamp(44px,7vw,110px)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:56px}
+.cgrid a,.cgrid div{background:rgba(255,255,255,.14);border-radius:20px;padding:26px;color:#fff;text-decoration:none}
+.cgrid .big{font-size:24px;font-weight:700;margin-top:6px}
+.foot{background:#111;color:#bbb;padding:30px 0;font-size:15px}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center}
+.foot img{height:26px;filter:invert(1)}
+
+@media (max-width:900px){
+ .about,.check,.joingrid,.rgrid{grid-template-columns:1fr}
+ .steps,.gain,.facts,.cgrid{grid-template-columns:1fr}
+ .nav a:not(.btn){display:none}
+ .crowd{height:280px}.crowd img{height:230px!important;margin:0 -40px}
+ .crowd img:nth-child(n+6){display:none}
+ .hero{min-height:0}.hero .top{font-size:11px}
+ .hero .cta{flex-direction:column;align-items:center}
+ table{font-size:15px}th,td{padding:12px}
+ section{padding:80px 0}
+}
+</style>
+
+<nav class="nav"><div class="wrap">
+ <img src="img/logo-l4.svg" alt="Человеки">
+ <a href="#about">О нас</a><a href="#how">Как работает</a><a href="#price">Цены</a><a href="#check">Проверка</a><a href="#join">Партнёрам</a><a href="#contacts">Контакты</a>
+ <span class="sp"></span>
+ <a class="btn pri" href="#join">Заказать персонал</a>
+</div></nav>
+
+<!-- 1 -->
+</head>
+<body>
+<section class="hero" id="top">
+ <span class="tag">Блок 1 · <b>Заставка</b> · люди выпрыгивают по одному, лента ролей едет</span>
+ <div class="wrap">
+  <div class="top"><span>HR-агентство Анастасии Бариновой</span><span>Персонал для ивентов</span></div>
+  <h1>человеки</h1>
+  <p class="sub">Хостес, промо, аниматоры и ещё 7 ролей на ваш ивент. Заявка за 5 минут.</p>
+  <div class="crowd">
+   <img src="img/l2.webp" alt=""><img src="img/l10.webp" alt=""><img src="img/l1.webp" alt=""><img src="img/l11.webp" alt=""><img src="img/l4.webp" alt=""><img src="img/l12.webp" alt=""><img src="img/l14.webp" alt="">
+  </div>
+  <div class="roles"><div>&nbsp;хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка · хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка ·&nbsp;</div></div>
+  <div class="cta"><a class="btn pri" href="#join">Заказать персонал</a><a class="btn sec" href="#join">Хочу работать на ивентах</a></div>
+ </div>
+</section>
+
+<!-- 2 -->
+<section id="about">
+ <span class="tag">Блок 2 · <b>О нас</b></span>
+ <div class="wrap about">
+  <div>
+   <h2>Люди, за которых не стыдно</h2>
+   <p class="lead">«Человеки» собирают персонал для корпоративов, выставок, детских праздников и промо. Каждого видели лично, обучили и проверили на реальных ивентах.</p>
+   <p class="lead" style="margin-top:16px">Агентство ведёт Анастасия Баринова: [N] лет в ивентах, [N] проектов. Мы сами из ивента и знаем, что на площадке нельзя «не пришёл».</p>
+   <div class="facts">
+    <div class="fact"><div class="big">[N]</div>человек в базе</div>
+    <div class="fact"><div class="big">10</div>ролей под ивент</div>
+    <div class="fact"><div class="big">24 ч</div>подтверждение до смены</div>
+   </div>
+   <span class="note">Цифры в квадратных скобках дадим от Насти, без источника не ставим</span>
+  </div>
+  <div class="photo">Фото Насти или команды на площадке<br>(реальное, горизонтальное)</div>
+ </div>
+</section>
+
+<!-- 3 -->
+<section class="how" id="how">
+ <span class="tag">Блок 3 · <b>Как это работает</b></span>
+ <div class="wrap">
+  <h2>От заявки до смены за 4 шага</h2>
+  <div class="steps">
+   <div class="step"><h3>Заявка</h3><p>Дата, адрес, роли и сколько человек. Форма на сайте или кнопка в Max и Telegram.</p></div>
+   <div class="step"><h3>Подбор</h3><p>Заявка уходит в чаты нужных ролей. Берём тех, у кого выше рейтинг, остальных ставим в резерв.</p></div>
+   <div class="step"><h3>Подтверждение</h3><p>За 24 часа каждый подтверждает выход. Не подтвердил: замена из резерва автоматически.</p></div>
+   <div class="step"><h3>Смена</h3><p>На площадке старший от нас. Вы видите статус людей, как доставку курьером. После смены ставите оценку.</p></div>
+  </div>
+  <div class="track">Статус заявки: <span class="on">Принята</span>→<span class="on">Люди найдены</span>→<span class="on">Подтвердили</span>→<span>В пути</span>→<span>На месте</span></div>
+ </div>
+</section>
+
+<!-- 4 -->
+<section id="gain">
+ <span class="tag">Блок 4 · <b>Что вы получаете</b></span>
+ <div class="wrap">
+  <h2>Что вы получаете</h2>
+  <div class="gain">
+   <div class="card"><div class="ic">⏱</div><h3>Время</h3><p>Не обзваниваете 30 человек. Одна заявка, остальное делаем мы.</p></div>
+   <div class="card"><div class="ic">₽</div><h3>Цену ниже рынка</h3><p>Работаем со своей базой без посредников, поэтому ставки ниже агентств.</p></div>
+   <div class="card"><div class="ic">★</div><h3>Проверенных людей</h3><p>Рейтинг после каждой смены. Слабых в базе не держим.</p></div>
+   <div class="card"><div class="ic">↺</div><h3>Замены без вас</h3><p>Заболел человек: замена из резерва придёт сама, вы узнаете из статуса.</p></div>
+   <div class="card"><div class="ic">👤</div><h3>Старшего на площадке</h3><p>Отвечает за людей, внешний вид и тайминг. Вы говорите с одним человеком.</p></div>
+   <div class="card"><div class="ic">📄</div><h3>Документы</h3><p>Договор, счёт и закрывающие. Удобно для бухгалтерии заказчика.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 -->
+<section class="price" id="price">
+ <span class="tag">Блок 5 · <b>С нами дешевле рынка</b> · цены</span>
+ <div class="wrap">
+  <h2>Дешевле рынка. Считаем честно</h2>
+  <p class="lead">Минимальная смена 6 часов. Цена за человека, всё включено.</p>
+  <table>
+   <tr><th>Роль</th><th>У нас</th><th>Средняя по Москве</th></tr>
+   <tr><td>Хостес</td><td class="ours">14 000 ₽ / 6 ч</td><td class="mk">[собираем]</td></tr>
+   <tr><td>Аниматор</td><td class="ours">10 000 ₽ / 6 ч</td><td class="mk">[собираем]</td></tr>
+   <tr><td>Хелпер</td><td class="ours">1 500 ₽ / ч</td><td class="mk">[собираем]</td></tr>
+   <tr><td>Координатор</td><td class="ours">3 000 ₽ / ч</td><td class="mk">[собираем]</td></tr>
+   <tr><td>Фотограф</td><td class="ours">3 000 ₽ / ч</td><td class="mk">[собираем]</td></tr>
+   <tr><td>Гардероб, парковка</td><td class="ours">2 000 ₽ / ч</td><td class="mk">[собираем]</td></tr>
+   <tr><td>Охрана</td><td class="ours">3 200 ₽ / ч</td><td class="mk">[собираем]</td></tr>
+   <tr><td>Ведущий</td><td class="ours">30 000 ₽</td><td class="mk">[собираем]</td></tr>
+  </table>
+  <div class="calc">Быстрый расчёт: <span class="chip">Корпоратив</span><span class="chip">Тимбилдинг</span><span class="chip">Детский праздник</span><span class="chip">Ёлка</span><span class="chip">Выставка</span></div>
+  <span class="note">Цены из таблицы Насти 23.10. Колонку рынка соберу по 5-7 агентствам с ссылками; без неё фразу «дешевле рынка» не ставим</span>
+ </div>
+</section>
+
+<!-- 6 -->
+<section id="check">
+ <span class="tag">Блок 6 · <b>Проверка</b></span>
+ <div class="wrap check">
+  <div>
+   <h2>Каждого проверяем 5 раз</h2>
+   <ol class="ladder">
+    <li><b>1</b><div><h3>Анкета и фото</h3><p>Возраст, опыт, роли, портфолио. Без фото в полный рост не берём.</p></div></li>
+    <li><b>2</b><div><h3>Личная встреча</h3><p>Смотрим, как человек говорит и выглядит. Половина отсеивается здесь.</p></div></li>
+    <li><b>3</b><div><h3>Документы</h3><p>Паспорт, для детских ивентов медкнижка.</p></div></li>
+    <li><b>4</b><div><h3>Обучение по роли</h3><p>Стандарты внешнего вида, поведения и работы с гостями. Ступени от новичка до старшего.</p></div></li>
+    <li><b>5</b><div><h3>Рейтинг после смены</h3><p>Оценка заказчика и старшего. Низкий рейтинг: меньше вызовов или выход из базы.</p></div></li>
+   </ol>
+   <span class="note">Порядок проверки уточнить у Насти: что из этого уже делаем</span>
+  </div>
+  <div class="badge">
+   <div class="big">Карточка человека</div>
+   <p>Перед ивентом вы видите, кто придёт.</p>
+   <div class="profile"><img src="img/l11.webp" alt=""><div><b>Алина, 22</b><br>Хостес · 34 смены<div class="stars">★★★★★ 4,9</div></div></div>
+   <div class="profile"><img src="img/l1.webp" alt=""><div><b>Денис, 25</b><br>Хелпер, промо · 18 смен<div class="stars">★★★★☆ 4,7</div></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 -->
+<section class="risk" id="risk">
+ <span class="tag">Блок 7 · <b>Никаких рисков</b></span>
+ <div class="wrap">
+  <h2>Риски берём на себя</h2>
+  <div class="rgrid">
+   <div class="rcard"><h3>Человек не пришёл</h3><p>Замена из резерва. Не нашли замену: смену не оплачиваете.</p></div>
+   <div class="rcard"><h3>Не понравился на площадке</h3><p>Заменим в тот же день или вернём деньги за этого человека.</p></div>
+   <div class="rcard"><h3>Опоздание</h3><p>Время прихода видно в статусе. Опоздание вычитаем из счёта.</p></div>
+   <div class="rcard"><h3>Порча и ущерб</h3><p>Отвечаем по договору. [Страховка: уточнить]</p></div>
+  </div>
+  <span class="note">Это предложения гарантий. Какие даём реально, решает Настя: обещание должно выдерживаться</span>
+ </div>
+</section>
+
+<!-- 8 -->
+<section class="join" id="join">
+ <span class="tag">Блок 8 · <b>Регистрация для партнёров</b> · две двери</span>
+ <div class="wrap">
+  <h2>Заказать или работать с нами</h2>
+  <div class="joingrid">
+   <div class="jcard dark">
+    <h3 style="font-size:28px">Заказчикам и агентствам</h3>
+    <ul><li>Персональный менеджер</li><li>Партнёрская цена от [N] заявок в месяц</li><li>Заявка из вашей CRM одной кнопкой</li></ul>
+    <div class="form"><input placeholder="Компания"><input placeholder="Телефон"><select><option>Кого ищете?</option></select></div>
+    <a class="btn pink" href="#">Оставить заявку</a>
+   </div>
+   <div class="jcard">
+    <h3 style="font-size:28px">Хочу работать на ивентах</h3>
+    <ul><li>Смены рядом с домом, выбираете сами</li><li>Оплата в течение [N] дней после смены</li><li>Обучение и рост до старшего</li><li>Бонус за друга</li></ul>
+    <div class="form"><input placeholder="Телефон"></div>
+    <a class="btn pri" href="#">Зарегистрироваться</a>
+    <span style="color:var(--muted);font-size:15px">Ведёт в готовую анкету на платформе: hr-bot.online/cheloveki/join</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 9 -->
+<section id="extra">
+ <span class="tag">Блок 9 · <b>Ещё: фото с ивентов, отзывы, вопросы</b></span>
+ <div class="wrap">
+  <h2>Вопросы</h2>
+  <div class="faq">
+   <details open><summary>За сколько дней нужна заявка?</summary><p>Лучше за 3 дня. Срочные берём день в день, если есть люди в резерве.</p></details>
+   <details><summary>Можно ли выбрать конкретных людей?</summary><p>Да. Смотрите карточки и рейтинг, отмечаете нужных.</p></details>
+   <details><summary>Есть форма и брендирование?</summary><p>Наденем вашу форму или дадим свою. [уточнить]</p></details>
+   <details><summary>Работаете за пределами Москвы?</summary><p>Москва и область. [уточнить]</p></details>
+   <details><summary>Как оплатить?</summary><p>Счёт по договору, для физлиц перевод. [уточнить]</p></details>
+  </div>
+  <span class="note">Сюда же можно добавить ленту фото с реальных ивентов и 3 отзыва заказчиков</span>
+ </div>
+</section>
+
+<!-- 10 -->
+<section class="contacts" id="contacts">
+ <span class="tag">Блок 10 · <b>Контакты</b></span>
+ <div class="wrap">
+  <h2>Нужны люди? Пишите</h2>
+  <div class="cgrid">
+   <div>Телефон<div class="big">+7 [номер Насти]</div></div>
+   <div>Max и Telegram<div class="big">@[cheloveki]</div></div>
+   <div>Почта<div class="big">[почта]</div></div>
+  </div>
+ </div>
+ <div class="foot"><div class="wrap"><img src="img/logo-l4.svg" alt="Человеки"><span>HR-агентство Анастасии Бариновой · ИП [реквизиты]</span></div></div>
+</section>
+
+</body>
+</html>
