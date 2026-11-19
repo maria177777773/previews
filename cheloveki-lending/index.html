@@ -44,22 +44,21 @@ section{padding:110px 0;position:relative}
 .nav .btn{min-width:0;height:46px;font-size:16px}
 
 /* 1 заставка */
-.hero{padding:0;background:linear-gradient(var(--malina) 0 58%,var(--fuchsia) 58% 100%);color:var(--baby);overflow:hidden;min-height:820px}
-.hero .top{display:flex;justify-content:space-between;font:500 15px/1 monospace;letter-spacing:.18em;text-transform:uppercase;padding:64px 0 0}
-.hero h1{font-size:clamp(90px,15.5vw,230px);font-weight:900;text-align:center;margin:24px 0 0;color:var(--baby);animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
-.hero .sub{text-align:center;color:#fff;font-size:24px;margin-top:6px;animation:rise .9s .2s both}
-.crowd{position:relative;height:430px;margin-top:10px;display:flex;justify-content:center;align-items:flex-end;gap:0}
-.crowd img{height:380px;margin:0 -26px;filter:drop-shadow(0 10px 20px rgba(0,0,0,.25));animation:pop .7s cubic-bezier(.2,1.4,.4,1) both, bob 4s ease-in-out infinite;transform-origin:bottom center}
-.crowd img:nth-child(odd){height:350px}
-.crowd img:nth-child(1){animation-delay:.5s,1.2s}.crowd img:nth-child(2){animation-delay:.62s,1.6s}.crowd img:nth-child(3){animation-delay:.74s,1.1s}.crowd img:nth-child(4){animation-delay:.86s,1.9s}.crowd img:nth-child(5){animation-delay:.98s,1.4s}.crowd img:nth-child(6){animation-delay:1.1s,1.7s}.crowd img:nth-child(7){animation-delay:1.22s,1.3s}
-.crowd img:hover{animation-play-state:paused;transform:translateY(-14px) rotate(-2deg)}
-.roles{position:relative;z-index:5;margin:-26px auto 0;background:#111;color:#fff;border-radius:14px;overflow:hidden;white-space:nowrap}
-.roles div{display:inline-block;padding:16px 0;font-weight:600;font-size:20px;animation:marquee 26s linear infinite}
-.hero .cta{display:flex;gap:16px;justify-content:center;padding:34px 0 56px}
+.hero{padding:0;background:linear-gradient(var(--malina) 0 66%,var(--fuchsia) 66% 100%);color:var(--baby);overflow:hidden;height:calc(100vh - 72px);min-height:640px;max-height:980px}
+.hero .wrap{height:100%;display:flex;flex-direction:column}
+.hero .top{display:flex;justify-content:space-between;font:500 14px/1 monospace;letter-spacing:.18em;text-transform:uppercase;padding:34px 0 0}
+.hero h1{font-size:min(calc((100vw - 80px)/6.9),175px);font-weight:900;text-align:center;margin:2.2vh 0 0;color:var(--baby);white-space:nowrap;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero .sub{text-align:center;color:#fff;font-size:clamp(17px,1.6vw,22px);margin-top:1vh;animation:rise .9s .2s both}
+.crowd{flex:1;min-height:0;display:flex;justify-content:center;align-items:flex-end;margin-top:2vh}
+.crowd img{height:min(100%,400px);width:auto;display:block;filter:drop-shadow(0 8px 14px rgba(0,0,0,.18));animation:pop .7s cubic-bezier(.2,1.4,.4,1) both;transform-origin:bottom center;transition:transform .25s}
+.crowd img:nth-child(1){animation-delay:.45s}.crowd img:nth-child(2){animation-delay:.57s}.crowd img:nth-child(3){animation-delay:.69s}.crowd img:nth-child(4){animation-delay:.81s}.crowd img:nth-child(5){animation-delay:.93s}.crowd img:nth-child(6){animation-delay:1.05s}
+.crowd img:hover{transform:translateY(-10px)}
+.roles{position:relative;z-index:5;background:#111;color:#fff;border-radius:14px;overflow:hidden;white-space:nowrap;flex:none}
+.roles div{display:inline-block;padding:14px 0;font-weight:600;font-size:19px;animation:marquee 26s linear infinite}
+.hero .cta{display:flex;gap:16px;justify-content:center;padding:22px 0 28px;flex:none}
 .hero .cta .sec{box-shadow:none}
 @keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-@keyframes pop{from{opacity:0;transform:translateY(120px) scale(.8)}to{opacity:1;transform:none}}
-@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@keyframes pop{from{opacity:0;transform:translateY(90px)}to{opacity:1;transform:none}}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* 2 о нас */
@@ -104,7 +103,7 @@ td.mk{color:#999}
 .badge{background:var(--fuchsia);color:#fff;border-radius:24px;padding:36px;position:sticky;top:110px}
 .badge .big{font-size:40px;font-weight:900;margin-bottom:14px}
 .profile{background:#fff;color:var(--ink);border-radius:18px;padding:18px;display:flex;gap:16px;align-items:center;margin-top:22px}
-.profile img{width:76px;height:76px;object-fit:cover;object-position:top;border-radius:50%;background:var(--blush)}
+.profile img{width:76px;height:76px;object-fit:cover;object-position:50% 0;border-radius:50%;background:var(--blush)}
 .stars{color:var(--fuchsia);font-size:20px}
 
 /* 7 без рисков */
@@ -143,9 +142,8 @@ td.mk{color:#999}
  .about,.check,.joingrid,.rgrid{grid-template-columns:1fr}
  .steps,.gain,.facts,.cgrid{grid-template-columns:1fr}
  .nav a:not(.btn){display:none}
- .crowd{height:280px}.crowd img{height:230px!important;margin:0 -40px}
- .crowd img:nth-child(n+6){display:none}
- .hero{min-height:0}.hero .top{font-size:11px}
+ .hero{height:auto;max-height:none;min-height:0}.crowd{flex:none}.crowd img{height:auto;width:16.66%}
+ .hero .top{font-size:10px;letter-spacing:.08em}
  .hero .cta{flex-direction:column;align-items:center}
  table{font-size:15px}th,td{padding:12px}
  section{padding:80px 0}
@@ -163,14 +161,12 @@ td.mk{color:#999}
 </head>
 <body>
 <section class="hero" id="top">
- <span class="tag">Блок 1 · <b>Заставка</b> · люди выпрыгивают по одному, лента ролей едет</span>
+ <span class="tag">Блок 1 · <b>Заставка</b> · люди с обложки выпрыгивают по одному, лента ролей едет</span>
  <div class="wrap">
   <div class="top"><span>HR-агентство Анастасии Бариновой</span><span>Персонал для ивентов</span></div>
   <h1>человеки</h1>
   <p class="sub">Хостес, промо, аниматоры и ещё 7 ролей на ваш ивент. Заявка за 5 минут.</p>
-  <div class="crowd">
-   <img src="img/l2.webp" alt=""><img src="img/l10.webp" alt=""><img src="img/l1.webp" alt=""><img src="img/l11.webp" alt=""><img src="img/l4.webp" alt=""><img src="img/l12.webp" alt=""><img src="img/l14.webp" alt="">
-  </div>
+  <div class="crowd"><img src="img/p1.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/p3.webp" alt=""><img src="img/p4.webp" alt=""><img src="img/p5.webp" alt=""><img src="img/p6.webp" alt=""></div>
   <div class="roles"><div>&nbsp;хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка · хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка ·&nbsp;</div></div>
   <div class="cta"><a class="btn pri" href="#join">Заказать персонал</a><a class="btn sec" href="#join">Хочу работать на ивентах</a></div>
  </div>
@@ -266,8 +262,8 @@ td.mk{color:#999}
   <div class="badge">
    <div class="big">Карточка человека</div>
    <p>Перед ивентом вы видите, кто придёт.</p>
-   <div class="profile"><img src="img/l11.webp" alt=""><div><b>Алина, 22</b><br>Хостес · 34 смены<div class="stars">★★★★★ 4,9</div></div></div>
-   <div class="profile"><img src="img/l1.webp" alt=""><div><b>Денис, 25</b><br>Хелпер, промо · 18 смен<div class="stars">★★★★☆ 4,7</div></div></div>
+   <div class="profile"><img src="img/p1.webp" alt=""><div><b>Алина, 22</b><br>Хостес · 34 смены<div class="stars">★★★★★ 4,9</div></div></div>
+   <div class="profile"><img src="img/p3.webp" alt=""><div><b>Денис, 25</b><br>Хелпер, промо · 18 смен<div class="stars">★★★★☆ 4,7</div></div></div>
   </div>
  </div>
 </section>
