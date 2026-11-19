@@ -1,0 +1,41 @@
+<!-- concept: поп-арт, люди как звёзды | approach: векторные лучи медленно вращаются за людьми, круглый стикер с текстом крутится | label: Лучи и стикер -->
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Golos+Text:wght@400;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--malina:#C20D52;--fuchsia:#FF2E93;--baby:#FFC2E0;--blush:#FFE3F0;--ink:#111}
+body{font-family:'Golos Text',sans-serif;color:var(--ink);background:#fff;overflow:hidden}
+.nav{height:72px;background:#FFC2E0;border-bottom:1px solid #f3a9cc;position:relative;z-index:30}
+.nav .w{max-width:1240px;margin:0 auto;padding:0 32px;height:100%;display:flex;align-items:center;gap:28px}
+.nav img{height:30px}.nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:16px}.nav .sp{flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-width:280px;height:64px;padding:0 28px;border-radius:40px;font:700 18px 'Golos Text';text-decoration:none}
+.nav .btn{min-width:0;height:46px;font-size:16px}
+.pri{background:var(--ink);color:#fff}.sec{background:#fff;color:var(--ink)}
+.hero{position:relative;overflow:hidden;height:788px;background:linear-gradient(var(--malina) 0 100%,var(--fuchsia) 100% 100%);color:var(--baby)}
+.w{max-width:1240px;margin:0 auto;padding:0 32px;position:relative;height:100%}
+.col{display:flex;flex-direction:column;height:100%}
+.top{display:flex;justify-content:space-between;font:500 14px/1 monospace;letter-spacing:.18em;text-transform:uppercase;padding-top:30px}
+h1{font-family:'Unbounded';font-weight:900;line-height:1;letter-spacing:-.01em;font-size:min(calc((100vw - 80px)/6.9),170px);text-align:center;margin-top:18px;white-space:nowrap;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.sub{text-align:center;color:#fff;font-size:21px;margin-top:8px;animation:rise .9s .2s both}
+.crowd{display:flex;justify-content:center;align-items:flex-end;position:relative;z-index:5}
+.crowd img{height:330px;display:block;animation:pop .7s cubic-bezier(.2,1.4,.4,1) both;transform-origin:bottom}
+.crowd img:nth-child(1){animation-delay:.45s}.crowd img:nth-child(2){animation-delay:.57s}.crowd img:nth-child(3){animation-delay:.69s}.crowd img:nth-child(4){animation-delay:.81s}.crowd img:nth-child(5){animation-delay:.93s}.crowd img:nth-child(6){animation-delay:1.05s}
+.cta{display:flex;gap:16px;justify-content:center}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:translateY(90px)}to{opacity:1;transform:none}}
+@keyframes mq{to{transform:translateX(-50%)}}
+.tick{background:var(--ink);color:#fff;white-space:nowrap;overflow:hidden;position:relative;z-index:25}
+.tick div{display:inline-block;padding:10px 0;font-weight:600;font-size:16px;animation:mq 40s linear infinite}
+
+.rays{position:absolute;left:50%;top:78%;width:2400px;height:2400px;margin:-1200px 0 0 -1200px;z-index:0;animation:rot 90s linear infinite;fill:#d42a6a}
+@keyframes rot{to{transform:rotate(360deg)}}
+.top,h1,.sub{position:relative;z-index:3}.crowd{margin-top:auto}.cta{padding:24px 0 30px;position:relative;z-index:6}
+.stk{position:absolute;right:40px;top:300px;width:170px;height:170px;z-index:7}
+.stk svg{animation:rot 18s linear infinite}.stk text{font:700 15px 'Golos Text';fill:#111;letter-spacing:.12em}
+.stk b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:900 30px Unbounded;color:var(--fuchsia)}
+</style></head><body>
+<nav class="nav"><div class="w"><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/logo-l4.svg" alt="Человеки"><a>О нас</a><a>Как работает</a><a>Цены</a><a>Проверка</a><a>Партнёрам</a><a>Контакты</a><span class="sp"></span><a class="btn pri">Заказать персонал</a></div></nav>
+<section class="hero"><svg class="rays" viewBox="-1200 -1200 2400 2400"><path d="M0 0 L1200 0 L1190 156Z"/><path d="M0 0 L1159 311 L1109 458Z"/><path d="M0 0 L1039 600 L953 730Z"/><path d="M0 0 L849 849 L731 951Z"/><path d="M0 0 L600 1039 L460 1108Z"/><path d="M0 0 L311 1159 L158 1190Z"/><path d="M0 0 L-0 1200 L-156 1190Z"/><path d="M0 0 L-311 1159 L-458 1109Z"/><path d="M0 0 L-600 1039 L-730 953Z"/><path d="M0 0 L-849 849 L-951 731Z"/><path d="M0 0 L-1039 600 L-1108 460Z"/><path d="M0 0 L-1159 311 L-1190 158Z"/><path d="M0 0 L-1200 -0 L-1190 -156Z"/><path d="M0 0 L-1159 -311 L-1109 -458Z"/><path d="M0 0 L-1039 -600 L-953 -730Z"/><path d="M0 0 L-849 -849 L-731 -951Z"/><path d="M0 0 L-600 -1039 L-460 -1108Z"/><path d="M0 0 L-311 -1159 L-158 -1190Z"/><path d="M0 0 L0 -1200 L156 -1190Z"/><path d="M0 0 L311 -1159 L458 -1109Z"/><path d="M0 0 L600 -1039 L730 -953Z"/><path d="M0 0 L849 -849 L951 -731Z"/><path d="M0 0 L1039 -600 L1108 -460Z"/><path d="M0 0 L1159 -311 L1190 -158Z"/></svg><div class="w col"><div class="top"><span>HR-агентство Анастасии Бариновой</span><span>Персонал для ивентов</span></div><h1>человеки</h1><p class="sub">Соберём команду на ивент одной заявкой: от хостес до ведущего.</p>
+<div class="stk"><svg viewBox="0 0 170 170"><circle cx="85" cy="85" r="84" fill="#FFC2E0"/><path id="cp" d="M85 85 m-62 0 a62 62 0 1 1 124 0 a62 62 0 1 1 -124 0" fill="none"/><text><textPath href="#cp">персонал для ивентов · 10 ролей · персонал для ивентов ·</textPath></text></svg><b>10</b></div>
+<div class="crowd"><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/p1.webp" alt=""><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/p2.webp" alt=""><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/p3.webp" alt=""><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/p4.webp" alt=""><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/p5.webp" alt=""><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/p6.webp" alt=""></div><div class="cta"><a class="btn pri">Заказать персонал</a><a class="btn sec">Хочу работать на ивентах</a></div></div></section>
+</body></html>

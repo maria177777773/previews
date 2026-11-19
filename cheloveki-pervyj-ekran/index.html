@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Первый экран лендинга: варианты</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&amp;family=Golos+Text:wght@400;600;700&amp;display=swap&amp;subset=cyrillic">
+<style>
+:root{--bg:#ffffff;--surface:#FFE3F0;--text:#111111;--muted:#5a4a52;--line:#f3a9cc;
+--accent:#C20D52;--accent-text:#ffffff;--r:16pxpx;--btn-h:44px;
+--f-head:Unbounded;--f-body:Golos Text;--fs-body:18px;--fs-small:16px;--fs-h1:32px;--fs-h2:22px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 var(--fs-body)/1.5 var(--f-body)}
+.top{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);
+ display:flex;align-items:center;gap:16px;padding:12px 32px;flex-wrap:wrap}
+.top .logo{height:36px;width:auto;display:block}
+.top h1{font:700 var(--fs-h2)/1.2 var(--f-head);margin:0}
+.top nav{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;align-items:center}
+.top nav a{display:inline-flex;align-items:center;height:var(--btn-h);padding:0 14px;border:1px solid var(--line);
+ border-radius:calc(var(--r) * .75);color:var(--text);text-decoration:none;font:600 var(--fs-small)/1 var(--f-body)}
+.top nav a.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:var(--btn-h);padding:0 18px;
+ border-radius:calc(var(--r) * .75);border:1px solid var(--line);background:var(--bg);color:var(--text);
+ font:600 var(--fs-small)/1 var(--f-body);cursor:pointer;white-space:nowrap}
+.btn.main{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.btn.x{width:var(--btn-h);padding:0;font-size:22px}
+[hidden]{display:none!important}
+main{padding:32px;display:flex;flex-direction:column;gap:48px}
+@media (min-width:1100px){main{padding-right:296px}}
+.v{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--bg)}
+.v.ok{border-color:var(--accent);border-width:2px}
+.vh{display:flex;align-items:center;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.vh .num{font:700 var(--fs-h2)/1 var(--f-head);min-width:56px}
+.vh .cap{display:flex;flex-direction:column;gap:4px;flex:1;min-width:220px}
+.vh .cap b{font:600 var(--fs-body)/1.3 var(--f-body)}
+.vh .cap span{color:var(--muted);font-size:var(--fs-small)}
+.vh .acts{display:flex;gap:8px;align-items:center}
+.badge{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;
+ background:var(--accent);color:var(--accent-text);font:600 var(--fs-small)/1 var(--f-body)}
+.vb{padding:24px;background:var(--surface)}
+.vb img.pic{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:calc(var(--r) * .5)}
+.vb iframe{display:block;width:100%;border:0;background:#fff;border-radius:calc(var(--r) * .5)}
+.alt{padding:12px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:var(--fs-small)}
+#vt{width:240px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);z-index:60;
+ font:500 var(--fs-small)/1.3 var(--f-body)}
+#vt .drag-handle{display:flex;align-items:center;gap:8px;padding:12px 14px;cursor:grab;
+ border-bottom:1px solid var(--line);font-weight:700;user-select:none}
+#vt .drag-handle .grip{width:14px;height:14px;border-left:3px dotted var(--muted);border-right:3px dotted var(--muted)}
+#vt .drag-handle .btn{margin-left:auto;height:32px;width:32px;padding:0}
+#vt .list{display:flex;flex-direction:column;gap:8px;padding:12px}
+#vt .list a{display:block;height:var(--btn-h);line-height:calc(var(--btn-h) - 2px);padding:0 12px;border:1px solid var(--line);
+ border-radius:calc(var(--r) * .75);color:var(--text);text-decoration:none;font-weight:600;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#vt .list a.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+#vt.min .list{display:none}
+#toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:var(--accent);
+ color:var(--accent-text);padding:14px 20px;border-radius:calc(var(--r) * .75);font:600 var(--fs-small)/1.3 var(--f-body);
+ z-index:99;display:none}
+.empty{padding:48px;text-align:center;color:var(--muted)}
+@media (max-width:640px){.top{padding:12px 16px}main{padding:16px}.vb{padding:12px}#vt{width:200px}}
+</style></head>
+<body>
+<header class="top"><img class="logo" src="parts/logo.svg" alt="Человеки"><h1>Первый экран лендинга</h1>
+<nav><a href="#v1" data-to="v1">Э1</a>
+<a href="#v2" data-to="v2">Э2</a>
+<a href="#v3" data-to="v3">Э3</a>
+<a href="#v4" data-to="v4">Э4</a>
+<a href="#v5" data-to="v5">Э5</a>
+<a href="#v6" data-to="v6">Э6</a>
+<a href="#v7" data-to="v7">Э7</a>
+<a href="#v8" data-to="v8">Э8</a><button class="btn" id="restore" hidden>Вернуть скрытые</button></nav></header>
+<main>
+<section class="v" id="v1" data-variant="Э1">
+  <div class="vh">
+    <div class="num">Э1</div>
+    <div class="cap"><b>Ярлыки ролей</b><span>концепция: каждого человека подписали · подход: рисованные стрелки и плашки ролей вместо ленты</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="Э-1">Утвердить Э-1</button>
+      <button class="btn x" data-x="v1" data-name="Э1" aria-label="Убрать Э1 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v1.html" style="height:860px" loading="lazy" title="v1"></iframe></div>
+  
+</section>
+<section class="v" id="v2" data-variant="Э2">
+  <div class="vh">
+    <div class="num">Э2</div>
+    <div class="cap"><b>Строка наверху и конфетти</b><span>концепция: праздник вокруг людей · подход: бегущая строка под меню, бумажное конфетти плавает за людьми</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="Э-2">Утвердить Э-2</button>
+      <button class="btn x" data-x="v2" data-name="Э2" aria-label="Убрать Э2 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v2.html" style="height:860px" loading="lazy" title="v2"></iframe></div>
+  
+</section>
+<section class="v" id="v3" data-variant="Э3">
+  <div class="vh">
+    <div class="num">Э3</div>
+    <div class="cap"><b>Бумажная гирлянда</b><span>концепция: цветные бумажные человечки из первой встречи · подход: гирлянда вырезанных человечков вместо ленты, слегка качается</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="Э-3">Утвердить Э-3</button>
+      <button class="btn x" data-x="v3" data-name="Э3" aria-label="Убрать Э3 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v3.html" style="height:860px" loading="lazy" title="v3"></iframe></div>
+  
+</section>
+<section class="v" id="v4" data-variant="Э4">
+  <div class="vh">
+    <div class="num">Э4</div>
+    <div class="cap"><b>Лента-волна</b><span>концепция: роли на изогнутой ленте за спинами людей · подход: вектор: чёрная лента с текстом по кривой, медленно плывёт</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="Э-4">Утвердить Э-4</button>
+      <button class="btn x" data-x="v4" data-name="Э4" aria-label="Убрать Э4 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v4.html" style="height:860px" loading="lazy" title="v4"></iframe></div>
+  
+</section>
+<section class="v" id="v5" data-variant="Э5">
+  <div class="vh">
+    <div class="num">Э5</div>
+    <div class="cap"><b>Лучи и стикер</b><span>концепция: поп-арт, люди как звёзды · подход: векторные лучи медленно вращаются за людьми, круглый стикер с текстом крутится</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="Э-5">Утвердить Э-5</button>
+      <button class="btn x" data-x="v5" data-name="Э5" aria-label="Убрать Э5 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v5.html" style="height:860px" loading="lazy" title="v5"></iframe></div>
+  
+</section>
+<section class="v" id="v6" data-variant="Э6">
+  <div class="vh">
+    <div class="num">Э6</div>
+    <div class="cap"><b>Сплит</b><span>концепция: классический лендинг: текст слева, люди справа · подход: строка под меню, большой векторный круг с точками за людьми</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="Э-6">Утвердить Э-6</button>
+      <button class="btn x" data-x="v6" data-name="Э6" aria-label="Убрать Э6 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v6.html" style="height:860px" loading="lazy" title="v6"></iframe></div>
+  
+</section>
+<section class="v" id="v7" data-variant="Э7">
+  <div class="vh">
+    <div class="num">Э7</div>
+    <div class="cap"><b>Пропуска</b><span>концепция: бейджи ивента висят над людьми · подход: векторные пропуска на шнурках покачиваются, на каждом роль</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="Э-7">Утвердить Э-7</button>
+      <button class="btn x" data-x="v7" data-name="Э7" aria-label="Убрать Э7 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v7.html" style="height:860px" loading="lazy" title="v7"></iframe></div>
+  
+</section>
+<section class="v" id="v8" data-variant="Э8">
+  <div class="vh">
+    <div class="num">Э8</div>
+    <div class="cap"><b>Сцена</b><span>концепция: люди выходят на сцену · подход: вектор: прожекторы ходят по сцене, подиум под людьми, строка под меню</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="Э-8">Утвердить Э-8</button>
+      <button class="btn x" data-x="v8" data-name="Э8" aria-label="Убрать Э8 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v8.html" style="height:860px" loading="lazy" title="v8"></iframe></div>
+  
+</section>
+</main>
+<aside id="vt"><div class="drag-handle"><span class="grip"></span>Варианты: <span id="cnt">8</span>
+<button class="btn" id="vt-min" aria-label="Свернуть панель">−</button></div>
+<div class="list"><a href="#v1" data-to="v1">Э1 · Ярлыки ролей</a>
+<a href="#v2" data-to="v2">Э2 · Строка наверху и конфетти</a>
+<a href="#v3" data-to="v3">Э3 · Бумажная гирлянда</a>
+<a href="#v4" data-to="v4">Э4 · Лента-волна</a>
+<a href="#v5" data-to="v5">Э5 · Лучи и стикер</a>
+<a href="#v6" data-to="v6">Э6 · Сплит</a>
+<a href="#v7" data-to="v7">Э7 · Пропуска</a>
+<a href="#v8" data-to="v8">Э8 · Сцена</a></div></aside>
+<div id="toast" role="status"></div>
+<script src="drag-panel.js"></script>
+<script>
+(function(){
+  var KEY = 'variants-hidden:' + "hero-v1:Первый экран лендинга", TOPIC = "Первый экран лендинга";
+  function get(){ try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e){ return []; } }
+  function put(a){ try { localStorage.setItem(KEY, JSON.stringify(a)); } catch(e){} }
+  function toast(t){ var el = document.getElementById('toast'); el.textContent = t; el.style.display = 'block';
+    clearTimeout(el._t); el._t = setTimeout(function(){ el.style.display = 'none'; }, 2600); }
+  function copy(t){ if (navigator.clipboard) navigator.clipboard.writeText(t).catch(function(){}); }
+  function apply(){
+    var hid = get(), n = 0;
+    document.querySelectorAll('section.v').forEach(function(s){
+      var off = hid.indexOf(s.id) >= 0; s.hidden = off; if (!off) n++;
+      document.querySelectorAll('[data-to="' + s.id + '"]').forEach(function(a){ a.hidden = off; });
+    });
+    var r = document.getElementById('restore'); r.hidden = !hid.length;
+    r.textContent = 'Вернуть скрытые (' + hid.length + ')';
+    document.getElementById('cnt').textContent = n;
+  }
+  document.addEventListener('click', function(e){
+    var x = e.target.closest('[data-x]'), ok = e.target.closest('[data-ok]');
+    if (x){ var h = get(); if (h.indexOf(x.dataset.x) < 0) h.push(x.dataset.x); put(h); apply();
+      toast('Убрал ' + x.dataset.name + ' из сравнения'); }
+    if (ok){ var t = 'Утверждаю ' + ok.dataset.ok + ': ' + TOPIC; copy(t); toast('Скопировано: «' + t + '». Вставь в чат'); }
+    if (e.target.id === 'restore'){ put([]); apply(); }
+    if (e.target.id === 'vt-min'){ var p = document.getElementById('vt'); p.classList.toggle('min');
+      try { localStorage.setItem(KEY + ':min', p.classList.contains('min') ? '1' : ''); } catch(e){} }
+  });
+  var obs = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting){
+    document.querySelectorAll('[data-to]').forEach(function(a){ a.classList.toggle('on', a.dataset.to === en.target.id); }); } }); },
+    { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('section.v').forEach(function(s){ obs.observe(s); });
+  // на телефоне панель по умолчанию свёрнута, чтобы не закрывать варианты
+  var pref = null; try { pref = localStorage.getItem(KEY + ':min'); } catch(e){}
+  if (pref === '1' || (pref === null && innerWidth < 700)) document.getElementById('vt').classList.add('min');
+  apply();
+  if (window.DragPanel) DragPanel.make(document.getElementById('vt'), { key: 'vt-' + "hero-v1:Первый экран лендинга", handle: '.drag-handle', side: 'right', top: 110 });
+})();
+</script>
+</body></html>

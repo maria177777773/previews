@@ -1,0 +1,43 @@
+<!-- concept: классический лендинг: текст слева, люди справа | approach: строка под меню, большой векторный круг с точками за людьми | label: Сплит -->
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Golos+Text:wght@400;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--malina:#C20D52;--fuchsia:#FF2E93;--baby:#FFC2E0;--blush:#FFE3F0;--ink:#111}
+body{font-family:'Golos Text',sans-serif;color:var(--ink);background:#fff;overflow:hidden}
+.nav{height:72px;background:#FFC2E0;border-bottom:1px solid #f3a9cc;position:relative;z-index:30}
+.nav .w{max-width:1240px;margin:0 auto;padding:0 32px;height:100%;display:flex;align-items:center;gap:28px}
+.nav img{height:30px}.nav a{color:var(--ink);text-decoration:none;font-weight:600;font-size:16px}.nav .sp{flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-width:280px;height:64px;padding:0 28px;border-radius:40px;font:700 18px 'Golos Text';text-decoration:none}
+.nav .btn{min-width:0;height:46px;font-size:16px}
+.pri{background:var(--ink);color:#fff}.sec{background:#fff;color:var(--ink)}
+.hero{position:relative;overflow:hidden;height:752px;background:linear-gradient(var(--malina) 0 100%,var(--fuchsia) 100% 100%);color:var(--baby)}
+.w{max-width:1240px;margin:0 auto;padding:0 32px;position:relative;height:100%}
+.col{display:flex;flex-direction:column;height:100%}
+.top{display:flex;justify-content:space-between;font:500 14px/1 monospace;letter-spacing:.18em;text-transform:uppercase;padding-top:30px}
+h1{font-family:'Unbounded';font-weight:900;line-height:1;letter-spacing:-.01em;font-size:min(calc((100vw - 80px)/6.9),170px);text-align:center;margin-top:18px;white-space:nowrap;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.sub{text-align:center;color:#fff;font-size:21px;margin-top:8px;animation:rise .9s .2s both}
+.crowd{display:flex;justify-content:center;align-items:flex-end;position:relative;z-index:5}
+.crowd img{height:330px;display:block;animation:pop .7s cubic-bezier(.2,1.4,.4,1) both;transform-origin:bottom}
+.crowd img:nth-child(1){animation-delay:.45s}.crowd img:nth-child(2){animation-delay:.57s}.crowd img:nth-child(3){animation-delay:.69s}.crowd img:nth-child(4){animation-delay:.81s}.crowd img:nth-child(5){animation-delay:.93s}.crowd img:nth-child(6){animation-delay:1.05s}
+.cta{display:flex;gap:16px;justify-content:center}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:translateY(90px)}to{opacity:1;transform:none}}
+@keyframes mq{to{transform:translateX(-50%)}}
+.tick{background:var(--ink);color:#fff;white-space:nowrap;overflow:hidden;position:relative;z-index:25}
+.tick div{display:inline-block;padding:10px 0;font-weight:600;font-size:16px;animation:mq 40s linear infinite}
+
+.hero{background:var(--malina)}
+.grid{display:grid;grid-template-columns:.95fr 1.05fr;height:100%;align-items:center;gap:20px}
+.left h1{font-size:96px;text-align:left;margin:0}.left .sub{text-align:left;font-size:22px;margin:20px 0 36px;max-width:460px}
+.left .cta{justify-content:flex-start;flex-direction:column;align-items:flex-start}
+.right{position:relative;height:100%;display:flex;align-items:flex-end}
+.circ{position:absolute;left:50%;top:50%;width:600px;height:600px;margin:-300px;border-radius:50%;background:var(--fuchsia);animation:pop .9s both}
+.dots{position:absolute;right:-40px;top:40px;width:300px;height:300px;background:radial-gradient(#FFC2E0 2.5px,transparent 3px) 0 0/18px 18px;border-radius:50%;opacity:.8}
+.right .crowd{flex-wrap:wrap;width:100%}.right .crowd img{height:250px}
+.top{position:absolute;top:0;left:32px;right:32px}
+</style></head><body>
+<nav class="nav"><div class="w"><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/logo-l4.svg" alt="Человеки"><a>О нас</a><a>Как работает</a><a>Цены</a><a>Проверка</a><a>Партнёрам</a><a>Контакты</a><span class="sp"></span><a class="btn pri">Заказать персонал</a></div></nav>
+<div class="tick"><div>&nbsp;хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка · хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка ·&nbsp;</div></div><section class="hero"><div class="w"><div class="top"><span>HR-агентство Анастасии Бариновой</span><span>Персонал для ивентов</span></div><div class="grid"><div class="left"><h1>человеки</h1><p class="sub">Соберём команду на ивент одной заявкой: от хостес до ведущего.</p><div class="cta"><a class="btn pri">Заказать персонал</a><a class="btn sec">Хочу работать на ивентах</a></div></div>
+<div class="right"><div class="circ"></div><div class="dots"></div><div class="crowd"><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/p1.webp" alt=""><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/p3.webp" alt=""><img src="https://maria177777773.github.io/previews/cheloveki-lending/img/p4.webp" alt=""></div></div></div></div></section>
+</body></html>
