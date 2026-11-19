@@ -44,17 +44,21 @@ section{padding:110px 0;position:relative}
 .nav .btn{min-width:0;height:46px;font-size:16px}
 
 /* 1 заставка */
-.hero{padding:0;background:linear-gradient(var(--malina) 0 66%,var(--fuchsia) 66% 100%);color:var(--baby);overflow:hidden;height:calc(100vh - 72px);min-height:640px;max-height:980px}
-.hero .wrap{height:100%;display:flex;flex-direction:column}
+.hero{padding:0;background:#111;color:var(--baby);overflow:hidden;height:calc(100vh - 113px);min-height:640px;max-height:980px}
+.hero .wrap{height:100%;display:flex;flex-direction:column;position:relative;z-index:3}
 .hero .top{display:flex;justify-content:space-between;font:500 14px/1 monospace;letter-spacing:.18em;text-transform:uppercase;padding:34px 0 0}
-.hero h1{font-size:min(calc((100vw - 80px)/6.9),175px);font-weight:900;text-align:center;margin:2.2vh 0 0;color:var(--baby);white-space:nowrap;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero h1{font-size:min(calc((100vw - 80px)/6.9),175px);font-weight:900;text-align:center;margin:2.2vh 0 0;color:var(--fuchsia);white-space:nowrap;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
 .hero .sub{text-align:center;color:#fff;font-size:clamp(17px,1.6vw,22px);margin-top:1vh;animation:rise .9s .2s both}
 .crowd{flex:1;min-height:0;display:flex;justify-content:center;align-items:flex-end;margin-top:2vh}
-.crowd img{height:min(100%,400px);width:auto;display:block;filter:drop-shadow(0 8px 14px rgba(0,0,0,.18));animation:pop .7s cubic-bezier(.2,1.4,.4,1) both;transform-origin:bottom center;transition:transform .25s}
+.crowd img{height:min(100%,400px);width:auto;display:block;animation:pop .7s cubic-bezier(.2,1.4,.4,1) both;transform-origin:bottom center;transition:transform .25s}
 .crowd img:nth-child(1){animation-delay:.45s}.crowd img:nth-child(2){animation-delay:.57s}.crowd img:nth-child(3){animation-delay:.69s}.crowd img:nth-child(4){animation-delay:.81s}.crowd img:nth-child(5){animation-delay:.93s}.crowd img:nth-child(6){animation-delay:1.05s}
 .crowd img:hover{transform:translateY(-10px)}
-.roles{position:relative;z-index:5;background:#111;color:#fff;border-radius:14px;overflow:hidden;white-space:nowrap;flex:none}
-.roles div{display:inline-block;padding:14px 0;font-weight:600;font-size:19px;animation:marquee 26s linear infinite}
+.tick{background:var(--ink);color:#fff;white-space:nowrap;overflow:hidden;position:relative;z-index:25}
+.tick div{display:inline-block;padding:10px 0;font-weight:600;font-size:16px;animation:marquee 40s linear infinite}
+.spot{position:absolute;top:-40px;width:420px;height:900px;background:linear-gradient(rgba(255,194,224,.32),rgba(255,194,224,0) 85%);clip-path:polygon(45% 0,55% 0,100% 100%,0 100%);transform-origin:top center;z-index:1}
+.s1{left:8%;animation:sp 6s ease-in-out infinite}.s2{right:8%;animation:sp 6s -3s ease-in-out infinite reverse}
+@keyframes sp{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(16deg)}}
+.floor{position:absolute;left:-10%;right:-10%;bottom:0;height:210px;background:var(--malina);border-radius:50% 50% 0 0/40% 40% 0 0;z-index:2}
 .hero .cta{display:flex;gap:16px;justify-content:center;padding:22px 0 28px;flex:none}
 .hero .cta .sec{box-shadow:none}
 @keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
@@ -143,7 +147,7 @@ td.mk{color:#999}
  .about,.check,.joingrid,.rgrid{grid-template-columns:1fr}
  .steps,.gain,.facts,.cgrid{grid-template-columns:1fr}
  .nav a:not(.btn){display:none}
- .hero{height:auto;max-height:none;min-height:0}.crowd{flex:none}.crowd img{height:auto;width:16.66%}
+ .hero{height:auto;max-height:none;min-height:0}.floor{height:150px}.spot{width:260px}.crowd{flex:none}.crowd img{height:auto;width:16.66%}
  .hero .top{font-size:10px;letter-spacing:.08em}
  .hero .cta{flex-direction:column;align-items:center}
  table{font-size:15px}th,td{padding:12px}
@@ -157,19 +161,20 @@ td.mk{color:#999}
  <span class="sp"></span>
  <a class="btn pri" href="#join">Заказать персонал</a>
 </div></nav>
-
-<!-- 1 -->
 </head>
 <body>
+<div class="tick"><div>&nbsp;хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка · хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка ·&nbsp;</div></div>
+
+<!-- 1 -->
 <section class="hero" id="top">
- <span class="tag">Блок 1 · <b>Заставка</b> · люди с обложки выпрыгивают по одному, лента ролей едет</span>
+ <div class="spot s1"></div><div class="spot s2"></div><div class="floor"></div>
+ <span class="tag">Блок 1 · <b>Заставка</b> · сцена Э8 · прожекторы, люди выходят по одному, строка ролей под меню</span>
  <div class="wrap">
   <div class="top"><span>HR-агентство Анастасии Бариновой</span><span>Персонал для ивентов</span></div>
   <h1>человеки</h1>
   <p class="sub">Соберём команду на ивент одной заявкой: от хостес до ведущего.</p>
   <div class="crowd"><img src="img/p1.webp" alt=""><img src="img/p2.webp" alt=""><img src="img/p3.webp" alt=""><img src="img/p4.webp" alt=""><img src="img/p5.webp" alt=""><img src="img/p6.webp" alt=""></div>
-  <div class="roles"><div>&nbsp;хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка · хостес · промоутеры · хелперы · аниматоры · фотографы · ведущие · координаторы · гардероб · парковка · охрана · Дед Мороз и Снегурочка ·&nbsp;</div></div>
-  <div class="cta"><a class="btn pri" href="#join">Заказать персонал</a><a class="btn sec" href="#join">Хочу работать на ивентах</a></div>
+    <div class="cta"><a class="btn pri" href="#join">Заказать персонал</a><a class="btn sec" href="#join">Хочу работать на ивентах</a></div>
  </div>
 </section>
 
