@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Сцена «персонал сам придёт»: варианты</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&amp;family=Golos+Text:wght@400;600;700&amp;display=swap">
+<style>
+:root{--bg:#ffffff;--surface:#fff0f7;--text:#111111;--muted:#5a4a52;--line:#ffc2e0;
+--accent:#d1105a;--accent-text:#ffffff;--r:16pxpx;--btn-h:44px;
+--f-head:Unbounded;--f-body:Golos Text;--fs-body:18px;--fs-small:16px;--fs-h1:32px;--fs-h2:22px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 var(--fs-body)/1.5 var(--f-body)}
+.top{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);
+ display:flex;align-items:center;gap:16px;padding:12px 32px;flex-wrap:wrap}
+.top .logo{height:36px;width:auto;display:block}
+.top h1{font:700 var(--fs-h2)/1.2 var(--f-head);margin:0}
+.top nav{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;align-items:center}
+.top nav a{display:inline-flex;align-items:center;height:var(--btn-h);padding:0 14px;border:1px solid var(--line);
+ border-radius:calc(var(--r) * .75);color:var(--text);text-decoration:none;font:600 var(--fs-small)/1 var(--f-body)}
+.top nav a.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:var(--btn-h);padding:0 18px;
+ border-radius:calc(var(--r) * .75);border:1px solid var(--line);background:var(--bg);color:var(--text);
+ font:600 var(--fs-small)/1 var(--f-body);cursor:pointer;white-space:nowrap}
+.btn.main{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.btn.x{width:var(--btn-h);padding:0;font-size:22px}
+[hidden]{display:none!important}
+main{padding:32px;display:flex;flex-direction:column;gap:48px}
+@media (min-width:1100px){main{padding-right:296px}}
+.v{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--bg)}
+.v.ok{border-color:var(--accent);border-width:2px}
+.vh{display:flex;align-items:center;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.vh .num{font:700 var(--fs-h2)/1 var(--f-head);min-width:56px}
+.vh .cap{display:flex;flex-direction:column;gap:4px;flex:1;min-width:220px}
+.vh .cap b{font:600 var(--fs-body)/1.3 var(--f-body)}
+.vh .cap span{color:var(--muted);font-size:var(--fs-small)}
+.vh .acts{display:flex;gap:8px;align-items:center}
+.badge{display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:999px;
+ background:var(--accent);color:var(--accent-text);font:600 var(--fs-small)/1 var(--f-body)}
+.vb{padding:24px;background:var(--surface)}
+.vb img.pic{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:calc(var(--r) * .5)}
+.vb iframe{display:block;width:100%;border:0;background:#fff;border-radius:calc(var(--r) * .5)}
+.alt{padding:12px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:var(--fs-small)}
+#vt{width:240px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);z-index:60;
+ font:500 var(--fs-small)/1.3 var(--f-body)}
+#vt .drag-handle{display:flex;align-items:center;gap:8px;padding:12px 14px;cursor:grab;
+ border-bottom:1px solid var(--line);font-weight:700;user-select:none}
+#vt .drag-handle .grip{width:14px;height:14px;border-left:3px dotted var(--muted);border-right:3px dotted var(--muted)}
+#vt .drag-handle .btn{margin-left:auto;height:32px;width:32px;padding:0}
+#vt .list{display:flex;flex-direction:column;gap:8px;padding:12px}
+#vt .list a{display:block;height:var(--btn-h);line-height:calc(var(--btn-h) - 2px);padding:0 12px;border:1px solid var(--line);
+ border-radius:calc(var(--r) * .75);color:var(--text);text-decoration:none;font-weight:600;
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#vt .list a.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+#vt.min .list{display:none}
+#toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:var(--accent);
+ color:var(--accent-text);padding:14px 20px;border-radius:calc(var(--r) * .75);font:600 var(--fs-small)/1.3 var(--f-body);
+ z-index:99;display:none}
+.empty{padding:48px;text-align:center;color:var(--muted)}
+@media (max-width:640px){.top{padding:12px 16px}main{padding:16px}.vb{padding:12px}#vt{width:200px}}
+</style></head>
+<body>
+<header class="top"><img class="logo" src="parts/logo.webp" alt="Человеки"><h1>Сцена «персонал сам придёт»</h1>
+<nav><a href="#v1" data-to="v1">С1</a>
+<a href="#v2" data-to="v2">С2</a>
+<a href="#v3" data-to="v3">С3</a>
+<a href="#v4" data-to="v4">С4</a>
+<a href="#v5" data-to="v5">С5</a>
+<a href="#v6" data-to="v6">С6</a>
+<a href="#v7" data-to="v7">С7</a>
+<a href="#v8" data-to="v8">С8</a><button class="btn" id="restore" hidden>Вернуть скрытые</button></nav></header>
+<main>
+<section class="v" id="v1" data-variant="С1">
+  <div class="vh">
+    <div class="num">С1</div>
+    <div class="cap"><b>Слетаются</b><span>концепция: кружочки · подход: 12 лиц слетаются со всех сторон к заголовку</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="С-1">Утвердить С-1</button>
+      <button class="btn x" data-x="v1" data-name="С1" aria-label="Убрать С1 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v1.html" style="height:640px" loading="lazy" title="v1"></iframe></div>
+  
+</section>
+<section class="v" id="v2" data-variant="С2">
+  <div class="vh">
+    <div class="num">С2</div>
+    <div class="cap"><b>Кружки рядами</b><span>концепция: кружочки · подход: 2 ряда по 6 крупных кружков, имя и роль под лицом</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="С-2">Утвердить С-2</button>
+      <button class="btn x" data-x="v2" data-name="С2" aria-label="Убрать С2 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v2.html" style="height:640px" loading="lazy" title="v2"></iframe></div>
+  
+</section>
+<section class="v" id="v3" data-variant="С3">
+  <div class="vh">
+    <div class="num">С3</div>
+    <div class="cap"><b>Идут к вам</b><span>концепция: история · подход: кружочки прыгают по дорожке к флажку «ваше мероприятие»</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="С-3">Утвердить С-3</button>
+      <button class="btn x" data-x="v3" data-name="С3" aria-label="Убрать С3 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v3.html" style="height:640px" loading="lazy" title="v3"></iframe></div>
+  
+</section>
+<section class="v" id="v4" data-variant="С4">
+  <div class="vh">
+    <div class="num">С4</div>
+    <div class="cap"><b>Чат «Буду!»</b><span>концепция: интерфейс · подход: чат мероприятия: каждый сам пишет «буду»</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="С-4">Утвердить С-4</button>
+      <button class="btn x" data-x="v4" data-name="С4" aria-label="Убрать С4 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v4.html" style="height:640px" loading="lazy" title="v4"></iframe></div>
+  
+</section>
+<section class="v" id="v5" data-variant="С5">
+  <div class="vh">
+    <div class="num">С5</div>
+    <div class="cap"><b>Групповое фото</b><span>концепция: кружочки · подход: кружки падают в плотную кучу, как групповое фото</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="С-5">Утвердить С-5</button>
+      <button class="btn x" data-x="v5" data-name="С5" aria-label="Убрать С5 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v5.html" style="height:640px" loading="lazy" title="v5"></iframe></div>
+  
+</section>
+<section class="v" id="v6" data-variant="С6">
+  <div class="vh">
+    <div class="num">С6</div>
+    <div class="cap"><b>Герой и лента</b><span>концепция: герой · подход: один крупный кружок с подписью, остальные бегут лентой</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="С-6">Утвердить С-6</button>
+      <button class="btn x" data-x="v6" data-name="С6" aria-label="Убрать С6 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v6.html" style="height:640px" loading="lazy" title="v6"></iframe></div>
+  
+</section>
+<section class="v" id="v7" data-variant="С7">
+  <div class="vh">
+    <div class="num">С7</div>
+    <div class="cap"><b>Плитки-лица</b><span>концепция: сетка · подход: лица крупно впритык, без тёмных плашек и мелкого текста</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="С-7">Утвердить С-7</button>
+      <button class="btn x" data-x="v7" data-name="С7" aria-label="Убрать С7 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v7.html" style="height:640px" loading="lazy" title="v7"></iframe></div>
+  
+</section>
+<section class="v" id="v8" data-variant="С8">
+  <div class="vh">
+    <div class="num">С8</div>
+    <div class="cap"><b>Пузыри</b><span>концепция: кружочки · подход: тёмный фон, кружки разного размера всплывают снизу</span></div>
+    <div class="acts">
+      <button class="btn main" data-ok="С-8">Утвердить С-8</button>
+      <button class="btn x" data-x="v8" data-name="С8" aria-label="Убрать С8 из сравнения">×</button>
+    </div>
+  </div>
+  <div class="vb"><iframe src="parts/v8.html" style="height:640px" loading="lazy" title="v8"></iframe></div>
+  
+</section>
+</main>
+<aside id="vt"><div class="drag-handle"><span class="grip"></span>Варианты: <span id="cnt">8</span>
+<button class="btn" id="vt-min" aria-label="Свернуть панель">−</button></div>
+<div class="list"><a href="#v1" data-to="v1">С1 · Слетаются</a>
+<a href="#v2" data-to="v2">С2 · Кружки рядами</a>
+<a href="#v3" data-to="v3">С3 · Идут к вам</a>
+<a href="#v4" data-to="v4">С4 · Чат «Буду!»</a>
+<a href="#v5" data-to="v5">С5 · Групповое фото</a>
+<a href="#v6" data-to="v6">С6 · Герой и лента</a>
+<a href="#v7" data-to="v7">С7 · Плитки-лица</a>
+<a href="#v8" data-to="v8">С8 · Пузыри</a></div></aside>
+<div id="toast" role="status"></div>
+<script src="drag-panel.js"></script>
+<script>
+(function(){
+  var KEY = 'variants-hidden:' + "stena-varianty:Сцена «персонал сам придёт»", TOPIC = "Сцена «персонал сам придёт»";
+  function get(){ try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch(e){ return []; } }
+  function put(a){ try { localStorage.setItem(KEY, JSON.stringify(a)); } catch(e){} }
+  function toast(t){ var el = document.getElementById('toast'); el.textContent = t; el.style.display = 'block';
+    clearTimeout(el._t); el._t = setTimeout(function(){ el.style.display = 'none'; }, 2600); }
+  function copy(t){ if (navigator.clipboard) navigator.clipboard.writeText(t).catch(function(){}); }
+  function apply(){
+    var hid = get(), n = 0;
+    document.querySelectorAll('section.v').forEach(function(s){
+      var off = hid.indexOf(s.id) >= 0; s.hidden = off; if (!off) n++;
+      document.querySelectorAll('[data-to="' + s.id + '"]').forEach(function(a){ a.hidden = off; });
+    });
+    var r = document.getElementById('restore'); r.hidden = !hid.length;
+    r.textContent = 'Вернуть скрытые (' + hid.length + ')';
+    document.getElementById('cnt').textContent = n;
+  }
+  document.addEventListener('click', function(e){
+    var x = e.target.closest('[data-x]'), ok = e.target.closest('[data-ok]');
+    if (x){ var h = get(); if (h.indexOf(x.dataset.x) < 0) h.push(x.dataset.x); put(h); apply();
+      toast('Убрал ' + x.dataset.name + ' из сравнения'); }
+    if (ok){ var t = 'Утверждаю ' + ok.dataset.ok + ': ' + TOPIC; copy(t); toast('Скопировано: «' + t + '». Вставь в чат'); }
+    if (e.target.id === 'restore'){ put([]); apply(); }
+    if (e.target.id === 'vt-min'){ var p = document.getElementById('vt'); p.classList.toggle('min');
+      try { localStorage.setItem(KEY + ':min', p.classList.contains('min') ? '1' : ''); } catch(e){} }
+  });
+  var obs = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting){
+    document.querySelectorAll('[data-to]').forEach(function(a){ a.classList.toggle('on', a.dataset.to === en.target.id); }); } }); },
+    { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('section.v').forEach(function(s){ obs.observe(s); });
+  // на телефоне панель по умолчанию свёрнута, чтобы не закрывать варианты
+  var pref = null; try { pref = localStorage.getItem(KEY + ':min'); } catch(e){}
+  if (pref === '1' || (pref === null && innerWidth < 700)) document.getElementById('vt').classList.add('min');
+  apply();
+  if (window.DragPanel) DragPanel.make(document.getElementById('vt'), { key: 'vt-' + "stena-varianty:Сцена «персонал сам придёт»", handle: '.drag-handle', side: 'right', top: 110 });
+})();
+</script>
+</body></html>

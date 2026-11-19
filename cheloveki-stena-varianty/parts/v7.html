@@ -1,0 +1,29 @@
+<!-- concept: сетка | approach: лица крупно впритык, без тёмных плашек и мелкого текста | label: Плитки-лица -->
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<style>
+@font-face{font-family:"Golos Text";font-weight:700;src:url(../fonts/golos-text-cyrillic-700-normal-BKmY45Ip.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:"Golos Text";font-weight:700;src:url(../fonts/golos-text-latin-600-normal-Bhk8uV1U.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+html,body{margin:0;background:#111;overflow:hidden}
+#w{width:100vw;height:56.25vw;position:relative;overflow:hidden}
+#s{width:1280px;height:720px;position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden;background:#E0457B;color:#fff;font:700 16px/1.1 "Golos Text",sans-serif}
+#s *{box-sizing:border-box}
+.ab{position:absolute}
+.h{left:0;right:0;text-align:center;font-size:60px;line-height:1.08;letter-spacing:-.01em}
+.c{border-radius:50%;overflow:hidden;background:#000}.c img{width:100%;height:100%;object-fit:cover;display:block}
+#rp{position:absolute;right:14px;bottom:12px;z-index:9;font:600 13px "Golos Text";color:#fff;background:rgba(0,0,0,.45);border:0;border-radius:20px;padding:6px 14px;cursor:pointer}
+.h{top:40px;font-size:54px}
+.cell{width:190px;height:150px;perspective:600px}
+.in{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:flip .7s both}
+.in>div{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;overflow:hidden}
+.in img{width:100%;height:100%;object-fit:cover}
+.bk{transform:rotateY(180deg);background:#16101a;display:flex;flex-direction:column;justify-content:center;padding:0 18px}
+.bk b{font-size:24px}.bk i{font-style:normal;font-size:16px;color:#ff8fc0;margin-top:6px;font-weight:600}
+@keyframes flip{0%{transform:rotateY(180deg) scale(.6);opacity:0}100%{transform:none;opacity:1}}
+</style></head><body><div id="w"><div id="s">
+<div class="ab h">Персонал сам придёт на ваше мероприятие</div><div class="ab cell" style="left:50px;top:230px"><div class="in" style="animation-delay:0.20s"><div><img src="../img/pam.jpg"></div><div class="bk"><b>Памела</b><i>Промо-модель</i></div></div></div><div class="ab cell" style="left:250px;top:230px"><div class="in" style="animation-delay:0.28s"><div><img src="../img/p5.jpg"></div><div class="bk"><b>Тимур</b><i>Аниматор</i></div></div></div><div class="ab cell" style="left:450px;top:230px"><div class="in" style="animation-delay:0.36s"><div><img src="../img/p9.jpg"></div><div class="bk"><b>Сергей Петрович</b><i>Дед Мороз</i></div></div></div><div class="ab cell" style="left:650px;top:230px"><div class="in" style="animation-delay:0.44s"><div><img src="../img/p2.jpg"></div><div class="bk"><b>Катя</b><i>Хостес</i></div></div></div><div class="ab cell" style="left:850px;top:230px"><div class="in" style="animation-delay:0.52s"><div><img src="../img/p6.jpg"></div><div class="bk"><b>Алина</b><i>Аниматор</i></div></div></div><div class="ab cell" style="left:1050px;top:230px"><div class="in" style="animation-delay:0.60s"><div><img src="../img/p11.jpg"></div><div class="bk"><b>Миша</b><i>Официант</i></div></div></div><div class="ab cell" style="left:50px;top:395px"><div class="in" style="animation-delay:0.68s"><div><img src="../img/p3.jpg"></div><div class="bk"><b>Даша</b><i>Промо-модель</i></div></div></div><div class="ab cell" style="left:250px;top:395px"><div class="in" style="animation-delay:0.76s"><div><img src="../img/p8.jpg"></div><div class="bk"><b>Соня</b><i>Мастер-классы</i></div></div></div><div class="ab cell" style="left:450px;top:395px"><div class="in" style="animation-delay:0.84s"><div><img src="../img/p10.jpg"></div><div class="bk"><b>Андрей</b><i>Дед Мороз</i></div></div></div><div class="ab cell" style="left:650px;top:395px"><div class="in" style="animation-delay:0.92s"><div><img src="../img/p4.jpg"></div><div class="bk"><b>Лера</b><i>Хостес</i></div></div></div><div class="ab cell" style="left:850px;top:395px"><div class="in" style="animation-delay:1.00s"><div><img src="../img/p7.jpg"></div><div class="bk"><b>Гоша</b><i>Аниматор</i></div></div></div><div class="ab cell" style="left:1050px;top:395px"><div class="in" style="animation-delay:1.08s"><div><img src="../img/p12.jpg"></div><div class="bk"><b>Вика</b><i>Координатор</i></div></div></div></div><button id="rp" onclick="rp()">↻ повторить</button></div>
+<script>
+function fit(){const k=innerWidth/1280;document.getElementById('s').style.transform='scale('+k+')'}
+addEventListener('resize',fit);fit();
+function rp(){const s=document.getElementById('s');s.style.animation='none';s.querySelectorAll('*').forEach(e=>{const a=e.style.animationName;e.style.animation='none';e.offsetHeight;e.style.animation=''});}
+setInterval(rp,6500);
+</script></body></html>

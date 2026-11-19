@@ -1,0 +1,24 @@
+<!-- concept: кружочки | approach: тёмный фон, кружки разного размера всплывают снизу | label: Пузыри -->
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<style>
+@font-face{font-family:"Golos Text";font-weight:700;src:url(../fonts/golos-text-cyrillic-700-normal-BKmY45Ip.woff2) format('woff2');unicode-range:U+0400-04FF}
+@font-face{font-family:"Golos Text";font-weight:700;src:url(../fonts/golos-text-latin-600-normal-Bhk8uV1U.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F}
+html,body{margin:0;background:#111;overflow:hidden}
+#w{width:100vw;height:56.25vw;position:relative;overflow:hidden}
+#s{width:1280px;height:720px;position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden;background:#0b070d;color:#fff;font:700 16px/1.1 "Golos Text",sans-serif}
+#s *{box-sizing:border-box}
+.ab{position:absolute}
+.h{left:0;right:0;text-align:center;font-size:60px;line-height:1.08;letter-spacing:-.01em}
+.c{border-radius:50%;overflow:hidden;background:#000}.c img{width:100%;height:100%;object-fit:cover;display:block}
+#rp{position:absolute;right:14px;bottom:12px;z-index:9;font:600 13px "Golos Text";color:#fff;background:rgba(0,0,0,.45);border:0;border-radius:20px;padding:6px 14px;cursor:pointer}
+.h{top:80px}.h b{color:#FB037D}
+.u{width:var(--s);height:var(--s);border:5px solid #FB037D;animation:up 1.6s cubic-bezier(.2,.9,.3,1) both}
+@keyframes up{from{transform:translateY(700px)}}
+</style></head><body><div id="w"><div id="s">
+<div class="ab h">Персонал сам придёт<br>на <b>ваше мероприятие</b></div><div class="ab c u" style="left:80px;top:330px;--s:150px;animation-delay:0.00s"><img src="../img/pam.jpg"></div><div class="ab c u" style="left:250px;top:470px;--s:120px;animation-delay:0.10s"><img src="../img/p5.jpg"></div><div class="ab c u" style="left:370px;top:300px;--s:170px;animation-delay:0.20s"><img src="../img/p9.jpg"></div><div class="ab c u" style="left:560px;top:450px;--s:140px;animation-delay:0.30s"><img src="../img/p2.jpg"></div><div class="ab c u" style="left:700px;top:300px;--s:130px;animation-delay:0.40s"><img src="../img/p6.jpg"></div><div class="ab c u" style="left:840px;top:470px;--s:160px;animation-delay:0.50s"><img src="../img/p11.jpg"></div><div class="ab c u" style="left:1010px;top:320px;--s:150px;animation-delay:0.60s"><img src="../img/p3.jpg"></div><div class="ab c u" style="left:160px;top:560px;--s:100px;animation-delay:0.70s"><img src="../img/p8.jpg"></div><div class="ab c u" style="left:470px;top:580px;--s:90px;animation-delay:0.80s"><img src="../img/p10.jpg"></div><div class="ab c u" style="left:950px;top:560px;--s:110px;animation-delay:0.90s"><img src="../img/p4.jpg"></div><div class="ab c u" style="left:1130px;top:500px;--s:110px;animation-delay:1.00s"><img src="../img/p7.jpg"></div><div class="ab c u" style="left:640px;top:580px;--s:100px;animation-delay:1.10s"><img src="../img/p12.jpg"></div></div><button id="rp" onclick="rp()">↻ повторить</button></div>
+<script>
+function fit(){const k=innerWidth/1280;document.getElementById('s').style.transform='scale('+k+')'}
+addEventListener('resize',fit);fit();
+function rp(){const s=document.getElementById('s');s.style.animation='none';s.querySelectorAll('*').forEach(e=>{const a=e.style.animationName;e.style.animation='none';e.offsetHeight;e.style.animation=''});}
+setInterval(rp,6500);
+</script></body></html>
