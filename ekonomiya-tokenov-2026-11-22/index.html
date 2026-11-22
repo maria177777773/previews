@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Как экономить токены в Claude и Codex</title>
+<meta name="description" content="Разбор видео, замер стартового контекста и восемь предложений по экономии токенов.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Каталист">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Как экономить токены в Claude и Codex">
+<meta property="og:description" content="Восемь предложений по замерам Claude и Codex.">
+<meta property="og:url" content="https://maria177777773.github.io/previews/ekonomiya-tokenov-2026-11-22/">
+<meta property="og:image" content="https://maria177777773.github.io/previews/ekonomiya-tokenov-2026-11-22/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Как экономить токены в Claude и Codex">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://maria177777773.github.io/previews/ekonomiya-tokenov-2026-11-22/og.png">
+<style>
+:root {
+  color-scheme: light;
+  --ink: #14221d;
+  --muted: #465c52;
+  --accent: #075d42;
+  --rule: #b9cac3;
+  --panel: #f1f7f3;
+  --body: 18px;
+  --small: 15px;
+  --heading: clamp(40px, 7vw, 72px);
+  --subheading: clamp(28px, 4vw, 40px);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #fcfdfb;
+  font: var(--body)/1.55 system-ui, sans-serif;
+}
+main { width: min(100% - 48px, 960px); margin: 0 auto; }
+header { padding: 70px 0 30px; }
+section { padding: 38px 0; border-top: 1px solid var(--rule); }
+footer { padding: 8px 0 55px; color: var(--muted); }
+h1, h2, h3 { line-height: 1.12; text-wrap: balance; }
+h1 { font-size: var(--heading); margin: 8px 0 20px; letter-spacing: -.045em; }
+h2 { font-size: var(--subheading); margin: 0 0 20px; letter-spacing: -.025em; }
+h3 { font-size: 23px; margin: 0 0 7px; }
+p { max-width: 75ch; margin: 0 0 14px; }
+.lead { font-size: 22px; max-width: 64ch; }
+.meta, .note, .source, footer { font-size: var(--small); }
+.meta, .note, .source { color: var(--muted); }
+a { color: var(--accent); text-underline-offset: .19em; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 0 0 20px; }
+.metric { background: var(--panel); padding: 18px 22px; }
+.metric dt { color: var(--muted); font-size: var(--small); }
+.metric dd { margin: 3px 0 0; font-size: 27px; font-weight: 650; }
+table { border-collapse: collapse; width: 100%; margin: 18px 0 10px; font-size: var(--small); }
+th, td { border-bottom: 1px solid var(--rule); padding: 9px 12px 9px 0; text-align: left; vertical-align: top; }
+th:last-child, td:last-child { padding-right: 0; }
+th { font-weight: 650; }
+article { padding: 19px 0 7px; }
+article + article { border-top: 1px solid var(--rule); }
+article p { margin-bottom: 9px; }
+article .source { display: block; margin-bottom: 8px; }
+ol, ul { padding-left: 24px; margin: 12px 0; }
+li + li { margin-top: 12px; }
+code { font-size: .9em; overflow-wrap: anywhere; }
+@media (max-width: 560px) {
+  :root { --body: 16px; --small: 14px; }
+  main { width: calc(100% - 32px); }
+  header { padding: 38px 0 16px; }
+  section { padding: 28px 0; }
+  .lead { font-size: 19px; }
+  .metrics { gap: 8px; }
+  .metric { padding: 11px 12px; }
+  .metric dd { font-size: 23px; }
+  th, td { padding-right: 8px; }
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+<p class="meta">Каталист · 22 ноября 2026</p>
+<h1>Как экономить токены<br>в Claude и Codex</h1>
+<p class="lead">Сначала научить отчёт видеть расход Codex. Затем сравнить короткие задания с точным маршрутом по файлам и короткий хендофф между этапами.</p>
+<p>Пока есть замеры контекста и журналов. Сколько процентов недельной подписки сэкономит каждое изменение, покажет пилот.</p>
+</header>
+
+<section aria-labelledby="video">
+<h2 id="video">Что показал ролик</h2>
+<p>Нейт Херк разобрал три привычки на примерах Claude Code. Посмотрел весь транскрипт ролика (12:08) и 21 кадр с примерами, интерфейсом и цифрами.</p>
+<ol>
+<li><strong>Сохранять кэш.</strong> Выбирать модель в начале сессии. Переключение модели может заставить Claude заново обработать историю. На экране показан пример с Opus и мод, который отмечает время до остывания кэша. <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=149s">02:29</a> · <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=295s">04:55</a></li>
+<li><strong>Выносить независимые задачи в отдельные сессии.</strong> Автор показывает <code>/clear</code> и свой <code>/session-handoff</code>. Точный путь к файлу и имя функции сокращают поиск. <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=405s">06:45</a> · <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=424s">07:04</a> · <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=451s">07:31</a></li>
+<li><strong>Держать в стартовом контексте общие правила.</strong> Подробные процедуры подгружать по задаче. На экране показаны рассказ об эксперименте Anthropic с системным промптом и запуск <code>/doctor</code>. В документации аудит вызывается через <code>/doctor prompt-audit</code>. <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=505s">08:25</a> · <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=614s">10:14</a> · <a href="https://code.claude.com/docs/en/memory#audit-your-instruction-files">Документация Claude Code</a></li>
+</ol>
+</section>
+
+<section aria-labelledby="measure">
+<h2 id="measure">Сколько контекста загружается у нас</h2>
+<dl class="metrics">
+<div class="metric"><dt>Claude, первый запрос</dt><dd>48,0 тыс.</dd></div>
+<div class="metric"><dt>Codex Sol, первый запрос</dt><dd>38,5 тыс.</dd></div>
+</dl>
+<p class="note">Медианы входных токенов по локальным журналам 22.11 до 18:48 UTC. Claude: 49 журналов основных сессий с первым видимым запросом в окне. Codex: 99 сессий Sol из 127 запусков CLI. Вход включает стартовый контекст, само задание и кэш. Он меняется от задачи к задаче.</p>
+<table aria-label="Размеры файлов правил, памяти, скиллов и инструментов">
+<thead><tr><th scope="col">Что измерил</th><th scope="col">Размер</th><th scope="col">Оценка токенов</th></tr></thead>
+<tbody>
+<tr><td><code>CLAUDE.md</code>, 139 строк</td><td>44 665 Б</td><td>9 491</td></tr>
+<tr><td><code>AGENTS.md</code>, 280 строк</td><td>63 595 Б</td><td>13 747</td></tr>
+<tr><td><code>MEMORY.md</code>, индекс сервера, 113 строк</td><td>21 457 Б</td><td>4 985</td></tr>
+<tr><td>Общий индекс памяти, 57 строк</td><td>9 587 Б</td><td>2 327</td></tr>
+<tr><td>22 правила с указанием области действия</td><td>153 502 Б</td><td>32 216 на диске</td></tr>
+<tr><td>Описания скиллов Claude, 76 из 80</td><td>56 544 Б</td><td>11 233 на диске</td></tr>
+<tr><td>Описания скиллов Codex, 90 из 94</td><td>66 232 Б</td><td>13 356 на диске</td></tr>
+<tr><td>Описания скиллов Codex, видимый блок CLI</td><td>40 409 Б</td><td>9 041 в отладке</td></tr>
+<tr><td>Схемы доступных платформенных инструментов Codex, 3 объекта</td><td>23 920 Б JSON</td><td>5 696 по JSON</td></tr>
+</tbody>
+</table>
+<p class="note">Байты посчитаны по UTF-8. Токены текста и JSON оценены через <code>o200k_base</code>. Токенизаторы рабочих моделей могут дать другие числа. Файлы частично перекрываются. Складывать строки с медианами запросов нельзя.</p>
+<p>В <code>codex debug prompt-input</code> получилось около <strong>29,8 тыс.</strong> токенов текстовых блоков до тестовой реплики. При разовом пустом списке MCP видимый текст сократился на 6 оценочных токенов. В конфигурациях найден 1 сервер Claude и 4 Codex. Сколько токенов занимают их схемы после подключения и вызова, этот тест не измеряет. Claude по умолчанию подгружает описания MCP-инструментов по мере обращения к ним. <a href="https://code.claude.com/docs/en/mcp#scale-with-mcp-tool-search">MCP Tool Search</a></p>
+<p>Отчёт по задачам читает для Codex формат <code>token_usage_record</code>. В выборке от 22.11 после дедупликации получилось <strong>4 765</strong> событий <code>token_count</code> и 0 событий формата, который ищет отчёт. В Claude есть отдельные числа обычного входа, чтения и записи кэша и выхода. Доля чтения из кэша в объёме входа составила <strong>98,1%</strong> для 2 531 запроса основных сессий Claude. Это взвешенная доля токенов в журналах, а не доля запросов или квоты.</p>
+</section>
+
+<section aria-labelledby="actions">
+<h2 id="actions">Восемь предложений</h2>
+<article>
+<h3>1. Починить учёт Codex до сравнения вариантов</h3>
+<p>Читать оба формата журнала. Для <code>token_count</code> брать прирост по запросу и отсекать дубли. Считать вход, кэш, выход и повторы по каждой принятой задаче. Claude считать отдельно.</p>
+<p><strong>Эффект.</strong> Экономия сразу 0 токенов. Отчёт сможет учесть 4 765 событий из выборки. <strong>Цена и риск.</strong> Правка парсера и тесты на обоих форматах. Если сложить накопительные счётчики или прибавить токены рассуждений поверх выхода, сумма раздуется.</p>
+<span class="source">Основание: журналы CLI и код отчёта за 22.11.</span>
+</article>
+
+<article>
+<h3>2. Закрывать этап с коротким хендоффом</h3>
+<p>Независимая задача получает новый чат. Связанную работу продолжаем до ближайшего завершённого этапа. На стыке передаём цель, ограничения, принятые решения и ссылки на проверки. В Claude настроен хендофф на 200 тыс. токенов и потолок агентов 170 тыс.</p>
+<p><strong>Эффект, сценарий.</strong> 111,8 тыс. (медиана запроса основных сессий Claude) минус 48 тыс. (медиана первого запроса) даёт разницу 63,8 тыс. входных токенов в этом примере, до затрат на передачу и повторное чтение. Это разные запросы, A/B ещё впереди. <strong>Цена и риск.</strong> Новый кэш и время на конспект. Без критериев и ссылок на улики агент повторит работу или забудет согласованную правку.</p>
+<span class="source"><a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=405s">Ролик, 06:45</a> · <a href="https://code.claude.com/docs/en/costs#manage-context-proactively">Рекомендация Anthropic</a></span>
+</article>
+
+<article>
+<h3>3. Сократить стартовые правила по источнику</h3>
+<p>Убрать дубли и противоречия в глобальном тексте. Пример для ревизии: один блок предписывает снятый маршрут, другой описывает переход на Codex. Длинные процедуры оставить в правилах по теме. AGENTS.md пересобрать из общего источника.</p>
+<p><strong>Эффект, цель пилота.</strong> Снять 2,5 тыс. оценочных токенов с 9,5 тыс. в CLAUDE.md, около 26% текста. После генерации часть выигрыша получит и Codex. <strong>Цена и риск.</strong> Ревизия и проверки на реальных задачах. Если вынести обязательные правила, агент может пропустить согласование или проверку перед публикацией.</p>
+<span class="source"><a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=642s">Ролик, 10:42</a> · <a href="https://code.claude.com/docs/en/memory#write-effective-instructions">Области действия правил</a></span>
+</article>
+
+<article>
+<h3>4. Оставить в указателе памяти точные маршруты</h3>
+<p>Сократить индекс сервера до активных тем и ссылок на подробности. Проверить, где реально загружается общий индекс и где его достаточно открывать по задаче. Например, <code>AGENTS.md</code> включает общий индекс и указывает путь к серверному.</p>
+<p><strong>Эффект, ориентир.</strong> Снижение серверного индекса с 4 985 до 2 500 оценочных токенов уберёт около 2 485 токенов за его загрузку. Частота загрузки зависит от рабочей папки и задачи. <strong>Цена и риск.</strong> Проверка ссылок и поиска в каждом проекте. Слишком общие заголовки скроют нужное правило и увеличат поисковые чтения.</p>
+<span class="source">Основание: замер двух индексов и чтение генератора <code>AGENTS.md</code>.</span>
+</article>
+
+<article>
+<h3>5. Давать агенту путь к коду и возвращать хвост лога</h3>
+<p>В задании указывать известные файлы, функции и команду приёмки. В чат возвращать итог, ошибки и нужные строки. Полный лог сохранять и открывать, когда короткого вывода мало.</p>
+<p><strong>Эффект, сценарий.</strong> В Claude 264 из 2 294 текстовых результатов инструментов больше 1 000 оценочных токенов. В сумме сверх порога 314 тыс. Это верхняя граница для примера с обрезкой, включая нужные строки. <strong>Цена и риск.</strong> Нужно выбрать фильтр под команду. Обрезка по одному порогу может скрыть первопричину или итог проверки.</p>
+<span class="source"><a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=451s">Ролик, 07:31</a> · <a href="https://code.claude.com/docs/en/costs#offload-processing-to-hooks-and-skills">Документация Claude Code</a></span>
+</article>
+
+<article>
+<h3>6. Проверить короткие описания скиллов на простых задачах</h3>
+<p>Сжать длинные описания до признаков выбора. Для повторяемых задач сравнить изолированный запуск с нужными скиллами и обычный запуск. MCP выбирать по задаче, после проверки, сколько именно он загружает.</p>
+<p><strong>Эффект, ориентир.</strong> Сокращение видимого блока Codex на четверть даёт 2,3 тыс. оценочных токенов. Отдельный тест без этого блока показал разницу около 9 тыс. Для MCP подтверждённого выигрыша по схемам пока нет. <strong>Цена и риск.</strong> Нужна проверка вызова по обычным формулировкам. Слишком короткое описание может лишить агента рабочего инструмента или нужного сценария приёмки.</p>
+<span class="source"><a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=594s">Ролик, 09:54</a> · <a href="https://code.claude.com/docs/en/mcp#scale-with-mcp-tool-search">MCP Tool Search</a></span>
+</article>
+
+<article>
+<h3>7. Выбирать модель до запуска, кэш смотреть по факту</h3>
+<p>Один длинный связанный чат вести на выбранной модели. Простую независимую задачу отправлять отдельному исполнителю Codex с кратким брифом. Поведение <code>effort</code> проверять для версии модели: Claude Opus 5.5 входит в список исключений, у которых смена <code>effort</code> может сохранить кэш при прямом доступе.</p>
+<p><strong>Эффект, пример.</strong> При смене модели на запросе с 100 тыс. закэшированных токенов может потребоваться заново обработать до 100 тыс. токенов входа. Это пример видео, а не прогноз квоты. <strong>Цена и риск.</strong> Отдельному исполнителю нужен бриф и приёмка. Если задача зависит от старых решений, агенту придётся перечитывать их.</p>
+<span class="source"><a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=149s">Ролик, 02:29</a> · <a href="https://code.claude.com/docs/en/prompt-caching#actions-that-invalidate-the-cache">Условия сброса кэша</a></span>
+</article>
+
+<article>
+<h3>8. Сравнить effort на задачах с автоматической проверкой</h3>
+<p>Маршрут уже есть: Opus планирует, Codex исполняет, Fable принимает значимые решения. На описи, сверке и типовой правке проверить Sol low против Sol medium. Учитывать проверку и повтор целиком, включая советника, если он нужен в обоих прогонах.</p>
+<p><strong>Эффект, гипотеза для пилота.</strong> Цель: на 15% меньше выходных токенов на принятую задачу при той же доле приёмки с первого раза. Фактического сравнения ещё нет. <strong>Цена и риск.</strong> Два сопоставимых прогона на каждую задачу. Если low требует повторного запуска или чаще пропускает крайние случаи, экономия исчезнет.</p>
+<span class="source">Основание: действующий выбор модели и effort при запуске задачи. 15% служат порогом проверки.</span>
+</article>
+</section>
+
+<section aria-labelledby="limits">
+<h2 id="limits">Что из ролика не переносим</h2>
+<ul>
+<li><strong>Пустые запросы для прогрева кэша.</strong> Это дополнительные ходы. На 04:55 показан интерфейс с оценкой, на 05:09 показаны $3,50 для примера с 400 тыс. токенов. У нас нет связи между этими ценами и недельным лимитом. <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=309s">05:09</a></li>
+<li><strong>Обещание экономии вдвое и ориентир 80%.</strong> В примере 160 млн входа и 500 тыс. выхода дают отношение 320:1, хотя голос называет около 200:1. Число 80% относится к системному промпту Anthropic, применимость к нашим инструкциям не проверена. <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=72s">01:12</a> · <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=505s">08:25</a></li>
+<li><strong>Удалять все скиллы раз в полгода.</strong> Часть наших скиллов хранит порядок проверок, договорённости и рабочие команды. Проверять нужность можно в изолированном прогоне. <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=554s">09:14</a></li>
+<li><strong>Подключать MCP вручную перед каждой сессией и заменять хендофф на <code>/compact</code>.</strong> Список инструментов определяется задачей, а Claude умеет подгружать их схемы по запросу. У связанной работы уже есть хендофф с проверками. Ручной <code>/compact</code> требует согласования. <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=261s">04:21</a> · <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=405s">06:45</a></li>
+<li><strong>Оптимизировать по числу строк.</strong> Наш глобальный <code>CLAUDE.md</code> уже короче 200 строк и при этом занимает 9,5 тыс. оценочных токенов. Для пилота важнее размер текста и прохождение проверок. <a href="https://www.youtube.com/watch?v=0RF9ml43ups&amp;t=631s">10:31</a></li>
+</ul>
+</section>
+
+<section aria-labelledby="pilot">
+<h2 id="pilot">Как проверить экономию</h2>
+<p>Взять 10 задач с проверяемым результатом. Для каждого опыта сравнить по одному изменению на той же модели и с той же приёмкой. В опыте с effort меняется только effort. Последовательно учесть старт, обращения к инструментам, свежий и закэшированный вход, выход, советников, хендофф и повторы. Токены двух поставщиков сравнивать по отдельности.</p>
+<p>Итог пилота — токены на принятую задачу, время и доля приёмки с первого раза. Для оценки квоты нужен отдельный снимок до и после прогона в одном окне с учётом параллельной работы. Эффекты из таблицы и предложений частично пересекаются. Решение о пилоте и внедрении принимает Fable.</p>
+</section>
+<footer>Источники: <a href="https://www.youtube.com/watch?v=0RF9ml43ups">видео Нейта Херка</a>, <a href="https://code.claude.com/docs/en/costs">документация Claude Code</a>, замеры файлов и журналов от 22.11.2026.</footer>
+</main>
+</body>
+</html>
