@@ -1,6 +1,6 @@
 
 const names=['Письмо в декабрь','Полночь','Билет на ёлку','Ёлочный шар','Фотополоса','Подарочная лента','Зимнее окно','Праздничная сцена'];
-const descriptions = ['Снимок гостей внутри почтовой марки с зубчатым краем.', 'Золотой циферблат обрамляет фото на ночном синем фоне.', 'Штрихкод и отрывной корешок новогоднего билета.', 'Круглый снимок подвешен на ёлку как игрушка.', 'Два момента вечера на полосе фотоплёнки.', 'Снимок гостей перевязан алой лентой с бантом.', 'Фото видно сквозь арочное окно со снежинками.', 'Сцену обрамляют лампочки и бархатный занавес.'];
+const descriptions = ['Снимок гостей внутри почтовой марки с зубчатым краем.', 'Зелёный циферблат с золотыми стрелками обрамляет снимок гостей.', 'Штрихкод и отрывной корешок новогоднего билета.', 'Круглый снимок подвешен на ёлку как игрушка.', 'Два момента вечера на полосе фотоплёнки.', 'Снимок гостей перевязан зелёной лентой с бантом.', 'Фото видно сквозь арочное окно со снежинками.', 'Сцену обрамляют лампочки и бархатный занавес.'];
 const sizes=['1080x607','300x600','960x300','240x400'];
 let type='corp';
 let hidden=new Set(JSON.parse(localStorage.getItem('newyear-hidden')||'[]'));
@@ -18,11 +18,11 @@ save()}
 
 function image(n, s, cls) {
   const size = s.replace('x', ' × ');
-  return `<div class="image-tile ${cls}"><div class="figure"><img loading="lazy" src="assets/${n}-${type}-${s}.webp" alt="${names[n-1]}. ${type === 'corp' ? 'Новогодний корпоратив под ключ в Москве' : 'Новогодний тимбилдинг, музыкальная программа «Оркестр» от 249 000 рублей'}. ${size}" onerror="this.hidden=true"><span class="missing">Изображение готовится</span><button aria-label="Открыть ${names[n-1]}, ${size} крупно" data-open="${n}|${s}"></button></div><div class="size">${size}</div></div>`;
+  return `<div class="image-tile ${cls}"><div class="figure"><img loading="lazy" src="assets/${n}-${type}-${s}.webp?v=brand5" alt="${names[n-1]}. ${type === 'corp' ? 'Новогодний корпоратив под ключ в Москве' : 'Новогодний тимбилдинг, музыкальная программа «Оркестр» от 249 000 рублей'}. ${size}" onerror="this.hidden=true"><span class="missing">Изображение готовится</span><button aria-label="Открыть ${names[n-1]}, ${size} крупно" data-open="${n}|${s}"></button></div><div class="size">${size}</div></div>`;
 }
 
 function render(){
-document.querySelector('.overview').innerHTML=names.map((name,i)=>hidden.has(i+1)?'':`<a class="overview-card" href="#v${i+1}"><img loading="lazy" src="assets/${i+1}-${type}-1080x607.webp" alt="" onerror="this.hidden=true"><span><b>${String(i+1).padStart(2,'0')}</b> ${name}</span></a>`).join('');
+document.querySelector('.overview').innerHTML=names.map((name,i)=>hidden.has(i+1)?'':`<a class="overview-card" href="#v${i+1}"><img loading="lazy" src="assets/${i+1}-${type}-1080x607.webp?v=brand5" alt="" onerror="this.hidden=true"><span><b>${String(i+1).padStart(2,'0')}</b> ${name}</span></a>`).join('');
 nav.innerHTML=names.map((_,i)=>!hidden.has(i+1)?`<a href="#v${i+1}" aria-label="Концепция ${i+1}">${i+1}</a>`:'').join('');
 gallery.innerHTML=names.map((name,i)=>{let n=i+1;
 if(hidden.has(n))return '';
