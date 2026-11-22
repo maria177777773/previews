@@ -74,25 +74,6 @@
   // Keep one answer open across both FAQ columns, including older browsers.
   const questions = [...document.querySelectorAll('#s9 details.question')];
   document.querySelector('#s9 .faq-columns').replaceChildren(...questions);
-  const faq = document.getElementById('s9');
-  if (questions.length > 6) {
-    questions.slice(6).forEach(question => question.classList.add('faq-extra'));
-    const more = document.createElement('button');
-    more.type = 'button';
-    more.className = 'faq-more';
-    more.textContent = 'Смотреть ещё';
-    more.setAttribute('aria-expanded', 'false');
-    const list = faq.querySelector('.faq-columns');
-    list.id = 'faq-questions';
-    more.setAttribute('aria-controls', list.id);
-    list.after(more);
-    more.addEventListener('click', () => {
-      faq.classList.add('faq-expanded');
-      more.setAttribute('aria-expanded', 'true');
-      questions[6].querySelector('summary').focus({preventScroll:true});
-      more.remove();
-    });
-  }
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const states = new Map();
   function animateQuestion(question, expanded) {
