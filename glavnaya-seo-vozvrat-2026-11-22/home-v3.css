@@ -83,12 +83,12 @@ html[data-kv-mode="tb"] body > #s10 + #prototype-footer.continuation-block {
 
 /* The three explicit lines and their underline determine the headline's bounds. */
 @media (width >= 1280px) {
-  html body main > .hero p.rotating-headline { width: max-content; }
+  html[data-kv-mode="tb"] body main > .hero p.rotating-headline { width: max-content; }
 }
 
 /* Wide homepage hero, from the existing 1440px layout to the 2560px layout. */
 @media (width > 1440px) {
-  html body main > .hero {
+  html[data-kv-mode="tb"] body main > .hero {
     /* Convert the clamped viewport distance into a unitless fraction (0–1). */
     --hero-growth: tan(atan2(clamp(0px, 100vw - 1440px, 1120px), 1120px));
     --page-width: calc(1552px + 568px * var(--hero-growth));
@@ -102,42 +102,42 @@ html[data-kv-mode="tb"] body > #s10 + #prototype-footer.continuation-block {
     );
   }
 
-  html body main > .hero .hero-body {
+  html[data-kv-mode="tb"] body main > .hero .hero-body {
     grid-template-columns: var(--hero-copy-width) minmax(0, 1fr);
     height: calc(100% - 88px - 14px * var(--hero-growth));
   }
 
-  html body main > .hero .hero-copy { width: var(--hero-copy-width); }
+  html[data-kv-mode="tb"] body main > .hero .hero-copy { width: var(--hero-copy-width); }
 
-  html body:not(#mobile-type-exception) main > .hero p.rotating-headline {
+  html[data-kv-mode="tb"] body:not(#mobile-type-exception) main > .hero p.rotating-headline {
     font-size: calc(52px + 20px * var(--hero-growth)) !important;
   }
 
-  html body .hero p.rotating-headline #hero-changing-title {
+  html[data-kv-mode="tb"] body .hero p.rotating-headline #hero-changing-title {
     width: calc(610px + 235px * var(--hero-growth));
   }
 
-  html body .hero p.rotating-headline #hero-changing-title::after { width: 100%; }
+  html[data-kv-mode="tb"] body .hero p.rotating-headline #hero-changing-title::after { width: 100%; }
 
-  html body:not(#mobile-type-exception) main > .hero .intro {
+  html[data-kv-mode="tb"] body:not(#mobile-type-exception) main > .hero .intro {
     font-size: calc(14px + 5.4px * var(--hero-growth)) !important;
     width: calc(399px + 153px * var(--hero-growth));
   }
 
-  html body:not(#mobile-type-exception) main > .hero .hero-actions > .button {
+  html[data-kv-mode="tb"] body:not(#mobile-type-exception) main > .hero .hero-actions > .button {
     font-size: calc(16px + 6.15px * var(--hero-growth)) !important;
     min-width: calc(250px + 96px * var(--hero-growth));
     height: calc(50px + 19px * var(--hero-growth));
   }
 
-  html body .hero .stats { gap: calc(26px + 10px * var(--hero-growth)); }
-  html body .hero .stats strong { font-size: calc(36px + 14px * var(--hero-growth)); }
-  html body .hero .stats span {
+  html[data-kv-mode="tb"] body .hero .stats { gap: calc(26px + 10px * var(--hero-growth)); }
+  html[data-kv-mode="tb"] body .hero .stats strong { font-size: calc(36px + 14px * var(--hero-growth)); }
+  html[data-kv-mode="tb"] body .hero .stats span {
     font-size: calc(14px + 5.4px * var(--hero-growth));
     max-width: calc(111px + 43px * var(--hero-growth));
   }
 
-  html body .hero .collage-v2[data-slide="0"][data-layout-ready] {
+  html[data-kv-mode="tb"] body .hero .collage-v2[data-slide="0"][data-layout-ready] {
     /* Preserve the scene's right edge and vertical center as the car and its artwork grow. */
     --hero-car-scale: calc(var(--scene-scale) + (900 / 545.365 - var(--scene-scale)) * var(--hero-growth));
     --hero-scale-offset: calc(var(--scene-scale) - var(--hero-car-scale));
