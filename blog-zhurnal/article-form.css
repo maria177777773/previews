@@ -1,0 +1,107 @@
+[data-article-form] { scroll-margin-top: 130px; }
+.blog-contact {
+  padding: 20px 32px;
+  border-radius: 28px;
+  background: #ffdf4a;
+  color: #141414;
+}
+.blog-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.blog-contact h2 {
+  flex: 1 1 auto;
+  margin: 0;
+  color: #141414;
+  font: 700 28px/1.1 var(--display, TTCommonsPro, Arial, sans-serif);
+}
+.blog-contact-ways {
+  display: flex;
+  flex: none;
+  gap: 8px;
+}
+.blog-contact-ways button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1.5px solid #141414;
+  border-radius: 50%;
+  color: #141414;
+  background: transparent;
+  cursor: pointer;
+}
+.blog-contact-ways button[aria-pressed="true"] {
+  background: #141414;
+  color: #fff;
+}
+.blog-contact-ways svg { width: 22px; height: 22px; }
+.blog-contact-field {
+  position: relative;
+  flex: 0 0 280px;
+  min-width: 0;
+}
+.blog-contact-flag {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - 9px);
+  left: 16px;
+  width: 26px;
+  height: 18px;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #fff 33.33%, #0039a6 33.33% 66.67%, #d52b1e 66.67%);
+  box-shadow: 0 0 0 1px #14141433;
+  pointer-events: none;
+}
+.blog-contact-field[data-telegram] .blog-contact-flag { display: none; }
+.blog-contact input {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px 0 54px;
+  border: 1.5px solid #141414;
+  border-radius: 16px;
+  color: #141414;
+  background: #fff;
+  font: 500 18px/1 var(--body, Roboto, Arial, sans-serif);
+}
+.blog-contact-field[data-telegram] input { padding-left: 16px; }
+.blog-contact input[aria-invalid="true"] {
+  border-color: #a62219;
+  box-shadow: 0 0 0 2px #a6221933;
+}
+.blog-contact-submit {
+  min-height: 56px;
+  padding: 0 34px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: #141414;
+  font: 700 18px/1 var(--body, Roboto, Arial, sans-serif);
+  cursor: pointer;
+}
+.blog-contact-submit:hover { background: #234b33; }
+.blog-contact :is(button, input):focus-visible {
+  outline: 2px solid #234b33;
+  outline-offset: 4px;
+}
+.blog-contact .blog-contact-status {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+@media (max-width: 1100px) {
+  .blog-contact { padding: 20px 24px; }
+  .blog-contact-row { flex-wrap: wrap; }
+  .blog-contact h2 { flex: 1 0 100%; font-size: 26px; }
+  .blog-contact-field { flex: 1 1 220px; }
+}
+@media (max-width: 700px) {
+  .blog-contact { padding: 18px; border-radius: 24px; }
+  .blog-contact-row { gap: 10px; }
+  .blog-contact h2 { font-size: 23px; }
+  .blog-contact-field,
+  .blog-contact-submit { flex-basis: 100%; }
+  .blog-contact input { font-size: 16px; }
+}
