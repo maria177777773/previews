@@ -409,6 +409,7 @@ if(!seen())setTimeout(show,DELAY);
 @media (max-width:700px){
   #s8 .seo-intro br{display:none}
 }
+.kv-badge{display:none!important}
 </style>
 <script id="catalyst-roadmap-20261113-js">
 (function(){
@@ -668,7 +669,7 @@ function card(p,diff){
   return '<article class="catalog-card" data-sc="'+p.id+'" data-name="'+esc(p.n)+'" tabindex="0" role="button" aria-label="Сценарий «'+esc(p.n)+'»"><img src="'+esc(imgSrc(p.img))+'" alt="'+esc(p.alt||p.n)+'" loading="lazy" decoding="async" width="800" height="533"><span class="kv-badge">от '+money(MIN)+' ₽</span><div class="catalog-card-copy">'+d+'<p class="kc-theme">'+esc(p.theme)+'</p><h3>'+esc(p.n)+'</h3><p>'+esc(meta)+'</p></div><span class="catalog-more" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></article>'
  }
  var t=total(p,st.people),r=range(p);
- var badge=t!=null&&t<MIN?'<span class="kv-badge" title="Минимальный заказ">от '+money(MIN)+' ₽</span>':t!=null?'<span class="kv-badge">≈ '+money(Math.round(t/1000)*1000)+' ₽ '+(p.za==='за гостя'?'на '+st.people+' чел.':'за программу')+'</span>':'<span class="kv-badge kv-q">Цену посчитаем в заявке</span>';
+ var badge='';
  var meta=[];if(r)meta.push('от '+r[0]+' до '+r[1]+' человек');if(p.vr)meta.push(p.vr);
  var desc=[p.d,meta.join(', ')].filter(Boolean).join(' · ');
  return '<article class="catalog-card" data-name="'+esc(p.n)+'"><img src="'+esc(p.i)+'" alt="'+esc(p.n)+'" loading="lazy">'+badge+'<div class="catalog-card-copy">'+d+'<h3>'+esc(p.n)+'</h3>'+(desc?'<p>'+esc(desc)+'</p>':'')+'</div><a class="catalog-more" href="'+esc(p.u)+'" aria-label="Подробнее о программе «'+esc(p.n)+'»"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></a></article>'
