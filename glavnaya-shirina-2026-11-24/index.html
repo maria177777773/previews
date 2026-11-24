@@ -496,7 +496,7 @@ html[data-kv-mode="tb"] main .hero-actions > #open-catalog {
   /* Картинка: правый край и центр сцены на месте, масштаб от свободной ширины и высоты обложки. */
   html[data-kv-mode] body:not(#mobile-type-exception):not(#pv) .hero .collage-v2[data-slide="0"][data-layout-ready] {
     --pv-w: calc(min(100vw - 63px, var(--page-width)) - var(--hero-copy-width) - 10px);
-    --pv-scale: min(tan(atan2(var(--pv-w), 545px)), tan(atan2(var(--hero-h) - 70px, 500px)));
+    --pv-scale: min(tan(atan2(var(--pv-w), 545px)), tan(atan2(var(--hero-h) - 24px, 500px)));
     --hero-scale-offset: calc(var(--scene-scale) - var(--pv-scale));
     left: calc(var(--scene-left) + 611.3px * var(--hero-scale-offset)) !important;
     top: calc(var(--scene-top) + 257.4px * var(--hero-scale-offset)) !important;
