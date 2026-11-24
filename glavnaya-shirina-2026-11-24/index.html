@@ -459,7 +459,7 @@ html[data-kv-mode="tb"] main .hero-actions > #open-catalog {
     --page-width: calc(1552px + 568px * tan(atan2(clamp(0px, 100vw - 1440px, 1120px), 1120px)));
     --t: calc(40px + 44px * var(--G));
     --hero-copy-width: calc(220px + 780px * var(--G));
-    --hero-h: calc(clamp(560px, 100svh - var(--hero-header-height, 140px) - 92px, 722px) + 160px * var(--G2));
+    --hero-h: calc(clamp(clamp(560px, 560px + (100vw - 1360px) * .75, 620px), 100svh - var(--hero-header-height, 140px) - 92px, 722px) + 160px * var(--G2));
     height: var(--hero-h) !important;
   }
   html[data-kv-mode] body:not(#mobile-type-exception):not(#pv) main > .hero .hero-body {
