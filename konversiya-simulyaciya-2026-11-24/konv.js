@@ -22,7 +22,7 @@
   /* R1.2 липкая панель: Max, Telegram, звонок */
   var tg=document.querySelector('a[href*="telegram.me"],a[href*="t.me/"]'), mx=document.querySelector('a[href*="max.ru"]');
   var bar=document.createElement('div'); bar.className='konv-bar';
-  bar.innerHTML='<a href="'+(mx?mx.href:'https://max.ru/u/f9LHodD0cOKJGPNk8tLsr7rNfEOQc77ksLyB_spYPyO')+'" target="_blank" rel="noopener">Написать в Max</a>'+
+  bar.innerHTML='<a href="'+(mx?mx.href:'https://max.ru/u/f9LHodD0cOKJGPNk8tLsr7rNfEOQc77ksLyB_spYPyOeeyFZdwIjxNIvtZs')+'" target="_blank" rel="noopener">Написать в Max</a>'+
    '<a href="'+(tg?tg.href:'https://telegram.me/irek_stn')+'" target="_blank" rel="noopener">Написать в Telegram</a>'+
    '<a class="konv-tel" href="tel:+79911501001">Позвонить</a>';
   document.body.appendChild(bar);
@@ -33,7 +33,7 @@
   var anchor=document.querySelector('.hero-actions')||document.querySelector('h1');
   var line=document.createElement('p'); line.className='konv-price'; line.innerHTML=txt;
 
-  if(R>=2){line.innerHTML+=' · свяжемся в течение 10 минут';var cal=[].slice.call(document.querySelectorAll('h2,h3,div,p,span')).filter(function(e){return e.children.length<4&&e.textContent.length<200&&/Ориентировочная стоимость|Ориентир для|Калькулятор/.test(e.textContent)})[0];
+  if(R>=2){line.innerHTML+=' · расчёт за 10 минут';var cal=[].slice.call(document.querySelectorAll('h2,h3,div,p,span')).filter(function(e){return e.children.length<4&&e.textContent.length<200&&/Ориентировочная стоимость|Ориентир для|Калькулятор/.test(e.textContent)})[0];
    if(cal&&page.indexOf('programs/')===0){cal.id=cal.id||'konv-calc';line.innerHTML+=' <a href="#'+cal.id+'">Калькулятор стоимости</a>'}}
   if(anchor)anchor.insertAdjacentElement(anchor.matches('h1')?'afterend':'beforebegin',line);
  });
@@ -49,7 +49,7 @@
     var t=q.textContent, h=null, mail=false;
     if(/Сколько человек будет/.test(t)) h='Программы рассчитаны на группы от 50 человек. Минимальный заказ на тимбилдинг: от 249 000 ₽.';
     else if(/Какой бюджет на мероприятие/.test(t)) h='Минимальный заказ: тимбилдинг от 249 000 ₽, корпоратив от 1 000 000 ₽.';
-    else if(R>=3&&/Куда прислать расчёт/.test(t)){h='Удобнее по почте? Напишите на <a href="mailto:info@catalystrussia.ru?subject=%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D0%BF%D0%BE%D1%87%D1%82%D1%83" style="color:#0aba59;font-weight:600">info@catalystrussia.ru</a>, пришлём КП и договор.';mail=true}
+    else if(R>=3&&/Куда прислать расчёт/.test(t)){h='Удобнее по почте? Напишите на <a href="mailto:info@catalystrussia.ru?subject=%D0%9A%D0%9F%20%D0%BD%D0%B0%20%D0%BF%D0%BE%D1%87%D1%82%D1%83" style="color:#0aba59;font-weight:600">info@catalystrussia.ru</a>, пришлём КП.';mail=true}
     if(!h)return; var title=q.querySelector('.cf-quiz-heading')||[].slice.call(q.querySelectorAll('h1,h2,h3,h4,p,div')).filter(function(e){return e.children.length===0&&/Сколько человек будет|Какой бюджет на мероприятие|Куда прислать расчёт/.test(e.textContent)})[0];
     if(!title||(title.nextElementSibling&&title.nextElementSibling.classList.contains('konv-hint')))return;
     var x=document.createElement('p');x.className='konv-hint';x.setAttribute('style',HS);if(mail)x.innerHTML=h;else x.textContent=h;title.insertAdjacentElement('afterend',x)})})}
@@ -63,7 +63,7 @@
   var pl=document.querySelector('.konv-price'); if(!pl)return;
   var tg=document.querySelector('a[href*="telegram.me"],a[href*="t.me/"]'), mx=document.querySelector('a[href*="max.ru"]');
   var row=document.createElement('div'); row.className='konv-ch';
-  row.innerHTML='<a href="'+(mx?mx.href:'https://max.ru/u/f9LHodD0cOKJGPNk8tLsr7rNfEOQc77ksLyB_spYPyO')+'" target="_blank" rel="noopener">Написать в Max</a><a href="'+(tg?tg.href:'https://telegram.me/irek_stn')+'" target="_blank" rel="noopener">Написать в Telegram</a>';
+  row.innerHTML='<a href="'+(mx?mx.href:'https://max.ru/u/f9LHodD0cOKJGPNk8tLsr7rNfEOQc77ksLyB_spYPyOeeyFZdwIjxNIvtZs')+'" target="_blank" rel="noopener">Написать в Max</a><a href="'+(tg?tg.href:'https://telegram.me/irek_stn')+'" target="_blank" rel="noopener">Написать в Telegram</a>';
   pl.insertAdjacentElement('afterend',row);
  })}
 
