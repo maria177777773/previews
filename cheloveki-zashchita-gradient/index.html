@@ -26,10 +26,10 @@ section{min-height:100vh;scroll-snap-align:start;padding:6vh 6vw;display:flex;fl
 .orbs{position:absolute;inset:-10%;z-index:0;filter:blur(70px) saturate(140%);pointer-events:none}
 .orbs::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 15% 10%,rgba(0,0,0,.85),transparent 55%)}
 .orbs i{position:absolute;border-radius:50%;opacity:0;mix-blend-mode:screen;animation:poyav 1.6s ease-out forwards,var(--a) var(--d) ease-in-out infinite alternate}
-.orbs i:nth-child(1){--a:o1;--d:6s;width:55vmax;height:55vmax;left:45%;top:-15%;background:radial-gradient(circle,#7B2CFF 0%,rgba(123,44,255,0) 68%);animation-delay:.2s,0s}
-.orbs i:nth-child(2){--a:o2;--d:7s;width:50vmax;height:50vmax;left:-10%;top:35%;background:radial-gradient(circle,#FF2E93 0%,rgba(255,46,147,0) 68%);animation-delay:.6s,0s}
-.orbs i:nth-child(3){--a:o3;--d:5s;width:38vmax;height:38vmax;left:60%;top:55%;background:radial-gradient(circle,#C21BD6 0%,rgba(194,27,214,0) 68%);animation-delay:1s,0s}
-.orbs i:nth-child(4){--a:o4;--d:8s;width:30vmax;height:30vmax;left:25%;top:5%;background:radial-gradient(circle,#FF6FB5 0%,rgba(255,111,181,0) 68%);animation-delay:1.3s,0s}
+.orbs i:nth-child(1){--a:o1;--d:3s;width:55vmax;height:55vmax;left:45%;top:-15%;background:radial-gradient(circle,#7B2CFF 0%,rgba(123,44,255,0) 68%);animation-delay:.2s,0s}
+.orbs i:nth-child(2){--a:o2;--d:3.5s;width:50vmax;height:50vmax;left:-10%;top:35%;background:radial-gradient(circle,#FF2E93 0%,rgba(255,46,147,0) 68%);animation-delay:.6s,0s}
+.orbs i:nth-child(3){--a:o3;--d:2.5s;width:38vmax;height:38vmax;left:60%;top:55%;background:radial-gradient(circle,#C21BD6 0%,rgba(194,27,214,0) 68%);animation-delay:1s,0s}
+.orbs i:nth-child(4){--a:o4;--d:4s;width:30vmax;height:30vmax;left:25%;top:5%;background:radial-gradient(circle,#FF6FB5 0%,rgba(255,111,181,0) 68%);animation-delay:1.3s,0s}
 @keyframes poyav{to{opacity:.95}}
 @keyframes o1{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-22vw,18vh) scale(1.2)}100%{transform:translate(-8vw,40vh) scale(.9)}}
 @keyframes o2{0%{transform:translate(0,0) scale(1)}50%{transform:translate(28vw,-20vh) scale(.85)}100%{transform:translate(45vw,5vh) scale(1.15)}}
