@@ -381,7 +381,7 @@ function renderUpl(force){
   if(mine.length){c.appendChild(el('p','small','Ваши загруженные баннеры:'));var ml=el('div','mine');
     mine.forEach(function(x){var it=el('div','it',x.u.id+(x.u.zagolovok?' · '+x.u.zagolovok:'')),d=el('button','lt','Удалить');d.type='button';
       d.onclick=function(){d.disabled=true;fetch(API+'/bannery/udalit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partiya:CUR.id,id:x.u.id,token:x.t})})
-        .then(function(r){return r.json()}).then(function(j){if(j.ok){ls('tot_tok_'+CUR.id+'_'+x.u.id,null);return loadUps().then(function(){refreshIds();renderSlots();renderUpl(true);renderVse()})}d.disabled=false}).catch(function(){d.disabled=false})};
+        .then(function(r){return r.json()}).then(function(j){if(j.ok){ls('tot_tok_'+CUR.id+'_'+x.u.id,null);return loadUps().then(function(){refreshIds();renderSlots();renderUpl(true);renderVse()})}d.disabled=false;var m=$('msg');m.innerHTML='';m.appendChild(el('div','msg er','Не удалось удалить: '+(j.oshibka||'ошибка')))}).catch(function(){d.disabled=false;var m=$('msg');m.innerHTML='';m.appendChild(el('div','msg er','Нет связи с сервером, попробуйте ещё раз.'))})};
       it.appendChild(d);ml.appendChild(it)});c.appendChild(ml)}
 }
 
