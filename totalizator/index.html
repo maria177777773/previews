@@ -227,7 +227,7 @@ function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null
 function fmt(s){if(!s)return'';return new Date(s).toLocaleString('ru-RU',{timeZone:'Europe/Moscow',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+' МСК'}
 function num(n){return Number(n||0).toLocaleString('ru-RU')}
 function pl(n,a,b,c){n=Math.abs(n)%100;var m=n%10;return n>10&&n<20?c:m>1&&m<5?b:m==1?a:c}
-function balls(n){return n+' '+pl(n,'балл','балла','баллов')}
+function balls(n){return n+'\u00a0'+pl(n,'балл','балла','баллов')}
 function pts(place){return Math.max(0,6-place)}
 function clean(s){return s.replace(/\s+/g,' ').trim()}
 function nameOk(s){return /^[0-9A-Za-zА-Яа-яЁё][0-9A-Za-zА-Яа-яЁё .'_-]{0,23}$/.test(s)}
@@ -459,7 +459,7 @@ function renderVse(){if(!CUR)return;var P=people(),vt=$('vtabs');vt.innerHTML=''
     grid(v,S.list,function(x){var b=bById(x.id),c=card();
       c.appendChild(head(x.place+' место',balls(x.sum),true));c.appendChild(photo(b));
       var body=el('div','body'),ul=el('ul','lst');
-      S.P.forEach(function(p){var w=x.who.filter(function(q){return q.imya===p.imya})[0],li=el('li');li.appendChild(el('span','nm',p.imya));li.appendChild(el('span',null,w?w.mesto+'\u00a0место · '+balls(w.b):'нет в ставке · 0 баллов'));ul.appendChild(li)});
+      S.P.forEach(function(p){var w=x.who.filter(function(q){return q.imya===p.imya})[0],li=el('li');li.appendChild(el('span','nm',p.imya));li.appendChild(el('span',null,w?w.mesto+'\u00a0место · '+balls(w.b):'вне ставки · 0\u00a0баллов'));ul.appendChild(li)});
       if(!S.P.length)body.appendChild(el('div','nodata','Ставок пока нет'));else body.appendChild(ul);
       c.appendChild(body);return c});
     return}
