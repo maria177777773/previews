@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Тотализатор баннеров · Каталист</title>
+<link rel="icon" href="assets/logo.png" type="image/png">
+<style>
+@font-face{font-family:TT;src:url(assets/TT_Commons_Pro_Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:TT;src:url(assets/TT_Commons_Pro_ExtraBold.woff2) format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:Roboto;src:url(assets/roboto-cyrillic.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+400-45F,U+2116}
+@font-face{font-family:Roboto;src:url(assets/roboto-latin.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0-FF,U+2000-206F,U+2190-21FF,U+25B2,U+25BC}
+:root{--g:#0aba59;--k:#111;--m:#6b6b6b;--l:#e6e8e5;--bg:#f4f6f3;--r:#d8362f}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font:400 17px/1.5 Roboto,Arial,sans-serif;color:var(--k);background:var(--bg)}
+h1,h2,h3{font-family:TT,Roboto,sans-serif;font-weight:800;line-height:1.1;margin:0}
+h1{font-size:clamp(30px,7vw,52px)}h2{font-size:clamp(24px,5vw,34px);margin-bottom:14px}h3{font-size:20px}
+.g{color:var(--g)}
+.wrap{max-width:780px;margin:0 auto;padding:0 14px}
+header.top{background:#fff;border-bottom:1px solid var(--l)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;font:800 20px TT,Roboto,sans-serif}
+.brand img{width:44px;height:44px;border-radius:50%}
+button,.btn{font:inherit;min-height:48px;padding:0 24px;border-radius:999px;border:2px solid var(--g);background:var(--g);color:#fff;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+button:hover,.btn:hover{background:var(--k);border-color:var(--k)}
+button:disabled,button[aria-disabled=true]{opacity:.35;cursor:default}
+button:disabled:hover,button[aria-disabled=true]:hover{background:var(--g);border-color:var(--g)}
+button.lt{background:#fff;color:var(--k);border-color:var(--l)}button.lt:hover{background:var(--k);color:#fff;border-color:var(--k)}
+button.lt[aria-disabled=true]:hover{background:#fff;color:var(--k);border-color:var(--l)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--k);outline-offset:2px}
+#kto{font-size:15px}
+nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:flex;gap:8px;overflow-x:auto}
+nav.tabs button{flex:1 0 auto;min-height:48px;padding:0 16px;background:#fff;color:var(--k);border-color:var(--l)}
+nav.tabs button[aria-selected=true]{background:var(--k);color:#fff;border-color:var(--k)}
+section.scr{display:none;padding:10px 0 60px}section.scr.on{display:block}
+.lead{color:var(--m);margin:6px 0 16px}
+.card{background:#fff;border:1px solid var(--l);border-radius:20px;padding:16px;margin-bottom:14px}
+.pill{display:inline-block;padding:3px 12px;border-radius:999px;background:var(--bg);font-size:14px;font-weight:700;color:var(--m)}
+.pill.g{background:var(--g);color:#fff}.pill.w{background:#fff3cf;color:#6d5200}
+.ends{display:flex;justify-content:space-between;color:var(--m);font-size:14px;font-weight:700;margin:8px 4px}
+#list{list-style:none;margin:0;padding:0}
+.row{background:#fff;border:2px solid var(--l);border-radius:20px;margin-bottom:12px;overflow:hidden;position:relative}
+.row.drag{border-color:var(--g);box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:3}
+.row .hd{display:flex;align-items:center;gap:8px;padding:8px 8px 8px 12px}
+.rank{flex:0 0 48px;height:48px;border-radius:50%;background:var(--k);color:#fff;font:800 24px/48px TT,Roboto,sans-serif;text-align:center}
+.row:first-child .rank{background:var(--g)}
+.nm{flex:1;min-width:0}.nm b{font:800 20px TT,Roboto,sans-serif;display:block}.nm span{font-size:14px;color:var(--m);display:block;line-height:1.25}
+.ctl{display:flex;gap:6px}
+.ctl button{min-width:48px;padding:0;min-height:48px}
+.handle{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.row img{display:block;width:100%;height:auto;aspect-ratio:1080/607;background:var(--l)}
+.row.fix .ctl{display:none}
+.bar{position:sticky;bottom:0;background:linear-gradient(transparent,var(--bg) 30%);padding:18px 0 12px;display:flex;gap:10px;flex-wrap:wrap}
+.bar .btn,.bar button{flex:1 1 220px}
+.msg{padding:12px 16px;border-radius:14px;margin:10px 0;font-weight:700}
+.msg.ok{background:#e1f6ea;color:#075a2c}.msg.er{background:#fde4e2;color:#8b1b16}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border-radius:999px;padding:4px 12px 4px 4px;font-weight:700;font-size:15px;min-height:32px}
+.chip i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--k);color:#fff;font-size:13px;line-height:24px;text-align:center}
+.chip.hit{background:#c9efd9}.chip.hit i{background:var(--g)}
+.bet{display:grid;gap:8px;padding:14px 0;border-top:1px solid var(--l)}.bet:first-child{border-top:0}
+.bet .who{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.bet .who b{font:800 20px TT,Roboto,sans-serif}.bet .tm{color:var(--m);font-size:14px}
+.cl{border:2px solid var(--g)}
+.claude-why{color:var(--m);font-size:15px;margin-top:8px}
+table.t{width:100%;border-collapse:collapse}.t th,.t td{padding:12px 6px;text-align:left;border-top:1px solid var(--l);vertical-align:middle}
+.t th{font-size:13px;color:var(--m);text-transform:uppercase;letter-spacing:.04em;border-top:0}
+.t td.n{text-align:right;font:800 22px TT,Roboto,sans-serif}.t th.n{text-align:right}
+.fact{display:grid;grid-template-columns:48px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--l)}
+.fact:first-child{border-top:0}.fact .nm b{font-size:18px}
+.bigctr{font:800 26px TT,Roboto,sans-serif;text-align:right}.bigctr small{display:block;font:400 13px Roboto;color:var(--m)}
+.empty{color:var(--m);padding:22px 8px;text-align:center}
+#who{position:fixed;inset:0;background:var(--bg);z-index:20;overflow:auto;display:none}
+#who.on{display:block}
+#who .wrap{padding-top:28px;padding-bottom:40px}
+.names{display:grid;gap:10px;margin:18px 0}
+.names button{min-height:64px;font-size:22px;font-family:TT,Roboto,sans-serif;font-weight:800}
+.other{display:flex;gap:8px;flex-wrap:wrap}
+.other input{flex:1 1 180px;min-height:52px;font:inherit;font-size:18px;padding:0 18px;border:2px solid var(--l);border-radius:999px;background:#fff}
+.small{font-size:14px;color:var(--m)}
+details.arh{background:#fff;border:1px solid var(--l);border-radius:20px;margin-bottom:12px}
+details.arh summary{min-height:56px;padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;font:800 19px TT,Roboto,sans-serif;list-style:none}
+details.arh summary::-webkit-details-marker{display:none}
+details.arh .in{padding:0 16px 16px}
+@media (max-width:420px){body{font-size:16px}.ctl{gap:4px}.ctl button{min-width:44px}.rank{flex-basis:44px;height:44px;line-height:44px;font-size:22px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><img src="assets/logo.png" alt="Каталист" width="44" height="44"><span>Каталист</span></div>
+  <div id="kto"></div>
+</div></header>
+
+<div id="who"><div class="wrap">
+  <h1>Кто <span class="g">ты</span>?</h1>
+  <p class="lead">Выбери имя, чтобы твоя ставка попала в общий зачёт. Имя запомнится в этом браузере.</p>
+  <div class="names" id="names"></div>
+  <h3>Другое имя</h3>
+  <p class="small" style="margin:6px 0 10px">До 24 знаков: буквы, цифры, пробел, точка, дефис.</p>
+  <form class="other" id="otherf"><input id="other" maxlength="24" autocomplete="nickname" placeholder="Например, Влад"><button class="lt" type="submit">Дальше</button></form>
+  <div id="whoerr" class="msg er" hidden></div>
+</div></div>
+
+<div class="wrap">
+  <nav class="tabs" role="tablist" id="tabs">
+    <button role="tab" id="tab-stavka" aria-selected="true">Моя ставка</button>
+    <button role="tab" id="tab-vse" aria-selected="false">Все ставки</button>
+    <button role="tab" id="tab-itogi" aria-selected="false">Итоги</button>
+    <button role="tab" id="tab-arhiv" aria-selected="false">Архив</button>
+  </nav>
+
+  <section class="scr on" id="s-stavka">
+    <div id="hd"></div>
+    <ol id="list"></ol>
+    <div class="ends" id="ends" hidden><span>▲ больше всего кликов</span><span>меньше всего ▼</span></div>
+    <div id="msg"></div>
+    <div class="bar"><button id="send" type="button">Сделать ставку</button><button class="lt" id="tovse" type="button">Посмотреть все ставки</button></div>
+  </section>
+
+  <section class="scr" id="s-vse">
+    <h2>Все <span class="g">ставки</span></h2>
+    <div id="vse"></div>
+    <div class="bar"><button class="lt" id="obn" type="button">Обновить</button></div>
+  </section>
+
+  <section class="scr" id="s-itogi">
+    <h2>Итоги <span class="g">недели</span></h2>
+    <div id="itogi"></div>
+  </section>
+
+  <section class="scr" id="s-arhiv">
+    <h2>Прошлые <span class="g">партии</span></h2>
+    <div id="arhiv"></div>
+  </section>
+</div>
+
+<script>
+(function(){
+'use strict';
+var D=null, API='', ME='', CUR=null, FIXED=false, BETS=[], TAB='stavka';
+var $=function(id){return document.getElementById(id)};
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
+function fmt(s){if(!s)return'';return new Date(s).toLocaleString('ru-RU',{timeZone:'Europe/Moscow',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+' МСК'}
+function banner(p,id){return p.bannery.filter(function(b){return b.id===id})[0]||{id:id,zagolovok:''}}
+function isClosed(p){return !!(p.itog||(p.zakrytie&&Date.now()>=Date.parse(p.zakrytie)))}
+function late(p,s){return !!(p.start&&s.vremya&&Date.parse(s.vremya)>=Date.parse(p.start))||(!p.start&&!!s.posle_starta)}
+function nameOk(s){return /^[0-9A-Za-zА-Яа-яЁё][0-9A-Za-zА-Яа-яЁё .'_-]{0,23}$/.test(s)}
+function clean(s){return s.replace(/\s+/g,' ').trim()}
+
+/* ---------- имя ---------- */
+function showWho(on){$('who').className=on?'on':''}
+function setMe(n){ME=n;ls('tot_imya',n);showWho(false);$('kto').innerHTML='';
+  var b=el('button','lt','Ты: '+n+' · сменить');b.id='smenit';b.type='button';b.onclick=function(){showWho(true)};$('kto').appendChild(b);
+  if(CUR){loadBets().then(function(){fillOrder();renderAll()})}}
+function initWho(){
+  var nm=$('names');['Маша','Никита','Ирек'].forEach(function(n){var b=el('button','',n);b.type='button';b.onclick=function(){setMe(n)};nm.appendChild(b)});
+  $('otherf').onsubmit=function(e){e.preventDefault();var v=clean($('other').value),er=$('whoerr');
+    if(!nameOk(v)||/^(claude|клод|клауд)$/i.test(v)){er.hidden=false;er.textContent=/^(claude|клод|клауд)$/i.test(v)?'Это имя занято Claude, выбери другое.':'Имя: до 24 знаков, буквы, цифры, пробел, точка, дефис.';return}
+    er.hidden=true;setMe(v)};
+}
+
+/* ---------- данные ---------- */
+function openParties(){return D.partii.filter(function(p){return !isClosed(p)})}
+function pickCur(){var o=openParties();CUR=o.length?o[o.length-1]:(D.partii.length?D.partii[D.partii.length-1]:null)}
+function loadBets(){if(!CUR)return Promise.resolve();
+  return fetch(API+'/stavki?partiya='+encodeURIComponent(CUR.id),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.ok){BETS=j.stavki;FIXED=!!j.zakryta||isClosed(CUR)}}).catch(function(){BETS=[];})}
+function myBet(){var k=ME.toLowerCase();return BETS.filter(function(s){return s.imya.toLowerCase()===k})[0]}
+
+/* ---------- порядок ---------- */
+var ORDER=[];
+function shuffled(ids){var a=ids.slice(),i,j,t;for(i=a.length-1;i>0;i--){j=Math.floor(Math.random()*(i+1));t=a[i];a[i]=a[j];a[j]=t}return a}
+function fillOrder(){
+  if(!CUR)return;var ids=CUR.bannery.map(function(b){return b.id}),mb=myBet(),dr=ls('tot_ord_'+CUR.id);
+  if(mb)ORDER=mb.poryadok.slice();
+  else{var d=null;try{d=JSON.parse(dr)}catch(e){}
+    ORDER=(d&&d.length===ids.length&&ids.every(function(i){return d.indexOf(i)>=0}))?d:shuffled(ids)}
+  ls('tot_ord_'+CUR.id,JSON.stringify(ORDER));
+}
+function readOrder(){return Array.prototype.map.call($('list').children,function(li){return li.dataset.id})}
+function renumber(){var ch=$('list').children;for(var i=0;i<ch.length;i++){ch[i].querySelector('.rank').textContent=i+1;
+  var u=ch[i].querySelector('.up'),d=ch[i].querySelector('.dn');u.setAttribute('aria-disabled',i===0);d.setAttribute('aria-disabled',i===ch.length-1)}
+  ORDER=readOrder();ls('tot_ord_'+CUR.id,JSON.stringify(ORDER))}
+function moveBy(li,dir){var l=$('list');if(dir<0&&li.previousElementSibling)l.insertBefore(li,li.previousElementSibling);
+  else if(dir>0&&li.nextElementSibling)l.insertBefore(li.nextElementSibling,li);renumber();li.scrollIntoView({block:'nearest',behavior:'smooth'})}
+function renderList(){
+  var l=$('list');l.innerHTML='';if(!CUR)return;
+  ORDER.forEach(function(id,i){var b=banner(CUR,id),li=el('li','row'+(FIXED?' fix':''));li.dataset.id=id;
+    var hd=el('div','hd'),rk=el('div','rank',i+1),nm=el('div','nm'),bb=el('b','',b.id),ss=el('span','',b.zagolovok);nm.appendChild(bb);nm.appendChild(ss);
+    var ct=el('div','ctl'),up=el('button','lt up','▲'),dn=el('button','lt dn','▼'),hh=el('button','lt handle');hh.innerHTML='<svg width="18" height="22" viewBox="0 0 18 22" aria-hidden="true"><g fill="currentColor"><circle cx="5" cy="4" r="2"/><circle cx="13" cy="4" r="2"/><circle cx="5" cy="11" r="2"/><circle cx="13" cy="11" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="13" cy="18" r="2"/></g></svg>';
+    up.type=dn.type=hh.type='button';up.setAttribute('aria-label','Выше: '+b.id);dn.setAttribute('aria-label','Ниже: '+b.id);hh.setAttribute('aria-label','Перетащить '+b.id);hh.title='Потяните, чтобы переставить';
+    up.onclick=function(){moveBy(li,-1)};dn.onclick=function(){moveBy(li,1)};hh.dataset.h='1';
+    ct.appendChild(up);ct.appendChild(dn);ct.appendChild(hh);hd.appendChild(rk);hd.appendChild(nm);hd.appendChild(ct);
+    var im=new Image();im.src=CUR.id?('img/'+CUR.id+'/'+b.img.split('/').pop()):b.img;im.alt='Баннер '+b.id+': '+b.zagolovok;im.width=1080;im.height=607;
+    li.appendChild(hd);li.appendChild(im);l.appendChild(li)});
+  renumber();
+}
+/* перетаскивание: pointer events, работает мышью и пальцем; захват на списке, он не пересоздаётся */
+(function(){var drag=null;
+  document.addEventListener('pointerdown',function(e){var h=e.target.closest&&e.target.closest('[data-h]');if(!h||FIXED)return;
+    var li=h.closest('.row');drag={li:li,id:e.pointerId};li.classList.add('drag');try{$('list').setPointerCapture(e.pointerId)}catch(x){}e.preventDefault()});
+  document.addEventListener('pointermove',function(e){if(!drag||e.pointerId!==drag.id)return;var l=$('list'),li=drag.li,y=e.clientY,p,n,r;
+    if(y<70)window.scrollBy(0,-14);else if(y>innerHeight-70)window.scrollBy(0,14);
+    for(var k=0;k<6;k++){p=li.previousElementSibling;n=li.nextElementSibling;
+      if(p){r=p.getBoundingClientRect();if(y<r.top+r.height/2){l.insertBefore(li,p);continue}}
+      if(n){r=n.getBoundingClientRect();if(y>r.top+r.height/2){l.insertBefore(n,li);continue}}break}
+    renumber()});
+  function end(e){if(!drag||e.pointerId!==drag.id)return;drag.li.classList.remove('drag');try{$('list').releasePointerCapture(e.pointerId)}catch(x){}drag=null}
+  document.addEventListener('pointerup',end);document.addEventListener('pointercancel',end);
+})();
+
+/* ---------- экран ставки ---------- */
+function renderStavka(){
+  var hd=$('hd');hd.innerHTML='';
+  if(!CUR){hd.appendChild(el('p','empty','Партий пока нет.'));$('send').hidden=true;return}
+  var h=el('h1');h.innerHTML='Тотализатор <span class="g">баннеров</span>';hd.appendChild(h);
+  hd.appendChild(el('p','lead',CUR.opisanie||CUR.nazvanie));
+  var c=el('div','card');c.appendChild(el('h3','',CUR.nazvanie));
+  var st=el('p','small','');
+  var parts=[];parts.push(FIXED?'Ставки закрыты.':(CUR.zakrytie?'Ставки открыты до '+fmt(CUR.zakrytie)+', можно менять свою.':'Ставки открыты, можно менять свою.'));
+  parts.push(CUR.start?(Date.now()>=Date.parse(CUR.start)?'Реклама идёт с '+fmt(CUR.start)+', новые ставки получают пометку «после старта» и считаются отдельно.':'Старт рекламы '+fmt(CUR.start)+'.'):'Реклама ещё не запущена.');
+  st.textContent=parts.join(' ');c.appendChild(st);
+  c.appendChild(el('p','small','Расставьте баннеры от 1 места (больше всего кликов на тысячу показов, CTR) до 5. За победителя 5 очков, плюс по 1 за каждый баннер на своём месте.'));
+  hd.appendChild(c);
+  var mb=myBet(),b=$('send');b.hidden=FIXED;b.textContent=mb?'Изменить ставку':'Сделать ставку';
+  $('ends').hidden=false;
+}
+function send(){
+  var m=$('msg');m.innerHTML='';if(!ME){showWho(true);return}
+  var b=$('send');b.disabled=true;
+  fetch(API+'/stavka',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partiya:CUR.id,imya:ME,poryadok:readOrder()})})
+   .then(function(r){return r.json().catch(function(){return{ok:false,oshibka:'сервер не ответил'}})})
+   .then(function(j){b.disabled=false;
+     if(j.ok){var d=el('div','msg ok','Ставка принята: '+j.stavka.poryadok.join(' › ')+(j.stavka.posle_starta?' (после старта)':'')+'. Её можно поменять до закрытия.');m.appendChild(d);
+       return loadBets().then(function(){renderStavka();renderVse()})}
+     m.appendChild(el('div','msg er','Не вышло: '+(j.oshibka||'ошибка')))})
+   .catch(function(){b.disabled=false;m.appendChild(el('div','msg er','Нет связи с сервером. Ваш порядок сохранён в браузере, нажмите ещё раз.'))});
+}
+
+/* ---------- все ставки ---------- */
+function chips(p,order,fact){var w=el('div','chips');order.forEach(function(id,i){var c=el('span','chip'+(fact&&fact[i]===id?' hit':''));c.appendChild(el('i','',i+1));c.appendChild(document.createTextNode(id));w.appendChild(c)});return w}
+function renderVse(){
+  var v=$('vse');v.innerHTML='';if(!CUR){return}
+  var cl=CUR.claude;
+  if(cl&&cl.poryadok&&cl.poryadok.length){var c=el('div','card cl'),t=el('div','who');t.appendChild(el('h3','','Ставка Claude'));t.appendChild(el('span','pill g','до старта'));c.appendChild(t);
+    c.appendChild(chips(CUR,cl.poryadok));
+    if(cl.ver){var s=cl.poryadok.map(function(i){return i+' '+Math.round(cl.ver[i]*100)+'%'}).join(' · ');c.appendChild(el('p','claude-why','Шансы на первое место: '+s))}
+    if(cl.pochemu)c.appendChild(el('p','claude-why',cl.pochemu));v.appendChild(c)}
+  var c2=el('div','card'),t2=el('div','who');t2.appendChild(el('h3','','Ставки команды: '+BETS.length));c2.appendChild(t2);
+  if(!BETS.length)c2.appendChild(el('p','empty','Пока никто не поставил. Будьте первым.'));
+  BETS.slice().sort(function(a,b){return a.pervaya<b.pervaya?-1:1}).forEach(function(s){var r=el('div','bet'),w=el('div','who'),nm=el('b','',s.imya+(s.imya.toLowerCase()===ME.toLowerCase()?' (ты)':''));
+    var rt=el('span','tm',fmt(s.vremya));w.appendChild(nm);var right=el('span','');right.appendChild(rt);if(late(CUR,s)){right.appendChild(document.createTextNode(' '));right.appendChild(el('span','pill w','после старта'))}w.appendChild(right);
+    r.appendChild(w);r.appendChild(chips(CUR,s.poryadok));c2.appendChild(r)});
+  v.appendChild(c2);
+}
+
+/* ---------- итоги ---------- */
+function ratingTable(rows,title){var c=el('div','card');c.appendChild(el('h3','',title));
+  if(!rows||!rows.length){c.appendChild(el('p','empty','Пока пусто: итоги появятся после первого закрытия партии.'));return c}
+  var t=el('table','t'),h=el('tr');['#','Имя','Партий','Угадал победителя','Очки'].forEach(function(x,i){var th=el('th',i>3?'n':'',x);h.appendChild(th)});t.appendChild(h);
+  rows.forEach(function(r,i){var tr=el('tr');tr.appendChild(el('td','',i+1));tr.appendChild(el('td','',r.imya));tr.appendChild(el('td','',r.partii));tr.appendChild(el('td','',r.ugadal));tr.appendChild(el('td','n',r.ochki+(r.uslovnye?'*':'')));t.appendChild(tr)});
+  c.appendChild(t);if(rows.some(function(r){return r.uslovnye}))c.appendChild(el('p','small','* часть очков по условному итогу: показов пока мало.'));return c}
+function itogBlock(p){var it=p.itog,w=el('div');
+  var c=el('div','card'),hh=el('div','who');hh.appendChild(el('h3','','Как всё вышло: '+p.nazvanie));
+  hh.appendChild(el('span','pill '+(it.uslovnyj?'w':'g'),it.uslovnyj?'условный':'итог'));c.appendChild(hh);
+  c.appendChild(el('p','small','По CTR на '+fmt(it.data)+'. '+(it.uslovnyj?'Условный порядок: '+it.prichina+'. Пересчитаем в следующий понедельник.':'Показов достаточно.')));
+  it.fakt.forEach(function(f,i){var b=banner(p,f.id),r=el('div','fact');r.appendChild(el('div','rank',i+1));var nm=el('div','nm');nm.appendChild(el('b','',f.id+(i===0?' · победитель':'')));nm.appendChild(el('span','',b.zagolovok));r.appendChild(nm);
+    var cc=el('div','bigctr',f.ctr==null?'нет данных':f.ctr.toFixed(2).replace('.',',')+'%');cc.appendChild(el('small','',f.shows+' показов, '+f.clicks+' кликов'));r.appendChild(cc);c.appendChild(r)});
+  w.appendChild(c);
+  var c2=el('div','card');c2.appendChild(el('h3','','Очки по партии'));
+  it.uchastniki.forEach(function(u){var r=el('div','bet'),x=el('div','who');x.appendChild(el('b','',u.imya));var rr=el('span','');if(u.posle_starta)rr.appendChild(el('span','pill w','после старта, отдельно '));rr.appendChild(el('span','pill g',u.ochki+' очк.'+(u.ugadal?' · угадал победителя':'')));x.appendChild(rr);r.appendChild(x);r.appendChild(chips(p,u.poryadok,it.poryadok));c2.appendChild(r)});
+  w.appendChild(c2);return w}
+function renderItogi(){
+  var v=$('itogi');v.innerHTML='';
+  var done=D.partii.filter(function(p){return p.itog});
+  if(done.length){done.slice().reverse().forEach(function(p,i){if(i===0)v.appendChild(itogBlock(p))})}
+  else if(CUR){var c=el('div','card');c.appendChild(el('h3','',CUR.nazvanie));
+    c.appendChild(el('p','',CUR.zakrytie?'Победителя объявим в понедельник, '+fmt(CUR.zakrytie)+'. До этого времени ставки можно менять.':(CUR.start?'Победителя объявим в ближайший понедельник после 12:15 МСК.':'Реклама ещё не запущена, как только пойдут показы, мы назовём дату итога.')));v.appendChild(c)}
+  v.appendChild(ratingTable(D.rejting.osn,'Общий рейтинг угадывающих'));
+  if(D.rejting.posle&&D.rejting.posle.length)v.appendChild(ratingTable(D.rejting.posle,'Ставки после старта (вне основного зачёта)'));
+  v.appendChild(el('p','small','Очки: 5 за угаданного победителя и по 1 за каждый баннер на своём месте. Порядок считаем по CTR, это доля кликов от показов.'));
+}
+function renderArhiv(){
+  var v=$('arhiv');v.innerHTML='';var done=D.partii.filter(function(p){return p.itog&&p!==CUR||(isClosed(p)&&p!==CUR)});
+  if(!done.length){v.appendChild(el('p','empty','Архив пуст: здесь будут партии, на которые ставки уже закрыты, и их победители.'));return}
+  done.slice().reverse().forEach(function(p){var d=el('details','arh'),s=el('summary','');s.appendChild(el('span','',p.nazvanie));s.appendChild(el('span','pill '+(p.itog?(p.itog.uslovnyj?'w':'g'):''),p.itog?('победил '+p.itog.pobeditel+(p.itog.uslovnyj?' (условно)':'')):'ждём итога'));d.appendChild(s);
+    var inn=el('div','in');if(p.itog)inn.appendChild(itogBlock(p));else inn.appendChild(el('p','small','Ставки закрыты, итог в ближайший понедельник.'));d.appendChild(inn);v.appendChild(d)});
+}
+
+/* ---------- вкладки и запуск ---------- */
+function renderAll(){renderStavka();renderList();renderVse();renderItogi();renderArhiv()}
+function tab(n){TAB=n;['stavka','vse','itogi','arhiv'].forEach(function(t){$('s-'+t).className='scr'+(t===n?' on':'');$('tab-'+t).setAttribute('aria-selected',t===n)});
+  if(n==='vse')loadBets().then(renderVse);window.scrollTo(0,0)}
+['stavka','vse','itogi','arhiv'].forEach(function(t){$('tab-'+t).onclick=function(){tab(t)}});
+$('send').onclick=send;$('tovse').onclick=function(){tab('vse')};$('obn').onclick=function(){loadBets().then(renderVse)};
+initWho();
+fetch('partii.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){D=d;API=d.api;pickCur();FIXED=CUR?isClosed(CUR):false;
+  ME=ls('tot_imya')||'';
+  return loadBets().then(function(){fillOrder();renderAll();
+    if(ME)setMe(ME);else showWho(true)})}).catch(function(){$('hd').appendChild(el('div','msg er','Не удалось загрузить страницу. Обновите её.'))});
+})();
+</script>
+</body>
+</html>
