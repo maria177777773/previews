@@ -331,12 +331,13 @@ function send(){
      if(j.ok){m.appendChild(el('div','msg ok','Ставка принята: '+eff(CUR,j.stavka.poryadok).join(' › ')+(j.stavka.posle_starta?' (после старта)':'')+'. Её можно поменять до закрытия.'));
        return loadBets().then(function(){renderStavka();renderVse()})}
      m.appendChild(el('div','msg er','Не вышло: '+(j.oshibka||'ошибка')));
-     return loadUps().then(function(ch){if(ch){refreshIds();renderSlots();renderUpl()}})})
+     return loadUps().then(function(ch){if(ch){refreshIds();renderSlots();if(!uplBusy())renderUpl()}})})
    .catch(function(){b.disabled=false;m.appendChild(el('div','msg er','Нет связи с сервером. Ваш порядок сохранён в браузере, нажмите ещё раз.'))});
 }
 
 /* ---------- загрузка своего баннера ---------- */
 var PREP=null;
+function uplBusy(){var f=document.getElementById('fileup');return !!(f&&f.files&&f.files.length)}
 function prepImage(file){return new Promise(function(res,rej){
   var u=URL.createObjectURL(file),im=new Image();
   im.onerror=function(){URL.revokeObjectURL(u);rej(new Error('Не удалось прочитать картинку. Нужен JPG, PNG или WebP.'))};
@@ -466,7 +467,7 @@ function tab(n){TAB=n;['stavka','vse','itogi','arhiv'].forEach(function(t){$('s-
   if(n==='vse')Promise.all([loadBets(),loadUps()]).then(function(){refreshIds();renderVse()});window.scrollTo(0,0)}
 ['stavka','vse','itogi','arhiv'].forEach(function(t){$('tab-'+t).onclick=function(){tab(t)}});
 $('send').onclick=send;$('tovse').onclick=function(){tab('vse')};$('obn').onclick=function(){Promise.all([loadBets(),loadUps()]).then(function(){refreshIds();renderVse()})};
-document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&CUR&&!FIXED)loadUps().then(function(ch){if(ch){refreshIds();renderSlots();renderUpl();renderVse()}})});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&CUR&&!FIXED)loadUps().then(function(ch){if(ch){refreshIds();renderSlots();if(!uplBusy())renderUpl();renderVse()}})});
 initWho();
 fetch('partii.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){D=d;API=d.api;
   try{var q=new URLSearchParams(location.search).get('api');if(q&&/^(localhost|127\.0\.0\.1)$/.test(location.hostname))API=q}catch(e){}
