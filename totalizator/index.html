@@ -84,6 +84,8 @@ section.scr{display:none;padding:8px 0 80px}section.scr.on{display:block}
 .c .hd{display:flex;align-items:baseline;justify-content:space-between;gap:8px;min-height:34px}
 .c .pl{font:800 var(--fs-place)/1.05 TT,Roboto,sans-serif}
 .c .pts{font-size:var(--fs-s);color:var(--m);white-space:nowrap}
+.c .pl{white-space:nowrap}
+@media (min-width:821px){.c .hd{flex-direction:column;align-items:flex-start;gap:4px;justify-content:flex-start}}
 .c .pts.big{font:800 var(--fs-l)/1 TT,Roboto,sans-serif;color:var(--gd)}
 .ph{position:relative;width:100%;aspect-ratio:3/5;border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in;display:block;padding:0;border:0}
 .ph img{display:block;width:100%;height:100%;object-fit:contain}
@@ -152,7 +154,7 @@ section.scr{display:none;padding:8px 0 80px}section.scr.on{display:block}
 .tbl td.n,.tbl th.n{white-space:nowrap}
 
 .upl{margin-top:40px}
-.upl .row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-top:14px}
+.upl .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) minmax(0,1fr);gap:10px;margin-top:14px}
 .upl input[type=text]{font:inherit;min-height:var(--btn-h);border:2px solid var(--l);border-radius:999px;padding:0 22px;min-width:0}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .fbtn{display:flex;align-items:center;justify-content:center;min-height:var(--btn-h);border:2px solid var(--l);border-radius:999px;padding:0 22px;background:#fff;font-weight:700;font-size:var(--fs);cursor:pointer;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -456,7 +458,7 @@ function renderVse(){if(!CUR)return;var P=people(),vt=$('vtabs');vt.innerHTML=''
     grid(v,S.list,function(x){var b=bById(x.id),c=card();
       c.appendChild(head(x.place+' место',balls(x.sum),true));c.appendChild(photo(b));
       var body=el('div','body'),ul=el('ul','lst');
-      x.who.slice().sort(function(a,b){return a.mesto-b.mesto||a.imya.localeCompare(b.imya,'ru')}).forEach(function(w){var li=el('li');li.appendChild(el('span','nm',w.imya));li.appendChild(el('span',null,w.mesto+' место'));ul.appendChild(li)});
+      x.who.slice().sort(function(a,b){return a.mesto-b.mesto||a.imya.localeCompare(b.imya,'ru')}).forEach(function(w){var li=el('li');li.appendChild(el('span','nm',w.imya));li.appendChild(el('span',null,w.mesto+' место · '+balls(w.b)));ul.appendChild(li)});
       if(!x.who.length)body.appendChild(el('div','nodata','Ставок пока нет'));else body.appendChild(ul);
       c.appendChild(body);return c});
     return}
@@ -480,9 +482,11 @@ function renderItogi(){if(!CUR)return;var v=$('ibody');v.innerHTML='';
   var P=people().filter(function(p){return p.order&&p.order.length}).map(function(p){return{imya:p.imya,order:p.order.filter(function(id){return base.indexOf(id)>=0})}});
   var nt=el('div','note');
   if(!has){nt.appendChild(el('b',null,'Показов пока нет'));
-    nt.appendChild(document.createTextNode('Реклама этой партии ещё не набрала показов в Директе'+(tek&&tek.proverka?' (проверка '+fmt(tek.proverka)+')':'')+'. Места по CTR, показы и клики появятся здесь сами: страница обновляется раз в час. Ниже прогнозы участников по каждому баннеру.'));
+    nt.appendChild(document.createTextNode('Реклама этой партии ещё не набрала показов в Директе'+(tek&&tek.proverka?' (проверка '+fmt(tek.proverka)+')':'')+'. Места по CTR, показы и клики появятся здесь сами: страница обновляется раз в час. Ниже баннеры в порядке «Сводки» и прогноз каждого участника.'));
     v.appendChild(nt);
-    grid(v,base,function(id){var b=bById(id),c=card();c.appendChild(head('Показов пока нет',null));c.appendChild(photo(b));
+    var sv=svodka().list.filter(function(x){return base.indexOf(x.id)>=0}),pm={},pp=0,pv=null;
+    sv.forEach(function(x,i){if(pv===null||x.sum!==pv){pp=i+1;pv=x.sum}pm[x.id]=pp});
+    grid(v,sv.map(function(x){return x.id}),function(id){var b=bById(id),c=card();c.appendChild(head(P.length?pm[id]+' место':'Прогнозов нет',P.length?'по прогнозам · '+balls(sv.filter(function(x){return x.id===id})[0].sum):null));c.appendChild(photo(b));
       var pl=prog(id,P,null);pl.classList.add('pg');c.appendChild(pl);c.classList.add('it');return c});
     return}
   var order=fakt.map(function(x){return x.id}).filter(function(id){return base.indexOf(id)>=0});
@@ -502,7 +506,7 @@ function renderItogi(){if(!CUR)return;var v=$('ibody');v.innerHTML='';
   var sc=(fin&&fin.uchastniki)?fin.uchastniki.map(function(u){return{imya:u.imya,ochki:u.ochki,ugadal:u.ugadal,tochnye:u.tochnye}}):P.map(function(p){var o=ochki(p.order,order);return{imya:p.imya,ochki:o.ochki,ugadal:o.ugadal,tochnye:o.tochnye}});
   sc.sort(function(a,b){return b.ochki-a.ochki||a.imya.localeCompare(b.imya,'ru')});
   var bx=el('div','box');bx.style.marginTop='28px';bx.appendChild(el('h2',null,fin?'Кто угадал':'Кто угадывает сейчас'));
-  bx.appendChild(el('p','lead','Очки: 5 за угаданное 1 место и по 1 за каждый баннер на своём месте.'));
+  bx.appendChild(el('p','lead','Очки за точность прогноза: 5 за угаданное 1 место и по 1 за каждый баннер на своём месте. Это не баллы «Сводки».'));
   var t=el('table','tbl'),tr=el('tr');['Участник','Очки','1 место','На своём месте'].forEach(function(h,i){var th=el('th',i?'n':null,h);tr.appendChild(th)});t.appendChild(tr);
   sc.forEach(function(u){var r=el('tr');r.appendChild(el('td',null,u.imya));r.appendChild(el('td','n',String(u.ochki)));r.appendChild(el('td','n',u.ugadal?'угадано':'нет'));r.appendChild(el('td','n',String(u.tochnye)));t.appendChild(r)});
   bx.appendChild(t);v.appendChild(bx)}
