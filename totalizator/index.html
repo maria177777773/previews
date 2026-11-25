@@ -212,17 +212,18 @@ function renderList(){
 })();
 
 /* ---------- экран ставки ---------- */
+function pl(n,a,b,c){n=Math.abs(n)%100;var m=n%10;return n>10&&n<20?c:m>1&&m<5?b:m==1?a:c}
 function renderStavka(){
   var hd=$('hd');hd.innerHTML='';
   if(!CUR){hd.appendChild(el('p','empty','Партий пока нет.'));$('send').hidden=true;return}
   var h=el('h1');h.innerHTML='Тотализатор <span class="g">баннеров</span>';hd.appendChild(h);
-  hd.appendChild(el('p','lead',CUR.opisanie||CUR.nazvanie));
+  if(CUR.opisanie)hd.appendChild(el('p','lead',CUR.opisanie));
   var c=el('div','card');c.appendChild(el('h3','',CUR.nazvanie));
   var st=el('p','small','');
   var parts=[];parts.push(FIXED?'Ставки закрыты.':(CUR.zakrytie?'Ставки открыты до '+fmt(CUR.zakrytie)+', можно менять свою.':'Ставки открыты, можно менять свою.'));
   parts.push(CUR.start?(Date.now()>=Date.parse(CUR.start)?'Реклама идёт с '+fmt(CUR.start)+', новые ставки получают пометку «после старта» и считаются отдельно.':'Старт рекламы '+fmt(CUR.start)+'.'):'Реклама ещё не запущена.');
   st.textContent=parts.join(' ');c.appendChild(st);
-  c.appendChild(el('p','small','Расставьте баннеры от 1 места (больше всего кликов на тысячу показов, CTR) до 5. За победителя 5 очков, плюс по 1 за каждый баннер на своём месте.'));
+  c.appendChild(el('p','small','Расставьте баннеры от 1 места (больше всего кликов в пересчёте на показы, CTR) до '+CUR.bannery.length+'. За победителя 5 очков, плюс по 1 за каждый баннер на своём месте.'));
   hd.appendChild(c);
   var mb=myBet(),b=$('send');b.hidden=FIXED;b.textContent=mb?'Изменить ставку':'Сделать ставку';
   $('ends').hidden=false;
@@ -265,12 +266,12 @@ function ratingTable(rows,title){var c=el('div','card');c.appendChild(el('h3',''
 function itogBlock(p){var it=p.itog,w=el('div');
   var c=el('div','card'),hh=el('div','who');hh.appendChild(el('h3','','Как всё вышло: '+p.nazvanie));
   hh.appendChild(el('span','pill '+(it.uslovnyj?'w':'g'),it.uslovnyj?'условный':'итог'));c.appendChild(hh);
-  c.appendChild(el('p','small','По CTR на '+fmt(it.data)+'. '+(it.uslovnyj?'Условный порядок: '+it.prichina+'. Пересчитаем в следующий понедельник.':'Показов достаточно.')));
+  c.appendChild(el('p','small','По CTR на '+fmt(it.data)+'. '+(it.uslovnyj?'Условный порядок: '+it.prichina+'. Пересчитаем, когда наберётся больше показов.':'Показов достаточно.')));
   it.fakt.forEach(function(f,i){var b=banner(p,f.id),r=el('div','fact');r.appendChild(el('div','rank',i+1));var nm=el('div','nm');nm.appendChild(el('b','',f.id+(i===0?' · победитель':'')));nm.appendChild(el('span','',b.zagolovok));r.appendChild(nm);
-    var cc=el('div','bigctr',f.ctr==null?'нет данных':f.ctr.toFixed(2).replace('.',',')+'%');cc.appendChild(el('small','',f.shows+' показов, '+f.clicks+' кликов'));r.appendChild(cc);c.appendChild(r)});
+    var cc=el('div','bigctr',f.ctr==null?'нет данных':f.ctr.toFixed(2).replace('.',',')+'%');cc.appendChild(el('small','',f.shows+' '+pl(f.shows,'показ','показа','показов')+', '+f.clicks+' '+pl(f.clicks,'клик','клика','кликов')));r.appendChild(cc);c.appendChild(r)});
   w.appendChild(c);
   var c2=el('div','card');c2.appendChild(el('h3','','Очки по партии'));
-  it.uchastniki.forEach(function(u){var r=el('div','bet'),x=el('div','who');x.appendChild(el('b','',u.imya));var rr=el('span','');if(u.posle_starta)rr.appendChild(el('span','pill w','после старта, отдельно '));rr.appendChild(el('span','pill g',u.ochki+' очк.'+(u.ugadal?' · угадал победителя':'')));x.appendChild(rr);r.appendChild(x);r.appendChild(chips(p,u.poryadok,it.poryadok));c2.appendChild(r)});
+  it.uchastniki.forEach(function(u){var r=el('div','bet'),x=el('div','who');x.appendChild(el('b','',u.imya));var rr=el('span','');if(u.posle_starta)rr.appendChild(el('span','pill w','после старта, отдельно '));rr.appendChild(el('span','pill g',u.ochki+' '+pl(u.ochki,'очко','очка','очков')+(u.ugadal?' · угадал победителя':'')));x.appendChild(rr);r.appendChild(x);r.appendChild(chips(p,u.poryadok,it.poryadok));c2.appendChild(r)});
   w.appendChild(c2);return w}
 function renderItogi(){
   var v=$('itogi');v.innerHTML='';
