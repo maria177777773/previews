@@ -1,6 +1,6 @@
 {
  "api": "https://api.kp-catalyst.ru/zavod/tot",
- "sobrano": "2026-11-25T12:02:30Z",
+ "sobrano": "2026-11-25T17:19:52Z",
  "partii": [
   {
    "id": "2026-W48-RSYA-NY",
@@ -36,6 +36,13 @@
    ],
    "claude": {
     "poryadok": [
+     "NY3n",
+     "NY1",
+     "NY5",
+     "NY2",
+     "NY4"
+    ],
+    "vse": [
      "NY3n",
      "NY1",
      "NY5",
