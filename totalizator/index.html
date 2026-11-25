@@ -10,472 +10,527 @@
 @font-face{font-family:TT;src:url(assets/TT_Commons_Pro_Bold.woff2) format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:TT;src:url(assets/TT_Commons_Pro_ExtraBold.woff2) format("woff2");font-weight:800;font-display:swap}
 @font-face{font-family:Roboto;src:url(assets/roboto-cyrillic.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+400-45F,U+2116}
-@font-face{font-family:Roboto;src:url(assets/roboto-latin.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0-FF,U+2000-206F,U+2190-21FF,U+25B2,U+25BC}
-:root{--g:#0aba59;--k:#111;--m:#6b6b6b;--l:#e6e8e5;--bg:#f4f6f3;--r:#d8362f}
+@font-face{font-family:Roboto;src:url(assets/roboto-latin.woff2) format("woff2");font-weight:400 700;font-display:swap;unicode-range:U+0-FF,U+2000-206F,U+2190-21FF}
+:root{
+  --g:#0aba59;--gd:#08964a;--gl:#e3f6eb;--k:#111;--m:#5f625e;--l:#e3e6e1;--bg:#f3f5f2;--r:#c9302a;--rl:#fdecea;
+  --btn-h:52px;--fs:18px;--fs-s:16px;--fs-l:22px;--fs-h1:52px;--fs-h2:34px;--fs-place:26px;
+  --gap:16px;--rad:22px;--pad:12px;
+}
+@media (max-width:820px){:root{--fs:16px;--fs-s:15px;--fs-l:19px;--fs-h1:34px;--fs-h2:26px;--fs-place:22px;--gap:14px;--rad:18px;--pad:12px;--btn-h:50px}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;font:400 17px/1.5 Roboto,Arial,sans-serif;color:var(--k);background:var(--bg)}
-h1,h2,h3{font-family:TT,Roboto,sans-serif;font-weight:800;line-height:1.1;margin:0}
-h1{font-size:clamp(30px,7vw,52px)}h2{font-size:clamp(24px,5vw,34px);margin-bottom:14px}h3{font-size:20px}
-.g{color:var(--g)}
-.wrap{max-width:980px;margin:0 auto;padding:0 14px}
+body{margin:0;font:400 var(--fs)/1.45 Roboto,Arial,sans-serif;color:var(--k);background:var(--bg)}
+h1,h2,h3{font-family:TT,Roboto,sans-serif;font-weight:800;line-height:1.08;margin:0}
+h1{font-size:var(--fs-h1)}h2{font-size:var(--fs-h2)}h3{font-size:var(--fs-l)}
+.wrap{max-width:1400px;margin:0 auto;padding:0 24px}
+@media (max-width:820px){.wrap{padding:0 16px}}
+button{font:inherit;font-weight:700;min-height:var(--btn-h);padding:0 26px;border-radius:999px;border:2px solid var(--g);background:var(--g);color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;line-height:1.1;text-align:center}
+button:hover{background:var(--gd);border-color:var(--gd)}
+button.lt{background:#fff;color:var(--k);border-color:var(--l)}
+button.lt:hover{border-color:var(--k)}
+button:disabled{opacity:.35;cursor:default}
+button.lt:disabled:hover{border-color:var(--l)}
+button:disabled:hover{background:var(--g);border-color:var(--g)}
+button.lt:disabled:hover{background:#fff}
+button:focus-visible,input:focus-visible,.ph:focus-visible{outline:3px solid var(--k);outline-offset:3px}
+
+/* шапка */
 header.top{background:#fff;border-bottom:1px solid var(--l)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:64px}
-.brand{display:flex;align-items:center;gap:10px;font:800 20px TT,Roboto,sans-serif}
-.brand img{width:44px;height:44px;border-radius:50%}
-button,.btn{font:inherit;min-height:48px;padding:0 24px;border-radius:999px;border:2px solid var(--g);background:var(--g);color:#fff;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-button:hover,.btn:hover{background:var(--k);border-color:var(--k)}
-button:disabled,button[aria-disabled=true]{opacity:.35;cursor:default}
-button:disabled:hover,button[aria-disabled=true]:hover{background:var(--g);border-color:var(--g)}
-button.lt{background:#fff;color:var(--k);border-color:var(--l)}button.lt:hover{background:var(--k);color:#fff;border-color:var(--k)}
-button.lt:disabled:hover,button.lt[aria-disabled=true]:hover{background:#fff;color:var(--k);border-color:var(--l)}
-button:focus-visible,input:focus-visible,.ban:focus-visible{outline:3px solid var(--k);outline-offset:2px}
-#kto{font-size:15px}
-nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;display:flex;gap:8px;overflow-x:auto}
-nav.tabs button{flex:1 0 auto;min-height:48px;padding:0 16px;background:#fff;color:var(--k);border-color:var(--l)}
-nav.tabs button[aria-selected=true]{background:var(--k);color:#fff;border-color:var(--k)}
-section.scr{display:none;padding:10px 0 60px}section.scr.on{display:block}
-.lead{color:var(--m);margin:10px 0 12px;font-size:15px;line-height:1.35}
-.card{background:#fff;border:1px solid var(--l);border-radius:20px;padding:16px;margin-bottom:14px}
-.pill{display:inline-block;padding:3px 12px;border-radius:999px;background:var(--bg);font-size:14px;font-weight:700;color:var(--m)}
-.pill.g{background:var(--g);color:#fff}.pill.w{background:#fff3cf;color:#6d5200}
-.msg{padding:12px 16px;border-radius:14px;margin:10px 0;font-weight:700}
-.msg.ok{background:#e1f6ea;color:#075a2c}.msg.er{background:#fde4e2;color:#8b1b16}
-.small{font-size:14px;color:var(--m)}
-.empty{color:var(--m);padding:22px 8px;text-align:center}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px}
+.brand{display:flex;align-items:center;gap:12px;font:800 var(--fs-l) TT,Roboto,sans-serif}
+.brand img{width:48px;height:48px;border-radius:50%}
+.me{display:flex;align-items:center;gap:12px;font-size:var(--fs-s)}
+.me b{font-size:var(--fs)}
+.me button{min-height:44px;padding:0 18px;font-size:var(--fs-s)}
+@media (max-width:820px){.brand span{display:none}}
 
-/* подсказка */
-.hint{background:var(--k);color:#fff;border-radius:20px;padding:16px 18px;margin:0 0 14px;display:flex;gap:14px;align-items:center}
-.hint h2{margin:0 0 4px;font-size:clamp(26px,6.4vw,38px);color:#fff}.hint h2 .g{color:#6ff0a8}
-.hint p{margin:0;color:#d9ddd6;font-size:15px;line-height:1.35}
-.hint svg{flex:0 0 auto;width:44px;height:44px}
-.hint.pulse{animation:pl .6s 2}
-@keyframes pl{50%{box-shadow:0 0 0 6px rgba(10,186,89,.45)}}
+.hero{padding:36px 0 8px}
+.hero p{margin:12px 0 0;color:var(--m);font-size:var(--fs-l);max-width:900px}
+@media (max-width:820px){.hero{padding:22px 0 4px}.hero p{font-size:var(--fs)}}
 
-/* ряд баннеров: пять в ряд, одинаковый вертикальный формат */
-.slots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:0 0 6px;align-items:start}
-.cell{position:relative;min-width:0;display:flex;flex-direction:column;gap:5px}
-.cell.fade{opacity:.35}
-.lab{font:800 clamp(12px,3.3vw,19px)/1.1 TT,Roboto,sans-serif;text-align:center;white-space:nowrap;background:var(--k);color:#fff;border-radius:999px;padding:5px 2px}
-.cell:first-child .lab{background:var(--g)}
-.lab.top{background:#fff;color:var(--k);border:2px solid var(--k)}
-.ban{display:block;position:relative;border:3px solid #fff;border-radius:12px;background:#fff;overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;box-shadow:0 2px 8px rgba(0,0,0,.12);padding:0;min-height:0}
-.ban img{display:block;width:100%;height:auto;aspect-ratio:3/5;background:var(--l);pointer-events:none;-webkit-user-drag:none}
-.ban.sel{border-color:var(--g);box-shadow:0 0 0 3px rgba(10,186,89,.35)}
-.ban.nw::after{content:"новый";position:absolute;left:0;top:0;background:#fff3cf;color:#6d5200;font:700 11px/1 Roboto;padding:3px 6px;border-bottom-right-radius:8px}
-.bid{text-align:center;font-size:12px;color:var(--m);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ghost{position:fixed;z-index:50;pointer-events:none;border-radius:12px;box-shadow:0 14px 34px rgba(0,0,0,.35);opacity:.92;overflow:hidden;border:3px solid var(--g);background:#fff}
-.ghost img{display:block;width:100%;height:100%;object-fit:cover}
-.ends{display:flex;justify-content:space-between;color:var(--m);font-size:14px;font-weight:700;margin:6px 4px 12px}
-.sel-panel{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--l);border-radius:20px;padding:12px;margin-bottom:14px}
-.sel-panel img{flex:0 0 auto;width:min(34vw,110px);aspect-ratio:3/5;object-fit:cover;border-radius:10px;background:var(--l);cursor:zoom-in}
-.sel-panel .tx{flex:1;min-width:0}.sel-panel .tx b{font:800 20px TT,Roboto,sans-serif;display:block}
-.sel-panel .mv{display:flex;gap:8px;margin-top:8px}.sel-panel .mv button{flex:1;min-width:0;padding:0 8px}
-.bar{position:sticky;bottom:0;background:linear-gradient(transparent,var(--bg) 30%);padding:18px 0 12px;display:flex;gap:10px;flex-wrap:wrap}
-.bar .btn,.bar button{flex:1 1 220px}
+/* вкладки: одна группа, одинаковые кнопки */
+.tabs{position:sticky;top:0;z-index:20;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax);padding:16px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:760px}
+.tabs button{background:#fff;color:var(--k);border-color:var(--l);min-height:56px;font-size:var(--fs);padding:0 10px}
+.tabs button:hover{border-color:var(--k)}
+.tabs button[aria-selected=true]{background:var(--k);color:#fff;border-color:var(--k)}
+.parts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.parts button{min-height:44px;font-size:var(--fs-s);background:#fff;color:var(--k);border-color:var(--l)}
+.parts button[aria-pressed=true]{background:var(--k);color:#fff;border-color:var(--k)}
+section.scr{display:none;padding:8px 0 80px}section.scr.on{display:block}
 
-/* загрузка */
-.upl{display:grid;gap:10px}
-.upl .row2{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.upl input[type=text]{flex:1 1 200px;min-height:52px;font:inherit;font-size:17px;padding:0 18px;border:2px solid var(--l);border-radius:999px;background:#fff}
-.upl input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-.upl .pv{width:72px;aspect-ratio:3/5;border-radius:8px;object-fit:cover;border:2px solid var(--l)}
-.mine{display:flex;flex-wrap:wrap;gap:8px}
-.mine .it{display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:999px;padding:4px 4px 4px 14px;font-weight:700}
-.mine .it button{min-height:44px;padding:0 14px}
+.box{background:#fff;border:1px solid var(--l);border-radius:var(--rad);padding:24px}
+@media (max-width:820px){.box{padding:18px}}
+.lead{font-size:var(--fs-l);margin:4px 0 18px;line-height:1.35}
+.lead small{display:block;font-size:var(--fs-s);color:var(--m);margin-top:6px}
+.msg{border-radius:16px;padding:14px 18px;margin:14px 0 0;font-size:var(--fs)}
+.msg.ok{background:var(--gl)}.msg.er{background:var(--rl);color:var(--r)}
+.note{background:#fff;border:1px solid var(--l);border-radius:var(--rad);padding:20px 24px;margin:0 0 20px;font-size:var(--fs)}
+.note b{font-size:var(--fs-l);display:block;margin-bottom:4px;font-family:TT,Roboto,sans-serif;font-weight:800}
 
-/* все ставки */
-.cap{display:flex;flex-wrap:wrap;gap:2px 6px;font-size:clamp(11px,3vw,14px);line-height:1.2;padding:4px 2px;border-top:1px solid var(--l);overflow-wrap:anywhere}
-.cap b{font-weight:700}.cap span{color:var(--m)}
-.cap.cl b{color:var(--g)}
-.avg{text-align:center;font-size:12px;color:var(--m)}
-.bet{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--l)}.bet:first-child{border-top:0}
-.bet b{font:800 18px TT,Roboto,sans-serif}.bet .tm{color:var(--m);font-size:14px}
-.cl{border:2px solid var(--g)}
-.claude-why{color:var(--m);font-size:15px;margin-top:8px}
+/* кто ставит */
+.who h2{margin-bottom:6px}
+.names{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;max-width:760px}
+.names button{background:#fff;color:var(--k);border-color:var(--l);font-size:var(--fs)}
+.names button:hover{border-color:var(--k)}
+.other{display:grid;grid-template-columns:1fr auto;gap:10px;max-width:760px}
+.other input{font:inherit;min-height:var(--btn-h);border:2px solid var(--l);border-radius:999px;padding:0 22px;min-width:0}
+@media (max-width:820px){.names{grid-template-columns:1fr 1fr 1fr}.other{grid-template-columns:1fr}}
 
-/* итоги */
-.mini{display:grid;grid-template-columns:repeat(var(--n,5),minmax(0,1fr));gap:6px;max-width:520px}
-.mini .m{position:relative;border:3px solid var(--l);border-radius:8px;overflow:hidden;background:#fff}
-.mini .m img{display:block;width:100%;aspect-ratio:3/5;object-fit:cover;cursor:zoom-in}
-.mini .m i{position:absolute;left:3px;top:3px;font-style:normal;background:var(--k);color:#fff;border-radius:999px;min-width:22px;height:22px;line-height:22px;text-align:center;font:800 13px/22px TT,Roboto,sans-serif}
-.mini .m.hit{border-color:var(--g)}.mini .m.hit i{background:var(--g)}
-.betrow{display:grid;gap:8px;padding:14px 0;border-top:1px solid var(--l)}.betrow:first-of-type{border-top:0}
-.betrow .who{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
-.betrow .who b{font:800 20px TT,Roboto,sans-serif}
-table.t{width:100%;border-collapse:collapse}.t th,.t td{padding:12px 6px;text-align:left;border-top:1px solid var(--l);vertical-align:middle}
-.t th{font-size:13px;color:var(--m);text-transform:uppercase;letter-spacing:.04em;border-top:0}
-.t td.n{text-align:right;font:800 22px TT,Roboto,sans-serif}.t th.n{text-align:right}
-.fact{display:grid;grid-template-columns:44px 56px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--l)}
-.fact:first-of-type{border-top:0}.fact img{width:56px;aspect-ratio:3/5;object-fit:cover;border-radius:8px;cursor:zoom-in;background:var(--l)}
-.fact .nm b{font:800 18px TT,Roboto,sans-serif;display:block}.fact .nm span{font-size:14px;color:var(--m);display:block;line-height:1.25}
-.rank{width:44px;height:44px;border-radius:50%;background:var(--k);color:#fff;font:800 22px/44px TT,Roboto,sans-serif;text-align:center}
-.fact:first-of-type .rank{background:var(--g)}
-.bigctr{font:800 24px TT,Roboto,sans-serif;text-align:right}.bigctr small{display:block;font:400 13px Roboto;color:var(--m)}
-details.arh{background:#fff;border:1px solid var(--l);border-radius:20px;margin-bottom:12px}
-details.arh summary{min-height:56px;padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;font:800 19px TT,Roboto,sans-serif;list-style:none}
-details.arh summary::-webkit-details-marker{display:none}
-details.arh .in{padding:0 16px 16px}
+/* сетка баннеров: 5 в ряд на компьютере, список на телефоне */
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gap);align-items:start}
+.grid.extra{margin-top:var(--gap)}
+.c{background:#fff;border:1px solid var(--l);border-radius:var(--rad);padding:var(--pad);display:flex;flex-direction:column;gap:12px;min-width:0;position:relative}
+.c .hd{display:flex;align-items:baseline;justify-content:space-between;gap:8px;min-height:34px}
+.c .pl{font:800 var(--fs-place)/1.05 TT,Roboto,sans-serif}
+.c .pts{font-size:var(--fs-s);color:var(--m);white-space:nowrap}
+.c .pts.big{font:800 var(--fs-l)/1 TT,Roboto,sans-serif;color:var(--gd)}
+.ph{position:relative;width:100%;aspect-ratio:3/5;border-radius:14px;overflow:hidden;background:#fff;cursor:zoom-in;display:block;padding:0;border:0}
+.ph img{display:block;width:100%;height:100%;object-fit:contain}
+.c .tt{font-size:var(--fs-s);color:var(--m);line-height:1.3;min-height:2.6em}
+.c .up{font-size:14px;font-weight:700;color:var(--gd);background:var(--gl);border-radius:999px;padding:4px 10px;align-self:flex-start}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mv button{min-height:48px;padding:0 6px;font-size:var(--fs-s);background:#fff;color:var(--k);border-color:var(--l)}
+.mv button:hover{border-color:var(--k)}
+.mv button:disabled:hover{border-color:var(--l)}
+.grip{display:none}
+.t-m{display:none}
+.lst{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:var(--fs-s)}
+.lst li{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--l);padding-top:6px}
+.lst li:first-child{border-top:0;padding-top:0}
+.lst .nm{font-weight:700;flex:0 0 auto;white-space:nowrap}
+.lst li>span:last-child{text-align:right;min-width:0}
+.lst .hit{color:var(--gd);font-weight:700}
+.st{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center}
+.st div{background:var(--bg);border-radius:12px;padding:8px 4px}
+.st b{display:block;font:800 var(--fs-l)/1.1 TT,Roboto,sans-serif}
+.st span{font-size:14px;color:var(--m)}
+.nodata{background:var(--bg);border-radius:12px;padding:12px;text-align:center;font-weight:700}
+.ok-tag{display:inline-block;font-size:14px;font-weight:700;color:var(--gd);background:var(--gl);border-radius:999px;padding:2px 10px;margin-left:6px}
+.c.on{box-shadow:0 0 0 3px var(--g)}
+.c.drag{opacity:.35}
+.c.fresh{box-shadow:0 0 0 3px #f4c20d}
 
-/* имя и увеличение */
-#who{position:fixed;inset:0;background:var(--bg);z-index:20;overflow:auto;display:none}
-#who.on{display:block}
-#who .wrap{padding-top:28px;padding-bottom:40px;max-width:780px}
-.names{display:grid;gap:10px;margin:18px 0}
-.names button{min-height:64px;font-size:22px;font-family:TT,Roboto,sans-serif;font-weight:800}
-.other{display:flex;gap:8px;flex-wrap:wrap}
-.other input{flex:1 1 180px;min-height:52px;font:inherit;font-size:18px;padding:0 18px;border:2px solid var(--l);border-radius:999px;background:#fff}
-#lb{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:40;display:none;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:16px;cursor:zoom-out}
-#lb.on{display:flex}#lb img{max-width:min(92vw,520px);max-height:78vh;border-radius:14px;background:#fff}
-#lb p{color:#fff;margin:0;text-align:center;font-weight:700;max-width:92vw}
-@media (max-width:420px){body{font-size:16px}.slots{gap:5px}.ban{border-width:2px;border-radius:9px}.fact{grid-template-columns:36px 44px 1fr auto}.fact img{width:44px}.rank{width:36px;height:36px;font-size:18px;line-height:36px}.hint{padding:14px}.hint svg{width:34px;height:34px}}
+@media (hover:hover) and (pointer:fine){
+  #slots .c{cursor:grab}
+  .ph img{transition:transform .2s}
+  .ph:hover img{transform:scale(1.03)}
+}
+
+/* телефон: карточка строкой, баннер слева */
+@media (max-width:820px){
+  .grid{grid-template-columns:1fr}
+  .c{display:grid;grid-template-columns:46% 1fr;grid-template-areas:"ph hd" "ph body";grid-template-rows:auto 1fr;column-gap:14px;row-gap:10px;align-items:start}
+  .c .hd{grid-area:hd;flex-direction:column;align-items:flex-start;gap:4px;min-height:0}
+  .c .ph{grid-area:ph}
+  .c .body{grid-area:body;display:flex;flex-direction:column;gap:10px;min-width:0}
+  .mv{grid-template-columns:1fr}
+  .t-d{display:none}.t-m{display:inline}
+  .grip{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border:2px dashed var(--l);border-radius:14px;color:var(--m);font-size:var(--fs-s);font-weight:700;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+  .grip svg{width:18px;height:18px}
+  .st{grid-template-columns:1fr}
+  .st div{display:flex;justify-content:space-between;align-items:baseline;padding:8px 12px}
+  .c .tt{min-height:0}
+}
+@media (min-width:821px){.c .body{display:flex;flex-direction:column;gap:12px}}
+
+@media (max-width:820px){.c.it{grid-template-areas:"ph hd" "ph body" "pg pg";grid-template-rows:auto 1fr auto}.c.it>.pg{grid-area:pg;margin-top:4px;font-size:var(--fs)}}
+
+.act{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px}
+.act button{min-width:280px;font-size:var(--fs-l);min-height:60px}
+.act .mine{color:var(--m);font-size:var(--fs-s)}
+@media (max-width:820px){.act button{width:100%;min-width:0}}
+
+/* под-вкладки «Все ставки»: одна группа, одинаковые кнопки */
+.sub{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:0 0 20px}
+.sub button{background:#fff;color:var(--k);border-color:var(--l);min-height:52px;padding:0 10px;font-size:var(--fs)}
+.sub button:hover{border-color:var(--k)}
+.sub button[aria-selected=true]{background:var(--k);color:#fff;border-color:var(--k)}
+.sub button .n{font-weight:400;font-size:14px;opacity:.7}
+@media (max-width:820px){.sub{grid-template-columns:repeat(3,1fr)}.sub button{font-size:var(--fs-s);padding:0 6px}}
+
+.tbl{width:100%;border-collapse:collapse;font-size:var(--fs)}
+.tbl th,.tbl td{text-align:left;padding:12px 10px;border-top:1px solid var(--l)}
+.tbl th{font-size:var(--fs-s);color:var(--m);font-weight:400;border-top:0}
+.tbl td.n,.tbl th.n{white-space:nowrap}
+
+.upl{margin-top:40px}
+.upl .row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-top:14px}
+.upl input[type=text]{font:inherit;min-height:var(--btn-h);border:2px solid var(--l);border-radius:999px;padding:0 22px;min-width:0}
+.upl input[type=file]{font:inherit;font-size:var(--fs-s);align-self:center;min-width:0}
+.upl .mylist{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+@media (max-width:820px){.upl .row{grid-template-columns:1fr}}
+
+/* увеличение при наведении и по тапу */
+#zoom{position:fixed;z-index:60;pointer-events:none;background:#fff;border-radius:18px;box-shadow:0 18px 60px rgba(0,0,0,.28);padding:8px;opacity:0;transition:opacity .15s}
+#zoom.on{opacity:1}
+#zoom img{display:block;width:100%;height:100%;object-fit:contain;border-radius:12px}
+#lb{position:fixed;inset:0;z-index:80;background:rgba(17,17,17,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:16px}
+#lb img{max-width:100%;max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);object-fit:contain;border-radius:14px;background:#fff}
+#lb button{min-width:200px}
+#ghost{position:fixed;z-index:70;pointer-events:none;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.35);transform:rotate(0deg)}
+#ghost img{display:block;width:100%;height:100%;object-fit:contain}
+footer{color:var(--m);font-size:var(--fs-s);padding:0 0 40px}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <div class="brand"><img src="assets/logo.png" alt="Каталист" width="44" height="44"><span>Каталист</span></div>
-  <div id="kto"></div>
+  <div class="brand"><img src="assets/logo.png" alt="Каталист" width="48" height="48"><span>Тотализатор баннеров</span></div>
+  <div class="me" id="me" hidden><span>Вы: <b id="meName"></b></span><button class="lt" id="meChange" type="button">Сменить имя</button></div>
 </div></header>
 
-<div id="who"><div class="wrap">
-  <h1>Кто <span class="g">ты</span>?</h1>
-  <p class="lead">Выбери имя, чтобы твоя ставка попала в общий зачёт. Имя запомнится в этом браузере.</p>
-  <div class="names" id="names"></div>
-  <h3>Другое имя</h3>
-  <p class="small" style="margin:6px 0 10px">До 24 знаков: буквы, цифры, пробел, точка, дефис.</p>
-  <form class="other" id="otherf"><input id="other" maxlength="24" autocomplete="nickname" placeholder="Например, Влад"><button class="lt" type="submit">Дальше</button></form>
-  <div id="whoerr" class="msg er" hidden></div>
-</div></div>
-<div id="lb"><img id="lbimg" alt=""><p id="lbtx"></p></div>
-
-<div class="wrap">
-  <nav class="tabs" role="tablist" id="tabs">
-    <button role="tab" id="tab-stavka" aria-selected="true">Моя ставка</button>
-    <button role="tab" id="tab-vse" aria-selected="false">Все ставки</button>
-    <button role="tab" id="tab-itogi" aria-selected="false">Итоги</button>
-    <button role="tab" id="tab-arhiv" aria-selected="false">Архив</button>
+<main class="wrap">
+  <div class="hero"><h1 id="pName">Тотализатор баннеров</h1><p id="pDesc"></p><div class="parts" id="parts" hidden></div></div>
+  <nav class="tabs" role="tablist">
+    <button id="tab-stavka" role="tab" type="button" aria-selected="true">Ставка</button>
+    <button id="tab-vse" role="tab" type="button" aria-selected="false">Все ставки</button>
+    <button id="tab-itogi" role="tab" type="button" aria-selected="false">Итоги</button>
   </nav>
 
   <section class="scr on" id="s-stavka">
-    <div id="hd"></div>
-    <div class="hint" id="hint"><svg viewBox="0 0 44 44" aria-hidden="true"><g fill="none" stroke="#6ff0a8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15h32M31 8l7 7-7 7M38 29H6M13 22l-7 7 7 7"/></g></svg>
-      <div><h2>Перетащите баннеры <span class="g">по местам</span></h2>
-      <p>Зажмите баннер и перенесите на другое место. Или коснитесь его и жмите «Левее» и «Правее». Потом нажмите «Сделать ставку».</p></div></div>
-    <div id="slots" class="slots"></div>
-    <div class="ends" id="ends" hidden><span>← больше всего кликов</span><span>меньше всего →</span></div>
-    <div class="sel-panel" id="selp"></div>
-    <div id="msg"></div>
-    <div class="bar"><button id="send" type="button">Сделать ставку</button><button class="lt" id="tovse" type="button">Посмотреть все ставки</button></div>
-    <div id="rules"></div>
-    <div class="card" id="uplcard"></div>
+    <div class="box who" id="who" hidden>
+      <h2>Кто делает ставку?</h2>
+      <div class="names" id="names"></div>
+      <form class="other" id="otherf"><input id="other" maxlength="24" placeholder="Другое имя" aria-label="Другое имя" autocomplete="off"><button type="submit">Это я</button></form>
+    </div>
+    <div id="game">
+      <p class="lead" id="hint"></p>
+      <div id="slots"></div>
+      <div class="act"><button id="send" type="button">Сделать ставку</button><span class="mine" id="mine"></span></div>
+      <div id="msg"></div>
+      <div class="box upl" id="upl"></div>
+    </div>
   </section>
 
   <section class="scr" id="s-vse">
-    <h2>Все <span class="g">ставки</span></h2>
-    <div id="vse"></div>
-    <div class="bar"><button class="lt" id="obn" type="button">Обновить</button></div>
+    <div class="sub" id="vtabs" role="tablist"></div>
+    <div id="vbody"></div>
   </section>
 
-  <section class="scr" id="s-itogi">
-    <h2>Итоги <span class="g">недели</span></h2>
-    <div id="itogi"></div>
-  </section>
+  <section class="scr" id="s-itogi"><div id="ibody"></div></section>
+</main>
+<footer class="wrap" id="foot"></footer>
 
-  <section class="scr" id="s-arhiv">
-    <h2>Прошлые <span class="g">партии</span></h2>
-    <div id="arhiv"></div>
-  </section>
-</div>
+<div id="zoom" aria-hidden="true"><img alt=""></div>
+<div id="lb" hidden role="dialog" aria-modal="true" aria-label="Баннер крупно"><img alt=""><button type="button" id="lbClose">Закрыть</button></div>
 
 <script>
 (function(){
 'use strict';
-var D=null, API='', ORIGIN='', ME='', CUR=null, FIXED=false, BETS=[], UPS=[], TAB='stavka', SEL='', MOVED=false, NEWIDS={};
+var D=null,API='',ORIGIN='',ME='',CUR=null,BETS=[],UPS=[],ORDER=[],MOVED=false,FRESH={},TAB='stavka',VT='svodka';
+var NAMES=['Маша','Никита','Ирек'];
 var $=function(id){return document.getElementById(id)};
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
 function fmt(s){if(!s)return'';return new Date(s).toLocaleString('ru-RU',{timeZone:'Europe/Moscow',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+' МСК'}
-function isClosed(p){return !!(p.itog||(p.zakrytie&&Date.now()>=Date.parse(p.zakrytie)))}
-function late(p,s){return !!(p.start&&s.vremya&&Date.parse(s.vremya)>=Date.parse(p.start))||(!p.start&&!!s.posle_starta)}
-function nameOk(s){return /^[0-9A-Za-zА-Яа-яЁё][0-9A-Za-zА-Яа-яЁё .'_-]{0,23}$/.test(s)}
-function clean(s){return s.replace(/\s+/g,' ').trim()}
+function num(n){return Number(n||0).toLocaleString('ru-RU')}
 function pl(n,a,b,c){n=Math.abs(n)%100;var m=n%10;return n>10&&n<20?c:m>1&&m<5?b:m==1?a:c}
+function balls(n){return n+' '+pl(n,'балл','балла','баллов')}
+function pts(place){return Math.max(0,6-place)}
+function clean(s){return s.replace(/\s+/g,' ').trim()}
+function nameOk(s){return /^[0-9A-Za-zА-Яа-яЁё][0-9A-Za-zА-Яа-яЁё .'_-]{0,23}$/.test(s)}
+function isClosed(p){return !!(p.itog||(p.zakrytie&&Date.now()>=Date.parse(p.zakrytie)))}
+function isMobile(){return window.matchMedia('(max-width:820px)').matches}
+var canHover=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
 
-/* ---------- баннеры партии: свои пять + загруженные участниками, один вертикальный формат 3:5 ---------- */
+/* ---------- баннеры ---------- */
 function allB(p){
   var r=p.bannery.map(function(b){return{id:b.id,zagolovok:b.zagolovok||'',src:'img/'+p.id+'/'+b.img.split('/').pop(),up:false}});
   if(p===CUR)UPS.forEach(function(u){r.push({id:u.id,zagolovok:u.zagolovok||'',src:ORIGIN+u.url,up:true,kto:u.kto})});
   return r}
-function bById(p,id){return allB(p).filter(function(b){return b.id===id})[0]}
-function idsOf(p){return allB(p).map(function(b){return b.id})}
-function eff(p,order){var ids=idsOf(p);return order.filter(function(i){return ids.indexOf(i)>=0})}
-function imgEl(b,cls){var im=new Image();im.src=b.src;im.alt='Баннер '+b.id+(b.zagolovok?': '+b.zagolovok:'');im.width=720;im.height=1200;im.draggable=false;if(cls)im.className=cls;return im}
-function zoom(b){$('lbimg').src=b.src;$('lbimg').alt=b.id;$('lbtx').textContent=b.id+(b.zagolovok?' · '+b.zagolovok:'')+(b.kto?' · загрузил '+b.kto:'');$('lb').className='on'}
-$('lb').onclick=function(){$('lb').className=''};
+function bById(id){return allB(CUR).filter(function(b){return b.id===id})[0]}
+function ids(){return allB(CUR).map(function(b){return b.id})}
+function eff(order){var a=ids();return (order||[]).filter(function(i){return a.indexOf(i)>=0})}
+function photo(b){
+  var w=el('button','ph');w.type='button';w.setAttribute('aria-label','Баннер '+b.id+' крупно');
+  var im=new Image();im.alt='Баннер '+b.id+(b.zagolovok?': '+b.zagolovok:'');im.width=720;im.height=1200;im.draggable=false;im.decoding='async';
+  im.onload=function(){var r=im.naturalWidth/im.naturalHeight;if(r&&Math.abs(r-0.6)>0.006)w.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight};
+  im.src=b.src;w.appendChild(im);w.dataset.src=b.src;
+  w.addEventListener('click',function(e){if(Date.now()-DRAG_END<350){e.preventDefault();return}openLb(b.src,im.alt)});
+  if(canHover){w.addEventListener('mouseenter',function(){zoomShow(w)});w.addEventListener('mousemove',function(){if(!zt&&!$('zoom').classList.contains('on'))zoomShow(w)});w.addEventListener('mouseleave',zoomHide)}
+  return w}
+function card(cls){var c=el('div','c'+(cls?' '+cls:''));return c}
+function head(left,right,big){var h=el('div','hd');h.appendChild(el('span','pl',left));if(right!=null)h.appendChild(el('span','pts'+(big?' big':''),right));return h}
 
-/* ---------- имя ---------- */
-function showWho(on){$('who').className=on?'on':''}
-function setMe(n){ME=n;ls('tot_imya',n);showWho(false);$('kto').innerHTML='';
-  var b=el('button','lt','Ты: '+n+' · сменить');b.id='smenit';b.type='button';b.onclick=function(){showWho(true)};$('kto').appendChild(b);
-  if(CUR){loadBets().then(function(){fillOrder();renderAll()})}}
-function initWho(){
-  var nm=$('names');['Маша','Никита','Ирек'].forEach(function(n){var b=el('button','',n);b.type='button';b.onclick=function(){setMe(n)};nm.appendChild(b)});
-  $('otherf').onsubmit=function(e){e.preventDefault();var v=clean($('other').value),er=$('whoerr');
-    if(!nameOk(v)||/^(claude|клод|клауд)$/i.test(v)){er.hidden=false;er.textContent=/^(claude|клод|клауд)$/i.test(v)?'Это имя занято Claude, выбери другое.':'Имя: до 24 знаков, буквы, цифры, пробел, точка, дефис.';return}
-    er.hidden=true;setMe(v)};
-}
+/* ---------- увеличение ---------- */
+var zt=null;
+function zoomShow(w){clearTimeout(zt);zt=setTimeout(function(){zt=null;
+  if(DRAG&&DRAG.on)return;var z=$('zoom'),im=z.firstChild,r=w.getBoundingClientRect(),img=w.firstChild;
+  var ratio=(img.naturalWidth&&img.naturalHeight)?img.naturalWidth/img.naturalHeight:0.6;
+  var H=Math.min(window.innerHeight-40,820),W=H*ratio+16;H+=16;
+  var gap=20,x;
+  if(r.right+gap+W<=window.innerWidth-12)x=r.right+gap;
+  else if(r.left-gap-W>=12)x=r.left-gap-W;
+  else x=Math.max(12,(window.innerWidth-W)/2);
+  var y=Math.min(Math.max(12,r.top+r.height/2-H/2),window.innerHeight-H-12);
+  z.style.width=W+'px';z.style.height=H+'px';z.style.left=x+'px';z.style.top=y+'px';im.src=w.dataset.src;z.classList.add('on')},180)}
+function zoomHide(){clearTimeout(zt);zt=null;$('zoom').classList.remove('on')}
+window.addEventListener('scroll',zoomHide,{passive:true});
+function openLb(src,alt){zoomHide();var lb=$('lb');lb.firstChild.src=src;lb.firstChild.alt=alt||'';lb.hidden=false;$('lbClose').focus()}
+function closeLb(){$('lb').hidden=true}
+$('lb').addEventListener('click',closeLb);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('lb').hidden)closeLb()});
 
 /* ---------- данные ---------- */
-function openParties(){return D.partii.filter(function(p){return !isClosed(p)})}
-function pickCur(){var o=openParties();CUR=o.length?o[o.length-1]:(D.partii.length?D.partii[D.partii.length-1]:null)}
 function loadBets(){if(!CUR)return Promise.resolve();
-  return fetch(API+'/stavki?partiya='+encodeURIComponent(CUR.id),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.ok){BETS=j.stavki;FIXED=!!j.zakryta||isClosed(CUR)}}).catch(function(){BETS=[];})}
+  return fetch(API+'/stavki?partiya='+encodeURIComponent(CUR.id),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){if(j.ok)BETS=j.stavki||[]}).catch(function(){})}
 function loadUps(){if(!CUR)return Promise.resolve(false);
   return fetch(API+'/bannery?partiya='+encodeURIComponent(CUR.id),{cache:'no-store'}).then(function(r){return r.json()}).then(function(j){
-    if(!j.ok)return false;var before=UPS.map(function(u){return u.id}).join(',');UPS=j.bannery||[];return before!==UPS.map(function(u){return u.id}).join(',')}).catch(function(){return false})}
-function myBet(){var k=ME.toLowerCase();return BETS.filter(function(s){return s.imya.toLowerCase()===k})[0]}
+    if(!j.ok)return false;var a=JSON.stringify(UPS.map(function(u){return u.id}));UPS=j.bannery||[];return a!==JSON.stringify(UPS.map(function(u){return u.id}))}).catch(function(){return false})}
+function myBet(){var k=ME.toLocaleLowerCase('ru');return BETS.filter(function(s){return s.imya.toLocaleLowerCase('ru')===k})[0]}
+function claudeOrder(){var c=CUR.claude||{};return eff(c.vse&&c.vse.length?c.vse:c.poryadok)}
+
+/* ---------- кто ставит ---------- */
+function showWho(on){$('who').hidden=!on;$('game').hidden=on&&!ME;if(on)setTimeout(function(){var b=$('names').firstChild;if(b)b.focus()},0)}
+function setMe(n){ME=n;ls('tot_imya',n);$('me').hidden=false;$('meName').textContent=n;$('who').hidden=true;$('game').hidden=false;fillOrder();renderStavka()}
+NAMES.forEach(function(n){var b=el('button','',n);b.type='button';b.onclick=function(){setMe(n)};$('names').appendChild(b)});
+$('otherf').onsubmit=function(e){e.preventDefault();var v=clean($('other').value);
+  if(!nameOk(v)){alert('Имя: до 24 знаков, буквы и цифры');return}
+  if(/^(claude|клод|клауд)$/i.test(v)){alert('Это имя занято');return}setMe(v)};
+$('meChange').onclick=function(){$('me').hidden=true;showWho(true)};
 
 /* ---------- порядок ---------- */
-var ORDER=[];
-function shuffled(ids){var a=ids.slice(),i,j,t;for(i=a.length-1;i>0;i--){j=Math.floor(Math.random()*(i+1));t=a[i];a[i]=a[j];a[j]=t}return a}
-function saveOrder(){if(CUR){ls('tot_ord_'+CUR.id,JSON.stringify(ORDER));ls('tot_mv_'+CUR.id,MOVED?'1':'0')}}
-function fillOrder(){
-  if(!CUR)return;var ids=idsOf(CUR),mb=myBet(),dr=ls('tot_ord_'+CUR.id),d=null;
-  NEWIDS={};
-  if(mb){ORDER=eff(CUR,mb.poryadok);MOVED=true}
-  else{try{d=JSON.parse(dr)}catch(e){}
-    if(d&&d.length&&eff(CUR,d).length===d.length&&d.length<=ids.length){ORDER=d;MOVED=ls('tot_mv_'+CUR.id)==='1'}else{ORDER=shuffled(ids);MOVED=false}}
-  ids.forEach(function(i){if(ORDER.indexOf(i)<0){ORDER.push(i);NEWIDS[i]=1}});
-  saveOrder();
-}
-function refreshIds(){ /* появились/исчезли загруженные баннеры: подправить порядок, не трогая остальное */
-  var ids=idsOf(CUR);ORDER=ORDER.filter(function(i){return ids.indexOf(i)>=0});
-  ids.forEach(function(i){if(ORDER.indexOf(i)<0){ORDER.push(i);NEWIDS[i]=1}});
-  if(SEL&&ORDER.indexOf(SEL)<0)SEL='';saveOrder()}
-function place(){return Array.prototype.map.call($('slots').children,function(c){return c.dataset.id})}
-function relabel(){var ch=$('slots').children;for(var i=0;i<ch.length;i++){var l=ch[i].querySelector('.lab');l.textContent=(i+1)+' место'}
-  ORDER=place();saveOrder();renderSel()}
-function moveTo(id,idx){var s=$('slots'),cells=Array.prototype.slice.call(s.children),c=cells.filter(function(x){return x.dataset.id===id})[0];if(!c)return;
-  var cur=cells.indexOf(c);idx=Math.max(0,Math.min(cells.length-1,idx));if(idx===cur)return;
-  s.removeChild(c);var ref=s.children[idx]||null;s.insertBefore(c,ref);MOVED=true;relabel()}
-function moveSel(dir){if(!SEL||FIXED)return;var i=ORDER.indexOf(SEL);if(i<0)return;moveTo(SEL,i+dir)}
-function selectBan(id){SEL=(SEL===id?'':id);Array.prototype.forEach.call($('slots').children,function(c){c.querySelector('.ban').classList.toggle('sel',c.dataset.id===SEL)});renderSel()}
+function shuffled(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function saveOrder(){if(CUR){ls('tot3_ord_'+CUR.id+'_'+ME,JSON.stringify(ORDER));ls('tot3_mv_'+CUR.id+'_'+ME,MOVED?'1':'0')}}
+function fillOrder(){if(!CUR)return;var all=ids(),mb=myBet(),d=null;FRESH={};
+  if(mb){ORDER=eff(mb.poryadok);MOVED=true}
+  else{try{d=JSON.parse(ls('tot3_ord_'+CUR.id+'_'+ME))}catch(e){}
+    if(d&&d.length&&eff(d).length===d.length){ORDER=d;MOVED=ls('tot3_mv_'+CUR.id+'_'+ME)==='1'}else{ORDER=shuffled(all);MOVED=false}}
+  all.forEach(function(i){if(ORDER.indexOf(i)<0){ORDER.push(i);if(mb)FRESH[i]=1}});saveOrder()}
+function move(i,j){if(j<0||j>=ORDER.length||i===j)return;var x=ORDER.splice(i,1)[0];ORDER.splice(j,0,x);MOVED=true;saveOrder()}
 
-function renderSlots(){
-  var s=$('slots');s.innerHTML='';if(!CUR)return;
-  ORDER.forEach(function(id,i){var b=bById(CUR,id)||{id:id,zagolovok:'',src:''};
-    var c=el('div','cell');c.dataset.id=id;c.appendChild(el('div','lab',(i+1)+' место'));
-    var bt=document.createElement('div');bt.className='ban'+(NEWIDS[id]?' nw':'')+(SEL===id?' sel':'');bt.tabIndex=FIXED?-1:0;bt.setAttribute('role','button');
-    bt.setAttribute('aria-label',id+', '+(i+1)+' место. Стрелки влево и вправо двигают баннер');bt.appendChild(imgEl(b));
-    c.appendChild(bt);c.appendChild(el('div','bid',id+(b.up?' · '+b.kto:'')));s.appendChild(c)});
-  $('ends').hidden=false;renderSel()}
-function renderSel(){
-  var p=$('selp');p.innerHTML='';
-  if(!CUR||FIXED){p.hidden=true;return}p.hidden=false;
-  var b=SEL?bById(CUR,SEL):null,tx=el('div','tx');
-  if(!b){p.appendChild(tx);tx.appendChild(el('b','','Коснитесь баннера'));tx.appendChild(el('span','small','Он увеличится, и его можно будет двигать кнопками. Или просто перетащите баннер пальцем.'));return}
-  var im=imgEl(b);im.onclick=function(){zoom(b)};p.appendChild(im);
-  var i=ORDER.indexOf(SEL);tx.appendChild(el('b','','Выбран: '+b.id+', сейчас '+(i+1)+' место'));
-  if(b.zagolovok)tx.appendChild(el('span','small',b.zagolovok+(b.kto?' · загрузил '+b.kto:'')));
-  var mv=el('div','mv'),l=el('button','lt','◀ Левее'),r=el('button','lt','Правее ▶');l.type=r.type='button';
-  l.setAttribute('aria-disabled',i<=0);r.setAttribute('aria-disabled',i>=ORDER.length-1);l.id='mvl';r.id='mvr';
-  l.onclick=function(){moveSel(-1)};r.onclick=function(){moveSel(1)};mv.appendChild(l);mv.appendChild(r);tx.appendChild(mv);p.appendChild(tx)}
-
-/* перетаскивание: pointer events (мышь и палец). Место = ближайший по центру слот сетки, поэтому работает и в два ряда */
-(function(){var drag=null;
-  function nearest(x,y){var cells=$('slots').children,best=0,bd=1e12;for(var i=0;i<cells.length;i++){var r=cells[i].querySelector('.ban').getBoundingClientRect(),dx=x-(r.left+r.width/2),dy=y-(r.top+r.height/2),d=dx*dx+dy*dy;if(d<bd){bd=d;best=i}}return best}
-  document.addEventListener('pointerdown',function(e){if(FIXED||drag)return;var b=e.target.closest&&e.target.closest('.ban');if(!b||!$('slots').contains(b))return;
-    var cell=b.parentNode,r=b.getBoundingClientRect();
-    drag={cell:cell,id:e.pointerId,x0:e.clientX,y0:e.clientY,moved:false,dx:e.clientX-r.left,dy:e.clientY-r.top,w:r.width,h:r.height,ghost:null};
-    try{b.setPointerCapture(e.pointerId)}catch(x){}e.preventDefault()});
-  document.addEventListener('pointermove',function(e){if(!drag||e.pointerId!==drag.id)return;
-    if(!drag.moved){if(Math.abs(e.clientX-drag.x0)+Math.abs(e.clientY-drag.y0)<6)return;drag.moved=true;
-      var g=el('div','ghost');g.style.width=drag.w+'px';g.style.height=drag.h+'px';g.appendChild(drag.cell.querySelector('img').cloneNode());document.body.appendChild(g);drag.ghost=g;drag.cell.classList.add('fade')}
-    drag.ghost.style.left=(e.clientX-drag.dx)+'px';drag.ghost.style.top=(e.clientY-drag.dy)+'px';
-    var t=nearest(e.clientX,e.clientY);if(t!==ORDER.indexOf(drag.cell.dataset.id))moveTo(drag.cell.dataset.id,t);
-    if(e.clientY<60)window.scrollBy(0,-12);else if(e.clientY>innerHeight-60)window.scrollBy(0,12)});
-  function end(e){if(!drag||e.pointerId!==drag.id)return;var d=drag;drag=null;
-    if(d.ghost)d.ghost.remove();d.cell.classList.remove('fade');
-    if(!d.moved)selectBan(d.cell.dataset.id);else{SEL=d.cell.dataset.id;Array.prototype.forEach.call($('slots').children,function(c){c.querySelector('.ban').classList.toggle('sel',c.dataset.id===SEL)});renderSel()}}
-  document.addEventListener('pointerup',end);document.addEventListener('pointercancel',end);
-  document.addEventListener('keydown',function(e){var b=e.target.closest&&e.target.closest('.ban');if(!b||FIXED)return;var id=b.parentNode.dataset.id;
-    if(e.key==='ArrowLeft'||e.key==='ArrowRight'||e.key==='ArrowUp'||e.key==='ArrowDown'){e.preventDefault();SEL=id;moveTo(id,ORDER.indexOf(id)+(e.key==='ArrowLeft'||e.key==='ArrowUp'?-1:1));
-      var nb=Array.prototype.filter.call($('slots').children,function(c){return c.dataset.id===id})[0];if(nb){nb.querySelector('.ban').focus();Array.prototype.forEach.call($('slots').children,function(c){c.querySelector('.ban').classList.toggle('sel',c.dataset.id===SEL)});renderSel()}}
-    else if(e.key==='Enter'||e.key===' '){e.preventDefault();selectBan(id)}});
-})();
-
-/* ---------- экран ставки ---------- */
+/* ---------- экран «Ставка» ---------- */
+var GRIP='<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="7" cy="4" r="1.8"/><circle cx="13" cy="4" r="1.8"/><circle cx="7" cy="10" r="1.8"/><circle cx="13" cy="10" r="1.8"/><circle cx="7" cy="16" r="1.8"/><circle cx="13" cy="16" r="1.8"/></svg>';
 function renderStavka(){
-  var hd=$('hd'),ru=$('rules');hd.innerHTML='';ru.innerHTML='';
-  if(!CUR){hd.appendChild(el('p','empty','Партий пока нет.'));$('send').hidden=true;$('hint').hidden=true;return}
-  hd.appendChild(el('p','lead',CUR.opisanie||CUR.nazvanie));
-  var c=el('div','card');c.appendChild(el('h3','',CUR.nazvanie));
-  var st=el('p','small','');
-  var parts=[];parts.push(FIXED?'Ставки закрыты.':(CUR.zakrytie?'Ставки открыты до '+fmt(CUR.zakrytie)+', можно менять свою.':'Ставки открыты, можно менять свою.'));
-  parts.push(CUR.start?(Date.now()>=Date.parse(CUR.start)?'Реклама идёт с '+fmt(CUR.start)+', новые ставки получают пометку «после старта» и считаются отдельно.':'Старт рекламы '+fmt(CUR.start)+'.'):'Реклама ещё не запущена.');
-  st.textContent=parts.join(' ');c.appendChild(st);
-  c.appendChild(el('p','small','1 место получает баннер, у которого будет больше всего кликов в пересчёте на показы (CTR). За угаданного победителя 5 очков, плюс по 1 за каждый баннер на своём месте.'));
-  ru.appendChild(c);
-  var mb=myBet(),b=$('send');b.hidden=FIXED;b.textContent=mb?'Изменить ставку':'Сделать ставку';
-  $('hint').hidden=FIXED;
-}
-function pulseHint(){var h=$('hint');h.classList.remove('pulse');void h.offsetWidth;h.classList.add('pulse');$('slots').scrollIntoView({block:'center',behavior:'smooth'})}
-function send(){
-  var m=$('msg');m.innerHTML='';if(!ME){showWho(true);return}
-  if(!MOVED&&!myBet()){m.appendChild(el('div','msg er','Сначала расставьте баннеры по местам: перетащите их или коснитесь баннера и двигайте кнопками. Тогда ставку можно отправлять.'));pulseHint();return}
+  if(!CUR)return;var closed=isClosed(CUR),n=ORDER.length;
+  $('hint').innerHTML='';
+  $('hint').appendChild(document.createTextNode(closed?'Приём ставок по этой партии закрыт. Ниже ваша расстановка.':(isMobile()?'Расставьте баннеры по местам: тяните за полосу «Тяните» или жмите «Выше» и «Ниже». ':'Перетащите баннеры по местам мышью или кнопками «Левее» и «Правее». ')));
+  if(!closed){var sm=el('small',null,'1 место: баннер, который соберёт больше всего кликов на тысячу показов (CTR). Нажмите на баннер, чтобы рассмотреть крупно.');$('hint').appendChild(sm)}
+  var box=$('slots');box.innerHTML='';
+  var g=el('div','grid');box.appendChild(g);
+  ORDER.forEach(function(id,i){
+    if(i===5){g=el('div','grid extra');box.appendChild(g)}
+    var b=bById(id);if(!b)return;
+    var c=card(FRESH[id]?'fresh':'');c.dataset.id=id;c.dataset.i=i;
+    c.appendChild(head((i+1)+' место',balls(pts(i+1))));
+    c.appendChild(photo(b));
+    var body=el('div','body');
+    if(b.zagolovok)body.appendChild(el('div','tt',b.zagolovok));
+    if(b.up)body.appendChild(el('span','up','Загрузка: '+(b.kto||'участник')));
+    if(FRESH[id])body.appendChild(el('span','up','Новый баннер: поставьте на место'));
+    if(!closed){
+      var gr=el('div','grip');gr.innerHTML=GRIP+'<span>Тяните</span>';gr.setAttribute('aria-hidden','true');body.appendChild(gr);
+      var mv=el('div','mv');
+      var l=el('button','lt');l.type='button';l.innerHTML='<span class="t-d">Левее</span><span class="t-m">Выше</span>';l.disabled=i===0;l.setAttribute('aria-label','Баннер '+id+' на место выше');
+      var r=el('button','lt');r.type='button';r.innerHTML='<span class="t-d">Правее</span><span class="t-m">Ниже</span>';r.disabled=i===n-1;r.setAttribute('aria-label','Баннер '+id+' на место ниже');
+      l.onclick=function(){move(i,i-1);renderStavka();focusMv(id,'l')};r.onclick=function(){move(i,i+1);renderStavka();focusMv(id,'r')};
+      mv.appendChild(l);mv.appendChild(r);body.appendChild(mv);
+      c.addEventListener('pointerdown',dragStart);
+    }
+    c.appendChild(body);g.appendChild(c)});
+  var mb=myBet();$('send').hidden=closed;$('send').textContent=mb?'Обновить ставку':'Сделать ставку';
+  $('mine').textContent=mb?('Ваша ставка принята '+fmt(mb.vremya)+'. Поменять можно до закрытия партии.'):(MOVED?'':'Сначала переставьте баннеры, потом отправьте ставку.');
+  renderUpl()}
+function focusMv(id,s){var c=document.querySelector('#slots .c[data-id="'+id+'"] .mv button:'+(s==='l'?'first-child':'last-child'));if(c&&!c.disabled)c.focus();else{c=document.querySelector('#slots .c[data-id="'+id+'"] .mv button:not(:disabled)');if(c)c.focus()}}
+
+/* ---------- перетаскивание (мышь: вся карточка; палец: полоса «Тяните») ---------- */
+var DRAG=null,DRAG_END=0;
+function dragStart(e){
+  if(e.button>0)return;
+  var c=e.currentTarget;
+  if(e.target.closest('.mv'))return;
+  if(e.pointerType!=='mouse'&&!e.target.closest('.grip'))return;
+  if(e.pointerType==='mouse'&&isMobile()&&!e.target.closest('.grip'))return;
+  DRAG={c:c,id:c.dataset.id,x:e.clientX,y:e.clientY,px:e.clientX,py:e.clientY,on:false,pid:e.pointerId,raf:0};
+  if(e.target.closest('.grip'))e.preventDefault();
+  document.addEventListener('pointermove',dragMove,{passive:false});document.addEventListener('pointerup',dragEnd);document.addEventListener('pointercancel',dragEnd)}
+function dragMove(e){if(!DRAG||e.pointerId!==DRAG.pid)return;DRAG.px=e.clientX;DRAG.py=e.clientY;
+  if(!DRAG.on){if(Math.abs(e.clientX-DRAG.x)+Math.abs(e.clientY-DRAG.y)<8)return;
+    DRAG.on=true;zoomHide();var ph=DRAG.c.querySelector('.ph'),r=ph.getBoundingClientRect(),g=el('div');g.id='ghost';
+    var gw=Math.min(r.width,isMobile()?140:r.width*.85);g.style.width=gw+'px';g.style.height=(gw*r.height/r.width)+'px';
+    g.appendChild(ph.firstChild.cloneNode());document.body.appendChild(g);DRAG.g=g;DRAG.gw=gw;DRAG.gh=gw*r.height/r.width;
+    DRAG.c.classList.add('drag');document.body.style.userSelect='none';DRAG.raf=requestAnimationFrame(autoScroll)}
+  e.preventDefault();place(e.clientX,e.clientY);
+  DRAG.g.style.left=(e.clientX-DRAG.gw/2)+'px';DRAG.g.style.top=(e.clientY-DRAG.gh/2)+'px'}
+function place(x,y){
+  var cs=[].slice.call(document.querySelectorAll('#slots .c')),best=null,bd=1e9;
+  cs.forEach(function(c){var r=c.getBoundingClientRect();
+    if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom){best=c;bd=0;return}
+    var dx=Math.max(r.left-x,0,x-r.right),dy=Math.max(r.top-y,0,y-r.bottom),d=dx*dx+dy*dy;if(d<bd){bd=d;best=c}});
+  if(!best||best===DRAG.c)return;
+  var from=ORDER.indexOf(DRAG.id),to=ORDER.indexOf(best.dataset.id);if(from<0||to<0||from===to)return;
+  move(from,to);renderStavka();
+  DRAG.c=document.querySelector('#slots .c[data-id="'+DRAG.id+'"]');if(DRAG.c)DRAG.c.classList.add('drag')}
+function autoScroll(){if(!DRAG||!DRAG.on)return;var y=DRAG.py,h=window.innerHeight,s=0;
+  if(y<90)s=-Math.ceil((90-y)/6);else if(y>h-90)s=Math.ceil((y-(h-90))/6);
+  if(s){window.scrollBy(0,s);place(DRAG.px,DRAG.py)}DRAG.raf=requestAnimationFrame(autoScroll)}
+function dragEnd(e){if(!DRAG||(e&&e.pointerId!==DRAG.pid))return;
+  document.removeEventListener('pointermove',dragMove);document.removeEventListener('pointerup',dragEnd);document.removeEventListener('pointercancel',dragEnd);
+  if(DRAG.on){cancelAnimationFrame(DRAG.raf);if(DRAG.g)DRAG.g.remove();document.body.style.userSelect='';DRAG_END=Date.now();MOVED=true;saveOrder();DRAG=null;renderStavka();return}
+  DRAG=null}
+
+/* ---------- отправка ставки ---------- */
+function send(){var m=$('msg');m.innerHTML='';
+  if(!ME){showWho(true);return}
+  if(!MOVED&&!myBet()){m.appendChild(el('div','msg er','Сначала расставьте баннеры по местам: перетащите их или нажмите кнопки под баннером.'));return}
   var b=$('send');b.disabled=true;
-  fetch(API+'/stavka',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partiya:CUR.id,imya:ME,poryadok:place()})})
+  fetch(API+'/stavka',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partiya:CUR.id,imya:ME,poryadok:ORDER})})
    .then(function(r){return r.json().catch(function(){return{ok:false,oshibka:'сервер не ответил'}})})
    .then(function(j){b.disabled=false;
-     if(j.ok){m.appendChild(el('div','msg ok','Ставка принята: '+eff(CUR,j.stavka.poryadok).join(' › ')+(j.stavka.posle_starta?' (после старта)':'')+'. Её можно поменять до закрытия.'));
+     if(j.ok){m.appendChild(el('div','msg ok','Ставка принята: '+eff(j.stavka.poryadok).map(function(x,i){return (i+1)+' место '+x}).join(', ')+'. Её можно поменять до закрытия.'));FRESH={};
        return loadBets().then(function(){renderStavka();renderVse()})}
      m.appendChild(el('div','msg er','Не вышло: '+(j.oshibka||'ошибка')));
-     return loadUps().then(function(ch){if(ch){refreshIds();renderSlots();renderUpl()}})})
-   .catch(function(){b.disabled=false;m.appendChild(el('div','msg er','Нет связи с сервером. Ваш порядок сохранён в браузере, нажмите ещё раз.'))});
-}
+     return loadUps().then(function(ch){if(ch){fillOrder();renderStavka()}})})
+   .catch(function(){b.disabled=false;m.appendChild(el('div','msg er','Нет связи с сервером. Ваш порядок сохранён в браузере, нажмите ещё раз.'))})}
 
 /* ---------- загрузка своего баннера ---------- */
 var PREP=null;
-function uplBusy(){var f=document.getElementById('fileup');return !!(f&&f.files&&f.files.length)}
 function prepImage(file){return new Promise(function(res,rej){
   var u=URL.createObjectURL(file),im=new Image();
   im.onerror=function(){URL.revokeObjectURL(u);rej(new Error('Не удалось прочитать картинку. Нужен JPG, PNG или WebP.'))};
   im.onload=function(){var W=720,H=1200,c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d'),iw=im.naturalWidth,ih=im.naturalHeight;
     if(!iw||!ih){rej(new Error('Картинка пустая'));return}
     var cover=Math.max(W/iw,H/ih),r=(iw/ih)/(W/H);
-    x.fillStyle='#222';x.fillRect(0,0,W,H);
-    if(r>0.78&&r<1.28){x.drawImage(im,(W-iw*cover)/2,(H-ih*cover)/2,iw*cover,ih*cover)}   /* почти вертикальная: заполняем весь кадр */
-    else{ /* другой формат: целиком по ширине/высоте, фон размыт, ничего не обрезаем */
-      try{x.filter='blur(28px)'}catch(e){}x.drawImage(im,(W-iw*cover)/2,(H-ih*cover)/2,iw*cover,ih*cover);try{x.filter='none'}catch(e){}
+    x.fillStyle='#fff';x.fillRect(0,0,W,H);
+    if(r>0.97&&r<1.03){x.drawImage(im,(W-iw*cover)/2,(H-ih*cover)/2,iw*cover,ih*cover)}
+    else{try{x.filter='blur(28px)'}catch(e){}x.drawImage(im,(W-iw*cover)/2,(H-ih*cover)/2,iw*cover,ih*cover);try{x.filter='none'}catch(e){}
       var fit=Math.min(W/iw,H/ih);x.drawImage(im,(W-iw*fit)/2,(H-ih*fit)/2,iw*fit,ih*fit)}
     URL.revokeObjectURL(u);var q=.9,d;do{d=c.toDataURL('image/jpeg',q);q-=.08}while(d.length*0.75>440000&&q>.3);
     if(d.length*0.75>440000){rej(new Error('Картинка слишком тяжёлая даже после сжатия'));return}
     res(d)};
   im.src=u})}
 function myUps(){var r=[];UPS.forEach(function(u){var t=ls('tot_tok_'+CUR.id+'_'+u.id);if(t)r.push({u:u,t:t})});return r}
-function renderUpl(force){
-  if(!force&&uplBusy())return;
-  var c=$('uplcard');c.innerHTML='';if(!CUR||FIXED){c.hidden=true;return}c.hidden=false;
-  c.appendChild(el('h3','','Добавьте свой баннер'));
-  c.appendChild(el('p','small','Загрузите картинку, и она появится среди баннеров партии: на неё смогут ставить все, включая Claude. Картинку приведём к вертикальному формату 3:5 (720×1200). Не больше 3 баннеров от одного имени. В рекламе загруженные баннеры не идут, пока их не запустят отдельно.'));
-  var w=el('div','upl'),r=el('div','row2'),lab=el('label','btn lt','Выбрать картинку'),fi=document.createElement('input');fi.type='file';fi.accept='image/*';fi.id='fileup';
-  lab.style.cursor='pointer';lab.setAttribute('for','fileup');lab.style.minHeight='48px';lab.style.padding='0 24px';lab.style.borderRadius='999px';lab.style.border='2px solid var(--l)';lab.style.display='inline-flex';lab.style.alignItems='center';lab.style.fontWeight='700';lab.style.background='#fff';
-  var pv=new Image();pv.className='pv';pv.alt='Предпросмотр';pv.hidden=true;
-  r.appendChild(lab);r.appendChild(fi);r.appendChild(pv);w.appendChild(r);
-  var r2=el('div','row2'),ti=document.createElement('input');ti.type='text';ti.id='upt';ti.maxLength=60;ti.placeholder='Название (необязательно)';
-  var go=el('button','','Добавить в партию');go.type='button';go.id='upgo';go.disabled=true;r2.appendChild(ti);r2.appendChild(go);w.appendChild(r2);
-  var um=el('div','');um.id='upmsg';w.appendChild(um);
-  fi.onchange=function(){PREP=null;go.disabled=true;pv.hidden=true;um.innerHTML='';var f=fi.files&&fi.files[0];if(!f)return;
-    prepImage(f).then(function(d){PREP=d;pv.src=d;pv.hidden=false;go.disabled=false}).catch(function(e){um.innerHTML='';um.appendChild(el('div','msg er',e.message))})};
-  go.onclick=function(){if(!ME){showWho(true);return}if(!PREP)return;go.disabled=true;um.innerHTML='';
+function uplBusy(){var f=$('fileup');return !!(f&&f.files&&f.files.length)}
+function renderUpl(force){var box=$('upl');if(!CUR)return;
+  if(isClosed(CUR)){box.hidden=true;return}box.hidden=false;
+  if(uplBusy()&&!force)return;box.innerHTML='';
+  box.appendChild(el('h2',null,'Добавьте свой баннер'));
+  box.appendChild(el('p','lead','Ваш баннер встанет в ряд последним, его увидят все участники. Любой формат: картинка целиком впишется в вертикальную рамку.'));
+  var row=el('div','row'),f=document.createElement('input');f.type='file';f.id='fileup';f.accept='image/jpeg,image/png,image/webp';f.setAttribute('aria-label','Файл баннера');
+  var ti=document.createElement('input');ti.type='text';ti.maxLength=80;ti.placeholder='Заголовок (можно пусто)';ti.setAttribute('aria-label','Заголовок баннера');
+  var go=el('button','','Загрузить');go.type='button';go.disabled=true;
+  f.onchange=function(){var m=$('msg');m.innerHTML='';PREP=null;go.disabled=true;if(!f.files[0])return;
+    prepImage(f.files[0]).then(function(d){PREP=d;go.disabled=false}).catch(function(e){m.appendChild(el('div','msg er',e.message))})};
+  go.onclick=function(){var m=$('msg');m.innerHTML='';if(!ME){showWho(true);return}if(!PREP)return;go.disabled=true;
     fetch(API+'/bannery',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partiya:CUR.id,imya:ME,zagolovok:clean(ti.value),img:PREP.split(',')[1]})})
      .then(function(r){return r.json().catch(function(){return{ok:false,oshibka:'сервер не ответил'}})})
-     .then(function(j){if(!j.ok){go.disabled=false;um.appendChild(el('div','msg er','Не вышло: '+(j.oshibka||'ошибка')));return}
-       ls('tot_tok_'+CUR.id+'_'+j.banner.id,j.token);PREP=null;
-       return loadUps().then(function(){NEWIDS[j.banner.id]=1;refreshIds();renderSlots();renderUpl(true);renderVse();
-         var m=$('msg');m.innerHTML='';m.appendChild(el('div','msg ok','Баннер '+j.banner.id+' добавлен в партию, он стоит последним. Поставьте его на нужное место.'))})})
-     .catch(function(){go.disabled=false;um.appendChild(el('div','msg er','Нет связи с сервером, попробуйте ещё раз.'))})};
-  c.appendChild(w);
-  var mine=myUps();
-  if(mine.length){c.appendChild(el('p','small','Ваши загруженные баннеры:'));var ml=el('div','mine');
-    mine.forEach(function(x){var it=el('div','it',x.u.id+(x.u.zagolovok?' · '+x.u.zagolovok:'')),d=el('button','lt','Удалить');d.type='button';
+     .then(function(j){if(j.ok){ls('tot_tok_'+CUR.id+'_'+j.banner.id,j.token);PREP=null;f.value='';
+         m.appendChild(el('div','msg ok','Баннер '+j.banner.id+' добавлен. Он стоит последним: поставьте его на место и обновите ставку.'));
+         return loadUps().then(function(){var mb=myBet();fillOrder();if(!mb)MOVED=true;FRESH[j.banner.id]=1;renderStavka();renderUpl(true);renderVse()})}
+       go.disabled=false;m.appendChild(el('div','msg er','Не вышло: '+(j.oshibka||'ошибка')))})
+     .catch(function(){go.disabled=false;m.appendChild(el('div','msg er','Нет связи с сервером, попробуйте ещё раз.'))})};
+  row.appendChild(f);row.appendChild(ti);row.appendChild(go);box.appendChild(row);
+  var mine=myUps();if(mine.length){var ml=el('div','mylist');
+    mine.forEach(function(x){var d=el('button','lt','Убрать мой баннер '+x.u.id);d.type='button';
       d.onclick=function(){d.disabled=true;fetch(API+'/bannery/udalit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partiya:CUR.id,id:x.u.id,token:x.t})})
-        .then(function(r){return r.json()}).then(function(j){if(j.ok){ls('tot_tok_'+CUR.id+'_'+x.u.id,null);return loadUps().then(function(){refreshIds();renderSlots();renderUpl(true);renderVse()})}d.disabled=false;var m=$('msg');m.innerHTML='';m.appendChild(el('div','msg er','Не удалось удалить: '+(j.oshibka||'ошибка')))}).catch(function(){d.disabled=false;var m=$('msg');m.innerHTML='';m.appendChild(el('div','msg er','Нет связи с сервером, попробуйте ещё раз.'))})};
-      it.appendChild(d);ml.appendChild(it)});c.appendChild(ml)}
-}
+        .then(function(r){return r.json()}).then(function(j){if(j.ok){ls('tot_tok_'+CUR.id+'_'+x.u.id,null);return loadUps().then(function(){ORDER=ORDER.filter(function(i){return i!==x.u.id});saveOrder();renderStavka();renderUpl(true);renderVse()})}
+          d.disabled=false;$('msg').appendChild(el('div','msg er','Не удалось убрать: '+(j.oshibka||'ошибка')))})
+        .catch(function(){d.disabled=false;$('msg').appendChild(el('div','msg er','Нет связи с сервером.'))})};ml.appendChild(d)});box.appendChild(ml)}}
 
-/* ---------- все ставки: баннеры в ряд в порядке общего лидерства, под каждым кто какое место дал ---------- */
-function claudeOrder(p){var cl=p.claude||{};return (cl.vse&&cl.vse.length?cl.vse:cl.poryadok)||[]}
-function voters(p,bets){var v=[];var co=eff(p,claudeOrder(p));if(co.length)v.push({imya:'Claude',poryadok:co,cl:true});
-  bets.forEach(function(s){v.push({imya:s.imya,poryadok:eff(p,s.poryadok),s:s})});return v}
-function consensus(p,vs){var b=allB(p),stat={};b.forEach(function(x){stat[x.id]={b:x,sum:0,n:0,cl:null}});
-  vs.forEach(function(v){v.poryadok.forEach(function(id,i){var s=stat[id];if(!s)return;s.sum+=i+1;s.n++;if(v.cl)s.cl=i+1})});
-  var arr=b.map(function(x){var s=stat[x.id];s.avg=s.n?s.sum/s.n:999;return s});
-  arr.sort(function(a,b){return a.avg-b.avg||(a.cl||99)-(b.cl||99)||(b.n-a.n)||(a.b.id<b.b.id?-1:1)});return arr}
-function renderVse(){
-  var v=$('vse');v.innerHTML='';if(!CUR){return}
-  var vs=voters(CUR,BETS),cons=consensus(CUR,vs);
-  var c=el('div','card');c.appendChild(el('h3','','Общий порядок: ставок '+BETS.length+(claudeOrder(CUR).length?' и Claude':'')));
-  c.appendChild(el('p','small','Баннеры стоят по среднему месту в ставках: чем выше в среднем, тем левее. Под каждым написано, какое место дал ему каждый. Нажмите на картинку, чтобы увеличить.'));
-  var s=el('div','slots');s.id='vslots';
-  cons.forEach(function(x,i){var cell=el('div','cell');cell.appendChild(el('div','lab'+(0?' top':''),(i+1)+' место'));
-    var bt=el('div','ban');bt.style.cursor='zoom-in';bt.style.touchAction='auto';bt.appendChild(imgEl(x.b));bt.onclick=function(){zoom(x.b)};cell.appendChild(bt);
-    cell.appendChild(el('div','bid',x.b.id+(x.b.up?' · '+x.b.kto:'')));
-    if(x.n)cell.appendChild(el('div','avg','в среднем '+x.avg.toFixed(1).replace('.',',')));
-    var any=false;
-    vs.forEach(function(vv){var k=vv.poryadok.indexOf(x.b.id);if(k<0)return;any=true;var ln=el('div','cap'+(vv.cl?' cl':''));ln.appendChild(el('b','',vv.imya+':'));ln.appendChild(el('span','',(k+1)+' место'));cell.appendChild(ln)});
-    if(!any)cell.appendChild(el('div','cap','Пока без ставок'));
-    else if(x.b.up&&x.cl==null&&claudeOrder(CUR).length){var cn=el('div','cap');cn.appendChild(el('b','','Claude:'));cn.appendChild(el('span','','ещё не поставил'));cell.appendChild(cn)}
-    s.appendChild(cell)});
-  c.appendChild(s);v.appendChild(c);
-  var cl=CUR.claude;
-  if(cl&&cl.poryadok&&cl.poryadok.length){var c1=el('div','card cl');c1.appendChild(el('h3','','Почему так поставил Claude'));
-    if(cl.ver){var t=cl.poryadok.map(function(i){return i+' '+Math.round(cl.ver[i]*100)+'%'}).join(' · ');c1.appendChild(el('p','claude-why','Шансы на первое место: '+t))}
-    if(cl.pochemu)c1.appendChild(el('p','claude-why',cl.pochemu));v.appendChild(c1)}
-  var c2=el('div','card');c2.appendChild(el('h3','','Кто и когда поставил'));
-  if(!BETS.length)c2.appendChild(el('p','empty','Пока никто не поставил. Будьте первым.'));
-  BETS.slice().sort(function(a,b){return a.pervaya<b.pervaya?-1:1}).forEach(function(s){var r=el('div','bet'),nm=el('b','',s.imya+(s.imya.toLowerCase()===ME.toLowerCase()?' (ты)':''));
-    var right=el('span','');right.appendChild(el('span','tm',fmt(s.vremya)));if(late(CUR,s)){right.appendChild(document.createTextNode(' '));right.appendChild(el('span','pill w','после старта'))}
-    r.appendChild(nm);r.appendChild(right);c2.appendChild(r)});
-  v.appendChild(c2);
-}
+/* ---------- «Все ставки» ---------- */
+function people(){
+  var res=[{key:'claude',imya:'Claude',order:claudeOrder(),vremya:(CUR.claude||{}).vremya,claude:true}];
+  var seen={};BETS.forEach(function(s){seen[s.imya.toLocaleLowerCase('ru')]=s});
+  NAMES.forEach(function(n){var s=seen[n.toLocaleLowerCase('ru')];res.push({key:n.toLocaleLowerCase('ru'),imya:n,order:s?eff(s.poryadok):null,vremya:s&&s.vremya});delete seen[n.toLocaleLowerCase('ru')]});
+  Object.keys(seen).sort(function(a,b){return a.localeCompare(b,'ru')}).forEach(function(k){var s=seen[k];res.push({key:k,imya:s.imya,order:eff(s.poryadok),vremya:s.vremya})});
+  return res}
+function svodka(){var P=people().filter(function(p){return p.order&&p.order.length}),sc={};
+  ids().forEach(function(id){sc[id]={id:id,sum:0,firsts:0,who:[]}});
+  P.forEach(function(p){p.order.forEach(function(id,i){if(!sc[id])return;var s=pts(i+1);sc[id].sum+=s;if(i===0)sc[id].firsts++;sc[id].who.push({imya:p.imya,mesto:i+1,b:s})})});
+  var base=ids(),arr=Object.keys(sc).map(function(k){return sc[k]});
+  arr.sort(function(a,b){return b.sum-a.sum||b.firsts-a.firsts||base.indexOf(a.id)-base.indexOf(b.id)});
+  var place=0,prev=null;arr.forEach(function(x,i){if(prev===null||x.sum!==prev){place=i+1;prev=x.sum}x.place=place});
+  return{list:arr,n:P.length,P:P}}
+function renderVse(){if(!CUR)return;var P=people(),vt=$('vtabs');vt.innerHTML='';
+  if(!P.some(function(p){return p.key===VT})&&VT!=='svodka')VT='svodka';
+  [{key:'svodka',imya:'Сводка'}].concat(P).forEach(function(p){var b=el('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-selected',p.key===VT);
+    b.appendChild(document.createTextNode(p.imya));b.onclick=function(){VT=p.key;renderVse()};vt.appendChild(b)});
+  var v=$('vbody');v.innerHTML='';
+  if(VT==='svodka'){var S=svodka();
+    var nt=el('div','note');nt.appendChild(el('b',null,'Сводка: сумма баллов всех участников'));
+    nt.appendChild(document.createTextNode('1 место = 5 баллов, 2 = 4, 3 = 3, 4 = 2, 5 = 1'+(ids().length>5?', 6 место и ниже = 0':'')+'. Считаем по '+S.n+' '+pl(S.n,'ставке','ставкам','ставкам')+': '+S.P.map(function(p){return p.imya}).join(', ')+'.'));
+    v.appendChild(nt);
+    grid(v,S.list,function(x){var b=bById(x.id),c=card();
+      c.appendChild(head(x.place+' место',balls(x.sum),true));c.appendChild(photo(b));
+      var body=el('div','body'),ul=el('ul','lst');
+      x.who.slice().sort(function(a,b){return a.mesto-b.mesto||a.imya.localeCompare(b.imya,'ru')}).forEach(function(w){var li=el('li');li.appendChild(el('span','nm',w.imya));li.appendChild(el('span',null,w.mesto+' место'));ul.appendChild(li)});
+      if(!x.who.length)body.appendChild(el('div','nodata','Ставок пока нет'));else body.appendChild(ul);
+      c.appendChild(body);return c});
+    return}
+  var p=P.filter(function(x){return x.key===VT})[0];
+  var nt=el('div','note');
+  if(!p.order){nt.appendChild(el('b',null,p.imya+': ставки пока нет'));nt.appendChild(document.createTextNode('Как только '+p.imya+' сделает ставку, расстановка появится здесь.'));v.appendChild(nt);return}
+  nt.appendChild(el('b',null,p.claude?'Ставка Claude':'Ставка: '+p.imya));
+  nt.appendChild(document.createTextNode((p.claude?((CUR.claude||{}).pochemu||'')+' ':'')+(p.vremya?'Сделана '+fmt(p.vremya)+'.':'')));
+  v.appendChild(nt);var ver=(CUR.claude||{}).ver||{};
+  grid(v,p.order,function(id,i){var b=bById(id),c=card();c.appendChild(head((i+1)+' место',balls(pts(i+1))));c.appendChild(photo(b));
+    var body=el('div','body');if(b.zagolovok)body.appendChild(el('div','tt',b.zagolovok));
+    if(p.claude&&ver[id]!=null)body.appendChild(el('div','tt','Шанс стать первым: '+Math.round(ver[id]*100)+'%'));
+    c.appendChild(body);return c})}
+function grid(box,list,mk){var g=el('div','grid');box.appendChild(g);list.forEach(function(x,i){if(i===5){g=el('div','grid extra');box.appendChild(g)}var c=mk(x,i);if(c)g.appendChild(c)})}
 
-/* ---------- итоги: с картинками ---------- */
-function minis(p,order,fact){var ord=fact?order.filter(function(i){return fact.indexOf(i)>=0}):eff(p,order);
-  var w=el('div','mini');w.style.setProperty('--n',Math.min(Math.max(ord.length,1),8));
-  ord.forEach(function(id,i){var b=bById(p,id)||{id:id,zagolovok:'',src:'img/'+p.id+'/'+id+'.jpg'};var m=el('div','m'+(fact&&fact[i]===id?' hit':''));
-    var im=imgEl(b);im.onclick=function(){zoom(b)};m.appendChild(im);m.appendChild(el('i','',i+1));w.appendChild(m)});return w}
-function ratingTable(rows,title){var c=el('div','card');c.appendChild(el('h3','',title));
-  if(!rows||!rows.length){c.appendChild(el('p','empty','Пока пусто: итоги появятся после первого закрытия партии.'));return c}
-  var t=el('table','t'),h=el('tr');['#','Имя','Партий','Угадал победителя','Очки'].forEach(function(x,i){var th=el('th',i>3?'n':'',x);h.appendChild(th)});t.appendChild(h);
-  rows.forEach(function(r,i){var tr=el('tr');tr.appendChild(el('td','',i+1));tr.appendChild(el('td','',r.imya));tr.appendChild(el('td','',r.partii));tr.appendChild(el('td','',r.ugadal));tr.appendChild(el('td','n',r.ochki+(r.uslovnye?'*':'')));t.appendChild(tr)});
-  c.appendChild(t);if(rows.some(function(r){return r.uslovnye}))c.appendChild(el('p','small','* часть очков по условному итогу: показов пока мало.'));return c}
-function itogBlock(p){var it=p.itog,w=el('div');
-  var c=el('div','card'),hh=el('div','bet');hh.appendChild(el('h3','','Как всё вышло: '+p.nazvanie));
-  hh.appendChild(el('span','pill '+(it.uslovnyj?'w':'g'),it.uslovnyj?'условный':'итог'));c.appendChild(hh);
-  c.appendChild(el('p','small','По CTR на '+fmt(it.data)+'. '+(it.uslovnyj?'Условный порядок: '+it.prichina+'. Пересчитаем, когда наберётся больше показов.':'Показов достаточно.')));
-  it.fakt.forEach(function(f,i){var b=bById(p,f.id)||{id:f.id,zagolovok:'',src:'img/'+p.id+'/'+f.id+'.jpg'},r=el('div','fact');r.appendChild(el('div','rank',i+1));
-    var im=imgEl(b);im.onclick=function(){zoom(b)};r.appendChild(im);
-    var nm=el('div','nm');nm.appendChild(el('b','',f.id+(i===0?' · победитель':'')));nm.appendChild(el('span','',b.zagolovok));r.appendChild(nm);
-    var cc=el('div','bigctr',f.ctr==null?'нет данных':f.ctr.toFixed(2).replace('.',',')+'%');cc.appendChild(el('small','',f.shows+' '+pl(f.shows,'показ','показа','показов')+', '+f.clicks+' '+pl(f.clicks,'клик','клика','кликов')));r.appendChild(cc);c.appendChild(r)});
-  w.appendChild(c);
-  var c2=el('div','card');c2.appendChild(el('h3','','Очки по партии'));c2.appendChild(el('p','small','Зелёная рамка: баннер стоит на своём месте.'));
-  it.uchastniki.forEach(function(u){var r=el('div','betrow'),x=el('div','who');x.appendChild(el('b','',u.imya));var rr=el('span','');if(u.posle_starta)rr.appendChild(el('span','pill w','после старта, отдельно '));rr.appendChild(el('span','pill g',u.ochki+' '+pl(u.ochki,'очко','очка','очков')+(u.ugadal?' · угадал победителя':'')));x.appendChild(rr);r.appendChild(x);r.appendChild(minis(p,u.poryadok,it.poryadok));c2.appendChild(r)});
-  w.appendChild(c2);return w}
-function renderItogi(){
-  var v=$('itogi');v.innerHTML='';
-  var done=D.partii.filter(function(p){return p.itog});
-  if(done.length){done.slice().reverse().forEach(function(p,i){if(i===0)v.appendChild(itogBlock(p))})}
-  else if(CUR){var c=el('div','card');c.appendChild(el('h3','',CUR.nazvanie));
-    c.appendChild(el('p','',CUR.zakrytie?'Победителя объявим в понедельник, '+fmt(CUR.zakrytie)+'. До этого времени ставки можно менять.':(CUR.start?'Победителя объявим в ближайший понедельник после 12:15 МСК.':'Реклама ещё не запущена, как только пойдут показы, мы назовём дату итога.')));
-    var cw=el('div','mini');cw.style.setProperty('--n',Math.min(allB(CUR).length,8));allB(CUR).forEach(function(b){var m=el('div','m'),im=imgEl(b);im.onclick=function(){zoom(b)};m.appendChild(im);cw.appendChild(m)});
-    c.appendChild(el('p','small','Баннеры партии:'));c.appendChild(cw);v.appendChild(c)}
-  v.appendChild(ratingTable(D.rejting.osn,'Общий рейтинг угадывающих'));
-  if(D.rejting.posle&&D.rejting.posle.length)v.appendChild(ratingTable(D.rejting.posle,'Ставки после старта (вне основного зачёта)'));
-  v.appendChild(el('p','small','Очки: 5 за угаданного победителя и по 1 за каждый баннер на своём месте. Порядок считаем по CTR, это доля кликов от показов. Загруженные участниками баннеры в рекламе не идут и очков не дают.'));
-}
-function renderArhiv(){
-  var v=$('arhiv');v.innerHTML='';var done=D.partii.filter(function(p){return p.itog&&p!==CUR||(isClosed(p)&&p!==CUR)});
-  if(!done.length){v.appendChild(el('p','empty','Архив пуст: здесь будут партии, на которые ставки уже закрыты, и их победители.'));return}
-  done.slice().reverse().forEach(function(p){var d=el('details','arh'),s=el('summary','');s.appendChild(el('span','',p.nazvanie));s.appendChild(el('span','pill '+(p.itog?(p.itog.uslovnyj?'w':'g'):''),p.itog?('победил '+p.itog.pobeditel+(p.itog.uslovnyj?' (условно)':'')):'ждём итога'));d.appendChild(s);
-    var inn=el('div','in');if(p.itog)inn.appendChild(itogBlock(p));else inn.appendChild(el('p','small','Ставки закрыты, итог в ближайший понедельник.'));d.appendChild(inn);v.appendChild(d)});
-}
+/* ---------- «Итоги» ---------- */
+function ochki(por,fakt){var t=0;por.forEach(function(a,i){if(fakt[i]===a)t++});var pob=!!(por.length&&fakt.length&&por[0]===fakt[0]);return{ochki:t+(pob?5:0),ugadal:pob,tochnye:t}}
+function renderItogi(){if(!CUR)return;var v=$('ibody');v.innerHTML='';
+  var fin=CUR.itog,tek=CUR.tek,src=fin||tek,fakt=src&&src.fakt?src.fakt:null,has=!!(fakt&&fakt.some(function(x){return x.shows>0}));
+  var base=CUR.bannery.map(function(b){return b.id});
+  var P=people().filter(function(p){return p.order&&p.order.length}).map(function(p){return{imya:p.imya,order:p.order.filter(function(id){return base.indexOf(id)>=0})}});
+  var nt=el('div','note');
+  if(!has){nt.appendChild(el('b',null,'Показов пока нет'));
+    nt.appendChild(document.createTextNode('Реклама этой партии ещё не набрала показов в Директе'+(tek&&tek.proverka?' (проверка '+fmt(tek.proverka)+')':'')+'. Места по CTR, показы и клики появятся здесь сами: страница обновляется раз в час. Ниже прогнозы участников по каждому баннеру.'));
+    v.appendChild(nt);
+    grid(v,base,function(id){var b=bById(id),c=card();c.appendChild(head('Ждём показов',null));c.appendChild(photo(b));
+      var body=el('div','body');body.appendChild(el('div','nodata','Показов пока нет'));body.appendChild(prog(id,P,null));c.appendChild(body);return c});
+    return}
+  var order=fakt.map(function(x){return x.id}).filter(function(id){return base.indexOf(id)>=0});
+  nt.appendChild(el('b',null,fin?(fin.uslovnyj?'Итог партии (условный)':'Итог партии'):'Промежуточные цифры, партия ещё идёт'));
+  var txt='Данные Директа'+((src.data)?' на '+fmt(src.data):'')+'. Место по CTR: клики на 100 показов, больше = лучше.';
+  if(src.prichina)txt+=' Пока неточно: '+src.prichina+'.';
+  if(!fin)txt+=' Итог считаем после закрытия партии.';
+  nt.appendChild(document.createTextNode(txt));v.appendChild(nt);
+  var fm={};fakt.forEach(function(x){fm[x.id]=x});
+  grid(v,order,function(id,i){var b=bById(id),x=fm[id],c=card();
+    c.appendChild(head((x.shows?(i+1)+' место':'нет показов'),x.shows?'по CTR':null));c.appendChild(photo(b));
+    var body=el('div','body');
+    if(x.shows){var st=el('div','st');[['Показы',num(x.shows)],['Клики',num(x.clicks)],['CTR',x.ctr!=null?String(x.ctr).replace('.',',')+'%':'нет']].forEach(function(a){var d=el('div');d.appendChild(el('b',null,a[1]));d.appendChild(el('span',null,a[0]));st.appendChild(d)});body.appendChild(st)}
+    else body.appendChild(el('div','nodata','Показов пока нет'));
+    c.appendChild(body);var pl=prog(id,P,x.shows?i+1:null);pl.classList.add('pg');c.appendChild(pl);c.classList.add('it');return c});
+  /* кто угадывает */
+  var sc=(fin&&fin.uchastniki)?fin.uchastniki.map(function(u){return{imya:u.imya,ochki:u.ochki,ugadal:u.ugadal,tochnye:u.tochnye}}):P.map(function(p){var o=ochki(p.order,order);return{imya:p.imya,ochki:o.ochki,ugadal:o.ugadal,tochnye:o.tochnye}});
+  sc.sort(function(a,b){return b.ochki-a.ochki||a.imya.localeCompare(b.imya,'ru')});
+  var bx=el('div','box');bx.style.marginTop='28px';bx.appendChild(el('h2',null,fin?'Кто угадал':'Кто угадывает сейчас'));
+  bx.appendChild(el('p','lead','Очки: 5 за угаданное 1 место и по 1 за каждый баннер на своём месте.'));
+  var t=el('table','tbl'),tr=el('tr');['Участник','Очки','1 место','На своём месте'].forEach(function(h,i){var th=el('th',i?'n':null,h);tr.appendChild(th)});t.appendChild(tr);
+  sc.forEach(function(u){var r=el('tr');r.appendChild(el('td',null,u.imya));r.appendChild(el('td','n',String(u.ochki)));r.appendChild(el('td','n',u.ugadal?'угадано':'нет'));r.appendChild(el('td','n',String(u.tochnye)));t.appendChild(r)});
+  bx.appendChild(t);v.appendChild(bx)}
+function prog(id,P,fact){var ul=el('ul','lst');if(!P.length){ul.appendChild(el('li',null,'Прогнозов пока нет'));return ul}
+  P.map(function(p){return{imya:p.imya,m:p.order.indexOf(id)+1}}).filter(function(x){return x.m>0}).sort(function(a,b){return a.m-b.m||a.imya.localeCompare(b.imya,'ru')})
+   .forEach(function(x){var li=el('li');li.appendChild(el('span','nm',x.imya));var s=el('span',fact&&x.m===fact?'hit':null,'прогноз: '+x.m+' место');li.appendChild(s);ul.appendChild(li)});
+  return ul}
 
-/* ---------- вкладки и запуск ---------- */
-function renderAll(){renderStavka();renderSlots();renderUpl();renderVse();renderItogi();renderArhiv()}
-function tab(n){TAB=n;['stavka','vse','itogi','arhiv'].forEach(function(t){$('s-'+t).className='scr'+(t===n?' on':'');$('tab-'+t).setAttribute('aria-selected',t===n)});
-  if(n==='vse')Promise.all([loadBets(),loadUps()]).then(function(){refreshIds();renderVse()});window.scrollTo(0,0)}
-['stavka','vse','itogi','arhiv'].forEach(function(t){$('tab-'+t).onclick=function(){tab(t)}});
-$('send').onclick=send;$('tovse').onclick=function(){tab('vse')};$('obn').onclick=function(){Promise.all([loadBets(),loadUps()]).then(function(){refreshIds();renderVse()})};
-document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&CUR&&!FIXED)loadUps().then(function(ch){if(ch){refreshIds();renderSlots();renderUpl();renderVse()}})});
-initWho();
+/* ---------- вкладки и партии ---------- */
+function tab(n){TAB=n;['stavka','vse','itogi'].forEach(function(t){$('s-'+t).className='scr'+(t===n?' on':'');$('tab-'+t).setAttribute('aria-selected',t===n)});zoomHide();
+  if(n!=='stavka')Promise.all([loadBets(),loadUps()]).then(function(){renderVse();renderItogi()});
+  var y=$('pName').closest('.hero').getBoundingClientRect().bottom+window.scrollY;if(window.scrollY>y)window.scrollTo(0,y)}
+['stavka','vse','itogi'].forEach(function(t){$('tab-'+t).onclick=function(){tab(t)}});
+$('send').onclick=send;
+function setCur(p){CUR=p;BETS=[];UPS=[];$('pName').textContent=p.nazvanie||'Тотализатор баннеров';$('pDesc').textContent=p.opisanie||'';
+  var ps=$('parts');ps.innerHTML='';ps.hidden=D.partii.length<2;
+  D.partii.slice().reverse().forEach(function(q){var b=el('button',null,(q.nazvanie||q.id)+(isClosed(q)?' · закрыта':''));b.type='button';b.setAttribute('aria-pressed',q===p);b.onclick=function(){setCur(q)};ps.appendChild(b)});
+  return Promise.all([loadBets(),loadUps()]).then(function(){fillOrder();renderStavka();renderVse();renderItogi()})}
+var rt=null;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){if(CUR&&!(DRAG&&DRAG.on))renderStavka()},150)});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&CUR&&!isClosed(CUR))loadUps().then(function(ch){if(ch){fillOrder();renderStavka();renderVse()}})});
+
 fetch('partii.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){D=d;API=d.api;
   try{var q=new URLSearchParams(location.search).get('api');if(q&&/^(localhost|127\.0\.0\.1)$/.test(location.hostname))API=q}catch(e){}
-  ORIGIN=new URL(API).origin;pickCur();FIXED=CUR?isClosed(CUR):false;
+  ORIGIN=new URL(API).origin;
+  if(d.sobrano)$('foot').textContent='Страница обновлена '+fmt(d.sobrano)+'. Ставки и баннеры участников подгружаются вживую.';
+  if(!d.partii.length){$('pDesc').textContent='Партий пока нет.';return}
+  var open=d.partii.filter(function(p){return !isClosed(p)}),p=open.length?open[open.length-1]:d.partii[d.partii.length-1];
   ME=ls('tot_imya')||'';
-  return Promise.all([loadBets(),loadUps()]).then(function(){fillOrder();renderAll();
-    if(ME)setMe(ME);else showWho(true)})}).catch(function(){$('hd').appendChild(el('div','msg er','Не удалось загрузить страницу. Обновите её.'))});
+  return setCur(p).then(function(){if(ME){$('me').hidden=false;$('meName').textContent=ME}else showWho(true);
+    var h=(location.hash||'').slice(1);if(h==='vse'||h==='itogi')tab(h)})})
+ .catch(function(){$('pDesc').textContent='Не удалось загрузить страницу. Обновите её.'});
 })();
 </script>
 </body>
