@@ -1,6 +1,6 @@
 {
  "api": "https://api.kp-catalyst.ru/zavod/tot",
- "sobrano": "2026-11-25T17:19:52Z",
+ "sobrano": "2026-11-25T19:20:07Z",
  "partii": [
   {
    "id": "2026-W48-RSYA-NY",
@@ -61,7 +61,14 @@
    },
    "start": null,
    "zakrytie": null,
-   "itog": null
+   "itog": null,
+   "tek": {
+    "fakt": null,
+    "uslovnyj": false,
+    "prichina": "",
+    "s": "2026-11-11",
+    "data": "2026-11-25T19:15:47Z"
+   }
   }
  ],
  "rejting": {
