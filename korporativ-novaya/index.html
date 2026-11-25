@@ -255,6 +255,7 @@ html body #catalog .kv-help-go:disabled{background:#0aba59;color:#fff;cursor:def
 #catalog .catalog-card .catalog-more{position:absolute;right:20px;bottom:20px;display:flex}
 #catalog .catalog-card .catalog-more svg{width:44px;height:44px;padding:10px;box-sizing:border-box;border-radius:50%;background:#fff;color:#141414}
 #catalog .catalog-card:hover .catalog-more svg{background:#ffdf4a}
+#catalog .catalog-card[data-sc] .catalog-card-copy{padding-right:84px!important}
 #catalog .catalog-card:focus-visible{outline:3px solid #0aba59;outline-offset:4px}
 #catalog .kc-noimg:before{display:none}
 #catalog .kc-noimg h3,#catalog .kc-noimg p{color:inherit}
@@ -666,7 +667,7 @@ function card(p,diff){
  var d=diff?'<span class="kv-diff">'+esc(diff)+'</span>':'';
  if(KORP){
   var meta=(p.ly[1]<3000?p.ly[0]+'-'+p.ly[1]+' человек · ':'')+placeWords(p);
-  return '<article class="catalog-card" data-sc="'+p.id+'" data-name="'+esc(p.n)+'" tabindex="0" role="button" aria-label="Сценарий «'+esc(p.n)+'»"><img src="'+esc(imgSrc(p.img))+'" alt="'+esc(p.alt||p.n)+'" loading="lazy" decoding="async" width="800" height="533"><span class="kv-badge">от '+money(MIN)+' ₽</span><div class="catalog-card-copy">'+d+'<p class="kc-theme">'+esc(p.theme)+'</p><h3>'+esc(p.n)+'</h3><p>'+esc(meta)+'</p></div><span class="catalog-more" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></article>'
+  return '<article class="catalog-card" data-sc="'+p.id+'" data-name="'+esc(p.n)+'" tabindex="0" role="button" aria-label="Сценарий «'+esc(p.n)+'»"><img src="'+esc(imgSrc(p.img))+'" alt="'+esc(p.alt||p.n)+'" loading="lazy" decoding="async" width="800" height="533"><div class="catalog-card-copy">'+d+'<p class="kc-theme">'+esc(p.theme)+'</p><h3>'+esc(p.n)+'</h3><p>'+esc(meta)+'</p></div><span class="catalog-more" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></article>'
  }
  var t=total(p,st.people),r=range(p);
  var badge='';
