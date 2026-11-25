@@ -480,7 +480,7 @@ function renderItogi(){if(!CUR)return;var v=$('ibody');v.innerHTML='';
     nt.appendChild(document.createTextNode('Реклама этой партии ещё не набрала показов в Директе'+(tek&&tek.proverka?' (проверка '+fmt(tek.proverka)+')':'')+'. Места по CTR, показы и клики появятся здесь сами: страница обновляется раз в час. Ниже прогнозы участников по каждому баннеру.'));
     v.appendChild(nt);
     grid(v,base,function(id){var b=bById(id),c=card();c.appendChild(head('Ждём показов',null));c.appendChild(photo(b));
-      var body=el('div','body');body.appendChild(el('div','nodata','Показов пока нет'));body.appendChild(prog(id,P,null));c.appendChild(body);return c});
+      var body=el('div','body');body.appendChild(el('div','nodata','Показов пока нет'));c.appendChild(body);var pl=prog(id,P,null);pl.classList.add('pg');c.appendChild(pl);c.classList.add('it');return c});
     return}
   var order=fakt.map(function(x){return x.id}).filter(function(id){return base.indexOf(id)>=0});
   nt.appendChild(el('b',null,fin?(fin.uslovnyj?'Итог партии (условный)':'Итог партии'):'Промежуточные цифры, партия ещё идёт'));
