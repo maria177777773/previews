@@ -2,13 +2,36 @@
   const section = document.getElementById('s8');
   const copy = section.querySelector('.seo-copy');
   const toggle = section.querySelector('.seo-toggle');
-  let expanded = false;
+  const main = section.querySelector('.seo-main');
+  const dock = document.createElement('div');
+  dock.className = 'seo-toggle-dock';
+  toggle.before(dock);
+  dock.append(toggle);
+  let expanded = false, frame = 0;
+  function updateDock() {
+    frame = 0;
+    const rect = main.getBoundingClientRect();
+    const height = window.innerHeight;
+    const visible = expanded && rect.top < height - 120 && rect.bottom > 120;
+    toggle.classList.toggle('is-pinned', visible);
+    if (visible) {
+      toggle.style.left = `${rect.left}px`;
+      toggle.style.bottom = `${Math.max(24, height - rect.bottom + 12)}px`;
+      toggle.style.maxWidth = `${rect.width}px`;
+    } else {
+      toggle.style.removeProperty('left');
+      toggle.style.removeProperty('bottom');
+      toggle.style.removeProperty('max-width');
+    }
+  }
+  function schedule() { if (!frame) frame = requestAnimationFrame(updateDock); }
   function setExpanded(value) {
     expanded = value;
     section.classList.toggle('seo-expanded', value);
     copy.classList.toggle('expanded', value);
     toggle.setAttribute('aria-expanded', String(value));
     toggle.textContent = value ? 'Свернуть' : 'Читать полностью';
+    updateDock();
   }
   toggle.addEventListener('click', () => {
     setExpanded(!expanded);
@@ -18,6 +41,9 @@
     }
   });
   section.querySelectorAll('.seo-toc a').forEach(link => link.addEventListener('click', () => setExpanded(true)));
+  window.addEventListener('scroll', schedule, {passive:true});
+  window.addEventListener('resize', schedule);
+  new ResizeObserver(schedule).observe(main);
   setExpanded(false);
   const tocLinks = [...section.querySelectorAll('.seo-toc a')];
   const tocTargets = tocLinks.map(link => document.getElementById(link.hash.slice(1)));

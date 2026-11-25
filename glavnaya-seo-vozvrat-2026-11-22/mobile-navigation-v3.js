@@ -20,7 +20,11 @@ new MutationObserver(()=>requestAnimationFrame(syncFooterScroll)).observe(mobile
 function level(name,title){mobileSheet.dataset.level=name;mobileSheet.querySelector('.mobile-sheet-head strong').textContent=title;mobileSheet.querySelector('.mobile-back').hidden=name==='root';mobileBody.scrollTop=0;}
 mobileRoot=function(){
  mobileLevel='root';level('root','Меню');
- mobileBody.innerHTML='<button class="mobile-search-entry">Найти программу '+iconSVG('<circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/>')+'</button><nav class="mobile-main-links" aria-label="Основные разделы">'+Object.entries(mobileNames).map(([key,label])=>'<button class="mobile-row" data-kind="'+key+'"><span>'+label+'</span>'+chevron+'</button>').join('')+'<a class="mobile-row" href="/cases/"><span>Портфолио</span></a></nav><nav class="mobile-secondary-links" aria-label="Дополнительные разделы"></nav><div class="mobile-nav-contact"><a href="tel:+79911501001">+7 991 150-10-01</a><p>Ежедневно 8:00–22:00<br>Москва и МО · выезды по России</p><div class="mobile-nav-messengers"></div></div>';
+ mobileBody.innerHTML='<button class="mobile-search-entry">Найти программу '+iconSVG('<circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/>')+'</button><nav class="mobile-main-links" aria-label="Основные разделы">'+Object.entries(mobileNames).filter(([key])=>key==='programs'||key==='about').map(([key,label])=>'<button class="mobile-row" data-kind="'+key+'"><span>'+label+'</span>'+chevron+'</button>').join('')+'<a class="mobile-row" href="/cases/"><span>Портфолио</span></a></nav><nav class="mobile-secondary-links" aria-label="Дополнительные разделы"></nav><div class="mobile-nav-contact"><a href="tel:+79911501001">+7 991 150-10-01</a><p>Ежедневно 8:00–22:00<br>Москва и МО · выезды по России</p><div class="mobile-nav-messengers"></div></div>';
+ const mainLinks=mobileBody.querySelector('.mobile-main-links');
+ document.querySelectorAll('.primary-line .primary-route').forEach(source=>{
+  const link=source.cloneNode(true);link.className='mobile-row';mainLinks.insertBefore(link,mainLinks.querySelector('button'));
+ });
  document.querySelectorAll('.utility-nav a').forEach(a=>{const copy=a.cloneNode(true);copy.removeAttribute('id');if(a.id!=='offers-trigger')copy.classList.add('mobile-row');if(a.id==='offers-trigger'){copy.classList.add('mobile-nav-offers');copy.innerHTML='<span>Посмотреть<br>акции</span><svg class="offers-art" preserveAspectRatio="xMidYMin meet" viewBox="0 0 76 76" fill="none" aria-hidden="true"><path d="M24 0v20m-5 7v-7h10v7M57 0v32m-5 7v-7h10v7" stroke="#11743e" stroke-width="2"/><circle cx="24" cy="44" r="19" fill="#ffdf4a" stroke="#11743e" stroke-width="2"/><path d="M6 40q18 13 36 0M11 56q13-9 26 0" stroke="#11743e" stroke-width="2"/><circle cx="57" cy="56" r="16" fill="#e3f3e9" stroke="#11743e" stroke-width="2"/><path d="M57 44v24M45 56h24M49 48l16 16m0-16L49 64" stroke="#11743e" stroke-width="2"/></svg>';}if(a.id==='offers-trigger')copy.onclick=e=>{e.preventDefault();closeMobile(false);document.getElementById('offers-preview').showModal()};(a.id==='offers-trigger'?mobileBody.querySelector('.mobile-main-links'):mobileBody.querySelector('.mobile-secondary-links')).append(copy)});
  // Keep all navigation together, followed by the seasonal card and offers.
  const secondary=mobileBody.querySelector('.mobile-secondary-links');
@@ -29,6 +33,12 @@ mobileRoot=function(){
  document.querySelectorAll('.primary-line>.messenger').forEach(a=>{const copy=a.cloneNode(true);copy.className='mobile-nav-messenger '+(a.classList.contains('mv-ib-tg')?'mobile-nav-telegram':'mobile-nav-max');copy.append(document.createTextNode(a.classList.contains('mv-ib-tg')?'Telegram':'Max'));mobileBody.querySelector('.mobile-nav-messengers').append(copy)});
 };
 mobileCategories=function(kind){mobileKind=kind;mobileLevel='categories';level('categories',mobileNames[kind]);
+ if(kind==='programs'){
+  const links=document.querySelector('.kv-dd-panel').cloneNode(true);
+  links.className='kv-dd-mobile';mobileBody.replaceChildren(links);
+  mobileSheet.querySelector('.mobile-back').focus();
+  return;
+ }
  if(kind==='about'){mobileBody.innerHTML='<a class="mobile-row" href="/about/">О нас</a><a class="mobile-row" href="/#contacts">Контакты</a>';return}mobileBody.innerHTML=menuData[kind].map((cat,i)=>'<button class="mobile-row" data-category="'+i+'">'+(kind==='programs'?'<span class="category-icon">'+iconSVG(categoryPaths[i])+'</span>':'')+'<span>'+cat.title+'</span>'+chevron+'</button>').join('');};
 mobilePrograms=function(index){savedMobilePrograms(index);mobileBody.querySelectorAll('.program-name').forEach(name=>{const text=name.textContent.trim();if(!text.includes(' · '))return;const [title,...details]=text.split(' · ');name.replaceChildren();const label=document.createElement('span');label.textContent=title;const meta=document.createElement('small');meta.className='mobile-program-meta';meta.textContent=details.join(' · ');name.append(label,meta)});level('programs',menuData[mobileKind][index].title);const all=document.createElement('a');all.className='mobile-category-all';all.href=menuData[mobileKind][index].all;all.textContent='Все программы категории';mobileBody.append(all)};
 
@@ -104,44 +114,11 @@ function mobileSearch(){
  results.onclick=e=>{const chip=e.target.closest('[data-q]');if(chip){e.preventDefault();input.value=chip.dataset.q;render();input.focus()}};
 }
 setSearch=function(open,focusBack=false){if(innerWidth>1100)return desktopSearch(open,focusBack);if(open){openMobile();mobileSearch()}else desktopSearch(false,focusBack)};
-st.onclick=e=>{e.stopPropagation();if(innerWidth>1100){setSearch(searchPanel.hidden,true);return}e.stopImmediatePropagation();if(mobileSheet.open&&mobileLevel==='search')closeMobile();else setSearch(true)};
+st.onclick=e=>{e.stopPropagation();if(innerWidth>1100){setSearch(searchPanel.hidden,true);return}if(mobileSheet.open&&mobileLevel==='search')closeMobile();else setSearch(true)};
 mobileBody.onclick=e=>{const cat=e.target.closest('[data-category]'),kind=e.target.closest('button[data-kind]');if(cat)mobilePrograms(Number(cat.dataset.category));else if(kind)mobileCategories(kind.dataset.kind);else if(e.target.closest('.mobile-search-entry'))mobileSearch()};
 mobileSheet.querySelector('.mobile-back').innerHTML=iconSVG('<path d="m14 5-7 7 7 7"/>');
 mobileSheet.querySelector('.mobile-back').onclick=()=>{mobileLevel==='programs'?mobileCategories(mobileKind):mobileRoot()};
 mobileBody.addEventListener('click',e=>{const a=e.target.closest('a.mobile-row');if(a)closeMobile(false)});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobileSheet.open){e.preventDefault();closeMobile()}});
 mobileSheet.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const items=[...mobileSheet.querySelectorAll('a[href],button:not([hidden]),input')].filter(el=>el.getClientRects().length);const first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}});
-
-// The catalog uses the same service switch on the desktop and in the mobile menu.
-const serviceMenus = new Map([...document.querySelectorAll('#header details[data-kind]')]
-  .map(menu => [menu.dataset.kind, menu]));
-const baseCategories = mobileCategories;
-mobileCategories = function(kind) {
-  baseCategories(kind);
-  const source = serviceMenus.get(kind)?.querySelector('.service-switch');
-  if (!source) return;
-  const navigation = source.cloneNode(true);
-  navigation.querySelectorAll('a').forEach(link => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.dataset.kind = link.dataset.menuSwitch;
-    button.textContent = link.textContent;
-    if (link.hasAttribute('aria-current')) button.setAttribute('aria-current', 'true');
-    link.replaceWith(button);
-  });
-  mobileBody.prepend(navigation);
-};
-document.querySelector('#header').addEventListener('click', event => {
-  const link = event.target.closest('[data-menu-switch]');
-  if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-  const target = serviceMenus.get(link.dataset.menuSwitch);
-  if (!target) return;
-  event.preventDefault();
-  event.stopPropagation();
-  const current = link.closest('details');
-  if (current === target) return;
-  current.open = false;
-  target.open = true;
-  target.querySelector('[aria-current="true"]').focus({preventScroll: true});
-}, true);
 })();
