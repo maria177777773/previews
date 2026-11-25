@@ -331,7 +331,7 @@ function send(){
      if(j.ok){m.appendChild(el('div','msg ok','Ставка принята: '+eff(CUR,j.stavka.poryadok).join(' › ')+(j.stavka.posle_starta?' (после старта)':'')+'. Её можно поменять до закрытия.'));
        return loadBets().then(function(){renderStavka();renderVse()})}
      m.appendChild(el('div','msg er','Не вышло: '+(j.oshibka||'ошибка')));
-     return loadUps().then(function(ch){if(ch){refreshIds();renderSlots();if(!uplBusy())renderUpl()}})})
+     return loadUps().then(function(ch){if(ch){refreshIds();renderSlots();renderUpl()}})})
    .catch(function(){b.disabled=false;m.appendChild(el('div','msg er','Нет связи с сервером. Ваш порядок сохранён в браузере, нажмите ещё раз.'))});
 }
 
@@ -354,7 +354,8 @@ function prepImage(file){return new Promise(function(res,rej){
     res(d)};
   im.src=u})}
 function myUps(){var r=[];UPS.forEach(function(u){var t=ls('tot_tok_'+CUR.id+'_'+u.id);if(t)r.push({u:u,t:t})});return r}
-function renderUpl(){
+function renderUpl(force){
+  if(!force&&uplBusy())return;
   var c=$('uplcard');c.innerHTML='';if(!CUR||FIXED){c.hidden=true;return}c.hidden=false;
   c.appendChild(el('h3','','Добавьте свой баннер'));
   c.appendChild(el('p','small','Загрузите картинку, и она появится среди баннеров партии: на неё смогут ставить все, включая Claude. Картинку приведём к вертикальному формату 3:5 (720×1200). Не больше 3 баннеров от одного имени. В рекламе загруженные баннеры не идут, пока их не запустят отдельно.'));
@@ -372,7 +373,7 @@ function renderUpl(){
      .then(function(r){return r.json().catch(function(){return{ok:false,oshibka:'сервер не ответил'}})})
      .then(function(j){if(!j.ok){go.disabled=false;um.appendChild(el('div','msg er','Не вышло: '+(j.oshibka||'ошибка')));return}
        ls('tot_tok_'+CUR.id+'_'+j.banner.id,j.token);PREP=null;
-       return loadUps().then(function(){NEWIDS[j.banner.id]=1;refreshIds();renderSlots();renderUpl();renderVse();
+       return loadUps().then(function(){NEWIDS[j.banner.id]=1;refreshIds();renderSlots();renderUpl(true);renderVse();
          var m=$('msg');m.innerHTML='';m.appendChild(el('div','msg ok','Баннер '+j.banner.id+' добавлен в партию, он стоит последним. Поставьте его на нужное место.'))})})
      .catch(function(){go.disabled=false;um.appendChild(el('div','msg er','Нет связи с сервером, попробуйте ещё раз.'))})};
   c.appendChild(w);
@@ -380,7 +381,7 @@ function renderUpl(){
   if(mine.length){c.appendChild(el('p','small','Ваши загруженные баннеры:'));var ml=el('div','mine');
     mine.forEach(function(x){var it=el('div','it',x.u.id+(x.u.zagolovok?' · '+x.u.zagolovok:'')),d=el('button','lt','Удалить');d.type='button';
       d.onclick=function(){d.disabled=true;fetch(API+'/bannery/udalit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partiya:CUR.id,id:x.u.id,token:x.t})})
-        .then(function(r){return r.json()}).then(function(j){if(j.ok){ls('tot_tok_'+CUR.id+'_'+x.u.id,null);return loadUps().then(function(){refreshIds();renderSlots();renderUpl();renderVse()})}d.disabled=false}).catch(function(){d.disabled=false})};
+        .then(function(r){return r.json()}).then(function(j){if(j.ok){ls('tot_tok_'+CUR.id+'_'+x.u.id,null);return loadUps().then(function(){refreshIds();renderSlots();renderUpl(true);renderVse()})}d.disabled=false}).catch(function(){d.disabled=false})};
       it.appendChild(d);ml.appendChild(it)});c.appendChild(ml)}
 }
 
@@ -467,7 +468,7 @@ function tab(n){TAB=n;['stavka','vse','itogi','arhiv'].forEach(function(t){$('s-
   if(n==='vse')Promise.all([loadBets(),loadUps()]).then(function(){refreshIds();renderVse()});window.scrollTo(0,0)}
 ['stavka','vse','itogi','arhiv'].forEach(function(t){$('tab-'+t).onclick=function(){tab(t)}});
 $('send').onclick=send;$('tovse').onclick=function(){tab('vse')};$('obn').onclick=function(){Promise.all([loadBets(),loadUps()]).then(function(){refreshIds();renderVse()})};
-document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&CUR&&!FIXED)loadUps().then(function(ch){if(ch){refreshIds();renderSlots();if(!uplBusy())renderUpl();renderVse()}})});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&CUR&&!FIXED)loadUps().then(function(ch){if(ch){refreshIds();renderSlots();renderUpl();renderVse()}})});
 initWho();
 fetch('partii.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){D=d;API=d.api;
   try{var q=new URLSearchParams(location.search).get('api');if(q&&/^(localhost|127\.0\.0\.1)$/.test(location.hostname))API=q}catch(e){}
