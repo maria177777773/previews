@@ -645,7 +645,7 @@ const h=document.documentElement;h.dataset.tema=t;if(polya)h.classList.add('poly
 const names={'0':'Как сейчас','1':'Тёмный первый экран','2':'Чередование','3':'Чёрный и зелёный'};
 addEventListener('DOMContentLoaded',()=>{const bar=document.createElement('div');bar.className='pv-bar';
 const mk=(label,href,on)=>{const a=document.createElement('a');a.href=href;a.textContent=label;if(on)a.className='on';return a};
-const link=(tt,pp)=>{const x=new URL(location.href);x.searchParams.set('tema',tt);if(pp)x.searchParams.set('polya','1');else x.searchParams.delete('polya');return x.pathname+x.search+x.hash};
+const link=(tt,pp)=>{const x=new URL(location.href);x.searchParams.set('tema',tt);if(pp)x.searchParams.set('polya','1');else x.searchParams.delete('polya');return x.href};
 const lab=document.createElement('span');lab.textContent='Вариант:';bar.append(lab);
 for(const k of ['0','1','2','3'])bar.append(mk(k==='0'?'Как сейчас':k,link(k,polya),k===t));
 bar.append(mk(polya?'Поля: вкл':'Поля: выкл',link(t,!polya),polya));
