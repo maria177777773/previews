@@ -1,0 +1,10 @@
+.stage:not(.pseudo):not(:fullscreen) .nav { display: none; } .nav2 { display: block; }
+  .top { padding: 12px 14px; }
+  .ttl { font-size: 17px; width: 100%; }
+  .dl { width: 100%; } .dl .btn { flex: 1; min-width: 0; padding: 0 10px; font-size: 15px; }
+  .stage { padding: 0 8px; }
+  .frame { width: 100%; border-radius: 6px; }
+  .nav { width: 44px; height: 44px; background: rgba(14,14,16,.6); }
+  .prev { left: 14px; } .next { right: 14px; }
+  .bar { gap: 10px; } .btn.ghost { min-width: 0; padding: 0 16px; font-size: 15px; }
+  .thumbs { padding: 10px 8px; } .thumbs button { width: 96px; }

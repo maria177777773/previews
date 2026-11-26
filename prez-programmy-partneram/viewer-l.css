@@ -1,0 +1,3 @@
+.top, .hint { display: none; }
+  .frame { width: min(100%, calc((100vh - 70px) * 16 / 9)); }
+  .thumbs { display: none; }
