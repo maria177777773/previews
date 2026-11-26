@@ -6,7 +6,8 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#1D3FBB">
 <title>Установить Тендер-Печь</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Underdog&family=Neucha&family=Rubik:wght@400;600;700&display=swap">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Underdog&family=Neucha&family=Rubik:wght@400;600;700&display=swap&subset=cyrillic">
 <style>
 :root{--blue:#1D3FBB;--red:#C8102E;--yel:#F2B705;--ink:#0F1B4C;--muted:#4A5580;--line:#D9DEEA}
 *{box-sizing:border-box;margin:0}
@@ -15,21 +16,24 @@ body{min-height:100vh;min-height:100dvh;background:var(--blue);color:#fff;font:4
 .tiles{height:26px;flex:none;background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Crect width='110' height='110' fill='%23fff'/%3E%3Crect x='4' y='4' width='102' height='102' fill='none' stroke='%231D3FBB' stroke-width='6'/%3E%3Cellipse cx='55' cy='33' rx='9' ry='16' fill='%231D3FBB'/%3E%3Cellipse cx='55' cy='77' rx='9' ry='16' fill='%231D3FBB'/%3E%3Cellipse cx='33' cy='55' rx='16' ry='9' fill='%231D3FBB'/%3E%3Cellipse cx='77' cy='55' rx='16' ry='9' fill='%231D3FBB'/%3E%3Ccircle cx='55' cy='55' r='9' fill='%23C8102E'/%3E%3C/svg%3E");background-size:26px;background-position:center}
 main{flex:1;width:100%;max-width:520px;margin:0 auto;padding:28px 20px 190px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;position:relative;z-index:2}
 .logo{width:104px;height:104px;border-radius:24px;border:4px solid var(--yel);box-shadow:0 10px 26px rgba(8,18,70,.4)}
-h1{font:400 clamp(40px,11vw,56px)/1 Underdog,serif}
+h1{font:400 clamp(40px,11vw,56px)/1 Underdog,serif;overflow-wrap:anywhere;max-width:100%}
 .line{font:700 clamp(22px,6vw,28px)/1.2 Neucha,serif;color:var(--yel);max-width:420px}
+.os{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;width:100%}
+.os a{flex:0 1 auto;min-width:76px;min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:0 16px;color:#fff;text-decoration:none;border:2px solid #8FA4F0;border-radius:99px;font:600 17px/1 Rubik,Arial,sans-serif}
+.os a.on{background:var(--yel);color:var(--ink);border-color:var(--yel)}
+.os a:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .btn{width:100%;max-width:380px;min-height:68px;border:0;border-radius:18px;background:var(--yel);color:var(--ink);font:700 24px/1 Rubik,sans-serif;cursor:pointer;box-shadow:0 6px 0 #B38700;padding:0 20px}
 .btn:active{transform:translateY(4px);box-shadow:0 2px 0 #B38700}
 .btn[disabled]{background:#DCE3FF;box-shadow:none;cursor:default}
 .hint{color:#DCE3FF;font-size:17px;max-width:380px}
 .steps{display:grid;gap:14px;width:100%}
-.step{display:grid;grid-template-columns:56px 74px 1fr;align-items:center;gap:14px;background:#fff;color:var(--ink);border-radius:20px;padding:14px 18px 14px 14px;text-align:left}
+.step{display:grid;grid-template-columns:56px 74px minmax(0,1fr);align-items:center;gap:14px;background:#fff;color:var(--ink);border-radius:20px;padding:14px 18px 14px 14px;text-align:left}
 .step b{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--red);color:#fff;font:700 30px/1 Rubik,sans-serif}
 .step svg{width:74px;height:74px}
-.step span{font:700 22px/1.15 Neucha,serif}
+.step span{font:700 22px/1.15 Neucha,serif;overflow-wrap:anywhere}
 .hide{display:none!important}
-.demo{position:sticky;top:0;z-index:5;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:10px;background:var(--ink);font:600 14px/1 Rubik,sans-serif}
-.demo a{color:#fff;text-decoration:none;border:2px solid #4A5580;border-radius:99px;padding:8px 14px}
-.demo a.on{background:var(--yel);color:var(--ink);border-color:var(--yel)}
+.mgr{color:#DCE3FF;font-size:14px;line-height:1.45;max-width:420px;text-align:left}
+.mgr b{color:#fff}
 .scene{position:fixed;left:0;right:0;bottom:0;height:150px;z-index:1;pointer-events:none}
 .scene:after{content:"";position:absolute;left:0;right:0;bottom:0;height:22px;background:var(--red);border-top:8px solid var(--yel)}
 .scene img{position:absolute;bottom:22px;filter:drop-shadow(0 8px 12px rgba(8,18,70,.35))}
@@ -39,11 +43,18 @@ h1{font:400 clamp(40px,11vw,56px)/1 Underdog,serif}
 </style>
 </head>
 <body>
-<div class="demo hide" id="demo"></div>
 <div class="tiles"></div>
 <main>
-<img class="logo" id="logo" src="../icons/icon-2a.png" alt="Тендер-Печь">
+<img class="logo" src="../img/icon-etalon-192.png" alt="Тендер-Печь">
 <h1>Тендер-Печь</h1>
+
+<nav class="os" id="os" aria-label="Выберите устройство">
+  <a href="?d=android" data-d="android">Android</a>
+  <a href="?d=ios" data-d="ios">iPhone</a>
+  <a href="?d=win" data-d="win">Windows</a>
+  <a href="?d=mac" data-d="mac">Mac</a>
+  <a href="?d=max" data-d="max">Max</a>
+</nav>
 
 <section id="m-btn" class="hide" style="display:contents">
   <p class="line" id="btn-line"></p>
@@ -69,15 +80,14 @@ h1{font:400 clamp(40px,11vw,56px)/1 Underdog,serif}
 <section id="m-out" class="hide" style="display:contents">
   <p class="line" id="out-line"></p>
 </section>
+
 </main>
-<div class="scene"><img class="p" src="../img/pech-2a.webp" alt=""><img class="k" src="../img/kot-sidit.webp" alt=""></div>
+<div class="scene"><img class="p" src="../img/pech-etalon.webp" alt=""><img class="k" src="../img/kot-sidit.webp" alt=""></div>
 <script>
 (function(){
 var q=new URLSearchParams(location.search), ua=navigator.userAgent||'';
-var demo=q.has('demo');
-var icon=q.get('i'); if(icon&&/^(1|2|2a|2b|2v|3|4)$/.test(icon)) document.getElementById('logo').src='../icons/icon-'+icon+'.png';
+var preview=/github\.io$/.test(location.hostname);
 function detect(){
-  var d=q.get('d'); if(d) return d;
   var ios=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
   var android=/Android/.test(ua);
   var inapp=/\bMAX\b|MAXApp|OneMe|VKApp|Telegram|Instagram|FBAN|FBAV|; wv\)/i.test(ua)||(ios&&!/Safari\//.test(ua));
@@ -85,36 +95,51 @@ function detect(){
   if(ios) return 'ios';
   if(android) return 'android';
   var mac=/Macintosh|Mac OS X/.test(ua);
-  if(/Firefox\//.test(ua)) return 'other';
+  if(/Firefox\//.test(ua)) return mac?'other-mac':'other-win';
   if(mac&&/Safari\//.test(ua)&&!/Chrome\/|Chromium|Edg\//.test(ua)) return 'safari-mac';
   return mac?'mac':'win';
 }
-var mode=detect();
-function show(id){document.getElementById(id).classList.remove('hide')}
-var line=document.getElementById('btn-line'), btn=document.getElementById('btn'), hint=document.getElementById('btn-hint');
+var real=detect();
+var hlOf={'safari-mac':'mac','other-mac':'mac','other-win':'win'};
+var mode=q.get('d')||real;
+var el=function(id){return document.getElementById(id)};
+var line=el('btn-line'), btn=el('btn'), hint=el('btn-hint'), outl=el('out-line');
 var standalone=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone;
-var dp=null;
+var dp=null, installed=false;
 window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e});
 window.addEventListener('appinstalled',function(){done()});
-function done(){btn.textContent='Готово ✓';btn.disabled=true;hint.classList.add('hide')}
-if(mode==='android'){show('m-btn');line.textContent='Иконка появится на экране телефона'}
-else if(mode==='win'){show('m-btn');line.textContent='Нажмите «Установить»: иконка появится на рабочем столе'}
-else if(mode==='mac'){show('m-btn');line.textContent='Нажмите «Установить»: иконка появится в Dock'}
-else if(mode==='safari-mac'){show('m-out');document.getElementById('out-line').textContent='В меню «Файл» выберите «Добавить в Dock»: иконка появится в Dock'}
-else if(mode==='ios'){show('m-ios')}
-else if(mode==='max'){show('m-out');document.getElementById('out-line').textContent='Откройте эту страницу в Chrome или Safari'}
-else {show('m-out');document.getElementById('out-line').textContent='Откройте эту страницу в Chrome или Edge'}
-if(standalone&&(mode==='android'||mode==='win'||mode==='mac')) done();
-btn.addEventListener('click',function(){
-  if(demo&&!dp){hint.textContent='В превью установка не запускается. На живой странице здесь откроется окно браузера.';hint.classList.remove('hide');return}
-  if(dp){dp.prompt();dp.userChoice.then(function(c){if(c&&c.outcome==='accepted')done();dp=null})}
-  else{hint.textContent=(mode==='android')?'Меню браузера (три точки), затем «Установить приложение»':'Значок установки справа в адресной строке';hint.classList.remove('hide')}
-});
-if(demo){
-  var items=[['android','Android'],['ios','iPhone'],['win','Компьютер Windows'],['mac','Компьютер Mac (Apple)'],['max','Открыли в мессенджере Max']], bar=document.getElementById('demo');
-  bar.classList.remove('hide');
-  items.forEach(function(it){var a=document.createElement('a');a.href='?demo=1&d='+it[0]+(icon?'&i='+icon:'');a.textContent=it[1];if(it[0]===mode)a.className='on';bar.appendChild(a)});
+function done(){installed=true;btn.textContent='Готово ✓';btn.disabled=true;hint.classList.add('hide')}
+function render(m){
+  mode=m;
+  ['m-btn','m-ios','m-out'].forEach(function(id){el(id).classList.add('hide')});
+  var hl=hlOf[m]||m;
+  [].forEach.call(el('os').children,function(a){a.className=(a.getAttribute('data-d')===hl)?'on':''; if(a.getAttribute('data-d')===hl)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+  hint.classList.add('hide');
+  var safari=(real==='safari-mac'||real==='other-mac');
+  if(m==='android'){el('m-btn').classList.remove('hide');line.textContent='Иконка появится на экране телефона'}
+  else if(m==='win'||m==='other-win'){
+    if(m==='other-win'){el('m-out').classList.remove('hide');outl.textContent='Откройте эту страницу в Chrome или Edge'}
+    else{el('m-btn').classList.remove('hide');line.textContent='Нажмите «Установить»: иконка появится на рабочем столе'}}
+  else if(m==='mac'||m==='safari-mac'||m==='other-mac'){
+    if(m==='safari-mac'||(m==='mac'&&real==='safari-mac')){el('m-out').classList.remove('hide');outl.textContent='В меню «Файл» выберите «Добавить в Dock»: иконка появится в Dock'}
+    else if(m==='other-mac'){el('m-out').classList.remove('hide');outl.textContent='Откройте эту страницу в Chrome или Edge'}
+    else{el('m-btn').classList.remove('hide');line.textContent='Нажмите «Установить»: иконка появится в Dock'}}
+  else if(m==='ios'){el('m-ios').classList.remove('hide')}
+  else{el('m-out').classList.remove('hide');outl.textContent='Откройте эту страницу в Chrome или Safari'}
+  if(!installed){btn.disabled=false;btn.textContent='Установить'}
+  if(standalone&&(m==='android'||m==='win'||m==='mac')) done();
 }
+render(mode);
+[].forEach.call(el('os').children,function(a){a.addEventListener('click',function(ev){
+  ev.preventDefault(); var d=a.getAttribute('data-d'); render(d);
+  try{history.replaceState(null,'','?d='+d)}catch(e){}
+})});
+btn.addEventListener('click',function(){
+  if(dp){dp.prompt();dp.userChoice.then(function(c){if(c&&c.outcome==='accepted')done();dp=null});return}
+  if(preview){hint.textContent='В превью установка не запускается. На живой странице здесь откроется окно браузера.';hint.classList.remove('hide');return}
+  hint.textContent=(mode==='android')?'Меню браузера (три точки), затем «Установить приложение»':'Значок установки справа в адресной строке';hint.classList.remove('hide');
+});
+
 })();
 </script>
 </body>

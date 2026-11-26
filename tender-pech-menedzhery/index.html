@@ -130,6 +130,53 @@ a{color:inherit}
 .cmp .url{font:600 15px/1.3 var(--b);color:var(--blue);margin-bottom:12px;word-break:break-all}
 .cmp ul{padding-left:20px}
 .cmp li{margin-bottom:6px}
+
+/* экран установки: упрощённый вид, согласованный Машей */
+.ui2{background:var(--blue);color:#fff;min-height:700px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.ui2 .tl2{height:26px;flex:none;background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Crect width='110' height='110' fill='%23fff'/%3E%3Crect x='4' y='4' width='102' height='102' fill='none' stroke='%231D3FBB' stroke-width='6'/%3E%3Cellipse cx='55' cy='33' rx='9' ry='16' fill='%231D3FBB'/%3E%3Cellipse cx='55' cy='77' rx='9' ry='16' fill='%231D3FBB'/%3E%3Cellipse cx='33' cy='55' rx='16' ry='9' fill='%231D3FBB'/%3E%3Cellipse cx='77' cy='55' rx='16' ry='9' fill='%231D3FBB'/%3E%3Ccircle cx='55' cy='55' r='9' fill='%23C8102E'/%3E%3C/svg%3E");background-size:26px;background-position:center}
+.ui2 .mn{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:46px 16px 170px;min-width:0}
+.ui2 .lg2{width:84px;height:84px;border-radius:20px;border:4px solid var(--yel);box-shadow:0 8px 20px rgba(8,18,70,.4)}
+.ui2 h4{font:400 40px/1 var(--h);overflow-wrap:anywhere}
+.ui2 .osn{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;width:100%}
+.ui2 .osn span{min-height:38px;display:inline-flex;align-items:center;padding:0 12px;border:2px solid #8FA4F0;border-radius:99px;font:600 14px/1 var(--b)}
+.ui2 .osn span.on{background:var(--yel);color:var(--ink);border-color:var(--yel)}
+.ui2 .ln{font:700 22px/1.2 var(--s);color:var(--yel);max-width:300px}
+.ui2 .bt{width:100%;max-width:300px;min-height:60px;border-radius:16px;background:var(--yel);color:var(--ink);font:700 21px/1 var(--b);display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 #B38700}
+.ui2 .st{display:grid;gap:10px;width:100%}
+.ui2 .st div{display:grid;grid-template-columns:40px minmax(0,1fr);align-items:center;gap:12px;background:#fff;color:var(--ink);border-radius:16px;padding:10px 14px 10px 10px;text-align:left}
+.ui2 .st b{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;font:700 22px/1 var(--b)}
+.ui2 .st span{font:700 18px/1.15 var(--s);overflow-wrap:anywhere}
+.ui2 .mg{color:#DCE3FF;font-size:12px;line-height:1.4;text-align:left;max-width:300px}
+.ui2 .mg b{color:#fff}
+.ui2 .sc{position:absolute;left:0;right:0;bottom:0;height:120px}
+.ui2 .sc:after{content:"";position:absolute;left:0;right:0;bottom:0;height:18px;background:var(--red);border-top:6px solid var(--yel)}
+.ui2 .sc img{position:absolute;bottom:18px}
+.ui2 .sc .p2{left:10px;height:112px}
+.ui2 .sc .k2{right:10px;height:90px}
+/* лечение переполнения (26.11): телефонная рамка и ячейки не вылезают */
+.phones{min-width:0;max-width:100%}.phones>*{max-width:100%;min-width:0}
+.cmp>*,.flow>*{min-width:0}
+.tender{display:block}
+.idx a{min-width:0}
+.steps li{min-width:0;overflow-wrap:anywhere}
+.app h3{overflow-wrap:anywhere}
+.tender .meta span{min-width:0}
+.adm .hd{flex-wrap:wrap}
+.adm .nav{flex-wrap:wrap;min-width:0}
+.adm .nav span{white-space:nowrap}
+.tbl td,.tbl th{min-width:0;overflow-wrap:anywhere}
+.tbl td .btn{white-space:nowrap}
+.frame{container-type:inline-size;container-name:fr}
+@container fr (max-width:640px){
+.adm .nav{margin-left:0;width:100%}
+.adm .who{margin-left:0}
+.tbl,.tbl tbody{display:block}
+.tbl tr:first-child{display:none}
+.tbl tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 12px;padding:12px 14px;border-top:2px solid var(--line)}
+.tbl tr:nth-child(2){border-top:0}
+.tbl td{display:block;border:0;padding:2px 0}
+.tbl td:first-child,.tbl td:last-child{grid-column:1/-1}
+}
 </style></head><body>
 
 <header class="hero"><div class="in"><div><h1>Менеджеры в Тендер-Печи</h1><p>Две ссылки на установку: для Марии и для менеджеров. Менеджер регистрируется один раз и видит все свои сметы. Этап 1: смотрим, код не тронут.</p></div><img class="ph" src="img/carevna.webp" alt=""></div></header>
@@ -158,42 +205,30 @@ a{color:inherit}
 <section class="shot" id="s1"><h2><b>1</b>Две ссылки: кто что видит</h2>
 <p class="note">Иконка одна на обе роли: одно приложение «Тендер-Печь». Разные страницы установки, а на первом экране иконки человек сам выбирает, кто он. На одном устройстве с входом админа главнее админ (так уже работает).</p>
 <div class="cmp">
-<div class="card"><h4>Для Марии (админ)</h4><div class="url">tender-pech.ru/ustanovit/</div><ul><li>Шаги установки для Android, iPhone, Windows и Mac.</li><li>После установки: первый экран «Я менеджер / Я администратор» (экран 3), жмёт «Я администратор» и вводит пароль один раз на устройство.</li><li>Дальше кабинет: тендеры, папки, согласование и новый раздел «Менеджеры».</li><li>Строку про личные ссылки менеджеров с этой страницы убираем.</li></ul></div>
+<div class="card"><h4>Для Марии (админ)</h4><div class="url">tender-pech.ru/ustanovit/</div><ul><li>Шаги установки для Android, iPhone, Windows и Mac.</li><li>После установки: первый экран «Я менеджер / Я администратор» (экран 3), жмёт «Я администратор» и вводит пароль один раз на устройство.</li><li>Дальше кабинет: тендеры, папки, согласование и новый раздел «Менеджеры».</li><li>Короткая строка «Менеджерам» внизу страницы остаётся.</li></ul></div>
 <div class="card"><h4>Для менеджеров</h4><div class="url">tender-pech.ru/ustanovit-menedzher/</div><ul><li>Те же шаги установки, текст для менеджера.</li><li>После установки: тот же первый экран, жмёт «Я менеджер», дальше «Регистрация» без пароля.</li><li>Пока Мария не пустила: «Заявка у Марии».</li><li>Дальше список его смет с отметками, что новое и что вернули.</li></ul></div>
 </div></section>
 
 <h2 class="part">Менеджер</h2>
 
 <section class="shot" id="s2"><h2><b>2</b>Страница установки для менеджера</h2>
-<p class="note">Статическая страница рядом с /ustanovit/, сама определяет телефон. Ключ в адресе не нужен: до иконки на iPhone он всё равно не доходит, а регистрация и так ждёт Марию. На iPhone прямо говорим: сначала иконка, потом регистрация.</p>
+<p class="note">Та же упрощённая страница, что у Марии. Пять кнопок устройств видны всегда: Android, iPhone, Windows, Mac, Max. Нужная подсвечена сама, любую можно нажать. Ключ в адресе не нужен. На iPhone три шага: «Поделиться», «На экран «Домой»», «Добавить», а регистрация потом внутри иконки.</p>
 <div class="phones">
-<div><p class="cap">iPhone, Safari</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
-<h3>Приложение для менеджеров</h3><p class="lead">Здесь приходят сметы от Марии. Поставьте иконку, откройте её и зарегистрируйтесь. Это займёт минуту.</p>
-<div class="os"><span class="on">iPhone</span><span>Android</span><span>Компьютер</span></div>
-<div class="card"><ol class="steps"><li>Нажмите «Поделиться» внизу Safari.</li><li>Выберите «На экран «Домой»» и «Добавить».</li><li>Откройте иконку «Тендер-Печь» и нажмите «Я менеджер».</li><li>Зарегистрируйтесь внутри иконки, не здесь в Safari: у iPhone вход в иконке отдельный.</li></ol></div>
-<a class="btn ghost">Скопировать ссылку</a>
-<p class="small">Открылось в Max или Telegram? Скопируйте ссылку и откройте в Safari.</p>
-</div></div></div></div>
-<div><p class="cap">Android, Chrome</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
-<h3>Приложение для менеджеров</h3><p class="lead">Здесь приходят сметы от Марии. Поставьте иконку, откройте её и зарегистрируйтесь. Это займёт минуту.</p>
-<div class="os"><span>iPhone</span><span class="on">Android</span><span>Компьютер</span></div>
-<a class="btn ok">Установить приложение</a>
-<div class="card"><ol class="steps"><li>Нажмите «Установить приложение».</li><li>Откройте иконку «Тендер-Печь» и нажмите «Я менеджер».</li><li>Зарегистрируйтесь: имя, телефон, компания.</li></ol></div>
-<a class="btn ghost">Зарегистрироваться без установки</a>
-<p class="small">Кнопки «Установить» нет? Меню Chrome ⋮ → «Добавить на главный экран».</p>
-</div></div></div></div>
+<div><p class="cap">iPhone, Safari</p><div class="phone"><div class="app ui2"><div class="tl2"></div><div class="mn"><img class="lg2" src="img/icon-etalon-192.png" alt=""><h4>Тендер-Печь</h4><div class="osn"><span>Android</span><span class="on">iPhone</span><span>Windows</span><span>Mac</span><span>Max</span></div><p class="ln">Иконка появится на экране телефона</p><div class="st"><div><b>1</b><span>Нажмите «Поделиться»</span></div><div><b>2</b><span>Выберите «На экран «Домой»»</span></div><div><b>3</b><span>Нажмите «Добавить»</span></div></div><p class="mg"><b>Менеджерам:</b> поставьте иконку, откройте её и на экране «Вход» вставьте свою личную ссылку целиком.</p></div><div class="sc"><img class="p2" src="img/pech-etalon.webp" alt=""><img class="k2" src="img/kot-sidit.webp" alt=""></div></div></div></div>
+<div><p class="cap">Android, Chrome</p><div class="phone"><div class="app ui2"><div class="tl2"></div><div class="mn"><img class="lg2" src="img/icon-etalon-192.png" alt=""><h4>Тендер-Печь</h4><div class="osn"><span class="on">Android</span><span>iPhone</span><span>Windows</span><span>Mac</span><span>Max</span></div><p class="ln">Иконка появится на экране телефона</p><div class="bt">Установить</div><p class="mg"><b>Менеджерам:</b> поставьте иконку, откройте её и на экране «Вход» вставьте свою личную ссылку целиком.</p></div><div class="sc"><img class="p2" src="img/pech-etalon.webp" alt=""><img class="k2" src="img/kot-sidit.webp" alt=""></div></div></div></div>
+<div><p class="cap">Открыли в Max</p><div class="phone"><div class="app ui2"><div class="tl2"></div><div class="mn"><img class="lg2" src="img/icon-etalon-192.png" alt=""><h4>Тендер-Печь</h4><div class="osn"><span>Android</span><span>iPhone</span><span>Windows</span><span>Mac</span><span class="on">Max</span></div><p class="ln">Откройте эту страницу в Chrome или Safari</p><p class="mg"><b>Менеджерам:</b> поставьте иконку, откройте её и на экране «Вход» вставьте свою личную ссылку целиком.</p></div><div class="sc"><img class="p2" src="img/pech-etalon.webp" alt=""><img class="k2" src="img/kot-sidit.webp" alt=""></div></div></div></div>
 </div></section>
 
 <section class="shot" id="s3"><h2><b>3</b>Первый запуск иконки: кто вы</h2>
 <p class="note">Иконка одна на всех и не знает, с какой страницы её поставили: на iPhone у неё пустое хранилище, адрес запуска один. Поэтому первый экран общий: менеджер жмёт «Я менеджер», админ «Я администратор». Экран показывается только до первого входа на этом устройстве.</p>
 <div class="phones">
-<div><p class="cap">Чистая иконка</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Чистая иконка</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
 <div class="empty"><img src="img/carevna.webp" alt=""><h3>Здравствуйте!</h3><p class="lead">Сметы по тендерам: ИИ собирает, менеджеры правят, руководитель принимает.</p></div>
 <a class="btn ok">Я менеджер</a>
 <a class="btn ghost">Я администратор</a>
 <p class="small" style="text-align:center">Менеджер регистрируется один раз, администратор входит по паролю</p>
 </div></div></div></div>
-<div><p class="cap">«Я администратор»: вход</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<div><p class="cap">«Я администратор»: вход</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
 <h3>Вход для администратора</h3><p class="lead">Пароль один раз на этом устройстве.</p>
 <label class="lbl">Пароль или ссылка</label><div class="f focus"><span>••••••••</span></div>
 <a class="btn ok">Войти</a>
@@ -204,7 +239,7 @@ a{color:inherit}
 <section class="shot" id="s4"><h2><b>4</b>Регистрация в иконке</h2>
 <p class="note">После «Я менеджер» на новом устройстве. Пароля нет. Компания запоминается и подставляется в каждую смету, поменять можно в смете (вопрос Маше в итоге). Внизу вход для тех, у кого вход уже есть на другом телефоне (экран 9).</p>
 <div class="phones">
-<div><p class="cap">Заполнение</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Заполнение</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
 <h3>Регистрация</h3><p class="lead">Один раз на этом телефоне. Мария увидит заявку и пустит вас.</p>
 <label class="lbl">Имя и фамилия</label><div class="f focus">Валерия Соколова</div>
 <label class="lbl">Телефон</label><div class="f"><span class="flag">🇷🇺 +7</span><span class="ph">(925) 123-45-67</span></div>
@@ -213,7 +248,7 @@ a{color:inherit}
 <a class="btn ok">Отправить Марии</a>
 <a class="btn ghost">У меня уже есть вход</a>
 </div></div></div></div>
-<div><p class="cap">Ошибки в полях</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Ошибки в полях</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
 <h3>Регистрация</h3><p class="lead">Один раз на этом телефоне. Мария увидит заявку и пустит вас.</p>
 <label class="lbl">Имя и фамилия</label><div class="f" style="border-color:var(--red)"><span class="ph">Как вас зовут</span></div>
 <p class="small" style="color:#8F0A20;margin:-8px 0 12px">Напишите имя, Мария увидит его в заявке</p>
@@ -229,13 +264,13 @@ a{color:inherit}
 <section class="shot" id="s5"><h2><b>5</b>Заявка у Марии</h2>
 <p class="note">Экран ожидания. Код заявки тот же, что видит Мария: по нему она узнает, что заявку прислала именно Валерия, а не кто-то с её именем. Экран обновится сам, когда Мария пустит.</p>
 <div class="phones">
-<div><p class="cap">Ждём</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Ждём</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
 <div class="empty"><img src="img/kot-sidit.webp" alt=""><h3>Заявка у Марии</h3><p class="lead">Как только Мария вас пустит, здесь появятся ваши сметы. Иконку можно закрыть.</p></div>
 <p class="lbl" style="text-align:center">Код заявки</p><div class="code"><span>4</span><span>7</span><span>1</span><span>9</span></div>
 <p class="small" style="text-align:center;margin-bottom:16px">Мария может спросить его по телефону</p>
 <a class="btn ghost">Исправить имя или телефон</a>
 </div></div></div></div>
-<div><p class="cap">Мария пустила</p><div class="phone"><div class="app" style="min-height:700px"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Мария пустила</p><div class="phone"><div class="app" style="min-height:700px"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
 <div class="empty"><img src="img/carevna.webp" alt=""><h3>Добро пожаловать!</h3><p class="lead">Мария вас пустила. Сметы, которые она отправит, появятся здесь сами.</p></div>
 <a class="btn ok">К моим сметам</a>
 </div><div class="toast">Готово: вход на этом телефоне запомнен, пароль не нужен</div></div></div></div>
@@ -244,14 +279,14 @@ a{color:inherit}
 <section class="shot" id="s6"><h2><b>6</b>Список смет</h2>
 <p class="note">Главный экран менеджера. Все сметы, которые Мария ему отправила, по срочности. Нажал на карточку: открывается привычный экран сметы. Отправленные и утверждённые уходят во вкладку «Готово».</p>
 <div class="phones">
-<div><p class="cap">Телефон</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Телефон</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
 <h3>Мои сметы</h3>
 <div class="tabs"><span class="on">В работе · 3</span><span>Готово · 5</span></div>
 <a class="card tender"><div class="top"><h4>Выставка «Иннопром», стенд 120 м²</h4><span class="chip fail">Вернули</span></div><div class="meta"><span>Срок: завтра, 18:00</span><span>2 комментария Марии</span></div><div class="go"><span>Поправить</span><span>→</span></div></a>
 <a class="card tender"><div class="top"><h4>Новогодний корпоратив, 300 гостей</h4><span class="chip new">Новая</span></div><div class="meta"><span>Срок: 3 декабря</span><span>Пришла сегодня, 09:40</span></div><div class="go"><span>Открыть</span><span>→</span></div></a>
 <a class="card tender"><div class="top"><h4>Форум «Цифровой регион», звук и свет</h4><span class="chip">В работе</span></div><div class="meta"><span>Срок: 5 декабря</span><span>Правка 2 часа назад</span></div><div class="go"><span>Продолжить</span><span>→</span></div></a>
 </div></div></div></div>
-<div><p class="cap">Вкладка «Готово»</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Вкладка «Готово»</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
 <h3>Мои сметы</h3>
 <div class="tabs"><span>В работе · 3</span><span class="on">Готово · 5</span></div>
 <a class="card tender"><div class="top"><h4>Фестиваль «Город мастеров»</h4><span class="chip ap">Утверждена</span></div><div class="meta"><span>Версия 3</span><span>21 ноября</span></div><div class="go"><span>Посмотреть</span><span>→</span></div></a>
@@ -264,12 +299,12 @@ a{color:inherit}
 <section class="shot" id="s7"><h2><b>7</b>Смет пока нет</h2>
 <p class="note">Мария пустила менеджера, но ещё ничего не отправила. Или всё в работе закончилось.</p>
 <div class="phones">
-<div><p class="cap">Пусто</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Игорь Белов<br>Аренда Плюс</span></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Пусто</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><span class="who">Игорь Белов<br>Аренда Плюс</span></div><div class="ground"></div><div class="pad">
 <h3>Мои сметы</h3>
 <div class="tabs"><span class="on">В работе · 0</span><span>Готово · 0</span></div>
 <div class="empty"><img src="img/kot-spit.webp" alt=""><h3>Смет пока нет</h3><p class="lead">Печь остыла, кот спит. Когда Мария отправит смету, она появится здесь.</p></div>
 </div></div></div></div>
-<div><p class="cap">Всё сделано</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Игорь Белов<br>Аренда Плюс</span></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Всё сделано</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><span class="who">Игорь Белов<br>Аренда Плюс</span></div><div class="ground"></div><div class="pad">
 <h3>Мои сметы</h3>
 <div class="tabs"><span class="on">В работе · 0</span><span>Готово · 7</span></div>
 <div class="empty"><img src="img/mudrec.webp" alt=""><h3>Всё отправлено</h3><p class="lead">Новых смет нет. Отправленные лежат во вкладке «Готово».</p></div>
@@ -280,11 +315,11 @@ a{color:inherit}
 <section class="shot" id="s8"><h2><b>8</b>Доступ закрыт, заявку не приняли</h2>
 <p class="note">Мария отключила менеджера или это устройство: иконка при следующем открытии стирает вход и показывает этот экран. Сметы и версии менеджера у Марии остаются. Отдельно: одну смету можно закрыть, тогда она просто пропадает из списка.</p>
 <div class="phones">
-<div><p class="cap">Мария закрыла доступ</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Мария закрыла доступ</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
 <div class="empty"><img src="img/kot-udivlen.webp" alt=""><h3>Доступ закрыт</h3><p class="lead">Мария закрыла вход на этом устройстве. Если это ошибка, напишите ей: она откроет снова.</p></div>
 <a class="btn ghost">Зарегистрироваться заново</a>
 </div></div></div></div>
-<div><p class="cap">Заявку не приняли</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Заявку не приняли</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
 <div class="empty"><img src="img/kot-udivlen.webp" alt=""><h3>Заявку не приняли</h3><p class="lead">Мария не узнала вас по заявке. Проверьте имя и телефон и отправьте ещё раз или напишите ей.</p></div>
 <a class="btn ok">Отправить заново</a>
 </div></div></div></div>
@@ -293,13 +328,13 @@ a{color:inherit}
 <section class="shot" id="s9"><h2><b>9</b>Новый телефон</h2>
 <p class="note">Два пути. Старый телефон под рукой: на нём «Войти на другом устройстве» даёт код на 10 минут, Мария не нужна. Старого нет: «У меня уже есть вход» → телефон → заявка Марии с пометкой «новое устройство». Номер телефона сам по себе вход не даёт.</p>
 <div class="phones">
-<div><p class="cap">Старый телефон: код</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Старый телефон: код</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
 <h3>Войти на другом устройстве</h3><p class="lead">Откройте иконку на новом телефоне или компьютере, нажмите «Я менеджер», затем «У меня уже есть вход» и введите код.</p>
 <div class="code"><span>3</span><span>8</span><span>2</span><span>5</span><span>0</span><span>6</span></div>
 <p class="small" style="text-align:center;margin-bottom:16px">Код работает 10 минут и один раз</p>
 <a class="btn ghost">Готово</a>
 </div></div></div></div>
-<div><p class="cap">Новый телефон: ввод</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Новый телефон: ввод</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
 <h3>У меня уже есть вход</h3><p class="lead">Введите код со старого телефона.</p>
 <div class="code small"><span>3</span><span>8</span><span>2</span><span>5</span><span></span><span></span></div>
 <a class="btn ok">Войти</a>
@@ -310,7 +345,7 @@ a{color:inherit}
 <section class="shot" id="s10"><h2><b>10</b>Старая личная ссылка</h2>
 <p class="note">Уже выданные ссылки ?m=… работают как раньше, никого не переучиваем. Если зарегистрированный менеджер откроет старую ссылку в иконке, смета встанет в его список, а имя и компания подставятся сами: второй раз не спрашиваем.</p>
 <div class="phones">
-<div><p class="cap">Ссылка добавилась в список</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<div><p class="cap">Ссылка добавилась в список</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
 <h3>Мои сметы</h3>
 <div class="tabs"><span class="on">В работе · 4</span><span>Готово · 5</span></div>
 <a class="card tender" style="border-color:var(--yel)"><div class="top"><h4>Выставка «Строй Экспо», монтаж</h4><span class="chip new">Добавлена</span></div><div class="meta"><span>Из старой ссылки</span><span>Срок: 8 декабря</span></div><div class="go"><span>Открыть</span><span>→</span></div></a>
@@ -322,7 +357,7 @@ a{color:inherit}
 
 <section class="shot" id="s11"><h2><b>11</b>Раздел «Менеджеры»: заявки и список</h2>
 <p class="note">Новая вкладка в шапке кабинета, красный счётчик новых заявок. Заявки сверху: имя, телефон, компания, код заявки, устройство. Ниже все менеджеры.</p>
-<div class="frame"><div class="bar"><i></i><i></i><i></i><span>tender-pech.ru · кабинет</span></div><div class="adm"><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><div class="nav"><span>Тендеры</span><span>На согласовании</span><span class="on">Менеджеры<em>2</em></span><span>Архив</span></div><span class="who">Мария</span></div><div class="ground"></div><div class="body">
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>tender-pech.ru · кабинет</span></div><div class="adm"><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><div class="nav"><span>Тендеры</span><span>На согласовании</span><span class="on">Менеджеры<em>2</em></span><span>Архив</span></div><span class="who">Мария</span></div><div class="ground"></div><div class="body">
 <h3>Заявки · 2</h3>
 <div class="req"><div><h4>Валерия Соколова · Art-Active</h4><div class="meta">+7 (916) 204-11-38 · iPhone · код заявки <b>4719</b> · 5 минут назад</div></div><div class="act"><a class="btn ok">Пустить</a><a class="btn ghost">Отклонить</a></div></div>
 <div class="req"><div><h4>Игорь Белов · Аренда Плюс <span class="chip wait">новое устройство</span></h4><div class="meta">+7 (903) 777-02-15 · уже есть в списке, 1 устройство · код <b>2286</b> · вчера</div></div><div class="act"><a class="btn ok">Пустить</a><a class="btn ghost">Отклонить</a></div></div>
@@ -338,7 +373,7 @@ a{color:inherit}
 
 <section class="shot" id="s12"><h2><b>12</b>Карточка менеджера: устройства, отключить</h2>
 <p class="note">Три уровня отзыва: убрать одно устройство (потерял телефон), закрыть одну смету (в папке тендера, как сейчас), отключить менеджера целиком (уволился). Всё, что он сделал, остаётся в тендерах.</p>
-<div class="frame"><div class="bar"><i></i><i></i><i></i><span>tender-pech.ru · кабинет · менеджеры</span></div><div class="adm"><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><div class="nav"><span>Тендеры</span><span>На согласовании</span><span class="on">Менеджеры</span><span>Архив</span></div><span class="who">Мария</span></div><div class="ground"></div><div class="body">
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>tender-pech.ru · кабинет · менеджеры</span></div><div class="adm"><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><div class="nav"><span>Тендеры</span><span>На согласовании</span><span class="on">Менеджеры</span><span>Архив</span></div><span class="who">Мария</span></div><div class="ground"></div><div class="body">
 <div class="two">
 <div><h3>Анна Крылова</h3><p class="small" style="font-size:15px;margin-bottom:14px">ПРО Интерактив · +7 (926) 310-55-90 · с 26 ноября</p>
 <table class="tbl"><tr><th>Устройство</th><th>Последний вход</th><th></th></tr>
@@ -357,7 +392,7 @@ a{color:inherit}
 
 <section class="shot" id="s13"><h2><b>13</b>Тендер: отправить смету менеджерам</h2>
 <p class="note">В папке тендера вместо «Создать ссылку и скопировать» галочки по менеджерам. Отметила: у каждого смета появилась в списке, у каждого своя цепочка версий, как сейчас у ссылки. Для человека без регистрации остаётся старая кнопка «Личная ссылка».</p>
-<div class="frame"><div class="bar"><i></i><i></i><i></i><span>tender-pech.ru · кабинет · тендер</span></div><div class="adm"><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><div class="nav"><span class="on">Тендеры</span><span>На согласовании</span><span>Менеджеры</span><span>Архив</span></div><span class="who">Мария</span></div><div class="ground"></div><div class="body">
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>tender-pech.ru · кабинет · тендер</span></div><div class="adm"><div class="hd"><img src="img/pech-etalon.webp" alt=""><b>Тендер-Печь</b><div class="nav"><span class="on">Тендеры</span><span>На согласовании</span><span>Менеджеры</span><span>Архив</span></div><span class="who">Мария</span></div><div class="ground"></div><div class="body">
 <div class="two">
 <div><h3>Новогодний корпоратив, 300 гостей</h3><p class="small" style="font-size:15px;margin-bottom:14px">Смета ИИ готова · срок 3 декабря</p>
 <p class="lbl">Кому отправить</p>
