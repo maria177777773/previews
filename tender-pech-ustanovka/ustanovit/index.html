@@ -46,8 +46,15 @@ h1{font:400 clamp(40px,11vw,56px)/1 Underdog,serif;overflow-wrap:anywhere;max-wi
 .step svg{width:74px;height:74px}
 .step span{font:700 22px/1.15 Neucha,serif;overflow-wrap:anywhere}
 .hide{display:none!important}
-.mgr{color:#DCE3FF;font-size:14px;line-height:1.45;max-width:420px;text-align:left}
-.mgr b{color:#fff}
+.mgr-link{color:#DCE3FF;font-size:16px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:12px 8px}
+.mgr-link:hover{color:#fff}
+.mo{position:fixed;inset:0;z-index:50;background:rgba(8,18,70,.72);display:flex;align-items:center;justify-content:center;padding:16px}
+.mo[hidden]{display:none}
+.mb{position:relative;background:#fff;color:var(--ink);border-radius:22px;border:4px solid var(--yel);max-width:440px;width:100%;max-height:88vh;overflow:auto;padding:24px 20px 22px;text-align:left}
+.mb h2{font:700 26px/1.15 Neucha,serif;color:var(--red);margin:0 40px 14px 0}
+.mb ol{margin:0 0 12px;padding-left:24px;display:grid;gap:10px;font:500 18px/1.35 Rubik,Arial,sans-serif}
+.mb p{font:500 15px/1.4 Rubik,Arial,sans-serif;color:#44506b;margin:0}
+.mx{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;border-radius:50%;background:#FFF1B8;color:var(--ink);font:700 26px/1 Rubik,sans-serif;cursor:pointer}
 .guide{width:100%;background:#fff;color:var(--ink);border-radius:22px;padding:20px 18px 22px;text-align:left;display:grid;gap:12px;border:4px solid var(--yel);box-shadow:0 10px 26px rgba(8,18,70,.35)}
 .guide .gt{font:700 26px/1.15 Neucha,serif;color:var(--red)}
 .guide .gs{font:600 21px/1.35 Rubik,Arial,sans-serif;overflow-wrap:anywhere}
@@ -76,7 +83,6 @@ h1{font:400 clamp(40px,11vw,56px)/1 Underdog,serif;overflow-wrap:anywhere;max-wi
   <a href="?d=ios" data-d="ios">iPhone</a>
   <a href="?d=win" data-d="win">Windows</a>
   <a href="?d=mac" data-d="mac">Mac (Apple)</a>
-  <a href="?d=max" data-d="max">Мессенджер Max</a>
 </nav>
 
 <section id="m-btn" class="hide" style="display:contents">
@@ -109,7 +115,9 @@ h1{font:400 clamp(40px,11vw,56px)/1 Underdog,serif;overflow-wrap:anywhere;max-wi
   <p class="gs2 hide" id="g-x"></p>
   <button class="gb hide" id="g-open" type="button">Открыть Тендер-Печь</button>
 </div>
+<a href="#mgr" class="mgr-link" id="mgr-open" role="button">Инструкция для менеджеров</a>
 </main>
+<div class="mo" id="mo" hidden><div class="mb" role="dialog" aria-modal="true" aria-labelledby="mo-t"><button class="mx" id="mo-x" type="button" aria-label="Закрыть">&times;</button><h2 id="mo-t">Инструкция для менеджеров</h2><ol><li>Поставьте иконку «Тендер-Печь» на телефон или компьютер.</li><li>Откройте иконку. На экране «Вход» вставьте личную ссылку целиком.</li><li>Иконка покажет список всех ваших смет. Новая смета появится в нём сама.</li><li>Нужна другая ссылка? Нажмите «Другая ссылка» под списком.</li></ol><p>На iPhone вход в иконке делается заново. Если у вас старая ссылка на одну смету, откройте её один раз: иконка перейдёт на список.</p></div></div>
 <div class="scene"><img class="p" src="../img/pech-multik.webp" alt=""><img class="k" src="../img/kot-sidit.webp" alt=""></div>
 <script>
 (function(){
@@ -213,6 +221,12 @@ btn.addEventListener('click',function(){
 el('g-open').addEventListener('click',function(){ location.href='/' });
 window.__tp={guideKeyForClick:guideKeyForClick};
 })();
+(function(){var mo=document.getElementById('mo'),op=document.getElementById('mgr-open'),last=null;
+function cl(){mo.hidden=true;if(last)last.focus()}
+op.addEventListener('click',function(e){e.preventDefault();last=op;mo.hidden=false;document.getElementById('mo-x').focus()});
+document.getElementById('mo-x').addEventListener('click',cl);
+mo.addEventListener('click',function(e){if(e.target===mo)cl()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!mo.hidden)cl()});})();
 </script>
 </body>
 </html>
