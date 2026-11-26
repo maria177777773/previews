@@ -185,6 +185,13 @@ function openLightbox(src, alt, list, i){
       if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); closeLightbox(); }
       else if (e.key === 'ArrowLeft') { e.preventDefault(); e.stopImmediatePropagation(); lbStep(-1); }
       else if (e.key === 'ArrowRight') { e.preventDefault(); e.stopImmediatePropagation(); lbStep(1); }
+      else if (e.key === 'Tab' && LB.node) {
+        var fo = Array.prototype.filter.call(LB.node.querySelectorAll('button:not([disabled]),[href],[tabindex]:not([tabindex="-1"])'), function(x){ return x.offsetParent !== null; });
+        if (!fo.length) return;
+        var ix = fo.indexOf(document.activeElement);
+        if (e.shiftKey && ix <= 0) { e.preventDefault(); e.stopImmediatePropagation(); fo[fo.length - 1].focus(); }
+        else if (!e.shiftKey && (ix < 0 || ix === fo.length - 1)) { e.preventDefault(); e.stopImmediatePropagation(); fo[0].focus(); }
+      }
     }, true);
     LB.node = box;
   }
@@ -275,6 +282,7 @@ function apiPost(path, body){
   });
 }
 function apiGet(path){
+  if (isDemo() && /\/zavod\/tot\/zayavki/.test(path)) return Promise.resolve({ ok: true, status: 200, json: { ok: true, zayavki: [] }, net: null });
   if (isDemo() && /\/stavki2\?/.test(path)) return demoGet(path);
   var url = apiUrl(path);
   return new Promise(function(resolve){

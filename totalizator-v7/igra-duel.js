@@ -28,7 +28,7 @@ function duelCur(p){
   IG.du = duelLoad(p); return IG.du;
 }
 function duelIsStacked(){
-  try { return !window.matchMedia('(min-aspect-ratio: 1/1)').matches; } catch (e) { return false; }
+  try { return window.matchMedia('(orientation: portrait)').matches; } catch (e) { return false; }
 }
 
 function duelOpen(){
@@ -49,6 +49,7 @@ function duelClose(){
   if (DUN.box) { DUN.box.remove(); DUN.box = null; }
   document.body.classList.remove('sv-open');
   igraDrawBody();
+  var mb = document.querySelector('[data-mode="duel"]'); if (mb) try { mb.focus({ preventScroll: true }); } catch (e) {}
 }
 function duelHead(d){
   var st = d.st, pr = DE.progress(st), head = el('div', 'sv-top');
@@ -121,8 +122,9 @@ function duelDraw(){
 /* side: 0 = первый (слева или сверху), 1 = второй (справа или снизу). Проигравший уходит, на его место встаёт следующий. */
 function duelVote(side){
   var d = IG.du; if (!d || DUN.busy || d.st.done || !DUN.box) return;
+  if (Date.now() < (DUN.until || 0)) return;
   var stage = $('duStage'); if (!stage) return;
-  DUN.busy = true; sound.play('pick'); buzz(20);
+  DUN.busy = true; DUN.until = Date.now() + 380; sound.play('pick'); buzz(20);
   var sides = stage.querySelectorAll('.du-side'), win = sides[side], lose = sides[1 - side];
   DE.vote(d.st, side); duelSave();
   function after(){
@@ -196,7 +198,10 @@ function duelEnd(d){
 function duelFinish(){
   var d = IG.du, p = IG.p; if (!d) return;
   var sig = d.st.hist.length + ':' + d.st.phase + ':' + (d.st.rounds || 0);
-  if (!(IG.rank && IG.rank.src === 'igra' && IG.rank.sig === sig)) {
+  var hand = IG.rank && IG.rank.src !== 'igra' && (IG.rank.top.length + IG.rank.bad.length) > 0;
+  var keepHand = hand && !window.confirm('У вас есть отметки, сделанные вручную: лучших ' + IG.rank.top.length + ', худших ' + IG.rank.bad.length + '. Заменить их итогом игры?\n\nОК: заменить. Отмена: оставить ваши отметки.');
+  if (keepHand) { /* остаются ручные списки */ }
+  else if (!(IG.rank && IG.rank.src === 'igra' && IG.rank.sig === sig)) {
     var rk = DE.ranking(d.st), lim = IG.lim;
     IG.rank = { top: rk.slice(0, lim), bad: rk.slice(Math.max(lim, rk.length - lim)).reverse(), src: 'igra', sig: sig };
     rankSave();
@@ -209,8 +214,8 @@ function duelFinish(){
 document.addEventListener('keydown', function(e){
   if (!DUN.box || lbOpen()) return;
   var tg = e.target && e.target.tagName; if (tg === 'INPUT' || tg === 'TEXTAREA') return;
-  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); duelVote(0); }
-  else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); duelVote(1); }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); if (!e.repeat) duelVote(0); }
+  else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); if (!e.repeat) duelVote(1); }
   else if (e.key === 'Backspace') { e.preventDefault(); duelUndo(); }
   else if (e.key === 'Escape') { e.preventDefault(); duelClose(); }
   else if (e.key === 'Tab') {

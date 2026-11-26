@@ -138,6 +138,7 @@ function igraTourSub(p){
   return p.bannery.length + ' ' + plural(p.bannery.length, 'карточка', 'карточки', 'карточек') + '. В ставку: лучших ' + p.k + ', худших ' + p.h + '.';
 }
 function igraSelectTour(id){
+  if (typeof FN !== 'undefined') FN.msg = ''; if (typeof PV !== 'undefined') PV.msg = '';
   var p = getPartiya(id); if (!p) return;
   IG.p = p; STATE.partiya = p.id; STATE.liga = p.liga;
   IG.step = 'modes'; IG.mine = null; IG.chislo = null; IG.mineLoaded = false; IG.zakryta = false; IG.res = null; IG.du = null; IG.rank = null; IG.sending = false; IG.note = '';
@@ -317,7 +318,6 @@ function igraModes(){
 function igraStartMode(mode){
   if (mode === 'duel') {
     var cur = duelCur(IG.p);
-    if (cur && cur.st.done) { duelFinish(); return; }
     if (!cur) { IG.du = duelNew(IG.p); duelSave(); }
     IG.step = 'modes'; igraDrawBody(); duelOpen(); return;
   }

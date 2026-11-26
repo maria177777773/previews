@@ -383,6 +383,8 @@ function zyFail(r){
    тот же klient в каждой попытке, тот же вид ответа {ok,status,json,net}. core.js не правился. */
 var ZY_POST_TIMEOUT_MS = 60000, ZY_POST_RETRIES = 2, ZY_POST_PAUSE_MS = 700;
 function zyPost(path, body){
+  /* превью (demo): ничего не уходит на прод, заявка только имитируется */
+  if (isDemo()) return new Promise(function(res){ setTimeout(function(){ res({ ok: true, status: 200, json: { ok: true, demo: true, id: 'demo-' + Date.now(), status: 'prinyata' }, net: null }); }, 500); });
   var url = apiUrl(path), attempt = 0;
   return new Promise(function(resolve){
     function once(){
@@ -417,7 +419,7 @@ function zySend(){
     ZY.sending = false;
     var j = r.json;
     if (!r.net && r.ok && j && j.ok) {
-      ZY.res = { ok: true, title: 'Заявка принята', format: j.format || '', povtor: !!j.povtor };
+      ZY.res = { ok: true, title: j.demo ? 'Заявка принята (превью, на сервер не ушла)' : 'Заявка принята', format: j.format || '', povtor: !!j.povtor };
       var rec = { id: j.id || ('local-' + Date.now()), imya: imya, zagolovok: zag, vremya: new Date().toISOString(), status: j.status || 'prinyata', prichina: '' };
       zyLsAdd(rec);
       ZY.sent.unshift({ id: rec.id, imya: imya, zagolovok: zag, vremya: rec.vremya, status: rec.status, prichina: '', src: url });

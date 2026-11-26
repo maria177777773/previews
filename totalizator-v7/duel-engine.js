@@ -46,10 +46,17 @@
     st.phase = h.phase; st.queue = h.queue; st.rounds = h.rounds;
     return st;
   }
+  /* После основного прохода лидер: тот, кто остался на месте до конца (чемпион «короля горы»). Остальные по Эло.
+     После уточнения лидер определяется по Эло: в нём учтены дополнительные дуэли. */
+  function champion(st){
+    if (st.phase !== 'main' || st.rounds || !st.done || !st.hist.length) return null;
+    var h = st.hist[st.hist.length - 1]; return h.slots[h.side];
+  }
   function ranking(st){
     var pos = {}; st.order.forEach(function(id, i){ pos[id] = i; });
+    var king = champion(st);
     return st.order.slice().sort(function(x, y){
-      return (st.elo[y] - st.elo[x]) || (st.w[y] - st.w[x]) || (st.l[x] - st.l[y]) || (pos[x] - pos[y]);
+      return ((y === king) - (x === king)) || (st.elo[y] - st.elo[x]) || (st.w[y] - st.w[x]) || (st.l[x] - st.l[y]) || (pos[x] - pos[y]);
     });
   }
   /* Раунд уточнения: соседи по рейтингу. Чётные раунды пары (0,1),(2,3)..., нечётные (1,2),(3,4)... */

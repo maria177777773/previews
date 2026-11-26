@@ -27,7 +27,7 @@
 .du-tip{margin:0;color:#c3c6cd;font-size:15px;text-align:center}
 .du-tip-col{display:none}
 .du-tip-row{display:inline}
-@media (max-aspect-ratio:1/1){
+@media (orientation:portrait){
   .du-stage{flex-direction:column}
   .du-tip-row{display:none}
   .du-tip-col{display:inline}
@@ -122,3 +122,6 @@ body.fin-dragging{user-select:none;-webkit-user-select:none;cursor:grabbing}
   .fi-th img{max-height:160px}
 }
 @media (prefers-reduced-motion:reduce){.fl{transition:none}}
+
+/* перетаскивание: липкая панель не перехватывает палец */
+body.fin-dragging .bar{pointer-events:none}
