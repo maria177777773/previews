@@ -86,7 +86,7 @@ dialog::backdrop{background:rgba(20,22,31,.55)}
 <main><div class="wrap"><div class="crumbs"><a href="index.html">Главная</a> / <a href="index.html#agentstva">Агентства</a> / Сочи</div>
 <h1>Ивент-агентства Сочи: тимбилдинги и корпоративы</h1>
 <div class="meta"><span>4 агентства в базе</span><span>Срез собирается</span><span>Данные на 21 ноября 2026</span></div>
-<div class="callout"><b>Баллов и мест пока нет.</b> Срез получает места, когда у каждого агентства проверены минимум 4 из 6 критериев. Сейчас проверено меньше: нет отзывов с Яндекс Карт у трёх агентств из четырёх, награды и год основания собраны частично. Пока показываем факты по алфавиту.</div>
+<div class="callout"><b>Баллов и мест пока нет.</b> Данные по Сочи собраны частично: отзывы с Яндекс Карт есть у одного агентства из четырёх, награды и год основания известны не у всех. Баллы посчитаем, когда соберём все шесть критериев. Пока показываем факты по алфавиту.</div>
 <div class="grid g2"><div class="card"><h3>Headevent</h3><p><a href="https://headevent.ru" rel="nofollow">headevent.ru</a></p><p><b>Форматы:</b> тимбилдинг, яхтенный квест, гала-ужин</p><p><b>Группы:</b> в кейсах 190-200 участников</p><p><b>Год:</b> <span class="nd">нет данных</span></p><p><b>Яндекс:</b> 4,7 · 9 отзывов</p></div><div class="card"><h3>Teambuilding Sochi</h3><p><a href="https://teambuilding-sochi.ru" rel="nofollow">teambuilding-sochi.ru</a></p><p><b>Форматы:</b> квесты, кулинарные, творческие</p><p><b>Группы:</b> в кейсах 20-80 участников</p><p><b>Год:</b> <span class="nd">нет данных</span></p><p><b>Яндекс:</b> <span class="nd">нет данных</span></p></div><div class="card"><h3>РЕИНФО</h3><p><a href="https://reinfo-sochi.ru" rel="nofollow">reinfo-sochi.ru</a></p><p><b>Форматы:</b> тимбилдинг, спорт, корпоративный отдых</p><p><b>Группы:</b> в кейсах 600-930 человек</p><p><b>Год:</b> около 30 лет на рынке (по данным агентства)</p><p><b>Яндекс:</b> <span class="nd">нет данных</span></p></div><div class="card"><h3>Свои люди</h3><p><a href="https://sochi.sv-ludi.ru" rel="nofollow">sochi.sv-ludi.ru</a></p><p><b>Форматы:</b> тимбилдинги, квесты на планшетах, инсентив</p><p><b>Группы:</b> 20-700 человек по программам</p><p><b>Год:</b> 2013 (по данным агентства)</p><p><b>Яндекс:</b> <span class="nd">нет данных</span></p></div></div>
 <div class="callout ok"><b>Работаете в Сочи?</b> Пришлите кейсы, награды и ссылку на карточку в Яндекс Картах. Добавим агентство и посчитаем по общей методике.<div class="btns" style="margin-bottom:0"><a class="btn" href="#" data-report="">Добавить или исправить агентство</a></div></div>
 <p class="note">Каталист проводит программы в Сочи, но в этот срез входит только с подтверждёнными сочинскими кейсами, как и остальные московские агентства.</p>
@@ -100,7 +100,7 @@ dialog::backdrop{background:rgba(20,22,31,.55)}
 <div class="sent"><h3>Спасибо, получили</h3><p>Проверим данные в течение 5 рабочих дней и ответим на почту. Если цифра подтвердится, пересчитаем баллы и отметим правку в истории обновлений.</p><p class="note">В превью письмо никуда не уходит.</p></div></div></dialog></div></main>
 <footer class="ft"><div class="wrap"><div class="grid">
 <div><b style="color:#fff">Event Rating</b><p>Сравнение ивент-агентств, программ тимбилдинга и идей корпоративов по открытой методике. Платных мест нет. Данные из открытых источников, у каждой цифры дата и ссылка.</p><p>Проект создан командой агентства «Каталист». ИП Варламова Мария Вадимовна, ИНН 772865086700.</p></div>
-<div><p><a href="metodika.html">Методика</a></p><p><a href="o-proekte.html">О проекте и экспертный совет</a></p><p><a href="moskva.html#oshibka">Сообщить об ошибке</a></p></div>
+<div><p><a href="metodika.html">Методика</a></p><p><a href="o-proekte.html">О проекте и экспертный совет</a></p><p><a href="moskva.html#oshibka" data-report="">Сообщить об ошибке</a></p></div>
 <div><p>Пишите: <a href="mailto:redakciya@event-rating.ru">redakciya@event-rating.ru</a></p><p>Пересчёт раз в квартал</p></div>
 </div></div></footer>
 <script>
@@ -112,9 +112,11 @@ var f=d.querySelector('form');
 f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
  f.querySelectorAll('[data-req]').forEach(function(w){var i=w.querySelector('input,textarea');var v=i.value.trim();var bad=!v||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(v));w.classList.toggle('bad',bad);if(bad)ok=false;});
  if(ok){f.style.display='none';d.querySelector('.sent').style.display='block';}});
-var h=location.hash;
+function byHash(){var h=location.hash;
 if(h==='#oshibka')openD();
 if(h==='#oshibka-pusto'){openD();f.dispatchEvent(new Event('submit',{cancelable:true}));}
 if(h==='#otpravleno'){openD();f.querySelectorAll('[data-req] input,[data-req] textarea').forEach(function(i){i.value=i.type==='email'?'pr@agency.ru':'Год основания 2008, а не 2012';});f.dispatchEvent(new Event('submit',{cancelable:true}));}
+}
+byHash();window.addEventListener('hashchange',function(){if(d.open)d.close();f.style.display='';d.querySelector('.sent').style.display='none';f.querySelectorAll('.bad').forEach(function(w){w.classList.remove('bad')});byHash();});
 })();
 </script></body></html>

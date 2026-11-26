@@ -88,7 +88,7 @@ dialog::backdrop{background:rgba(20,22,31,.55)}
 <div class="meta"><span>10 место по методике в срезе «Ивент-агентства Москвы для крупных компаний»</span><span>28 баллов из 100</span><span>Обновлено 21 ноября 2026</span></div>
 
 <h2 style="margin-top:48px">Из чего сложился балл</h2>
-<div class="short" style="max-width:none"><div class="bar"><span>Награды отрасли</span><span class="bt"><span class="bf" style="width:48%"></span></span><span class="bv">12 из 25</span></div><div class="bar"><span>Отзывы клиентов</span><span class="bt"><span class="bf" style="width:0%"></span></span><span class="bv">0 из 20</span></div><div class="bar"><span>Масштаб</span><span class="bt"><span class="bf" style="width:0%"></span></span><span class="bv">0 из 20</span></div><div class="bar"><span>Опыт</span><span class="bt"><span class="bf" style="width:0%"></span></span><span class="bv">0 из 15</span></div><div class="bar"><span>Кейсы</span><span class="bt"><span class="bf" style="width:80%"></span></span><span class="bv">8 из 10</span></div><div class="bar"><span>Чужие рейтинги</span><span class="bt"><span class="bf" style="width:80%"></span></span><span class="bv">8 из 10</span></div><p class="note">Нет данных: отзывы клиентов, масштаб, опыт. По каждому такому критерию 0 баллов. Агентство может прислать источник, и мы пересчитаем.</p></div>
+<div class="short" style="max-width:none"><div class="bar"><span>Награды отрасли</span><span class="bt"><span class="bf" style="width:48%"></span></span><span class="bv">12 из 25</span></div><div class="bar"><span>Отзывы клиентов</span><span class="bt"><span class="bf" style="width:0%"></span></span><span class="bv">0 из 20</span></div><div class="bar"><span>Масштаб</span><span class="bt"><span class="bf" style="width:0%"></span></span><span class="bv">0 из 20</span></div><div class="bar"><span>Опыт</span><span class="bt"><span class="bf" style="width:0%"></span></span><span class="bv">0 из 15</span></div><div class="bar"><span>Проекты</span><span class="bt"><span class="bf" style="width:80%"></span></span><span class="bv">8 из 10</span></div><div class="bar"><span>Рейтинг Рунета</span><span class="bt"><span class="bf" style="width:80%"></span></span><span class="bv">8 из 10</span></div><p class="note">0 баллов по критериям: отзывы клиентов, масштаб, опыт. Это значит, что данных нет или показатель ниже порога. Агентство может прислать источник, и мы пересчитаем.</p></div>
 <h2>Факты и источники</h2>
 <div class="facts"><div class="k">Сайт</div><div><a href="https://teamfordream.ru" rel="nofollow">teamfordream.ru</a></div><div class="k">Год основания</div><div><span class="nd">нет данных</span></div><div class="k">Отзывы на Яндекс Картах</div><div><span class="nd">нет данных</span></div><div class="k">Награды</div><div>ТОП-10 event service rating 2023 (по данным агентства)</div><div class="k">Самая большая группа</div><div><span class="nd">нет данных</span></div><div class="k">Цена от</div><div><span class="nd">нет данных</span></div><div class="k">Данные проверены</div><div>21 ноября 2026</div></div>
 <p class="note">Пометка «по данным агентства» значит, что цифра взята с сайта агентства и не подтверждена другим источником.</p>
@@ -104,7 +104,7 @@ dialog::backdrop{background:rgba(20,22,31,.55)}
 <div class="sent"><h3>Спасибо, получили</h3><p>Проверим данные в течение 5 рабочих дней и ответим на почту. Если цифра подтвердится, пересчитаем баллы и отметим правку в истории обновлений.</p><p class="note">В превью письмо никуда не уходит.</p></div></div></dialog></div></main>
 <footer class="ft"><div class="wrap"><div class="grid">
 <div><b style="color:#fff">Event Rating</b><p>Сравнение ивент-агентств, программ тимбилдинга и идей корпоративов по открытой методике. Платных мест нет. Данные из открытых источников, у каждой цифры дата и ссылка.</p><p>Проект создан командой агентства «Каталист». ИП Варламова Мария Вадимовна, ИНН 772865086700.</p></div>
-<div><p><a href="metodika.html">Методика</a></p><p><a href="o-proekte.html">О проекте и экспертный совет</a></p><p><a href="moskva.html#oshibka">Сообщить об ошибке</a></p></div>
+<div><p><a href="metodika.html">Методика</a></p><p><a href="o-proekte.html">О проекте и экспертный совет</a></p><p><a href="moskva.html#oshibka" data-report="">Сообщить об ошибке</a></p></div>
 <div><p>Пишите: <a href="mailto:redakciya@event-rating.ru">redakciya@event-rating.ru</a></p><p>Пересчёт раз в квартал</p></div>
 </div></div></footer>
 <script>
@@ -116,9 +116,11 @@ var f=d.querySelector('form');
 f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
  f.querySelectorAll('[data-req]').forEach(function(w){var i=w.querySelector('input,textarea');var v=i.value.trim();var bad=!v||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(v));w.classList.toggle('bad',bad);if(bad)ok=false;});
  if(ok){f.style.display='none';d.querySelector('.sent').style.display='block';}});
-var h=location.hash;
+function byHash(){var h=location.hash;
 if(h==='#oshibka')openD();
 if(h==='#oshibka-pusto'){openD();f.dispatchEvent(new Event('submit',{cancelable:true}));}
 if(h==='#otpravleno'){openD();f.querySelectorAll('[data-req] input,[data-req] textarea').forEach(function(i){i.value=i.type==='email'?'pr@agency.ru':'Год основания 2008, а не 2012';});f.dispatchEvent(new Event('submit',{cancelable:true}));}
+}
+byHash();window.addEventListener('hashchange',function(){if(d.open)d.close();f.style.display='';d.querySelector('.sent').style.display='none';f.querySelectorAll('.bad').forEach(function(w){w.classList.remove('bad')});byHash();});
 })();
 </script></body></html>

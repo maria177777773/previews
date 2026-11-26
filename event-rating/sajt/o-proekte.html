@@ -103,7 +103,7 @@ dialog::backdrop{background:rgba(20,22,31,.55)}
 <div class="sent"><h3>Спасибо, получили</h3><p>Проверим данные в течение 5 рабочих дней и ответим на почту. Если цифра подтвердится, пересчитаем баллы и отметим правку в истории обновлений.</p><p class="note">В превью письмо никуда не уходит.</p></div></div></dialog></div></main>
 <footer class="ft"><div class="wrap"><div class="grid">
 <div><b style="color:#fff">Event Rating</b><p>Сравнение ивент-агентств, программ тимбилдинга и идей корпоративов по открытой методике. Платных мест нет. Данные из открытых источников, у каждой цифры дата и ссылка.</p><p>Проект создан командой агентства «Каталист». ИП Варламова Мария Вадимовна, ИНН 772865086700.</p></div>
-<div><p><a href="metodika.html">Методика</a></p><p><a href="o-proekte.html">О проекте и экспертный совет</a></p><p><a href="moskva.html#oshibka">Сообщить об ошибке</a></p></div>
+<div><p><a href="metodika.html">Методика</a></p><p><a href="o-proekte.html">О проекте и экспертный совет</a></p><p><a href="moskva.html#oshibka" data-report="">Сообщить об ошибке</a></p></div>
 <div><p>Пишите: <a href="mailto:redakciya@event-rating.ru">redakciya@event-rating.ru</a></p><p>Пересчёт раз в квартал</p></div>
 </div></div></footer>
 <script>
@@ -115,9 +115,11 @@ var f=d.querySelector('form');
 f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
  f.querySelectorAll('[data-req]').forEach(function(w){var i=w.querySelector('input,textarea');var v=i.value.trim();var bad=!v||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(v));w.classList.toggle('bad',bad);if(bad)ok=false;});
  if(ok){f.style.display='none';d.querySelector('.sent').style.display='block';}});
-var h=location.hash;
+function byHash(){var h=location.hash;
 if(h==='#oshibka')openD();
 if(h==='#oshibka-pusto'){openD();f.dispatchEvent(new Event('submit',{cancelable:true}));}
 if(h==='#otpravleno'){openD();f.querySelectorAll('[data-req] input,[data-req] textarea').forEach(function(i){i.value=i.type==='email'?'pr@agency.ru':'Год основания 2008, а не 2012';});f.dispatchEvent(new Event('submit',{cancelable:true}));}
+}
+byHash();window.addEventListener('hashchange',function(){if(d.open)d.close();f.style.display='';d.querySelector('.sent').style.display='none';f.querySelectorAll('.bad').forEach(function(w){w.classList.remove('bad')});byHash();});
 })();
 </script></body></html>
