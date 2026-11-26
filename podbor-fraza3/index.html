@@ -1697,6 +1697,8 @@ function tileWay(t,w){
 function tileSend(t){
  var i=t.querySelector('.kv-tile-inp'),btn=t.querySelector('.kv-tile-go'),note=t.querySelector('.kv-tile-note'),way=tileSt.way;
  var c=tileContact(way,i.value);
+ var bx=(t.querySelector('.kv-tform')||t).__ccBox||t.querySelector('.cc-consent input');
+ if(bx&&!bx.checked){var lb=bx.closest('.cc-consent');if(lb){lb.classList.remove('cc-err');void lb.offsetWidth;lb.classList.add('cc-err')}bx.setAttribute('aria-invalid','true');note.textContent='Отметьте согласие на обработку данных.';try{bx.focus()}catch(_e){}return}
  if(!c){note.textContent=way==='mail'?'Укажите почту, например name@company.ru.':way==='max'?'Введите 10 цифр номера после +7.':'Укажите @username в Telegram.';i.setAttribute('aria-invalid','true');i.focus();return}
  var s=F(),names=match(s).map(function(p){return p.n});
  var summary=sendSummary(s)+' · '+(names.length?'Подборка: '+names.join(', '):'Точных совпадений нет');
@@ -1712,7 +1714,7 @@ function tileBind(){
   else i.value=i.value.replace(/\s/g,'').slice(0,80);
   tileSt.val=i.value
  });
- ROOT.addEventListener('keydown',function(e){var i=e.target.closest&&e.target.closest('.kv-tile-inp');if(i&&e.key==='Enter'&&!e.isComposing){e.preventDefault();e.stopPropagation();tileSend(i.closest('[data-tile]'))}});
+ ROOT.addEventListener('keydown',function(e){var i=e.target.closest&&e.target.closest('.kv-tile-inp');if(i&&e.key==='Enter'&&!e.isComposing){e.preventDefault();e.stopPropagation();var gb=i.closest('[data-tile]').querySelector('.kv-tile-go');if(gb)gb.click()}});
  ROOT.addEventListener('submit',function(e){var f=e.target.closest&&e.target.closest('.kv-tform');if(f){e.preventDefault();tileSend(f.closest('[data-tile]'))}})
 }
 function applyPick(){
