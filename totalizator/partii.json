@@ -1,6 +1,6 @@
 {
  "api": "https://api.kp-catalyst.ru/zavod/tot",
- "sobrano": "2026-11-25T21:20:13Z",
+ "sobrano": "2026-11-26T06:20:15Z",
  "partii": [
   {
    "id": "2026-W48-RSYA-NY",
@@ -63,11 +63,47 @@
    "zakrytie": null,
    "itog": null,
    "tek": {
-    "fakt": null,
-    "uslovnyj": false,
-    "prichina": "",
+    "fakt": [
+     {
+      "id": "NY5",
+      "shows": 9,
+      "clicks": 0,
+      "cost": 0.0,
+      "ctr": 0.0
+     },
+     {
+      "id": "NY2",
+      "shows": 4,
+      "clicks": 0,
+      "cost": 0.0,
+      "ctr": 0.0
+     },
+     {
+      "id": "NY1",
+      "shows": 0,
+      "clicks": 0,
+      "cost": 0.0,
+      "ctr": null
+     },
+     {
+      "id": "NY3n",
+      "shows": 0,
+      "clicks": 0,
+      "cost": 0.0,
+      "ctr": null
+     },
+     {
+      "id": "NY4",
+      "shows": 0,
+      "clicks": 0,
+      "cost": 0.0,
+      "ctr": null
+     }
+    ],
+    "uslovnyj": true,
+    "prichina": "у 5 из 5 баннеров меньше 10 000 показов",
     "s": "2026-11-12",
-    "data": "2026-11-25T19:15:47Z"
+    "data": "2026-11-26T06:20:10Z"
    }
   }
  ],
