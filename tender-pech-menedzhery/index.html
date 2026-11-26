@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Тендер-Печь: менеджеры ставят приложение и регистрируются</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Underdog&family=Neucha&family=Rubik:wght@400;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--blue:#1D3FBB;--blue2:#16318F;--red:#C8102E;--yel:#F2B705;--fire:#FF6B00;--ink:#0F1B4C;--muted:#4A5580;--bg:#F3F5FD;--line:#D9DEEA;--paper:#fff;--yelbg:#FFF1C2;--bluebg:#E4EAFB;--redbg:#FDE6EA;
+--h:Underdog,'Times New Roman',serif;--s:Neucha,Georgia,serif;--b:Rubik,Arial,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.45 var(--b)}
+a{color:inherit}
+.hero{background:var(--blue);color:#fff;padding:48px 24px 64px;position:relative}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:22px;background:var(--red);border-top:8px solid var(--yel)}
+.hero .in{max-width:1240px;margin:0 auto;display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.hero h1{font:400 clamp(38px,5.6vw,76px)/1 var(--h)}
+.hero p{font:700 clamp(20px,2.4vw,30px)/1.25 var(--s);color:var(--yel);margin-top:14px;max-width:760px}
+.hero .ph{height:min(26vw,220px);filter:drop-shadow(0 10px 18px rgba(0,0,0,.3))}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px 80px}
+.idx{background:#fff;border:2px solid var(--line);border-radius:20px;padding:24px;margin:32px 0}
+.idx h2{font:700 28px/1.1 var(--s);margin-bottom:14px}
+.idx .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:4px 32px}
+.idx h3{font:700 15px/1 var(--b);letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin:14px 0 8px}
+.idx a{display:flex;gap:10px;text-decoration:none;padding:5px 0}
+.idx a:hover{color:var(--blue)}
+.idx a b{flex:0 0 32px;height:26px;border-radius:13px;background:var(--red);color:#fff;font:700 14px/26px var(--b);text-align:center}
+.part{margin:56px 0 8px;font:400 clamp(30px,4vw,50px)/1.05 var(--h);color:var(--blue)}
+.shot{margin:40px 0 0;padding-top:12px;scroll-margin-top:12px}
+.shot>h2{display:flex;gap:14px;align-items:center;font:700 clamp(24px,2.8vw,34px)/1.1 var(--s)}
+.shot>h2 b{flex:0 0 auto;min-width:46px;height:46px;border-radius:23px;background:var(--red);color:#fff;font:700 22px/46px var(--b);text-align:center;padding:0 10px}
+.shot>.note{color:var(--muted);margin:8px 0 18px;max-width:900px}
+.phones{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-start}
+.cap{font:600 13px/1.3 var(--b);color:var(--muted);margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em}
+.phone{width:390px;max-width:100%;border:9px solid var(--ink);border-radius:40px;background:var(--ink);overflow:hidden;position:relative;flex:0 0 auto}
+.phone:before{content:"";position:absolute;top:8px;left:50%;width:84px;height:20px;margin-left:-42px;border-radius:12px;background:var(--ink);z-index:9}
+.phone>.app{border-radius:30px;overflow:hidden;min-height:700px}
+.frame{border:2px solid var(--line);border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 14px 30px rgba(15,27,76,.1)}
+.frame>.bar{height:34px;background:#E9EDF8;display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:2px solid var(--line)}
+.frame>.bar i{width:11px;height:11px;border-radius:50%;background:#C6CDE3}
+.frame>.bar span{margin-left:10px;background:#fff;border-radius:99px;padding:3px 14px;font:400 12px/1.2 var(--b);color:var(--muted)}
+/* приложение */
+.app{background:var(--bg);color:var(--ink);font:400 15px/1.4 var(--b);position:relative}
+.sb{height:40px;background:var(--blue)}
+.hd{background:var(--blue);color:#fff;padding:12px 18px;display:flex;align-items:center;gap:12px}
+.hd img{width:40px;height:40px;border-radius:50%;background:#fff;border:3px solid var(--yel);object-fit:cover}
+.hd b{font:400 24px/1 var(--h)}
+.hd .who{margin-left:auto;font:600 13px/1.2 var(--b);color:#DCE3FF;text-align:right}
+.ground{height:16px;background:var(--red);border-top:6px solid var(--yel)}
+.pad{padding:20px 18px 26px}
+.app h3{font:700 26px/1.1 var(--s);margin:0 0 8px}
+.app p.lead{color:var(--muted);margin:0 0 16px}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px;margin:0 0 12px}
+.lbl{display:block;font:600 13px/1.2 var(--b);color:var(--muted);margin:0 0 6px}
+.f{display:flex;align-items:center;gap:8px;min-height:50px;border:2px solid var(--line);border-radius:14px;background:#fff;padding:0 14px;font:400 17px/1 var(--b);margin:0 0 14px}
+.f.focus{border-color:var(--blue);outline:3px solid var(--bluebg)}
+.f .ph{color:#8A93B5}
+.f .flag{display:inline-flex;align-items:center;gap:6px;padding-right:10px;border-right:2px solid var(--line);font-weight:600}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 14px}
+.seg span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:50px;border:2px solid var(--line);border-radius:14px;background:#fff;font:600 14px/1.15 var(--b);padding:4px}
+.seg span.on{background:var(--yelbg);border-color:var(--yel)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);margin:0 0 16px}
+.chk i{flex:0 0 22px;height:22px;border-radius:6px;border:2px solid var(--blue);background:var(--blue);color:#fff;font:700 14px/18px var(--b);text-align:center;font-style:normal}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;min-height:54px;width:100%;padding:0 20px;border-radius:14px;border:2px solid transparent;font:700 17px/1 var(--b);text-decoration:none;color:var(--ink);background:#fff;margin:0 0 10px}
+.btn.ok{background:var(--yel);border-color:var(--yel)}
+.btn.ghost{background:#fff;color:var(--blue);border-color:var(--blue)}
+.btn.bad{background:var(--red);color:#fff;border-color:var(--red)}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btns .btn{margin:0}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:6px 11px;font:600 13px/1 var(--b);background:var(--bluebg);color:var(--blue);white-space:nowrap}
+.chip.new{background:var(--yel);color:var(--ink)}
+.chip.wait{background:var(--yelbg);color:#6B4F00}
+.chip.fail{background:var(--redbg);color:#8F0A20}
+.chip.fire{background:#FFE5D0;color:#8A3A00}
+.chip.ap{background:var(--blue);color:#fff}
+.tender{display:block;text-decoration:none}
+.tender .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+.tender h4{font:700 17px/1.25 var(--b)}
+.tender .meta{display:flex;gap:6px 12px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.tender .go{margin-top:12px;display:flex;justify-content:space-between;align-items:center;font:700 15px/1 var(--b);color:var(--blue)}
+.tabs{display:flex;gap:6px;margin:0 0 14px;overflow:hidden}
+.tabs span{padding:9px 14px;border-radius:99px;font:600 14px/1 var(--b);background:#fff;border:2px solid var(--line);white-space:nowrap}
+.tabs span.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.empty{text-align:center;padding:26px 10px 6px}
+.empty img{width:190px;height:auto;margin:0 auto 10px;display:block}
+.code{display:flex;gap:8px;justify-content:center;margin:12px 0 16px}
+.code span{width:46px;height:58px;border-radius:12px;background:#fff;border:2px solid var(--blue);font:700 30px/54px var(--b);text-align:center;color:var(--blue)}
+.code.small span{width:38px;height:48px;font-size:24px;line-height:44px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0 0 14px}
+.steps li{counter-increment:s;position:relative;padding:0 0 12px 44px;min-height:34px}
+.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:16px;background:var(--red);color:#fff;font:700 16px/32px var(--b);text-align:center}
+.os{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+.os span{padding:8px 12px;border-radius:99px;border:2px solid var(--line);background:#fff;font:600 13px/1 var(--b)}
+.os span.on{border-color:var(--blue);color:var(--blue)}
+.toast{position:absolute;left:14px;right:14px;bottom:18px;background:var(--ink);color:#fff;border-radius:14px;padding:14px 16px;font:600 14px/1.35 var(--b)}
+.small{font-size:13px;color:var(--muted)}
+/* админ */
+.adm{background:var(--bg);font:400 15px/1.4 var(--b)}
+.adm .hd{padding:14px 24px}
+.adm .nav{display:flex;gap:6px;margin-left:24px}
+.adm .nav span{padding:9px 14px;border-radius:99px;color:#DCE3FF;font:600 14px/1 var(--b)}
+.adm .nav span.on{background:#fff;color:var(--blue)}
+.adm .nav em{font-style:normal;background:var(--red);color:#fff;border-radius:99px;padding:2px 7px;margin-left:6px;font-size:12px}
+.adm .body{padding:22px 24px 28px}
+.adm h3{font:700 26px/1.1 var(--s);margin:0 0 12px}
+.req{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;background:#fff;border:2px solid var(--yel);border-radius:18px;padding:16px 18px;margin:0 0 12px}
+.req h4{font:700 17px/1.2 var(--b);margin:0 0 4px}
+.req .meta{color:var(--muted);font-size:14px}
+.req .act{display:grid;grid-template-columns:repeat(2,150px);gap:10px}
+.req .act .btn{margin:0;min-height:48px;font-size:16px}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:2px solid var(--line);border-radius:18px;overflow:hidden}
+.tbl th{background:var(--blue);color:#fff;text-align:left;font:600 13px/1.2 var(--b);padding:12px 14px}
+.tbl td{padding:12px 14px;border-top:2px solid var(--line);vertical-align:middle;font-size:15px}
+.tbl td .small{display:block}
+.tbl .btn{margin:0;min-height:40px;font-size:14px;width:auto;padding:0 14px;display:inline-flex}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:22px;align-items:start}
+.pick{display:flex;align-items:center;gap:12px;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:#fff;margin:0 0 8px}
+.pick i{flex:0 0 22px;height:22px;border-radius:6px;border:2px solid var(--blue);font:700 14px/18px var(--b);text-align:center;font-style:normal;color:#fff}
+.pick.on{border-color:var(--yel);background:var(--yelbg)}
+.pick.on i{background:var(--blue)}
+.pick .r{margin-left:auto}
+/* схема */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0 0}
+.flow div{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px}
+.flow b{display:block;width:34px;height:34px;border-radius:17px;background:var(--red);color:#fff;font:700 17px/34px var(--b);text-align:center;margin-bottom:10px}
+.flow h4{font:700 20px/1.15 var(--s);margin-bottom:6px}
+.flow p{font-size:15px;color:var(--muted)}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:22px}
+.cmp .card{padding:22px}
+.cmp h4{font:700 24px/1.1 var(--s);margin-bottom:4px}
+.cmp .url{font:600 15px/1.3 var(--b);color:var(--blue);margin-bottom:12px;word-break:break-all}
+.cmp ul{padding-left:20px}
+.cmp li{margin-bottom:6px}
+</style></head><body>
+
+<header class="hero"><div class="in"><div><h1>Менеджеры в Тендер-Печи</h1><p>Две ссылки на установку: для Марии и для менеджеров. Менеджер регистрируется один раз и видит все свои сметы. Этап 1: смотрим, код не тронут.</p></div><img class="ph" src="img/carevna.webp" alt=""></div></header>
+
+<main class="wrap">
+
+<nav class="idx"><h2>Экраны</h2><div class="cols">
+<div><h3>Схема</h3><a href="#s0"><b>0</b>Как это работает, коротко</a><a href="#s1"><b>1</b>Две ссылки: кто что видит</a></div>
+<div><h3>Менеджер</h3><a href="#s2"><b>2</b>Страница установки для менеджера</a><a href="#s3"><b>3</b>Регистрация в иконке</a><a href="#s4"><b>4</b>Заявка у Марии</a><a href="#s5"><b>5</b>Список смет</a><a href="#s6"><b>6</b>Смет пока нет</a><a href="#s7"><b>7</b>Доступ закрыт, заявку не приняли</a><a href="#s8"><b>8</b>Новый телефон</a><a href="#s9"><b>9</b>Старая личная ссылка</a></div>
+<div><h3>Мария (админ)</h3><a href="#s10"><b>10</b>Раздел «Менеджеры»: заявки и список</a><a href="#s11"><b>11</b>Карточка менеджера: устройства, отключить</a><a href="#s12"><b>12</b>Тендер: отправить смету менеджерам</a></div>
+</div></nav>
+
+<h2 class="part">Схема</h2>
+
+<section class="shot" id="s0"><h2><b>0</b>Как это работает, коротко</h2>
+<p class="note">Регистрация сама по себе ничего не открывает. Сметы менеджер видит только после двух действий Марии: пустила заявку и отправила ему смету.</p>
+<div class="flow">
+<div><b>1</b><h4>Ссылка для менеджеров</h4><p>Мария один раз шлёт всем менеджерам общую ссылку tender-pech.ru/ustanovit-menedzher/</p></div>
+<div><b>2</b><h4>Иконка</h4><p>Менеджер ставит иконку и открывает её. На iPhone регистрация только внутри иконки.</p></div>
+<div><b>3</b><h4>Регистрация</h4><p>Имя, телефон, компания, согласие. Без пароля и без СМС. На экране код заявки из 4 цифр.</p></div>
+<div><b>4</b><h4>Мария пускает</h4><p>В разделе «Менеджеры» видит заявку и жмёт «Пустить». Сомневается: сверяет код по телефону.</p></div>
+<div><b>5</b><h4>Сметы приходят</h4><p>В папке тендера Мария отмечает менеджеров галочками. Смета появляется у них в списке сама.</p></div>
+<div><b>6</b><h4>Дальше без входа</h4><p>Иконка помнит устройство. Отключить можно менеджера целиком, одно устройство или одну смету.</p></div>
+</div></section>
+
+<section class="shot" id="s1"><h2><b>1</b>Две ссылки: кто что видит</h2>
+<p class="note">Иконка одна на обе роли: одно приложение «Тендер-Печь». Разные только страницы установки и первый экран после неё. На одном устройстве с входом админа главнее админ (так уже работает).</p>
+<div class="cmp">
+<div class="card"><h4>Для Марии (админ)</h4><div class="url">tender-pech.ru/ustanovit/</div><ul><li>Шаги установки для Android, iPhone, Windows и Mac.</li><li>После установки: экран «Вход», пароль один раз на устройство.</li><li>Дальше кабинет: тендеры, папки, согласование и новый раздел «Менеджеры».</li><li>Строку про личные ссылки менеджеров с этой страницы убираем.</li></ul></div>
+<div class="card"><h4>Для менеджеров</h4><div class="url">tender-pech.ru/ustanovit-menedzher/</div><ul><li>Те же шаги установки, текст для менеджера.</li><li>После установки: экран «Регистрация» (без пароля).</li><li>Пока Мария не пустила: «Заявка у Марии».</li><li>Дальше список его смет с отметками, что новое и что вернули.</li></ul></div>
+</div></section>
+
+<h2 class="part">Менеджер</h2>
+
+<section class="shot" id="s2"><h2><b>2</b>Страница установки для менеджера</h2>
+<p class="note">Статическая страница рядом с /ustanovit/, сама определяет телефон. Ключ в адресе не нужен: регистрация всё равно ждёт Марию. На iPhone прямо говорим: сначала иконка, потом регистрация.</p>
+<div class="phones">
+<div><p class="cap">iPhone, Safari</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<h3>Приложение для менеджеров</h3><p class="lead">Здесь приходят сметы от Марии. Поставьте иконку, откройте её и зарегистрируйтесь. Это займёт минуту.</p>
+<div class="os"><span class="on">iPhone</span><span>Android</span><span>Компьютер</span></div>
+<div class="card"><ol class="steps"><li>Нажмите «Поделиться» внизу Safari.</li><li>Выберите «На экран «Домой»» и «Добавить».</li><li>Откройте иконку «Тендер-Печь» на экране телефона.</li><li>Зарегистрируйтесь внутри иконки, не здесь в Safari: у iPhone вход в иконке отдельный.</li></ol></div>
+<a class="btn ghost">Скопировать ссылку</a>
+<p class="small">Открылось в Max или Telegram? Скопируйте ссылку и откройте в Safari.</p>
+</div></div></div></div>
+<div><p class="cap">Android, Chrome</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<h3>Приложение для менеджеров</h3><p class="lead">Здесь приходят сметы от Марии. Поставьте иконку, откройте её и зарегистрируйтесь. Это займёт минуту.</p>
+<div class="os"><span>iPhone</span><span class="on">Android</span><span>Компьютер</span></div>
+<a class="btn ok">Установить приложение</a>
+<div class="card"><ol class="steps"><li>Нажмите «Установить приложение».</li><li>Откройте иконку «Тендер-Печь».</li><li>Зарегистрируйтесь: имя, телефон, компания.</li></ol></div>
+<a class="btn ghost">Зарегистрироваться без установки</a>
+<p class="small">Кнопки «Установить» нет? Меню Chrome ⋮ → «Добавить на главный экран».</p>
+</div></div></div></div>
+</div></section>
+
+<section class="shot" id="s3"><h2><b>3</b>Регистрация в иконке</h2>
+<p class="note">Первый запуск иконки на новом устройстве. Пароля нет. Компания запоминается и подставляется в каждую смету, поменять можно в смете (вопрос Маше в итоге). Внизу вход для тех, кто уже зарегистрирован на другом телефоне (экран 8).</p>
+<div class="phones">
+<div><p class="cap">Заполнение</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<h3>Регистрация</h3><p class="lead">Один раз на этом телефоне. Мария увидит заявку и пустит вас.</p>
+<label class="lbl">Имя и фамилия</label><div class="f focus">Валерия Соколова</div>
+<label class="lbl">Телефон</label><div class="f"><span class="flag">🇷🇺 +7</span><span class="ph">(925) 123-45-67</span></div>
+<label class="lbl">Компания</label><div class="seg"><span class="on">Art-Active</span><span>ПРО Интерактив</span><span>Аренда Плюс</span></div>
+<div class="chk"><i>✓</i><span>Согласен на обработку имени и телефона для работы со сметами</span></div>
+<a class="btn ok">Отправить Марии</a>
+<a class="btn ghost">Я уже зарегистрирован</a>
+</div></div></div></div>
+<div><p class="cap">Ошибки в полях</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<h3>Регистрация</h3><p class="lead">Один раз на этом телефоне. Мария увидит заявку и пустит вас.</p>
+<label class="lbl">Имя и фамилия</label><div class="f" style="border-color:var(--red)"><span class="ph">Как вас зовут</span></div>
+<p class="small" style="color:#8F0A20;margin:-8px 0 12px">Напишите имя, Мария увидит его в заявке</p>
+<label class="lbl">Телефон</label><div class="f" style="border-color:var(--red)"><span class="flag">🇷🇺 +7</span>(925) 12</div>
+<p class="small" style="color:#8F0A20;margin:-8px 0 12px">Не хватает цифр</p>
+<label class="lbl">Компания</label><div class="seg"><span>Art-Active</span><span>ПРО Интерактив</span><span>Аренда Плюс</span></div>
+<div class="chk"><i style="background:#fff;color:var(--blue)"></i><span>Согласен на обработку имени и телефона для работы со сметами</span></div>
+<a class="btn ok" style="opacity:.55">Отправить Марии</a>
+<a class="btn ghost">Я уже зарегистрирован</a>
+</div></div></div></div>
+</div></section>
+
+<section class="shot" id="s4"><h2><b>4</b>Заявка у Марии</h2>
+<p class="note">Экран ожидания. Код заявки тот же, что видит Мария: по нему она узнает, что заявку прислала именно Валерия, а не кто-то с её именем. Экран обновится сам, когда Мария пустит.</p>
+<div class="phones">
+<div><p class="cap">Ждём</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<div class="empty"><img src="img/kot-sidit.webp" alt=""><h3>Заявка у Марии</h3><p class="lead">Как только Мария вас пустит, здесь появятся ваши сметы. Иконку можно закрыть.</p></div>
+<p class="lbl" style="text-align:center">Код заявки</p><div class="code"><span>4</span><span>7</span><span>1</span><span>9</span></div>
+<p class="small" style="text-align:center;margin-bottom:16px">Мария может спросить его по телефону</p>
+<a class="btn ghost">Исправить имя или телефон</a>
+</div></div></div></div>
+<div><p class="cap">Мария пустила</p><div class="phone"><div class="app" style="min-height:700px"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<div class="empty"><img src="img/carevna.webp" alt=""><h3>Добро пожаловать!</h3><p class="lead">Мария вас пустила. Сметы, которые она отправит, появятся здесь сами.</p></div>
+<a class="btn ok">К моим сметам</a>
+</div><div class="toast">Готово: вход на этом телефоне запомнен, пароль не нужен</div></div></div></div>
+</div></section>
+
+<section class="shot" id="s5"><h2><b>5</b>Список смет</h2>
+<p class="note">Главный экран менеджера. Все сметы, которые Мария ему отправила, по срочности. Нажал на карточку: открывается привычный экран сметы. Отправленные и утверждённые уходят во вкладку «Готово».</p>
+<div class="phones">
+<div><p class="cap">Телефон</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<h3>Мои сметы</h3>
+<div class="tabs"><span class="on">В работе · 3</span><span>Готово · 5</span></div>
+<a class="card tender"><div class="top"><h4>Выставка «Иннопром», стенд 120 м²</h4><span class="chip fail">Вернули</span></div><div class="meta"><span>Срок: завтра, 18:00</span><span>2 комментария Марии</span></div><div class="go"><span>Поправить</span><span>→</span></div></a>
+<a class="card tender"><div class="top"><h4>Новогодний корпоратив, 300 гостей</h4><span class="chip new">Новая</span></div><div class="meta"><span>Срок: 3 декабря</span><span>Пришла сегодня, 09:40</span></div><div class="go"><span>Открыть</span><span>→</span></div></a>
+<a class="card tender"><div class="top"><h4>Форум «Цифровой регион», звук и свет</h4><span class="chip">В работе</span></div><div class="meta"><span>Срок: 5 декабря</span><span>Правка 2 часа назад</span></div><div class="go"><span>Продолжить</span><span>→</span></div></a>
+</div></div></div></div>
+<div><p class="cap">Вкладка «Готово»</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<h3>Мои сметы</h3>
+<div class="tabs"><span>В работе · 3</span><span class="on">Готово · 5</span></div>
+<a class="card tender"><div class="top"><h4>Фестиваль «Город мастеров»</h4><span class="chip ap">Утверждена</span></div><div class="meta"><span>Версия 3</span><span>21 ноября</span></div><div class="go"><span>Посмотреть</span><span>→</span></div></a>
+<a class="card tender"><div class="top"><h4>Конференция «Логистика 2027»</h4><span class="chip wait">На согласовании</span></div><div class="meta"><span>Версия 2</span><span>Отправлена 24 ноября</span></div><div class="go"><span>Посмотреть</span><span>→</span></div></a>
+<a class="card tender"><div class="top"><h4>Спартакиада завода, 4 площадки</h4><span class="chip ap">Утверждена</span></div><div class="meta"><span>Версия 4</span><span>18 ноября</span></div><div class="go"><span>Посмотреть</span><span>→</span></div></a>
+<p class="small" style="text-align:center">Ещё 2 в архиве у Марии</p>
+</div></div></div></div>
+</div></section>
+
+<section class="shot" id="s6"><h2><b>6</b>Смет пока нет</h2>
+<p class="note">Мария пустила менеджера, но ещё ничего не отправила. Или всё в работе закончилось.</p>
+<div class="phones">
+<div><p class="cap">Пусто</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Игорь Белов<br>Аренда Плюс</span></div><div class="ground"></div><div class="pad">
+<h3>Мои сметы</h3>
+<div class="tabs"><span class="on">В работе · 0</span><span>Готово · 0</span></div>
+<div class="empty"><img src="img/kot-spit.webp" alt=""><h3>Смет пока нет</h3><p class="lead">Печь остыла, кот спит. Когда Мария отправит смету, она появится здесь.</p></div>
+</div></div></div></div>
+<div><p class="cap">Всё сделано</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Игорь Белов<br>Аренда Плюс</span></div><div class="ground"></div><div class="pad">
+<h3>Мои сметы</h3>
+<div class="tabs"><span class="on">В работе · 0</span><span>Готово · 7</span></div>
+<div class="empty"><img src="img/mudrec.webp" alt=""><h3>Всё отправлено</h3><p class="lead">Новых смет нет. Отправленные лежат во вкладке «Готово».</p></div>
+<a class="btn ghost">Открыть «Готово»</a>
+</div></div></div></div>
+</div></section>
+
+<section class="shot" id="s7"><h2><b>7</b>Доступ закрыт, заявку не приняли</h2>
+<p class="note">Мария отключила менеджера или это устройство: иконка при следующем открытии стирает вход и показывает этот экран. Сметы и версии менеджера у Марии остаются. Отдельно: одну смету можно закрыть, тогда она просто пропадает из списка.</p>
+<div class="phones">
+<div><p class="cap">Мария закрыла доступ</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<div class="empty"><img src="img/kot-udivlen.webp" alt=""><h3>Доступ закрыт</h3><p class="lead">Мария закрыла вход на этом устройстве. Если это ошибка, напишите ей: она откроет снова.</p></div>
+<a class="btn ghost">Зарегистрироваться заново</a>
+</div></div></div></div>
+<div><p class="cap">Заявку не приняли</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<div class="empty"><img src="img/kot-udivlen.webp" alt=""><h3>Заявку не приняли</h3><p class="lead">Мария не узнала вас по заявке. Проверьте имя и телефон и отправьте ещё раз или напишите ей.</p></div>
+<a class="btn ok">Отправить заново</a>
+</div></div></div></div>
+</div></section>
+
+<section class="shot" id="s8"><h2><b>8</b>Новый телефон</h2>
+<p class="note">Два пути. Старый телефон под рукой: на нём «Войти на другом устройстве» даёт код на 10 минут, Мария не нужна. Старого нет: «Я уже зарегистрирован» → телефон → заявка Марии с пометкой «новое устройство». Номер телефона сам по себе вход не даёт.</p>
+<div class="phones">
+<div><p class="cap">Старый телефон: код</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<h3>Войти на другом устройстве</h3><p class="lead">Откройте иконку на новом телефоне или компьютере, нажмите «Я уже зарегистрирован» и введите код.</p>
+<div class="code"><span>3</span><span>8</span><span>2</span><span>5</span><span>0</span><span>6</span></div>
+<p class="small" style="text-align:center;margin-bottom:16px">Код работает 10 минут и один раз</p>
+<a class="btn ghost">Готово</a>
+</div></div></div></div>
+<div><p class="cap">Новый телефон: ввод</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b></div><div class="ground"></div><div class="pad">
+<h3>Я уже зарегистрирован</h3><p class="lead">Введите код со старого телефона.</p>
+<div class="code small"><span>3</span><span>8</span><span>2</span><span>5</span><span></span><span></span></div>
+<a class="btn ok">Войти</a>
+<div class="card" style="margin-top:8px"><b>Старого телефона нет?</b><p class="small" style="margin:6px 0 12px">Введите номер, Мария получит заявку «новое устройство» и пустит вас.</p><div class="f" style="margin:0 0 10px"><span class="flag">🇷🇺 +7</span><span class="ph">(925) 123-45-67</span></div><a class="btn ghost" style="margin:0">Попросить Марию</a></div>
+</div></div></div></div>
+</div></section>
+
+<section class="shot" id="s9"><h2><b>9</b>Старая личная ссылка</h2>
+<p class="note">Уже выданные ссылки ?m=… работают как раньше, никого не переучиваем. Если зарегистрированный менеджер откроет старую ссылку в иконке, смета встанет в его список, а имя и компания подставятся сами: второй раз не спрашиваем.</p>
+<div class="phones">
+<div><p class="cap">Ссылка добавилась в список</p><div class="phone"><div class="app"><div class="sb"></div><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><span class="who">Валерия Соколова<br>Art-Active</span></div><div class="ground"></div><div class="pad">
+<h3>Мои сметы</h3>
+<div class="tabs"><span class="on">В работе · 4</span><span>Готово · 5</span></div>
+<a class="card tender" style="border-color:var(--yel)"><div class="top"><h4>Выставка «Строй Экспо», монтаж</h4><span class="chip new">Добавлена</span></div><div class="meta"><span>Из старой ссылки</span><span>Срок: 8 декабря</span></div><div class="go"><span>Открыть</span><span>→</span></div></a>
+<a class="card tender"><div class="top"><h4>Выставка «Иннопром», стенд 120 м²</h4><span class="chip fail">Вернули</span></div><div class="meta"><span>Срок: завтра, 18:00</span></div><div class="go"><span>Поправить</span><span>→</span></div></a>
+</div><div class="toast">Смета «Строй Экспо» теперь в вашем списке</div></div></div></div>
+</div></section>
+
+<h2 class="part">Мария (админ)</h2>
+
+<section class="shot" id="s10"><h2><b>10</b>Раздел «Менеджеры»: заявки и список</h2>
+<p class="note">Новая вкладка в шапке кабинета, красный счётчик новых заявок. Заявки сверху: имя, телефон, компания, код заявки, устройство. Ниже все менеджеры.</p>
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>tender-pech.ru · кабинет</span></div><div class="adm"><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><div class="nav"><span>Тендеры</span><span>На согласовании</span><span class="on">Менеджеры<em>2</em></span><span>Архив</span></div><span class="who">Мария</span></div><div class="ground"></div><div class="body">
+<h3>Заявки · 2</h3>
+<div class="req"><div><h4>Валерия Соколова · Art-Active</h4><div class="meta">+7 (916) 204-11-38 · iPhone · код заявки <b>4719</b> · 5 минут назад</div></div><div class="act"><a class="btn ok">Пустить</a><a class="btn ghost">Отклонить</a></div></div>
+<div class="req"><div><h4>Игорь Белов · Аренда Плюс <span class="chip wait">новое устройство</span></h4><div class="meta">+7 (903) 777-02-15 · уже есть в списке, 1 устройство · код <b>2286</b> · вчера</div></div><div class="act"><a class="btn ok">Пустить</a><a class="btn ghost">Отклонить</a></div></div>
+<h3 style="margin-top:26px">Менеджеры · 5</h3>
+<table class="tbl"><tr><th>Менеджер</th><th>Компания</th><th>Сметы в работе</th><th>Устройства</th><th></th></tr>
+<tr><td><b>Анна Крылова</b><span class="small">+7 (926) 310-55-90</span></td><td>ПРО Интерактив</td><td>2 · одна вернулась</td><td>iPhone, ноутбук</td><td><a class="btn ghost">Открыть</a></td></tr>
+<tr><td><b>Игорь Белов</b><span class="small">+7 (903) 777-02-15</span></td><td>Аренда Плюс</td><td>0</td><td>Android</td><td><a class="btn ghost">Открыть</a></td></tr>
+<tr><td><b>Олег Миронов</b><span class="small">+7 (985) 120-44-71</span></td><td>Art-Active</td><td>1</td><td>Android</td><td><a class="btn ghost">Открыть</a></td></tr>
+<tr><td><b>Ксения Лебедева</b><span class="small">+7 (915) 641-09-22</span></td><td>Art-Active</td><td>3</td><td>iPhone</td><td><a class="btn ghost">Открыть</a></td></tr>
+<tr><td><b>Дмитрий Орлов</b><span class="small">отключён 20 ноября</span></td><td>ПРО Интерактив</td><td>0</td><td>нет</td><td><a class="btn ghost">Включить</a></td></tr>
+</table>
+</div></div></div></section>
+
+<section class="shot" id="s11"><h2><b>11</b>Карточка менеджера: устройства, отключить</h2>
+<p class="note">Три уровня отзыва: убрать одно устройство (потерял телефон), закрыть одну смету (в папке тендера, как сейчас), отключить менеджера целиком (уволился). Всё, что он сделал, остаётся в тендерах.</p>
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>tender-pech.ru · кабинет · менеджеры</span></div><div class="adm"><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><div class="nav"><span>Тендеры</span><span>На согласовании</span><span class="on">Менеджеры</span><span>Архив</span></div><span class="who">Мария</span></div><div class="ground"></div><div class="body">
+<div class="two">
+<div><h3>Анна Крылова</h3><p class="small" style="font-size:15px;margin-bottom:14px">ПРО Интерактив · +7 (926) 310-55-90 · с 26 ноября</p>
+<table class="tbl"><tr><th>Устройство</th><th>Последний вход</th><th></th></tr>
+<tr><td>iPhone, иконка</td><td>сегодня, 10:12</td><td><a class="btn ghost">Убрать</a></td></tr>
+<tr><td>Ноутбук, Chrome</td><td>вчера, 19:40</td><td><a class="btn ghost">Убрать</a></td></tr>
+</table>
+<div class="btns" style="margin-top:16px"><a class="btn ghost">Изменить имя</a><a class="btn bad">Отключить менеджера</a></div>
+</div>
+<div><h3>Её сметы</h3>
+<table class="tbl"><tr><th>Тендер</th><th>Статус</th><th></th></tr>
+<tr><td>Выставка «Иннопром»</td><td><span class="chip fail">Вернули</span></td><td><a class="btn ghost">Закрыть</a></td></tr>
+<tr><td>Форум «Цифровой регион»</td><td><span class="chip">В работе</span></td><td><a class="btn ghost">Закрыть</a></td></tr>
+<tr><td>Фестиваль «Город мастеров»</td><td><span class="chip ap">Утверждена</span></td><td></td></tr>
+</table></div>
+</div></div></div></div></section>
+
+<section class="shot" id="s12"><h2><b>12</b>Тендер: отправить смету менеджерам</h2>
+<p class="note">В папке тендера вместо «Создать ссылку и скопировать» галочки по менеджерам. Отметила: у каждого смета появилась в списке, у каждого своя цепочка версий, как сейчас у ссылки. Для человека без регистрации остаётся старая кнопка «Личная ссылка».</p>
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>tender-pech.ru · кабинет · тендер</span></div><div class="adm"><div class="hd"><img src="img/pech.webp" alt=""><b>Тендер-Печь</b><div class="nav"><span class="on">Тендеры</span><span>На согласовании</span><span>Менеджеры</span><span>Архив</span></div><span class="who">Мария</span></div><div class="ground"></div><div class="body">
+<div class="two">
+<div><h3>Новогодний корпоратив, 300 гостей</h3><p class="small" style="font-size:15px;margin-bottom:14px">Смета ИИ готова · срок 3 декабря</p>
+<p class="lbl">Кому отправить</p>
+<div class="pick on"><i>✓</i><b>Валерия Соколова</b><span class="r small">Art-Active</span></div>
+<div class="pick on"><i>✓</i><b>Анна Крылова</b><span class="r small">ПРО Интерактив</span></div>
+<div class="pick"><i></i><b>Игорь Белов</b><span class="r small">Аренда Плюс</span></div>
+<div class="pick"><i></i><b>Олег Миронов</b><span class="r small">Art-Active</span></div>
+<div class="btns" style="margin-top:14px"><a class="btn ok">Отправить двоим</a><a class="btn ghost">Личная ссылка</a></div>
+</div>
+<div><h3>Уже у менеджеров</h3>
+<table class="tbl"><tr><th>Менеджер</th><th>Статус</th><th></th></tr>
+<tr><td>Ксения Лебедева<span class="small">открыла сегодня</span></td><td><span class="chip">В работе</span></td><td><a class="btn ghost">Закрыть</a></td></tr>
+<tr><td>Гость по ссылке<span class="small">без регистрации</span></td><td><span class="chip new">Новая</span></td><td><a class="btn ghost">Закрыть</a></td></tr>
+</table></div>
+</div></div></div></div></section>
+
+</main></body></html>
