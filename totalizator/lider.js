@@ -129,7 +129,8 @@ function ldSezon(box){
   }
   box.appendChild(info);
   var rows = RATE.sezon_tablica || [];
-  if (!rows.length) { var e = el('p', 'note', 'В таблице сезона пока никого: первая неделя ещё идёт.'); e.id = 'ldEmpty'; box.appendChild(e); return; }
+  var nachat = rows.some(function(r){ return (r.nedel || 0) > 0; });
+  if (!rows.length || !nachat) { var e = el('p', 'note', 'Сезон начнётся после первого итога. Первая неделя ещё идёт.'); e.id = 'ldEmpty'; box.appendChild(e); return; }
   var leaders = RATE.lider_sezona || [];
   var ul = el('ol', 'ld-rows'); ul.id = 'ldRows';
   rows.forEach(function(r){
@@ -153,7 +154,7 @@ function ldNedelya(box, ws){
   box.appendChild(el('p', 'ld-range', 'Неделя ' + ldRange(w) + '.'));
   if (w.status === 'idet') {
     var a = el('div', 'ld-none'); a.id = 'ldNone';
-    a.appendChild(el('b', null, 'Неделя идёт, итог в понедельник в 12:15. Таблицы недели пока нет.'));
+    a.appendChild(el('b', null, 'Неделя ещё не закончилась. Таблицы недели пока нет.'));
     box.appendChild(a); return;
   }
   if (w.status === 'bez_dannyh' || !(w.tablica && w.tablica.length)) {

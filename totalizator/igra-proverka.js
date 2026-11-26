@@ -1,8 +1,8 @@
 /* igra-proverka.js: экран проверки, отправка ставки, плашки «Ставка принята» и ошибки. */
 'use strict';
 var PV = { msg: '' };
-var TXT_NET = 'Нет связи с сервером. Ставка сохранена на этом телефоне, нажмите «Отправить ещё раз».';
-var TXT_BAD_ANSWER = 'Сервер ответил не так, как ждали. Ставка сохранена на этом телефоне, нажмите «Отправить ещё раз».';
+var TXT_NET = 'Нет связи с сервером. Ставка сохранена на этом устройстве, нажмите «Отправить ещё раз».';
+var TXT_BAD_ANSWER = 'Сервер ответил не так, как ждали. Ставка сохранена на этом устройстве, нажмите «Отправить ещё раз».';
 
 function proverkaMissing(){
   var d = STATE.draft, p = IG.p, parts = [], nt = p.k - d.top.length, nh = p.h - d.hudshie.length;
@@ -89,21 +89,28 @@ function proverkaPlaque(){
   box.appendChild(el('h2', 'res-h', 'Ставка не принята'));
   box.appendChild(el('p', 'res-p', r.text));
   var rw = el('div', 'btn-row');
-  if (r.kod !== 'zakryta') { var re = igraBtn('Отправить ещё раз', '', proverkaSend); re.id = 'resRetry'; rw.appendChild(re); }
+  if (r.kod === 'zanyato') {
+    var rp = igraBtn('Заменить ставку', '', function(){ proverkaSend(true); }); rp.id = 'resReplace'; rw.appendChild(rp);
+    var ot = igraBtn('Выбрать другое имя', 'btn-line', function(){ IG.res = null; IG.other = true; IG.step = 'modes'; igraRedrawAll(); var i = $('igraOther'); if (i) i.focus(); }); ot.id = 'resOther'; rw.appendChild(ot);
+  } else if (r.kod !== 'zakryta') { var re = igraBtn('Отправить ещё раз', '', function(){ proverkaSend(); }); re.id = 'resRetry'; rw.appendChild(re); }
   var cp = igraBtn('Скопировать ставку', 'btn-line', function(){
     var t = proverkaCopyText(r.sostav, r.who);
-    proverkaCopy(t, function(ok){ var f = $('resCopied'); if (f) f.textContent = ok ? 'Ставка скопирована. Её можно отправить Маше в чат.' : 'Не получилось скопировать. Выделите текст ниже и скопируйте вручную: ' + t; });
+    proverkaCopy(t, function(ok){ var f = $('resCopied'); if (f) f.textContent = ok ? 'Ставка скопирована. Её можно отправить организатору.' : 'Не получилось скопировать. Выделите текст ниже и скопируйте вручную: ' + t; });
   }); cp.id = 'resCopy'; rw.appendChild(cp); box.appendChild(rw);
   var fb = el('p', 'res-p'); fb.id = 'resCopied'; fb.setAttribute('aria-live', 'polite'); box.appendChild(fb);
   return box;
 }
-function proverkaPayload(){
+function proverkaPayload(klient, zamena){
   var d = STATE.draft;
-  return { partiya: IG.p.id, imya: STATE.me, top: d.top.slice(), hudshie: d.hudshie.slice(), lider: d.lider, cvet: IG.p.gz ? d.cvet : null, rezhim: d.rezhim === 'igra' ? 'igra' : 'ruchnoj', klient: newKlient() };
+  var o = { partiya: IG.p.id, imya: STATE.me, top: d.top.slice(), hudshie: d.hudshie.slice(), lider: d.lider, cvet: IG.p.gz ? d.cvet : null, rezhim: d.rezhim === 'igra' ? 'igra' : 'ruchnoj', klient: klient || newKlient(), ustr: ustrGet() };
+  if (zamena) o.zamena = true;
+  return o;
 }
-function proverkaSend(){
+/* Повторная отправка после сбоя берёт тот же klient: сервер узнает ту же ставку и не запишет дубль. */
+function proverkaSend(zamena){
   var d = STATE.draft; if (IG.sending || !d || proverkaMissing().length) return;
-  var p = IG.p, me = STATE.me, payload = proverkaPayload(), sostav = proverkaSostav(d);
+  var prev = IG.res && IG.res.kind === 'bad' && IG.res.klient && IG.res.who === STATE.me ? IG.res.klient : '';
+  var p = IG.p, me = STATE.me, payload = proverkaPayload(prev, zamena === true), sostav = proverkaSostav(d);
   igraSaveDraft(); IG.sending = true; IG.res = { kind: 'sending' }; igraDrawBody();
   apiPost('/zavod/tot/stavka2', payload).then(function(r){
     IG.sending = false;
@@ -130,7 +137,7 @@ function proverkaSend(){
     if (r.net) text = TXT_NET;
     else if (j && j.ok === false && j.oshibka) text = j.oshibka;
     else text = TXT_BAD_ANSWER;
-    IG.res = { kind: 'bad', kod: kod || (r.net ? 'set' : 'otvet'), text: text, sostav: sostav, who: me };
+    IG.res = { kind: 'bad', kod: kod || (r.net ? 'set' : 'otvet'), text: text, sostav: sostav, who: me, klient: payload.klient };
     sound.play('err'); buzz(80); igraDrawBody();
     var bx = $('resBox'); if (bx) bx.scrollIntoView({ block: 'center', behavior: 'auto' });
   });
@@ -159,7 +166,7 @@ function proverkaRender(body){
   if (d.top.length < p.k || d.hudshie.length < p.h) { var ad = igraBtn('Добавить карточки', 'btn-line', function(){ IG.step = 'ruchnoj'; igraDrawBody(); }); ad.id = 'pvAdd'; ar.appendChild(ad); }
   var bk = igraBtn('Назад к выбору способа', 'btn-line', function(){ IG.step = 'modes'; igraDrawBody(); }); ar.appendChild(bk);
   st.appendChild(ar);
-  var send = igraBtn(IG.sending ? 'Отправляем…' : 'Отправить ставку', '', proverkaSend); send.id = 'sendBtn'; send.disabled = !!miss.length || IG.sending;
+  var send = igraBtn(IG.sending ? 'Отправляем…' : 'Отправить ставку', '', function(){ proverkaSend(); }); send.id = 'sendBtn'; send.disabled = !!miss.length || IG.sending;
   var hint = el('p', 'hint' + (miss.length ? '' : ' ready'), miss.length ? 'Чтобы отправить, выберите ' + miss.join(', ') + '.' : 'Всё готово. Нажмите «Отправить ставку».'); hint.id = 'sendHint';
   var sr = el('div', 'btn-row'); sr.appendChild(send); st.appendChild(sr); st.appendChild(hint);
   body.appendChild(st);

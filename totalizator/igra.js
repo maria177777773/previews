@@ -29,7 +29,8 @@ function igraImgs(b, cls, zoom){
 /* Метрики карточек: текущие (tek) или итог последнего закрытого тура этой лиги. */
 function igraMetrics(p){
   var map = {}, src = '';
-  if (p && p.tek && p.tek.fakt && p.tek.fakt.length) { src = 'now'; p.tek.fakt.forEach(function(f){ map[f.id] = f; }); }
+  /* пока тур принимает ставки, его собственные свежие цифры не показываем: иначе ставка делается с подсмотренным итогом */
+  if (p && p.tek && p.tek.fakt && p.tek.fakt.length && !turnInfo(p).open) { src = 'now'; p.tek.fakt.forEach(function(f){ map[f.id] = f; }); }
   else {
     var last = null;
     (DATA.partii || []).forEach(function(q){ if (q.liga === p.liga && q.id !== p.id && q.itog && q.itog.fakt && (!last || q.zakrytie > last.zakrytie)) last = q; });
@@ -81,7 +82,7 @@ function igraTours(){
   var out = [];
   if (ny) out.push({ p: ny, t: '❄ ' + (ny.nazvanie || 'Новогодние') });
   if (ob) out.push({ p: ob, t: ob.nazvanie || 'Обычные' });
-  if (old) out.push({ p: old, t: old.nazvanie || 'Пять светлых баннеров' });
+  if (old) out.push({ p: old, t: 'Прошлая неделя, ещё открыта: ' + (old.nazvanie || 'Пять светлых баннеров') });
   return out;
 }
 function igraTourSub(p){

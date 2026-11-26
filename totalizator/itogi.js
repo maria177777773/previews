@@ -30,9 +30,14 @@ function itNames(list){
   if (list.length === 1) return list[0];
   return list.slice(0, -1).join(', ') + ' и ' + list[list.length - 1];
 }
+function itWeekOpen(w){
+  var o = false;
+  (w.turi || []).forEach(function(id){ var p = getPartiya(id); if (p && turnInfo(p).open) o = true; });
+  return o;
+}
 function itWeekLabel(w){
-  var st = { zakryta: 'итог есть', idet: 'идёт', bez_dannyh: 'без итога' }[w.status] || '';
-  return 'Неделя ' + itRange(w) + (st ? ' (' + st + ')' : '');
+  var st = { zakryta: 'итог есть', idet: itWeekOpen(w) ? 'ставки открыты' : 'идёт', bez_dannyh: 'без итога' }[w.status] || '';
+  return itRange(w) + (st ? ', ' + st : '');
 }
 function itPts(n){ return n + ' ' + plural(n, 'очко', 'очка', 'очков'); }
 function itIsMe(name){ return !!STATE.me && String(name).toLowerCase() === STATE.me.toLowerCase(); }
@@ -235,7 +240,7 @@ function itCountBets(w){
 }
 function itRunning(box, w){
   var card = el('div', 'it-run'); card.id = 'itRun';
-  card.appendChild(el('div', 'it-run-h', 'Неделя идёт, итог в понедельник в 12:15'));
+  card.appendChild(el('div', 'it-run-h', itWeekOpen(w) ? 'Ставки ещё принимаются' : 'Неделя идёт, итог скоро'));
   var konec = null;
   (w.turi || []).forEach(function(id){ var p = getPartiya(id); if (p && p.konec && (!konec || p.konec > konec)) konec = p.konec; });
   if (konec) card.appendChild(el('p', 'it-run-p', 'Итог: ' + fmtDay(konec) + ', ' + fmtDate(konec) + ', ' + fmtTime(konec) + ' по Москве.'));

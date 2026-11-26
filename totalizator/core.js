@@ -186,6 +186,12 @@ function newKlient(){
   catch (e) { for (var j = 0; j < 12; j++) s += a[Math.floor(Math.random() * a.length)]; }
   return s;
 }
+/* ustr: постоянная метка этого устройства. Сервер по ней понимает, что имя играет с того же места, и спрашивает о замене, если ставку под именем уже делали с другого. */
+function ustrGet(){
+  var k = ls('tot5_ustr');
+  if (!k || !/^[a-z0-9]{8,40}$/.test(k)) { k = newKlient(); ls('tot5_ustr', k); }
+  return k;
+}
 /* Сообщение о сбое на нашей стороне. Сбой самой /popytka не репортим. */
 function reportPopytka(partiya, tip, kratko, klient){
   var body = JSON.stringify({ partiya: partiya || '', tip: tip, kratko: String(kratko || '').slice(0, 80), klient: klient || '' });
