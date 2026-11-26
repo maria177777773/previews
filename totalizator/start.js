@@ -60,7 +60,7 @@ function drawWeek(){
   if (p) {
     var ti = turnInfo(p);
     box.classList.remove('closed');
-    main.textContent = oknoText(p) + 'Ставки до ' + fmtDay(p.zakrytie) + ', ' + fmtDate(p.zakrytie) + ', ' + fmtTime(p.zakrytie) + ' по Москве.';
+    main.textContent = oknoText(p) + 'Ставки до ' + fmtDayRod(p.zakrytie) + ', ' + fmtDate(p.zakrytie) + ', ' + fmtTime(p.zakrytie) + ' по Москве.';
     tm.textContent = 'Осталось ' + leftText(ti.sec);
   } else {
     var l = lastTour(); box.classList.add('closed');

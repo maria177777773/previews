@@ -238,7 +238,7 @@ function itRunning(box, w){
   card.appendChild(el('div', 'it-run-h', 'Неделя идёт, итог в понедельник в 12:15'));
   var konec = null;
   (w.turi || []).forEach(function(id){ var p = getPartiya(id); if (p && p.konec && (!konec || p.konec > konec)) konec = p.konec; });
-  if (konec) card.appendChild(el('p', 'it-run-p', 'Итог будет ' + fmtDay(konec) + ', ' + fmtDate(konec) + ', в ' + fmtTime(konec) + ' по Москве.'));
+  if (konec) card.appendChild(el('p', 'it-run-p', 'Итог: ' + fmtDay(konec) + ', ' + fmtDate(konec) + ', ' + fmtTime(konec) + ' по Москве.'));
   var n = itCountBets(w);
   if (n != null) card.appendChild(el('p', 'it-run-p', 'Ставок на эту неделю: ' + n + '. Кто как поставил, мы покажем после итога.'));
   box.appendChild(card);

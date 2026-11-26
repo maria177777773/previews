@@ -36,11 +36,11 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 .how{margin:22px 0 16px;padding:20px;background:var(--pn);border-radius:16px}
 .how-steps{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:10px;grid-template-columns:1fr}
 .how-steps li{display:flex;gap:12px;align-items:flex-start}
-.how-steps .n{flex:0 0 36px;height:36px;border-radius:50%;background:var(--g);color:#fff;font:700 20px/36px TT,Roboto,sans-serif;text-align:center}
+.how-steps .n{flex:0 0 36px;width:36px;min-width:36px;max-width:36px;height:36px;border-radius:50%;background:var(--g);color:#fff;font:700 20px/36px TT,Roboto,sans-serif;text-align:center}
 .how-ex{margin:0;padding:12px 14px;background:#fff;border-radius:12px;border:1px solid var(--l)}
 @media(min-width:1000px){
   .how-steps{grid-template-columns:repeat(5,1fr);gap:16px}
-  .how-steps li{flex-direction:column;background:#fff;border-radius:12px;padding:14px;border:1px solid var(--l)}
+  .how-steps li{flex-direction:column;align-items:flex-start;background:#fff;border-radius:12px;padding:14px;border:1px solid var(--l)}
 }
 
 /* плашка недели */
@@ -182,3 +182,4 @@ body.lb-open{overflow:hidden}
 .imgbtn{flex:1 1 0;min-width:0;padding:0;border:0;background:none;display:block;border-radius:8px}
 .imgbtn img{display:block;width:100%}
 .gimgs>img{flex:1 1 0;min-width:0}
+.mo-badge-i,.it-win-cup,.ld-cup,.it-cup{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}

@@ -16,6 +16,7 @@ function ls(k, v){
   } catch (e) { return null; }
 }
 var MES = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+var DNI_ROD = ['воскресенья','понедельника','вторника','среды','четверга','пятницы','субботы'];
 var DNI = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
 function mskDate(iso){ var t = new Date(iso).getTime(); return isNaN(t) ? null : new Date(t + 3 * 3600 * 1000); }
 function fmtDate(iso){ var d = mskDate(iso); return d ? d.getUTCDate() + ' ' + MES[d.getUTCMonth()] : ''; }
@@ -23,6 +24,7 @@ function fmtTime(iso){
   var d = mskDate(iso); if (!d) return '';
   return String(d.getUTCHours()).padStart(2, '0') + ':' + String(d.getUTCMinutes()).padStart(2, '0');
 }
+function fmtDayRod(iso){ var d = mskDate(iso); return d ? DNI_ROD[d.getUTCDay()] : ''; }
 function fmtDay(iso){ var d = mskDate(iso); return d ? DNI[d.getUTCDay()] : ''; }
 function plural(n, a, b, c){
   var m = Math.abs(n) % 100, r = m % 10;
