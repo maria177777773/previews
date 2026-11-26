@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тотализатор баннеров</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="itogi.css">
+<link rel="stylesheet" href="lider.css">
+<link rel="stylesheet" href="moi.css">
+<link rel="stylesheet" href="zayavka.css">
+<link rel="stylesheet" href="v6.css">
+<link rel="stylesheet" href="v7.css">
+</head>
+<body>
+<div id="demoBar" class="demo-bar" hidden>Превью новой игры: ставки не отправляются и не попадают в зачёт.</div>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo-link" href="./" aria-label="Каталист, на главную тотализатора"><img class="logo" src="assets/logo.png" alt="Каталист"></a>
+    <div class="top-title">
+      <h1>Тотализатор <span class="g">баннеров</span></h1>
+      <p class="sub">Угадайте, какие баннеры принесут больше кликов.</p>
+    </div>
+    <button class="btn play-top" id="playTop" type="button"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg><span>Играть</span></button>
+    <div class="top-me">
+      <button class="chip me-chip" id="meChip" type="button">Выберите имя</button>
+      <button class="chip snd-chip" id="sndBtn" type="button" aria-pressed="true">Звук вкл</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="how" id="how" aria-labelledby="howH">
+    <h2 id="howH">Как <span class="g">играем</span></h2>
+    <ol class="how-steps">
+      <li><span class="n">1</span><span>Выберите имя и тур: Новогодние или Обычные.</span></li>
+      <li><span class="n">2</span><span>Нажмите «Играть». На экране два баннера: выберите, какой лучше, слева или справа. Проигравший уходит, на его место встаёт следующий. Так находится лидер. Можно по-другому: «Расставлю сам», там вы отмечаете лучшие и худшие сами.</span></li>
+      <li><span class="n">3</span><span>После игры вы увидите лидера, 10 лучших и 10 худших. Список можно поправить: убрать, добавить, поменять порядок. Затем соберите ставку: Новогодние 2 лучших и 2 худших, Обычные 5 и 5 (берутся первые из ваших списков). Первый из лучших станет фаворитом со звездой. В Новогодних ещё угадайте цвет: белая или зелёная.</span></li>
+      <li><span class="n">4</span><span>Ставки принимаются до понедельника 12:15 по Москве. Потом неделя показов в Директе.</span></li>
+      <li><span class="n">5</span><span>Через неделю смотрим цифры Директа и считаем очки. Баннер сравниваем с баннерами его же кампании, поэтому условия у всех равные.</span></li>
+    </ol>
+    <p class="how-ex"><b>Очки:</b> лучшие 1 очко каждая, худшие 1 очко каждая, фаворит +2, цвет +3. Пример: угадали 3 лучших, 2 худших и фаворита, получили 3 + 2 + 2 = 7 очков. Максимум: Обычные 12, Новогодние 9.</p>
+  </section>
+
+  <section class="week" id="week" aria-live="off">
+    <div class="week-main" id="weekMain">Загружаем неделю…</div>
+    <div class="week-timer" id="weekTimer"></div>
+  </section>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Разделы">
+    <button role="tab" class="tab" id="tab-igra" data-tab="igra" aria-controls="s-igra" aria-selected="true" type="button">Играть</button>
+    <button role="tab" class="tab" id="tab-itogi" data-tab="itogi" aria-controls="s-itogi" aria-selected="false" type="button">Итоги недели</button>
+    <button role="tab" class="tab" id="tab-lider" data-tab="lider" aria-controls="s-lider" aria-selected="false" type="button">Таблица лидеров</button>
+    <button role="tab" class="tab" id="tab-moi" data-tab="moi" aria-controls="s-moi" aria-selected="false" type="button">Мои ставки и значки</button>
+    <button role="tab" class="tab" id="tab-zayavka" data-tab="zayavka" aria-controls="s-zayavka" aria-selected="false" type="button">Свой баннер</button>
+    <button role="tab" class="tab" id="tab-formaty" data-tab="formaty" aria-controls="s-formaty" aria-selected="false" type="button">Форматы</button>
+  </nav>
+
+  <section class="panel" id="s-igra" role="tabpanel" aria-labelledby="tab-igra"></section>
+  <section class="panel" id="s-itogi" role="tabpanel" aria-labelledby="tab-itogi" hidden></section>
+  <section class="panel" id="s-lider" role="tabpanel" aria-labelledby="tab-lider" hidden></section>
+  <section class="panel" id="s-moi" role="tabpanel" aria-labelledby="tab-moi" hidden></section>
+  <section class="panel" id="s-zayavka" role="tabpanel" aria-labelledby="tab-zayavka" hidden></section>
+  <section class="panel" id="s-formaty" role="tabpanel" aria-labelledby="tab-formaty" hidden></section>
+</main>
+
+<footer class="foot"><div class="wrap">Игра агентства «Каталист». Ставки на баннеры, которые мы запускаем в Директе.</div></footer>
+
+<script src="core.js"></script>
+<script src="duel-engine.js"></script>
+<script src="igra.js"></script>
+<script src="igra-ruchnoj.js"></script>
+<script src="igra-duel.js"></script>
+<script src="igra-final.js"></script>
+<script src="igra-proverka.js"></script>
+<script src="itogi.js"></script>
+<script src="lider.js"></script>
+<script src="moi.js"></script>
+<script src="zayavka.js"></script>
+<script src="formaty.js"></script>
+<script src="start.js"></script>
+</body>
+</html>

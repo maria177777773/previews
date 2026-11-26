@@ -1,0 +1,84 @@
+/* zayavka.css: вкладка «Свой баннер» (zy-*) и вкладка «Форматы» (fm-*). Переменные из style.css: --g --k --m --l --bg --pn --r --rl. */
+
+/* ---- Свой баннер ---- */
+.zy-warn{margin:0 0 20px;padding:20px 22px;border-radius:16px;background:var(--k);color:#fff}
+.zy-warn-t{margin:0;font:800 clamp(20px,3.4vw,28px)/1.25 TT,Roboto,Arial,sans-serif;overflow-wrap:anywhere}
+.zy-lead{margin:0 0 12px;font-size:18px}
+.zy-rules{margin:0 0 16px;padding-left:22px;display:grid;gap:6px}
+.zy-sizes{margin:0 0 22px;border:2px solid var(--l);border-radius:14px;background:#fff}
+.zy-sizes summary{min-height:52px;padding:12px 18px;font-weight:700;font-size:18px;cursor:pointer;display:flex;align-items:center}
+.zy-sizes[open] summary{border-bottom:1px solid var(--l)}
+.zy-sizes-in{padding:14px 18px 6px}
+.zy-sizes-in p{margin:0 0 12px}
+.zy-chips{display:flex;flex-wrap:wrap;gap:8px}
+.zy-size{display:inline-block;padding:4px 12px;border-radius:20px;background:var(--bg);font-size:16px;font-weight:700}
+.zy-block{margin:0 0 24px}
+.zy-block>h3{margin:0 0 10px}
+.zy-row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.zy-who{margin:0;font-size:18px}
+.zy-drop{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:150px;padding:20px 16px;text-align:center;border:3px dashed var(--k);border-radius:18px;background:var(--bg);cursor:pointer;overflow:hidden}
+.zy-drop:hover,.zy-drop.over{background:var(--pn);border-color:var(--g)}
+.zy-drop.off{opacity:.55;cursor:not-allowed}
+.zy-drop-t{font:700 clamp(19px,3vw,24px)/1.25 TT,Roboto,Arial,sans-serif;overflow-wrap:anywhere}
+.zy-drop-s{color:var(--m)}
+.zy-file{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px}
+.zy-facts{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:14px 0 0;padding:14px 16px;border:1px solid var(--l);border-radius:14px;background:#fff}
+.zy-facts dt{color:var(--m)}
+.zy-facts dd{margin:0;font-weight:700;overflow-wrap:anywhere;min-width:0}
+.zy-verdict{margin:12px 0 0;font-weight:700;font-size:18px}
+.zy-lab{display:block;margin:0 0 6px;color:var(--m)}
+.zy-zag{max-width:none;width:100%;flex:none}
+.zy-count{margin:6px 0 0;color:var(--m)}
+.zy-prev{display:flex;flex-direction:column;gap:10px;max-width:420px;padding:14px;border:1px solid var(--l);border-radius:14px;background:#fff}
+.zy-prev-img{display:block;width:100%;min-height:44px;padding:0;border:0;background:var(--bg);border-radius:10px;cursor:zoom-in}
+.zy-prev-img img{display:block;max-width:100%;max-height:280px;margin:0 auto;border-radius:10px}
+.zy-prev-t{margin:0;font:800 20px/1.25 TT,Roboto,Arial,sans-serif;overflow-wrap:anywhere}
+.zy-send-row .btn{flex:1 1 280px;max-width:420px}
+.zy-mine{margin-top:36px}
+.zy-list{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:900px){.zy-list{grid-template-columns:1fr 1fr}}
+.zy-item{display:flex;gap:14px;align-items:flex-start;padding:12px;border:2px solid var(--l);border-radius:14px;background:#fff;min-width:0}
+.zy-thumb{flex:0 0 112px;width:112px;min-height:84px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.zy-thumb-b{display:block;width:100%;min-height:84px;padding:0;border:0;background:none;cursor:zoom-in}
+.zy-thumb-b img{display:block;width:100%;height:84px;object-fit:contain}
+.zy-nopic{padding:6px;text-align:center;color:var(--m);font-size:16px}
+.zy-item-tx{flex:1 1 auto;min-width:0}
+.zy-item-t{margin:0 0 4px;font-weight:700;font-size:18px;overflow-wrap:anywhere}
+.zy-item-d{margin:0 0 8px}
+.zy-badge{display:inline-block;margin:0;padding:4px 12px;border-radius:18px;background:var(--bg);font-weight:700;overflow-wrap:anywhere}
+.zy-st-proverena .zy-badge{background:#fff3c4}
+.zy-st-zapushchena{border-color:var(--g)}
+.zy-st-zapushchena .zy-badge{background:var(--g);color:#fff}
+.zy-st-otklonena .zy-badge{background:var(--rl);color:var(--r)}
+@media(max-width:480px){.zy-thumb{flex-basis:84px;width:84px}.zy-facts{grid-template-columns:1fr}.zy-facts dd{margin-bottom:6px}}
+
+/* ---- Форматы ---- */
+.fm-fil{margin:0 0 18px}
+.fm-fil-h{margin:0 0 8px;font:700 17px/1.2 Roboto,Arial,sans-serif;color:var(--m)}
+.fm-chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.fm-chips .chip{padding:0 10px}
+@media(max-width:820px){.fm-chips{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fm-cnt{margin:6px 0 18px;color:var(--m)}
+.fm-sec{margin:0 0 40px}
+.fm-sec-d{margin:8px 0 18px;color:var(--m);max-width:820px}
+.fm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px;align-items:start}
+.fm-card{display:flex;flex-direction:column;gap:12px;min-width:0;padding:16px;border:1px solid var(--l);border-radius:16px;background:#fff}
+.fm-card.wide{grid-column:1/-1}
+.fm-im{display:block;width:100%;min-height:44px;padding:0;border:0;border-radius:12px;background:var(--bg);cursor:zoom-in}
+.fm-card img,.fm-card video{display:block;max-width:100%;height:auto;border-radius:12px}
+.fm-card video{width:100%;background:#000}
+.fm-ft{margin:0;font:800 21px/1.2 TT,Roboto,Arial,sans-serif;overflow-wrap:anywhere}
+.fm-fx{margin:0}
+.fm-meta{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;color:var(--m)}
+.fm-tag{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--bg);color:var(--m);font-weight:700}
+.fm-tag-y{background:var(--pn);color:#067a39}
+.fm-serp{padding:16px;border:1px solid var(--l);border-radius:14px;background:#fff}
+.fm-ad{margin-bottom:4px;color:var(--m)}
+.fm-ad b{margin-right:6px;padding:0 4px;border:1px solid var(--m);border-radius:4px;color:var(--k)}
+.fm-ft-link{text-decoration:underline}
+.fm-sizes{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.fm-sz{display:flex;flex-direction:column;gap:6px;min-width:0;max-width:100%}
+.fm-sz .fm-im{border:1px solid var(--l)}
+.fm-sz span{color:var(--m)}
+.fm-nof{padding:24px;border:1px solid var(--l);border-radius:16px;background:#fff;text-align:center}
+.fm-nof .btn{margin-top:12px}
