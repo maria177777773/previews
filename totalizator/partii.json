@@ -1,114 +1,341 @@
 {
  "api": "https://api.kp-catalyst.ru/zavod/tot",
- "sobrano": "2026-11-26T08:20:08Z",
+ "sobrano": "2026-11-26T13:30:19Z",
+ "sezon": {
+  "id": "2026-S1",
+  "nazvanie": "Сезон 1: ноябрь 2026 - май 2027",
+  "s": "2026-11-23",
+  "po": "2027-05-30"
+ },
  "partii": [
   {
    "id": "2026-W48-RSYA-NY",
+   "nedelya": "2026-W48",
+   "liga": "old",
    "nazvanie": "Партия 1: РСЯ, новогодние баннеры",
    "opisanie": "Пять новогодних баннеров в рекламной сети Яндекса. Какой соберёт больше кликов на 100 показов (CTR)? Расставьте их от 1 места к 5.",
-   "metrika": "CTR (показ → клик)",
+   "k": 2,
+   "h": 2,
+   "gz": false,
+   "start": "2026-11-30T09:15:00Z",
+   "zakrytie": "2026-11-30T09:15:00Z",
+   "konec": "2026-11-30T09:15:00Z",
+   "okno": {
+    "s": "2026-11-25",
+    "po": "2026-11-29"
+   },
    "bannery": [
     {
      "id": "NY1",
+     "podpis": "Новогодний тимбилдинг вашей мечты",
      "zagolovok": "Новогодний тимбилдинг вашей мечты",
      "img": "img/2026-W48-RSYA-NY/NY1.jpg"
     },
     {
      "id": "NY2",
+     "podpis": "Новогодний корпоратив вашей мечты",
      "zagolovok": "Новогодний корпоратив вашей мечты",
      "img": "img/2026-W48-RSYA-NY/NY2.jpg"
     },
     {
      "id": "NY3n",
+     "podpis": "Новогодний тимбилдинг, башня ночью",
      "zagolovok": "Новогодний тимбилдинг, башня ночью",
      "img": "img/2026-W48-RSYA-NY/NY3n.jpg"
     },
     {
      "id": "NY4",
+     "podpis": "Зимний тимбилдинг для команды",
      "zagolovok": "Зимний тимбилдинг для команды",
      "img": "img/2026-W48-RSYA-NY/NY4.jpg"
     },
     {
      "id": "NY5",
+     "podpis": "Новогодний корпоратив под ключ",
      "zagolovok": "Новогодний корпоратив под ключ",
      "img": "img/2026-W48-RSYA-NY/NY5.jpg"
     }
    ],
-   "claude": {
-    "poryadok": [
-     "NY3n",
-     "NY1",
-     "NY5",
-     "NY2",
-     "NY4"
-    ],
-    "vse": [
-     "NY3n",
-     "NY1",
-     "NY5",
-     "NY2",
-     "NY4"
-    ],
-    "ver": {
-     "NY3n": 0.35,
-     "NY1": 0.2,
-     "NY5": 0.18,
-     "NY2": 0.15,
-     "NY4": 0.12
-    },
-    "pochemu": "Яркий контрастный кадр и конкретное действие в заголовке; «вашей мечты» звучит общо; «зимний» слабее «новогоднего» в сезон.",
-    "vremya": "2026-11-25T10:09:48Z"
-   },
-   "start": null,
-   "zakrytie": null,
-   "itog": null,
+   "status": "otkryta",
    "tek": {
+    "obnovleno": "2026-11-26T13:29:42Z",
     "fakt": [
      {
       "id": "NY1",
-      "shows": 25,
-      "clicks": 3,
-      "cost": 37.15,
-      "ctr": 12.0
-     },
-     {
-      "id": "NY3n",
-      "shows": 59,
-      "clicks": 1,
-      "cost": 35.69,
-      "ctr": 1.695
-     },
-     {
-      "id": "NY2",
-      "shows": 109,
-      "clicks": 1,
-      "cost": 31.72,
-      "ctr": 0.917
+      "shows": 5112,
+      "clicks": 16,
+      "zayavki": 0,
+      "ctr": 0.313,
+      "rel": 1.124332
      },
      {
       "id": "NY5",
-      "shows": 69,
-      "clicks": 0,
-      "cost": 0.0,
-      "ctr": 0.0
+      "shows": 930,
+      "clicks": 3,
+      "zayavki": 0,
+      "ctr": 0.323,
+      "rel": 0.782766
      },
      {
-      "id": "NY4",
-      "shows": 0,
-      "clicks": 0,
-      "cost": 0.0,
-      "ctr": null
+      "id": "NY3n",
+      "shows": 3294,
+      "clicks": 6,
+      "zayavki": 0,
+      "ctr": 0.182,
+      "rel": 0.715053
+     },
+     {
+      "id": "NY2",
+      "shows": 2101,
+      "clicks": 10,
+      "zayavki": 0,
+      "ctr": 0.476,
+      "rel": 0.701593
      }
     ],
-    "uslovnyj": true,
-    "prichina": "у 5 из 5 баннеров меньше 10 000 показов",
-    "s": "2026-11-12",
-    "data": "2026-11-26T08:20:05Z"
+    "uslovnyj": false
+   },
+   "itog": null,
+   "claude": {
+    "vremya": "2026-11-25T10:09:48Z"
+   }
+  },
+  {
+   "id": "2026-W49-NY",
+   "nedelya": "2026-W49",
+   "liga": "ny",
+   "nazvanie": "Новогодние",
+   "opisanie": "Шесть новогодних карточек, у каждой светлая и зелёная версия. Назовите 2 лучшие, 2 худшие, фаворита и цвет, который кликают лучше.",
+   "k": 2,
+   "h": 2,
+   "gz": true,
+   "start": "2026-11-30T09:15:00Z",
+   "zakrytie": "2026-11-30T09:15:00Z",
+   "konec": "2026-12-07T09:15:00Z",
+   "okno": {
+    "s": "2026-11-30",
+    "po": "2026-12-06"
+   },
+   "bannery": [
+    {
+     "id": "NY1",
+     "podpis": "Новогодний 1",
+     "img": "img/makety/NY1.jpg",
+     "img_big": "img/makety/NY1-big.jpg",
+     "img_g": "img/makety/NY1g.jpg",
+     "img_g_big": "img/makety/NY1g-big.jpg"
+    },
+    {
+     "id": "NY2",
+     "podpis": "Новогодний 2",
+     "img": "img/makety/NY2.jpg",
+     "img_big": "img/makety/NY2-big.jpg",
+     "img_g": "img/makety/NY2g.jpg",
+     "img_g_big": "img/makety/NY2g-big.jpg"
+    },
+    {
+     "id": "NY3",
+     "podpis": "Новогодний 3",
+     "img": "img/makety/NY3.jpg",
+     "img_big": "img/makety/NY3-big.jpg",
+     "img_g": "img/makety/NY3g.jpg",
+     "img_g_big": "img/makety/NY3g-big.jpg"
+    },
+    {
+     "id": "NY3n",
+     "podpis": "Новогодний 3 (ночь)",
+     "img": "img/makety/NY3n.jpg",
+     "img_big": "img/makety/NY3n-big.jpg",
+     "img_g": "img/makety/NY3ng.jpg",
+     "img_g_big": "img/makety/NY3ng-big.jpg"
+    },
+    {
+     "id": "NY4",
+     "podpis": "Новогодний 4",
+     "img": "img/makety/NY4.jpg",
+     "img_big": "img/makety/NY4-big.jpg",
+     "img_g": "img/makety/NY4g.jpg",
+     "img_g_big": "img/makety/NY4g-big.jpg"
+    },
+    {
+     "id": "NY5",
+     "podpis": "Новогодний 5",
+     "img": "img/makety/NY5.jpg",
+     "img_big": "img/makety/NY5-big.jpg",
+     "img_g": "img/makety/NY5g.jpg",
+     "img_g_big": "img/makety/NY5g-big.jpg"
+    }
+   ],
+   "status": "otkryta",
+   "tek": null,
+   "itog": null,
+   "claude": {
+    "vremya": "2026-11-26T13:29:58Z"
+   }
+  },
+  {
+   "id": "2026-W49-OB",
+   "nedelya": "2026-W49",
+   "liga": "ob",
+   "nazvanie": "Обычные",
+   "opisanie": "Двадцать три карточки обычных баннеров. Назовите 5 лучших, 5 худших и фаворита.",
+   "k": 5,
+   "h": 5,
+   "gz": false,
+   "start": "2026-11-30T09:15:00Z",
+   "zakrytie": "2026-11-30T09:15:00Z",
+   "konec": "2026-12-07T09:15:00Z",
+   "okno": {
+    "s": "2026-11-30",
+    "po": "2026-12-06"
+   },
+   "bannery": [
+    {
+     "id": "R1",
+     "podpis": "Обычный 1",
+     "img": "img/makety/R1.jpg",
+     "img_big": "img/makety/R1-big.jpg"
+    },
+    {
+     "id": "R1b",
+     "podpis": "Обычный 1б",
+     "img": "img/makety/R1b.jpg",
+     "img_big": "img/makety/R1b-big.jpg"
+    },
+    {
+     "id": "R2",
+     "podpis": "Обычный 2",
+     "img": "img/makety/R2.jpg",
+     "img_big": "img/makety/R2-big.jpg"
+    },
+    {
+     "id": "R2b",
+     "podpis": "Обычный 2б",
+     "img": "img/makety/R2b.jpg",
+     "img_big": "img/makety/R2b-big.jpg"
+    },
+    {
+     "id": "R3",
+     "podpis": "Обычный 3",
+     "img": "img/makety/R3.jpg",
+     "img_big": "img/makety/R3-big.jpg"
+    },
+    {
+     "id": "R4",
+     "podpis": "Обычный 4",
+     "img": "img/makety/R4.jpg",
+     "img_big": "img/makety/R4-big.jpg"
+    },
+    {
+     "id": "R4b",
+     "podpis": "Обычный 4б",
+     "img": "img/makety/R4b.jpg",
+     "img_big": "img/makety/R4b-big.jpg"
+    },
+    {
+     "id": "R7",
+     "podpis": "Обычный 7",
+     "img": "img/makety/R7.jpg",
+     "img_big": "img/makety/R7-big.jpg"
+    },
+    {
+     "id": "R11",
+     "podpis": "Обычный 11",
+     "img": "img/makety/R11.jpg",
+     "img_big": "img/makety/R11-big.jpg"
+    },
+    {
+     "id": "R16",
+     "podpis": "Обычный 16",
+     "img": "img/makety/R16.jpg",
+     "img_big": "img/makety/R16-big.jpg"
+    },
+    {
+     "id": "R17",
+     "podpis": "Обычный 17",
+     "img": "img/makety/R17.jpg",
+     "img_big": "img/makety/R17-big.jpg"
+    },
+    {
+     "id": "R18",
+     "podpis": "Обычный 18",
+     "img": "img/makety/R18.jpg",
+     "img_big": "img/makety/R18-big.jpg"
+    },
+    {
+     "id": "R20",
+     "podpis": "Обычный 20",
+     "img": "img/makety/R20.jpg",
+     "img_big": "img/makety/R20-big.jpg"
+    },
+    {
+     "id": "R21",
+     "podpis": "Обычный 21",
+     "img": "img/makety/R21.jpg",
+     "img_big": "img/makety/R21-big.jpg"
+    },
+    {
+     "id": "R27",
+     "podpis": "Обычный 27",
+     "img": "img/makety/R27.jpg",
+     "img_big": "img/makety/R27-big.jpg"
+    },
+    {
+     "id": "R28",
+     "podpis": "Обычный 28",
+     "img": "img/makety/R28.jpg",
+     "img_big": "img/makety/R28-big.jpg"
+    },
+    {
+     "id": "R29",
+     "podpis": "Обычный 29",
+     "img": "img/makety/R29.jpg",
+     "img_big": "img/makety/R29-big.jpg"
+    },
+    {
+     "id": "R30",
+     "podpis": "Обычный 30",
+     "img": "img/makety/R30.jpg",
+     "img_big": "img/makety/R30-big.jpg"
+    },
+    {
+     "id": "R31",
+     "podpis": "Обычный 31",
+     "img": "img/makety/R31.jpg",
+     "img_big": "img/makety/R31-big.jpg"
+    },
+    {
+     "id": "R32",
+     "podpis": "Обычный 32",
+     "img": "img/makety/R32.jpg",
+     "img_big": "img/makety/R32-big.jpg"
+    },
+    {
+     "id": "R33",
+     "podpis": "Обычный 33",
+     "img": "img/makety/R33.jpg",
+     "img_big": "img/makety/R33-big.jpg"
+    },
+    {
+     "id": "R34",
+     "podpis": "Обычный 34",
+     "img": "img/makety/R34.jpg",
+     "img_big": "img/makety/R34-big.jpg"
+    },
+    {
+     "id": "R35",
+     "podpis": "Обычный 35",
+     "img": "img/makety/R35.jpg",
+     "img_big": "img/makety/R35-big.jpg"
+    }
+   ],
+   "status": "otkryta",
+   "tek": null,
+   "itog": null,
+   "claude": {
+    "vremya": "2026-11-26T13:30:18Z"
    }
   }
  ],
- "rejting": {
-  "osn": [],
-  "posle": []
- }
+ "rejting": "rejting.json"
 }
