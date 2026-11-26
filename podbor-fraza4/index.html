@@ -507,6 +507,7 @@ html body #catalog .kv-help .kv-hx-cards button[aria-pressed="true"]{background:
 /* круг 4: пункт 3 (кейсы) уже на боевой от другой сессии, здесь правил нет */
 html body #s6 .keysy-more{border:1px solid #111!important}
 html body #s6 .keysy-more:hover{border-color:#111!important}
+html body #catalog .kv-tile-bd .cc-consent{flex:0 0 auto!important}
 </style>
 <style id="kv-fix-css">
 /* 16.11.2026: фраза не прыгает, минимум 6 карточек, жёлтая форма, меню-выпадашка */
@@ -1797,7 +1798,7 @@ var ARROW='<svg class="kv-go-ar" viewBox="0 0 24 24" fill="none" stroke="current
 function tIco(w){return w==='call'||w==='tel'?HICO.tel:w==='tg'?HICO.tg:HICO.max}
 function tileContact(way,value){
  var v=value.trim();
- if(way==='tg'){var nick=v.replace(/^https?:\/\//i,'').replace(/^(t|telegram)\.me\//i,'').replace(/^@/,'');return /^[a-z0-9_]{5,32}$/i.test(nick)?'@'+nick:''}
+ if(way==='tg'){var nick=v.replace(/^https?:\/\//i,'').replace(/^(t|telegram)\.me\//i,'').replace(/^@/,'');return /^[a-z][a-z0-9_]{4,31}$/i.test(nick)?'@'+nick:''}
  var d=proposalDigits(value);return d.length===10?'+7'+d:''
 }
 function tileHtml(v){
@@ -1865,8 +1866,8 @@ var TNAME={1:'Тёмная: канал выбирается кнопками',2:
 var HNAME={1:'Поле и «Отправить», Max и Telegram отдельными кнопками-ссылками',2:'Поле и три кнопки: позвонить / написать в Max / в Telegram',3:'Переключатель с подписями, поле и «Отправить»',4:'Три крупные карточки канала, ниже поле и «Отправить»'};
 function showcaseHtml(){
  var tl='',hl='',v;
- for(v=1;v<=4;v++){tl+='<div class="kv-sc-item"><p class="kv-sc-cap"><b>Плитка, вариант '+v+'.</b> '+TNAME[v]+' <a href="?tile='+v+'&help='+HV+'#kv-res">поставить в сетку</a></p><div class="kv-sc-slot">'+tileHtml(v).replace('data-tile','data-tile data-sc')+'</div></div>'}
- for(v=1;v<=4;v++){hl+='<div class="kv-sc-item"><p class="kv-sc-cap"><b>Жёлтая форма, вариант '+v+'.</b> '+HNAME[v]+' <a href="?tile='+QV+'&help='+v+'#kv-help">поставить вниз страницы</a></p>'+help(v,true)+'</div>'}
+ for(v=1;v<=4;v++){tl+='<div class="kv-sc-item"><p class="kv-sc-cap"><b>Плитка, вариант '+v+'.</b> '+TNAME[v]+' <a href="'+location.origin+location.pathname+'?tile='+v+'&help='+HV+'#kv-res">поставить в сетку</a></p><div class="kv-sc-slot">'+tileHtml(v).replace('data-tile','data-tile data-sc')+'</div></div>'}
+ for(v=1;v<=4;v++){hl+='<div class="kv-sc-item"><p class="kv-sc-cap"><b>Жёлтая форма, вариант '+v+'.</b> '+HNAME[v]+' <a href="'+location.origin+location.pathname+'?tile='+QV+'&help='+v+'#kv-help">поставить вниз страницы</a></p>'+help(v,true)+'</div>'}
  return '<section class="kv-sc" id="kv-sc"><h2>Варианты на выбор (только в превью)</h2><p class="kv-sc-lead">Назовите номер плитки и номер жёлтой формы. Плитка показана шириной в две карточки.</p><div class="kv-sc-grid">'+tl+'</div>'+hl+'</section>'
 }
 /* ---------- окно «Получить подборку» ---------- */
@@ -2125,7 +2126,7 @@ function helpSend(f,act){
  var digits=proposalDigits(i.value),value=i.value.trim(),contact='';
  if(act)contact=digits.length===10?'+7'+digits:'';
  else if(digits.length===10&&(k.mask||/^\+7/.test(value)))contact='+7'+digits;
- else if(way==='tg'){var nick=value.replace(/^https?:\/\//i,'').replace(/^t\.me\//i,'').replace(/^@/,'');if(/^[a-z0-9_]{5,32}$/i.test(nick))contact='@'+nick}
+ else if(way==='tg'){var nick=value.replace(/^https?:\/\//i,'').replace(/^t\.me\//i,'').replace(/^@/,'');if(/^[a-z][a-z0-9_]{4,31}$/i.test(nick))contact='@'+nick}
  else if(way==='max'&&(/^@[a-z0-9_.-]{3,40}$/i.test(value)||/^https:\/\/max\.ru\/[a-z0-9_./-]{3,120}$/i.test(value)))contact=value;
  var note=f.querySelector('.kv-help-status');
  if(!note){note=document.createElement('p');note.className='kv-help-status';note.setAttribute('role','status');f.appendChild(note)}
