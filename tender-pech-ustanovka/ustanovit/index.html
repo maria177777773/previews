@@ -42,7 +42,7 @@ h1{font:400 clamp(40px,11vw,56px)/1 Underdog,serif}
 <div class="demo hide" id="demo"></div>
 <div class="tiles"></div>
 <main>
-<img class="logo" id="logo" src="../icons/icon-1.png" alt="Тендер-Печь">
+<img class="logo" id="logo" src="../icons/icon-2a.png" alt="Тендер-Печь">
 <h1>Тендер-Печь</h1>
 
 <section id="m-btn" class="hide" style="display:contents">
@@ -70,12 +70,12 @@ h1{font:400 clamp(40px,11vw,56px)/1 Underdog,serif}
   <p class="line" id="out-line"></p>
 </section>
 </main>
-<div class="scene"><img class="p" src="../img/pech.webp" alt=""><img class="k" src="../img/kot-sidit.webp" alt=""></div>
+<div class="scene"><img class="p" src="../img/pech-2a.webp" alt=""><img class="k" src="../img/kot-sidit.webp" alt=""></div>
 <script>
 (function(){
 var q=new URLSearchParams(location.search), ua=navigator.userAgent||'';
 var demo=q.has('demo');
-var icon=q.get('i'); if(icon&&/^[1-4]$/.test(icon)) document.getElementById('logo').src='../icons/icon-'+icon+'.png';
+var icon=q.get('i'); if(icon&&/^(1|2|2a|2b|2v|3|4)$/.test(icon)) document.getElementById('logo').src='../icons/icon-'+icon+'.png';
 function detect(){
   var d=q.get('d'); if(d) return d;
   var ios=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
@@ -111,7 +111,7 @@ btn.addEventListener('click',function(){
   else{hint.textContent=(mode==='android')?'Меню браузера (три точки), затем «Установить приложение»':'Значок установки справа в адресной строке';hint.classList.remove('hide')}
 });
 if(demo){
-  var items=[['android','Android'],['ios','iPhone'],['win','Windows'],['mac','Mac'],['max','Max']], bar=document.getElementById('demo');
+  var items=[['android','Android'],['ios','iPhone'],['win','Компьютер Windows'],['mac','Компьютер Mac (Apple)'],['max','Открыли в мессенджере Max']], bar=document.getElementById('demo');
   bar.classList.remove('hide');
   items.forEach(function(it){var a=document.createElement('a');a.href='?demo=1&d='+it[0]+(icon?'&i='+icon:'');a.textContent=it[1];if(it[0]===mode)a.className='on';bar.appendChild(a)});
 }
