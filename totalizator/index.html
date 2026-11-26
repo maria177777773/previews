@@ -91,12 +91,9 @@ section.scr{display:none;padding:8px 0 80px}section.scr.on{display:block}
 .ph img{display:block;width:100%;height:100%;object-fit:contain}
 .c .tt{font-size:var(--fs-s);color:var(--m);line-height:1.3;min-height:2.6em}
 .c .up{font-size:var(--fs-s);font-weight:700;color:var(--gd);background:var(--gl);border-radius:999px;padding:4px 10px;align-self:flex-start}
-.mv{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.mv button{min-height:48px;padding:0 6px;font-size:var(--fs-s);background:#fff;color:var(--k);border-color:var(--l)}
-.mv button:hover{border-color:var(--k)}
-.mv button:disabled:hover{border-color:var(--l)}
 .grip{display:none}
-.t-m{display:none}
+#slots .c{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+#slots .c img{-webkit-touch-callout:none}
 .lst{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:var(--fs-s)}
 .lst li{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--l);padding-top:6px}
 .lst li:first-child{border-top:0;padding-top:0}
@@ -128,7 +125,6 @@ section.scr{display:none;padding:8px 0 80px}section.scr.on{display:block}
   .c .hd{min-height:0}
   .c .body{display:flex;flex-direction:column;gap:10px;min-width:0}
 
-  .t-d{display:none}.t-m{display:inline}
   .grip{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border:2px dashed var(--l);border-radius:14px;color:var(--m);font-size:var(--fs-s);font-weight:700;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
   .grip svg{width:18px;height:18px}
   .c .tt{min-height:0}
@@ -310,7 +306,7 @@ var GRIP='<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="7" cy="4" r="1
 function renderStavka(){
   if(!CUR)return;var closed=isClosed(CUR),n=ORDER.length;
   $('hint').innerHTML='';
-  $('hint').appendChild(document.createTextNode(closed?'Приём ставок по этой партии закрыт. Ниже ваша расстановка.':(isMobile()?'Расставьте баннеры по местам: тяните за полосу «Тяните» или жмите «Выше» и «Ниже». ':'Перетащите баннеры по местам мышью или кнопками «Левее» и «Правее». ')));
+  $('hint').appendChild(document.createTextNode(closed?'Приём ставок по этой партии закрыт. Ниже ваша расстановка.':(isMobile()?'Расставьте баннеры по местам: зажмите баннер пальцем и тащите на нужное место. ':'Перетащите баннеры по местам мышью. ')));
   if(!closed){var sm=el('small',null,'1 место: баннер, который соберёт больше всего кликов на 100 показов (CTR, %). Нажмите на баннер, чтобы рассмотреть крупно.');$('hint').appendChild(sm)}
   var box=$('slots');box.innerHTML='';
   var g=el('div','grid');box.appendChild(g);
@@ -326,38 +322,53 @@ function renderStavka(){
     if(FRESH[id])body.appendChild(el('span','up','Новый баннер: поставьте на место'));
     if(!closed){
       var gr=el('div','grip');gr.innerHTML=GRIP+'<span>Тяните</span>';gr.setAttribute('aria-hidden','true');body.appendChild(gr);
-      var mv=el('div','mv');
-      var l=el('button','lt');l.type='button';l.innerHTML='<span class="t-d">Левее</span><span class="t-m">Выше</span>';l.disabled=i===0;l.setAttribute('aria-label','Баннер '+id+' на место выше');
-      var r=el('button','lt');r.type='button';r.innerHTML='<span class="t-d">Правее</span><span class="t-m">Ниже</span>';r.disabled=i===n-1;r.setAttribute('aria-label','Баннер '+id+' на место ниже');
-      l.onclick=function(){move(i,i-1);renderStavka();focusMv(id,'l')};r.onclick=function(){move(i,i+1);renderStavka();focusMv(id,'r')};
-      mv.appendChild(l);mv.appendChild(r);body.appendChild(mv);
       c.addEventListener('pointerdown',dragStart);
+      c.addEventListener('touchstart',holdStart,{passive:true});
+      c.addEventListener('contextmenu',function(e){e.preventDefault()});
+      c.addEventListener('keydown',function(e){var k=e.key,d=(k==='ArrowLeft'||k==='ArrowUp')?-1:(k==='ArrowRight'||k==='ArrowDown')?1:0;
+        if(!d||!e.target.closest('.ph'))return;e.preventDefault();var j=ORDER.indexOf(id);move(j,j+d);renderStavka();
+        var f=document.querySelector('#slots .c[data-id="'+id+'"] .ph');if(f)f.focus()});
     }
     c.appendChild(body);g.appendChild(c)});
   var mb=myBet();$('send').hidden=closed;$('send').textContent=mb?'Обновить ставку':'Сделать ставку';
   $('mine').textContent=mb?('Ваша ставка принята '+fmt(mb.vremya)+'. Поменять можно до закрытия партии.'):(MOVED?'':'Сначала переставьте баннеры, потом отправьте ставку.');
   renderUpl()}
-function focusMv(id,s){var c=document.querySelector('#slots .c[data-id="'+id+'"] .mv button:'+(s==='l'?'first-child':'last-child'));if(c&&!c.disabled)c.focus();else{c=document.querySelector('#slots .c[data-id="'+id+'"] .mv button:not(:disabled)');if(c)c.focus()}}
 
-/* ---------- перетаскивание (мышь: вся карточка; палец: полоса «Тяните») ---------- */
+/* ---------- перетаскивание (мышь: вся карточка; палец: удержание на карточке или полоса «Тяните») ---------- */
 var DRAG=null,DRAG_END=0;
 function dragStart(e){
   if(e.button>0)return;
   var c=e.currentTarget;
-  if(e.target.closest('.mv'))return;
   if(e.pointerType!=='mouse'&&!e.target.closest('.grip'))return;
-  if(e.pointerType==='mouse'&&isMobile()&&!e.target.closest('.grip'))return;
   DRAG={c:c,id:c.dataset.id,x:e.clientX,y:e.clientY,px:e.clientX,py:e.clientY,on:false,pid:e.pointerId,raf:0};
   if(e.target.closest('.grip'))e.preventDefault();
   document.addEventListener('pointermove',dragMove,{passive:false});document.addEventListener('pointerup',dragEnd);document.addEventListener('pointercancel',dragEnd)}
-function dragMove(e){if(!DRAG||e.pointerId!==DRAG.pid)return;DRAG.px=e.clientX;DRAG.py=e.clientY;
-  if(!DRAG.on){if(Math.abs(e.clientX-DRAG.x)+Math.abs(e.clientY-DRAG.y)<8)return;
-    DRAG.on=true;zoomHide();var ph=DRAG.c.querySelector('.ph'),r=ph.getBoundingClientRect(),g=el('div');g.id='ghost';
+function dragOn(){DRAG.on=true;zoomHide();var ph=DRAG.c.querySelector('.ph'),r=ph.getBoundingClientRect(),g=el('div');g.id='ghost';
     var gw=Math.min(r.width,isMobile()?140:r.width*.85);g.style.width=gw+'px';g.style.height=(gw*r.height/r.width)+'px';
     g.appendChild(ph.firstChild.cloneNode());document.body.appendChild(g);DRAG.g=g;DRAG.gw=gw;DRAG.gh=gw*r.height/r.width;
+    g.style.left=(DRAG.px-gw/2)+'px';g.style.top=(DRAG.py-DRAG.gh/2)+'px';
     DRAG.c.classList.add('drag');document.body.style.userSelect='none';DRAG.raf=requestAnimationFrame(autoScroll)}
-  e.preventDefault();place(e.clientX,e.clientY);
-  DRAG.g.style.left=(e.clientX-DRAG.gw/2)+'px';DRAG.g.style.top=(e.clientY-DRAG.gh/2)+'px'}
+function dragTo(x,y){DRAG.px=x;DRAG.py=y;place(x,y);DRAG.g.style.left=(x-DRAG.gw/2)+'px';DRAG.g.style.top=(y-DRAG.gh/2)+'px'}
+function dragMove(e){if(!DRAG||e.pointerId!==DRAG.pid)return;DRAG.px=e.clientX;DRAG.py=e.clientY;
+  if(!DRAG.on){if(Math.abs(e.clientX-DRAG.x)+Math.abs(e.clientY-DRAG.y)<8)return;dragOn()}
+  e.preventDefault();dragTo(e.clientX,e.clientY)}
+/* палец: удержать ~300 мс, потом тащить; быстрый свайп = прокрутка страницы */
+var HOLD=null;
+function holdStart(e){
+  if(DRAG||HOLD||e.touches.length!==1||e.target.closest('.grip'))return;
+  var t=e.touches[0],c=e.currentTarget,n=e.target;
+  HOLD={c:c,n:n,x:t.clientX,y:t.clientY,px:t.clientX,py:t.clientY,tm:0};
+  n.addEventListener('touchmove',holdMove,{passive:false});n.addEventListener('touchend',holdEnd);n.addEventListener('touchcancel',holdEnd);
+  HOLD.tm=setTimeout(function(){if(!HOLD)return;
+    DRAG={c:HOLD.c,id:HOLD.c.dataset.id,x:HOLD.x,y:HOLD.y,px:HOLD.px,py:HOLD.py,on:false,pid:'touch',raf:0};
+    if(navigator.vibrate)try{navigator.vibrate(15)}catch(_){}
+    dragOn()},300)}
+function holdMove(e){if(!HOLD)return;var t=e.touches[0];HOLD.px=t.clientX;HOLD.py=t.clientY;
+  if(!DRAG||!DRAG.on){if(Math.abs(t.clientX-HOLD.x)+Math.abs(t.clientY-HOLD.y)>10)holdEnd();return}
+  e.preventDefault();dragTo(t.clientX,t.clientY)}
+function holdEnd(){if(!HOLD)return;clearTimeout(HOLD.tm);var n=HOLD.n;
+  n.removeEventListener('touchmove',holdMove);n.removeEventListener('touchend',holdEnd);n.removeEventListener('touchcancel',holdEnd);
+  HOLD=null;if(DRAG&&DRAG.pid==='touch')dragEnd()}
 function place(x,y){
   var cs=[].slice.call(document.querySelectorAll('#slots .c')),best=null,bd=1e9;
   cs.forEach(function(c){var r=c.getBoundingClientRect();
@@ -370,7 +381,7 @@ function place(x,y){
 function autoScroll(){if(!DRAG||!DRAG.on)return;var y=DRAG.py,h=window.innerHeight,s=0;
   if(y<90)s=-Math.ceil((90-y)/6);else if(y>h-90)s=Math.ceil((y-(h-90))/6);
   if(s){window.scrollBy(0,s);place(DRAG.px,DRAG.py)}DRAG.raf=requestAnimationFrame(autoScroll)}
-function dragEnd(e){if(!DRAG||(e&&e.pointerId!==DRAG.pid))return;
+function dragEnd(e){if(!DRAG||(e&&e.pointerId!==DRAG.pid))return;if(DRAG.pid==='touch'&&e)return;
   document.removeEventListener('pointermove',dragMove);document.removeEventListener('pointerup',dragEnd);document.removeEventListener('pointercancel',dragEnd);
   if(DRAG.on){cancelAnimationFrame(DRAG.raf);if(DRAG.g)DRAG.g.remove();document.body.style.userSelect='';DRAG_END=Date.now();MOVED=true;saveOrder();DRAG=null;renderStavka();return}
   DRAG=null}
@@ -378,7 +389,7 @@ function dragEnd(e){if(!DRAG||(e&&e.pointerId!==DRAG.pid))return;
 /* ---------- отправка ставки ---------- */
 function send(){var m=$('msg');m.innerHTML='';
   if(!ME){showWho(true);return}
-  if(!MOVED&&!myBet()){m.appendChild(el('div','msg er','Сначала расставьте баннеры по местам: перетащите их или нажмите кнопки под баннером.'));return}
+  if(!MOVED&&!myBet()){m.appendChild(el('div','msg er','Сначала расставьте баннеры по местам: перетащите их на нужные места.'));return}
   var b=$('send');b.disabled=true;
   fetch(API+'/stavka',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({partiya:CUR.id,imya:ME,poryadok:ORDER})})
    .then(function(r){return r.json().catch(function(){return{ok:false,oshibka:'сервер не ответил'}})})
