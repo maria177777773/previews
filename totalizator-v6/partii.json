@@ -1,0 +1,1302 @@
+{
+ "api": "https://api.kp-catalyst.ru/zavod/tot",
+ "sobrano": "2026-11-26T13:30:19Z",
+ "sezon": {
+  "id": "2026-S1",
+  "nazvanie": "Сезон 1: ноябрь 2026 - май 2027",
+  "s": "2026-11-23",
+  "po": "2027-05-30"
+ },
+ "partii": [
+  {
+   "id": "2026-W48-RSYA-NY",
+   "nedelya": "2026-W48",
+   "liga": "old",
+   "nazvanie": "Партия 1: РСЯ, новогодние баннеры",
+   "opisanie": "Пять новогодних баннеров в рекламной сети Яндекса. Какой соберёт больше кликов на 100 показов (CTR)? Расставьте их от 1 места к 5.",
+   "k": 2,
+   "h": 2,
+   "gz": false,
+   "start": "2026-11-30T09:15:00Z",
+   "zakrytie": "2026-11-30T09:15:00Z",
+   "konec": "2026-11-30T09:15:00Z",
+   "okno": {
+    "s": "2026-11-25",
+    "po": "2026-11-29"
+   },
+   "bannery": [
+    {
+     "id": "NY1",
+     "podpis": "Новогодний тимбилдинг вашей мечты",
+     "zagolovok": "Новогодний тимбилдинг вашей мечты",
+     "img": "img/2026-W48-RSYA-NY/NY1.jpg",
+     "vid": [
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/2026-W48-RSYA-NY/NY1.jpg",
+       "big": "img/2026-W48-RSYA-NY/NY1.jpg"
+      }
+     ]
+    },
+    {
+     "id": "NY2",
+     "podpis": "Новогодний корпоратив вашей мечты",
+     "zagolovok": "Новогодний корпоратив вашей мечты",
+     "img": "img/2026-W48-RSYA-NY/NY2.jpg",
+     "vid": [
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/2026-W48-RSYA-NY/NY2.jpg",
+       "big": "img/2026-W48-RSYA-NY/NY2.jpg"
+      }
+     ]
+    },
+    {
+     "id": "NY3n",
+     "podpis": "Новогодний тимбилдинг, башня ночью",
+     "zagolovok": "Новогодний тимбилдинг, башня ночью",
+     "img": "img/2026-W48-RSYA-NY/NY3n.jpg",
+     "vid": [
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/2026-W48-RSYA-NY/NY3n.jpg",
+       "big": "img/2026-W48-RSYA-NY/NY3n.jpg"
+      }
+     ]
+    },
+    {
+     "id": "NY4",
+     "podpis": "Зимний тимбилдинг для команды",
+     "zagolovok": "Зимний тимбилдинг для команды",
+     "img": "img/2026-W48-RSYA-NY/NY4.jpg",
+     "vid": [
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/2026-W48-RSYA-NY/NY4.jpg",
+       "big": "img/2026-W48-RSYA-NY/NY4.jpg"
+      }
+     ]
+    },
+    {
+     "id": "NY5",
+     "podpis": "Новогодний корпоратив под ключ",
+     "zagolovok": "Новогодний корпоратив под ключ",
+     "img": "img/2026-W48-RSYA-NY/NY5.jpg",
+     "vid": [
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/2026-W48-RSYA-NY/NY5.jpg",
+       "big": "img/2026-W48-RSYA-NY/NY5.jpg"
+      }
+     ]
+    }
+   ],
+   "status": "otkryta",
+   "tek": {
+    "obnovleno": "2026-11-26T13:29:42Z",
+    "fakt": [
+     {
+      "id": "NY1",
+      "shows": 5112,
+      "clicks": 16,
+      "zayavki": 0,
+      "ctr": 0.313,
+      "rel": 1.124332
+     },
+     {
+      "id": "NY5",
+      "shows": 930,
+      "clicks": 3,
+      "zayavki": 0,
+      "ctr": 0.323,
+      "rel": 0.782766
+     },
+     {
+      "id": "NY3n",
+      "shows": 3294,
+      "clicks": 6,
+      "zayavki": 0,
+      "ctr": 0.182,
+      "rel": 0.715053
+     },
+     {
+      "id": "NY2",
+      "shows": 2101,
+      "clicks": 10,
+      "zayavki": 0,
+      "ctr": 0.476,
+      "rel": 0.701593
+     }
+    ],
+    "uslovnyj": false
+   },
+   "itog": null,
+   "claude": {
+    "vremya": "2026-11-25T10:09:48Z"
+   }
+  },
+  {
+   "id": "2026-W49-NY",
+   "nedelya": "2026-W49",
+   "liga": "ny",
+   "nazvanie": "Новогодние",
+   "opisanie": "Шесть новогодних карточек, у каждой светлая и зелёная версия. Назовите 2 лучшие, 2 худшие, фаворита и цвет, который кликают лучше.",
+   "k": 2,
+   "h": 2,
+   "gz": true,
+   "start": "2026-11-30T09:15:00Z",
+   "zakrytie": "2026-11-30T09:15:00Z",
+   "konec": "2026-12-07T09:15:00Z",
+   "okno": {
+    "s": "2026-11-30",
+    "po": "2026-12-06"
+   },
+   "bannery": [
+    {
+     "id": "NY1",
+     "podpis": "Новогодний 1",
+     "img": "img/makety/NY1.jpg",
+     "img_big": "img/makety/NY1-big.jpg",
+     "img_g": "img/makety/NY1g.jpg",
+     "img_g_big": "img/makety/NY1g-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY1-h.jpg",
+       "big": "img/v6/NY1-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY1-s.jpg",
+       "big": "img/v6/NY1-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY1-v.jpg",
+       "big": "img/v6/NY1-v-big.jpg"
+      }
+     ],
+     "vid_g": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY1g-h.jpg",
+       "big": "img/v6/NY1g-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY1g-s.jpg",
+       "big": "img/v6/NY1g-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY1g-v.jpg",
+       "big": "img/v6/NY1g-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "NY2",
+     "podpis": "Новогодний 2",
+     "img": "img/makety/NY2.jpg",
+     "img_big": "img/makety/NY2-big.jpg",
+     "img_g": "img/makety/NY2g.jpg",
+     "img_g_big": "img/makety/NY2g-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY2-h.jpg",
+       "big": "img/v6/NY2-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY2-s.jpg",
+       "big": "img/v6/NY2-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY2-v.jpg",
+       "big": "img/v6/NY2-v-big.jpg"
+      }
+     ],
+     "vid_g": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY2g-h.jpg",
+       "big": "img/v6/NY2g-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY2g-s.jpg",
+       "big": "img/v6/NY2g-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY2g-v.jpg",
+       "big": "img/v6/NY2g-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "NY3",
+     "podpis": "Новогодний 3",
+     "img": "img/makety/NY3.jpg",
+     "img_big": "img/makety/NY3-big.jpg",
+     "img_g": "img/makety/NY3g.jpg",
+     "img_g_big": "img/makety/NY3g-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY3-h.jpg",
+       "big": "img/v6/NY3-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY3-s.jpg",
+       "big": "img/v6/NY3-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY3-v.jpg",
+       "big": "img/v6/NY3-v-big.jpg"
+      }
+     ],
+     "vid_g": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY3g-h.jpg",
+       "big": "img/v6/NY3g-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY3g-s.jpg",
+       "big": "img/v6/NY3g-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY3g-v.jpg",
+       "big": "img/v6/NY3g-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "NY3n",
+     "podpis": "Новогодний 3 (ночь)",
+     "img": "img/makety/NY3n.jpg",
+     "img_big": "img/makety/NY3n-big.jpg",
+     "img_g": "img/makety/NY3ng.jpg",
+     "img_g_big": "img/makety/NY3ng-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY3n-h.jpg",
+       "big": "img/v6/NY3n-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY3n-s.jpg",
+       "big": "img/v6/NY3n-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY3n-v.jpg",
+       "big": "img/v6/NY3n-v-big.jpg"
+      }
+     ],
+     "vid_g": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY3ng-h.jpg",
+       "big": "img/v6/NY3ng-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY3ng-s.jpg",
+       "big": "img/v6/NY3ng-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY3ng-v.jpg",
+       "big": "img/v6/NY3ng-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "NY4",
+     "podpis": "Новогодний 4",
+     "img": "img/makety/NY4.jpg",
+     "img_big": "img/makety/NY4-big.jpg",
+     "img_g": "img/makety/NY4g.jpg",
+     "img_g_big": "img/makety/NY4g-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY4-h.jpg",
+       "big": "img/v6/NY4-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY4-s.jpg",
+       "big": "img/v6/NY4-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY4-v.jpg",
+       "big": "img/v6/NY4-v-big.jpg"
+      }
+     ],
+     "vid_g": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY4g-h.jpg",
+       "big": "img/v6/NY4g-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY4g-s.jpg",
+       "big": "img/v6/NY4g-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY4g-v.jpg",
+       "big": "img/v6/NY4g-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "NY5",
+     "podpis": "Новогодний 5",
+     "img": "img/makety/NY5.jpg",
+     "img_big": "img/makety/NY5-big.jpg",
+     "img_g": "img/makety/NY5g.jpg",
+     "img_g_big": "img/makety/NY5g-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY5-h.jpg",
+       "big": "img/v6/NY5-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY5-s.jpg",
+       "big": "img/v6/NY5-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY5-v.jpg",
+       "big": "img/v6/NY5-v-big.jpg"
+      }
+     ],
+     "vid_g": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/NY5g-h.jpg",
+       "big": "img/v6/NY5g-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/NY5g-s.jpg",
+       "big": "img/v6/NY5g-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/NY5g-v.jpg",
+       "big": "img/v6/NY5g-v-big.jpg"
+      }
+     ]
+    }
+   ],
+   "status": "otkryta",
+   "tek": null,
+   "itog": null,
+   "claude": {
+    "vremya": "2026-11-26T13:29:58Z"
+   }
+  },
+  {
+   "id": "2026-W49-OB",
+   "nedelya": "2026-W49",
+   "liga": "ob",
+   "nazvanie": "Обычные",
+   "opisanie": "Двадцать три карточки обычных баннеров. Назовите 5 лучших, 5 худших и фаворита.",
+   "k": 5,
+   "h": 5,
+   "gz": false,
+   "start": "2026-11-30T09:15:00Z",
+   "zakrytie": "2026-11-30T09:15:00Z",
+   "konec": "2026-12-07T09:15:00Z",
+   "okno": {
+    "s": "2026-11-30",
+    "po": "2026-12-06"
+   },
+   "bannery": [
+    {
+     "id": "R1",
+     "podpis": "Обычный 1",
+     "img": "img/makety/R1.jpg",
+     "img_big": "img/makety/R1-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R1-h.jpg",
+       "big": "img/v6/R1-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R1-s.jpg",
+       "big": "img/v6/R1-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R1-v.jpg",
+       "big": "img/v6/R1-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R1b",
+     "podpis": "Обычный 1б",
+     "img": "img/makety/R1b.jpg",
+     "img_big": "img/makety/R1b-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R1b-h.jpg",
+       "big": "img/v6/R1b-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R1b-s.jpg",
+       "big": "img/v6/R1b-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R1b-v.jpg",
+       "big": "img/v6/R1b-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R2",
+     "podpis": "Обычный 2",
+     "img": "img/makety/R2.jpg",
+     "img_big": "img/makety/R2-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R2-h.jpg",
+       "big": "img/v6/R2-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R2-s.jpg",
+       "big": "img/v6/R2-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R2-v.jpg",
+       "big": "img/v6/R2-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R2b",
+     "podpis": "Обычный 2б",
+     "img": "img/makety/R2b.jpg",
+     "img_big": "img/makety/R2b-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R2b-h.jpg",
+       "big": "img/v6/R2b-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R2b-s.jpg",
+       "big": "img/v6/R2b-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R2b-v.jpg",
+       "big": "img/v6/R2b-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R3",
+     "podpis": "Обычный 3",
+     "img": "img/makety/R3.jpg",
+     "img_big": "img/makety/R3-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R3-h.jpg",
+       "big": "img/v6/R3-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R3-s.jpg",
+       "big": "img/v6/R3-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R3-v.jpg",
+       "big": "img/v6/R3-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R4",
+     "podpis": "Обычный 4",
+     "img": "img/makety/R4.jpg",
+     "img_big": "img/makety/R4-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R4-h.jpg",
+       "big": "img/v6/R4-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R4-s.jpg",
+       "big": "img/v6/R4-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R4-v.jpg",
+       "big": "img/v6/R4-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R4b",
+     "podpis": "Обычный 4б",
+     "img": "img/makety/R4b.jpg",
+     "img_big": "img/makety/R4b-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R4b-h.jpg",
+       "big": "img/v6/R4b-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R4b-s.jpg",
+       "big": "img/v6/R4b-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R4b-v.jpg",
+       "big": "img/v6/R4b-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R7",
+     "podpis": "Обычный 7",
+     "img": "img/makety/R7.jpg",
+     "img_big": "img/makety/R7-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R7-h.jpg",
+       "big": "img/v6/R7-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R7-s.jpg",
+       "big": "img/v6/R7-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R7-v.jpg",
+       "big": "img/v6/R7-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R11",
+     "podpis": "Обычный 11",
+     "img": "img/makety/R11.jpg",
+     "img_big": "img/makety/R11-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R11-h.jpg",
+       "big": "img/v6/R11-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R11-s.jpg",
+       "big": "img/v6/R11-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R11-v.jpg",
+       "big": "img/v6/R11-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R16",
+     "podpis": "Обычный 16",
+     "img": "img/makety/R16.jpg",
+     "img_big": "img/makety/R16-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R16-h.jpg",
+       "big": "img/v6/R16-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R16-s.jpg",
+       "big": "img/v6/R16-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R16-v.jpg",
+       "big": "img/v6/R16-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R17",
+     "podpis": "Обычный 17",
+     "img": "img/makety/R17.jpg",
+     "img_big": "img/makety/R17-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R17-h.jpg",
+       "big": "img/v6/R17-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R17-s.jpg",
+       "big": "img/v6/R17-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R17-v.jpg",
+       "big": "img/v6/R17-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R18",
+     "podpis": "Обычный 18",
+     "img": "img/makety/R18.jpg",
+     "img_big": "img/makety/R18-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R18-h.jpg",
+       "big": "img/v6/R18-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R18-s.jpg",
+       "big": "img/v6/R18-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R18-v.jpg",
+       "big": "img/v6/R18-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R20",
+     "podpis": "Обычный 20",
+     "img": "img/makety/R20.jpg",
+     "img_big": "img/makety/R20-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R20-h.jpg",
+       "big": "img/v6/R20-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R20-s.jpg",
+       "big": "img/v6/R20-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R20-v.jpg",
+       "big": "img/v6/R20-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R21",
+     "podpis": "Обычный 21",
+     "img": "img/makety/R21.jpg",
+     "img_big": "img/makety/R21-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R21-h.jpg",
+       "big": "img/v6/R21-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R21-s.jpg",
+       "big": "img/v6/R21-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R21-v.jpg",
+       "big": "img/v6/R21-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R27",
+     "podpis": "Обычный 27",
+     "img": "img/makety/R27.jpg",
+     "img_big": "img/makety/R27-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R27-h.jpg",
+       "big": "img/v6/R27-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R27-s.jpg",
+       "big": "img/v6/R27-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R27-v.jpg",
+       "big": "img/v6/R27-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R28",
+     "podpis": "Обычный 28",
+     "img": "img/makety/R28.jpg",
+     "img_big": "img/makety/R28-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R28-h.jpg",
+       "big": "img/v6/R28-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R28-s.jpg",
+       "big": "img/v6/R28-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R28-v.jpg",
+       "big": "img/v6/R28-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R29",
+     "podpis": "Обычный 29",
+     "img": "img/makety/R29.jpg",
+     "img_big": "img/makety/R29-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R29-h.jpg",
+       "big": "img/v6/R29-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R29-s.jpg",
+       "big": "img/v6/R29-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R29-v.jpg",
+       "big": "img/v6/R29-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R30",
+     "podpis": "Обычный 30",
+     "img": "img/makety/R30.jpg",
+     "img_big": "img/makety/R30-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R30-h.jpg",
+       "big": "img/v6/R30-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R30-s.jpg",
+       "big": "img/v6/R30-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R30-v.jpg",
+       "big": "img/v6/R30-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R31",
+     "podpis": "Обычный 31",
+     "img": "img/makety/R31.jpg",
+     "img_big": "img/makety/R31-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R31-h.jpg",
+       "big": "img/v6/R31-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R31-s.jpg",
+       "big": "img/v6/R31-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R31-v.jpg",
+       "big": "img/v6/R31-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R32",
+     "podpis": "Обычный 32",
+     "img": "img/makety/R32.jpg",
+     "img_big": "img/makety/R32-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R32-h.jpg",
+       "big": "img/v6/R32-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R32-s.jpg",
+       "big": "img/v6/R32-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R32-v.jpg",
+       "big": "img/v6/R32-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R33",
+     "podpis": "Обычный 33",
+     "img": "img/makety/R33.jpg",
+     "img_big": "img/makety/R33-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R33-h.jpg",
+       "big": "img/v6/R33-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R33-s.jpg",
+       "big": "img/v6/R33-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R33-v.jpg",
+       "big": "img/v6/R33-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R34",
+     "podpis": "Обычный 34",
+     "img": "img/makety/R34.jpg",
+     "img_big": "img/makety/R34-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R34-h.jpg",
+       "big": "img/v6/R34-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R34-s.jpg",
+       "big": "img/v6/R34-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R34-v.jpg",
+       "big": "img/v6/R34-v-big.jpg"
+      }
+     ]
+    },
+    {
+     "id": "R35",
+     "podpis": "Обычный 35",
+     "img": "img/makety/R35.jpg",
+     "img_big": "img/makety/R35-big.jpg",
+     "vid": [
+      {
+       "f": "h",
+       "nazv": "Горизонтальный",
+       "w": 1080,
+       "h": 607,
+       "src": "img/v6/R35-h.jpg",
+       "big": "img/v6/R35-h-big.jpg"
+      },
+      {
+       "f": "s",
+       "nazv": "Квадрат",
+       "w": 1080,
+       "h": 1080,
+       "src": "img/v6/R35-s.jpg",
+       "big": "img/v6/R35-s-big.jpg"
+      },
+      {
+       "f": "v",
+       "nazv": "Вертикальный",
+       "w": 720,
+       "h": 1200,
+       "src": "img/v6/R35-v.jpg",
+       "big": "img/v6/R35-v-big.jpg"
+      }
+     ]
+    }
+   ],
+   "status": "otkryta",
+   "tek": null,
+   "itog": null,
+   "claude": {
+    "vremya": "2026-11-26T13:30:18Z"
+   }
+  }
+ ],
+ "rejting": "rejting.json",
+ "demo": true
+}

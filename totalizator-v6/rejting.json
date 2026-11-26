@@ -1,0 +1,199 @@
+{
+ "obnovleno": "2026-11-26T13:30:19Z",
+ "sezon": {
+  "id": "2026-S1",
+  "nazvanie": "Сезон 1: ноябрь 2026 - май 2027",
+  "s": "2026-11-23",
+  "po": "2027-05-30",
+  "nedel_proshlo": 0,
+  "nedel_vsego": 27
+ },
+ "uchastniki": [
+  "Маша",
+  "Ирек",
+  "Никита",
+  "Claude"
+ ],
+ "stavki": {
+  "2026-W48-RSYA-NY": [],
+  "2026-W49-NY": [],
+  "2026-W49-OB": []
+ },
+ "nedeli": [
+  {
+   "id": "2026-W48",
+   "mon": "2026-11-23",
+   "sun": "2026-11-29",
+   "status": "idet",
+   "turi": [
+    "2026-W48-RSYA-NY"
+   ],
+   "tablica": [],
+   "pobediteli": [],
+   "podium": [
+    [],
+    [],
+    []
+   ],
+   "bez_pobeditelya": false,
+   "uslovnyj": false
+  },
+  {
+   "id": "2026-W49",
+   "mon": "2026-11-30",
+   "sun": "2026-12-06",
+   "status": "idet",
+   "turi": [
+    "2026-W49-NY",
+    "2026-W49-OB"
+   ],
+   "tablica": [],
+   "pobediteli": [],
+   "podium": [
+    [],
+    [],
+    []
+   ],
+   "bez_pobeditelya": false,
+   "uslovnyj": false
+  }
+ ],
+ "sezon_tablica": [
+  {
+   "imya": "Claude",
+   "ochki": 0,
+   "mesto": 1,
+   "nedel": 0,
+   "top3": 0,
+   "luchshee": 0,
+   "serija": 0,
+   "znachki": [
+    "pervaya",
+    "dvojnoj"
+   ]
+  },
+  {
+   "imya": "Ирек",
+   "ochki": 0,
+   "mesto": 1,
+   "nedel": 0,
+   "top3": 0,
+   "luchshee": 0,
+   "serija": 0,
+   "znachki": [
+    "pervaya"
+   ]
+  },
+  {
+   "imya": "Маша",
+   "ochki": 0,
+   "mesto": 1,
+   "nedel": 0,
+   "top3": 0,
+   "luchshee": 0,
+   "serija": 0,
+   "znachki": [
+    "pervaya"
+   ]
+  },
+  {
+   "imya": "Никита",
+   "ochki": 0,
+   "mesto": 1,
+   "nedel": 0,
+   "top3": 0,
+   "luchshee": 0,
+   "serija": 0,
+   "znachki": [
+    "pervaya"
+   ]
+  }
+ ],
+ "lider_sezona": [],
+ "znachki": [
+  {
+   "id": "pervaya",
+   "nazvanie": "Первая ставка",
+   "ikonka": "🎲",
+   "opisanie": "Первая ставка, которую приняли в зачёт."
+  },
+  {
+   "id": "snajper",
+   "nazvanie": "Снайпер",
+   "ikonka": "🎯",
+   "opisanie": "Угаданы 3 карточки и больше из лучших в «Обычных» или обе лучшие в «Новогодних»."
+  },
+  {
+   "id": "chuyote",
+   "nazvanie": "Чутьё на худших",
+   "ikonka": "🔍",
+   "opisanie": "Угаданы все худшие в «Новогодних» или 3 карточки и больше из 5 в «Обычных»."
+  },
+  {
+   "id": "lider",
+   "nazvanie": "Фаворит угадан",
+   "ikonka": "⭐",
+   "opisanie": "Ваш фаворит стал лидером недели и принёс дополнительные 2 очка."
+  },
+  {
+   "id": "cvet",
+   "nazvanie": "Цвет угадан",
+   "ikonka": "🎨",
+   "opisanie": "Вы верно выбрали, какая версия кликается лучше, белая или зелёная, и получили 3 очка."
+  },
+  {
+   "id": "seriya",
+   "nazvanie": "Серия",
+   "ikonka": "🔥",
+   "opisanie": "Три недели подряд вы в тройке лучших."
+  },
+  {
+   "id": "chempion",
+   "nazvanie": "Чемпион недели",
+   "ikonka": "🏆",
+   "opisanie": "Первое место недели, когда итог не условный и очки набраны."
+  },
+  {
+   "id": "postoyanstvo",
+   "nazvanie": "Постоянство",
+   "ikonka": "📅",
+   "opisanie": "Вы делаете ставки четыре недели подряд."
+  },
+  {
+   "id": "dvojnoj",
+   "nazvanie": "Двойной удар",
+   "ikonka": "⚡",
+   "opisanie": "Вы сделали ставки в обеих лигах в течение одной недели."
+  },
+  {
+   "id": "avtor",
+   "nazvanie": "Автор",
+   "ikonka": "💡",
+   "opisanie": "Вы подали заявку «Тоже запустить в Директ» со своим баннером."
+  },
+  {
+   "id": "igrok",
+   "nazvanie": "Игрок",
+   "ikonka": "🎮",
+   "opisanie": "Пять ставок в режиме «Кто лучше»."
+  }
+ ],
+ "istoriya": {
+  "Claude": [],
+  "Ирек": [],
+  "Маша": [],
+  "Никита": []
+ },
+ "znachki_u": {
+  "Claude": [],
+  "Ирек": [],
+  "Маша": [],
+  "Никита": []
+ },
+ "zayavki": [],
+ "chislo_stavok": {
+  "2026-W48-RSYA-NY": 3,
+  "2026-W49-NY": 0,
+  "2026-W49-OB": 0
+ }
+}

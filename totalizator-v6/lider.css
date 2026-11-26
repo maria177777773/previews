@@ -1,0 +1,61 @@
+/* lider.css: вкладка «Таблица лидеров». Только классы ld-*. Переменные цвета из style.css. */
+.ld-seg{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:520px;margin:0 0 18px}
+.ld-segbtn{min-height:52px;padding:6px 14px;border:2px solid var(--k);border-radius:35px;background:#fff;font-weight:700;font-size:18px;line-height:1.2}
+.ld-segbtn:hover{background:var(--bg)}
+.ld-segbtn.on{background:var(--k);color:#fff}
+.ld-pick{margin:0 0 12px}
+.ld-pick-l{display:block;margin:0 0 6px;font-weight:700;font-size:18px}
+.ld-pick-row{display:grid;gap:10px;grid-template-columns:1fr 1fr;align-items:stretch}
+.ld-sel{grid-column:1 / -1;grid-row:1;min-height:52px;padding:0 14px;border:2px solid var(--k);border-radius:12px;background:#fff;font:400 18px/1.2 Roboto,Arial,sans-serif;color:var(--k);min-width:0;width:100%}
+.ld-nav{min-height:52px;padding:8px 14px;font-size:18px}
+@media(min-width:760px){
+  .ld-pick-row{grid-template-columns:150px minmax(0,1fr) 150px}
+  .ld-sel{grid-column:2;grid-row:1}
+  .ld-nav#ldOlder{grid-column:1;grid-row:1}
+  .ld-nav#ldNewer{grid-column:3;grid-row:1}
+}
+.ld-range{margin:0 0 14px;color:var(--m)}
+.ld-cond{background:#fff6d6}
+.ld-none{margin:0 0 20px;padding:22px 18px;border-radius:18px;background:var(--bg);font-size:20px}
+
+/* сезон */
+.ld-sez{margin:0 0 18px}
+.ld-sez-h{margin:0 0 10px}
+.ld-prog-t{font:700 22px/1.2 TT,Roboto,Arial,sans-serif;margin:0 0 8px}
+.ld-bar{height:16px;border-radius:10px;background:var(--l);overflow:hidden}
+.ld-bar span{display:block;height:100%;background:var(--g);border-radius:10px}
+
+/* строки: на 390 карточками, на широком в одну строку */
+.ld-rows{list-style:none;margin:0 0 28px;padding:0;display:grid;gap:10px}
+.ld-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;grid-template-areas:"pl who pt" "st st st";gap:8px 10px;align-items:center;padding:12px 14px;border:2px solid var(--l);border-radius:16px;background:#fff;min-width:0}
+.ld-row.lead{border-color:var(--g);background:var(--pn)}
+.ld-row.me{box-shadow:0 0 0 2px var(--k) inset}
+.ld-place{grid-area:pl;font:800 28px/1 TT,Roboto,Arial,sans-serif;text-align:center}
+.ld-who{grid-area:who;min-width:0}
+.ld-nameline{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ld-name{min-height:44px;padding:4px 16px;border:2px solid var(--k);border-radius:35px;background:#fff;font-weight:700;font-size:18px;line-height:1.2;max-width:100%;overflow-wrap:anywhere;text-align:left}
+.ld-name:hover{background:var(--k);color:#fff}
+.ld-cup{font-size:26px;line-height:1}
+.ld-me{color:var(--m)}
+.ld-badges{display:flex;flex-wrap:wrap;gap:4px 8px;margin-top:6px}
+.ld-bd{font-size:24px;line-height:1.2;cursor:default}
+.ld-pts{grid-area:pt;text-align:right;white-space:nowrap}
+.ld-pts b{display:block;font:800 30px/1 TT,Roboto,Arial,sans-serif}
+.ld-pts span{font-size:16px;color:var(--m)}
+.ld-stats{grid-area:st;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ld-st{padding:8px 12px;border-radius:12px;background:var(--bg);min-width:0}
+.ld-lead .ld-st,.ld-row.lead .ld-st{background:#fff}
+.ld-k{display:block;font-size:16px;color:var(--m)}
+.ld-st b{font-size:18px}
+@media(min-width:900px){
+  .ld-row{grid-template-columns:56px minmax(0,1fr) 110px minmax(0,2.2fr);grid-template-areas:"pl who pt st";gap:14px}
+  .ld-pts{text-align:center}
+  .ld-stats{grid-template-columns:repeat(4,1fr)}
+}
+
+/* легенда значков */
+.ld-legend{margin:0 0 20px}
+.ld-legend h3{margin:0 0 10px}
+.ld-leg-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 10px}
+.ld-leg-i{display:flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--l);border-radius:30px;background:#fff}
+.ld-leg-e{font-size:22px;line-height:1}

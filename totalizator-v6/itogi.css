@@ -1,0 +1,89 @@
+/* itogi.css: вкладка «Итоги недели». Только классы it-*. Переменные цвета из style.css. */
+.it-pick{margin:0 0 16px}
+.it-pick-l{display:block;margin:0 0 6px;font-weight:700;font-size:18px}
+.it-pick-row{display:grid;gap:10px;grid-template-columns:1fr 1fr;align-items:stretch}
+.it-sel{grid-column:1 / -1;grid-row:1;min-height:52px;padding:0 14px;border:2px solid var(--k);border-radius:12px;background:#fff;font:400 18px/1.2 Roboto,Arial,sans-serif;color:var(--k);min-width:0;width:100%}
+.it-nav{min-height:52px;padding:8px 14px;font-size:18px}
+@media(min-width:760px){
+  .it-pick-row{grid-template-columns:150px minmax(0,1fr) 150px}
+  .it-sel{grid-column:2;grid-row:1}
+  .it-nav#itOlder{grid-column:1;grid-row:1}
+  .it-nav#itNewer{grid-column:3;grid-row:1}
+}
+.it-range{margin:0 0 16px;color:var(--m)}
+
+/* плашка победителя */
+.it-win{margin:0 0 18px;padding:26px 18px;border-radius:20px;background:var(--k);color:#fff;text-align:center}
+.it-win-cup{font-size:clamp(48px,11vw,84px);line-height:1}
+.it-win-l{margin-top:6px;font-weight:700;font-size:18px;color:#7dffb4}
+.it-win-n{margin-top:6px;font:800 clamp(34px,8vw,64px)/1.1 TT,Roboto,Arial,sans-serif;overflow-wrap:anywhere}
+.it-win-p{margin-top:8px;font-weight:700;font-size:20px}
+.it-cond{display:inline-block;margin-top:14px;padding:10px 18px;border-radius:30px;background:#ffd23f;color:var(--k);font-weight:700;font-size:18px}
+
+/* пьедестал */
+.it-podium{list-style:none;margin:0 0 24px;padding:0;display:flex;align-items:flex-end;justify-content:center;gap:8px}
+.it-step{flex:1 1 0;min-width:0;max-width:280px;padding:12px 6px 14px;border-radius:14px 14px 0 0;text-align:center;display:flex;flex-direction:column;gap:4px}
+.it-step.p1{order:2;min-height:200px;background:var(--g);color:var(--k)}
+.it-step.p2{order:1;min-height:160px;background:var(--k);color:#fff}
+.it-step.p3{order:3;min-height:128px;background:var(--l);color:var(--k)}
+.it-step-n{font:800 42px/1 TT,Roboto,Arial,sans-serif}
+.it-step-name{font-weight:700;font-size:18px;line-height:1.25;overflow-wrap:anywhere}
+.it-step-pts{margin-top:auto;font-size:16px;font-weight:700}
+.it-me{font-weight:400}
+
+/* таблица недели */
+.it-tab{margin:0 0 28px}
+.it-tab h3{margin:0 0 10px}
+.it-rows{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.it-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 14px;min-height:56px;border:2px solid var(--l);border-radius:14px;background:#fff}
+.it-row.lead{border-color:var(--g);background:var(--pn)}
+.it-row.me{box-shadow:0 0 0 2px var(--k) inset}
+.it-row-n{font:800 24px/1 TT,Roboto,Arial,sans-serif;text-align:center}
+.it-row-name{font-weight:700;font-size:18px;overflow-wrap:anywhere}
+.it-row-p{font-weight:700;font-size:18px;white-space:nowrap}
+.it-cup{font-weight:400}
+
+/* разбор тура */
+.it-tour{margin:0 0 32px;padding:18px 16px;border:2px solid var(--l);border-radius:18px;background:#fff}
+.it-tour-h{margin:0 0 12px}
+.it-note-c{background:#fff6d6}
+.it-grp{margin:0 0 18px}
+.it-grp-h{margin:0 0 10px;font:700 20px/1.2 TT,Roboto,Arial,sans-serif}
+.it-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:1fr}
+.it-cards.ob{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:760px){
+  .it-cards.ny{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .it-cards.ob{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(min-width:1100px){
+  .it-cards.ob{grid-template-columns:repeat(5,minmax(0,1fr))}
+}
+.it-card{display:flex;flex-direction:column;min-width:0;border:1px solid var(--l);border-radius:14px;background:var(--bg);overflow:hidden}
+.it-imgs{display:flex;gap:4px;padding:6px}
+.it-imgbtn{flex:1 1 0;min-width:0;padding:0;border:0;background:none;display:block;border-radius:8px;min-height:44px}
+.it-imgbtn img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff;border-radius:8px}
+.it-cname{padding:4px 10px 0;font-weight:700;font-size:17px}
+.it-ctag{margin:4px 10px 0;font-weight:700;color:#067a39}
+.it-met{margin:0;padding:6px 10px 10px}
+.it-met-r{display:flex;justify-content:space-between;gap:8px}
+.it-met-r dt{color:var(--m)}
+.it-met-r dd{margin:0;font-weight:700}
+.it-met-n{margin:4px 0 0;color:var(--m)}
+.it-cvet{margin:0 0 14px;padding:10px 14px;border-radius:12px;background:var(--pn);font-weight:700}
+
+/* ставки игроков */
+.it-bet-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.it-bet-li{padding:10px 14px;border:1px solid var(--l);border-radius:12px;background:#fff}
+.it-bet-li.me{border-color:var(--k)}
+.it-bet-h{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.it-bet-t{margin-top:2px}
+.it-off{display:inline-block;padding:2px 12px;border-radius:20px;background:var(--l);font-weight:700;font-size:16px}
+
+/* идёт, нет рекламы */
+.it-run{margin:0 0 20px;padding:22px 18px;border-radius:18px;border:2px solid var(--k);background:#fff}
+.it-run-h{font:800 clamp(24px,5vw,34px)/1.2 TT,Roboto,Arial,sans-serif}
+.it-run-p{margin:8px 0 0;font-size:18px}
+.it-none{border-color:var(--l);background:var(--bg)}
+
+/* салют */
+.it-salut{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:90;touch-action:manipulation;cursor:pointer}

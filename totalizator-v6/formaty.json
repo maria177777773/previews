@@ -1,0 +1,373 @@
+{
+ "obnovleno": "2026-11-26",
+ "formaty": [
+  {
+   "id": "poisk",
+   "nazvanie": "Текстовые на поиске",
+   "opisanie": "Показываются в выдаче Яндекса по запросам людей: заголовок, текст и ссылка."
+  },
+  {
+   "id": "tg",
+   "nazvanie": "Текстово-графические",
+   "opisanie": "Картинка плюс заголовок и текст. Идут в рекламной сети Яндекса (РСЯ) и в ретаргетинге."
+  },
+  {
+   "id": "ban",
+   "nazvanie": "Графические баннеры",
+   "opisanie": "Одна картинка без своего текста объявления. Каждый креатив делаем в нескольких размерах."
+  },
+  {
+   "id": "video",
+   "nazvanie": "Видео",
+   "opisanie": "Ролик 5-15 секунд в связке с текстовым объявлением."
+  },
+  {
+   "id": "pb",
+   "nazvanie": "Баннер на поиске",
+   "opisanie": "Вертикальная картинка 240×400 рядом с выдачей на странице поиска."
+  },
+  {
+   "id": "cpm",
+   "nazvanie": "Медийные",
+   "opisanie": "Оплата за 1000 показов, а не за клики: для охвата."
+  }
+ ],
+ "gde": [
+  {
+   "id": "poisk",
+   "nazvanie": "Поиск"
+  },
+  {
+   "id": "rsya",
+   "nazvanie": "Рекламная сеть (РСЯ)"
+  },
+  {
+   "id": "retarget",
+   "nazvanie": "Ретаргетинг"
+  }
+ ],
+ "items": [
+  {
+   "id": "poisk1",
+   "format": "poisk",
+   "tags": [
+    "poisk"
+   ],
+   "zagolovok": "Каталист: тимбилдинг и корпоратив в Москве под ключ",
+   "tekst": "Вы получите программу, площадку и ведущих от одной команды. Подготовим смету.",
+   "podpis": "Бренд",
+   "v_stavke": false
+  },
+  {
+   "id": "poisk2",
+   "format": "poisk",
+   "tags": [
+    "poisk"
+   ],
+   "zagolovok": "Тимбилдинг в Москве под ключ от 299 000 ₽ для команды",
+   "tekst": "Вы получите программу, ведущих и реквизит. Пришлём расчёт за 10 минут. Игр 50+.",
+   "podpis": "Тимбилдинг",
+   "v_stavke": false
+  },
+  {
+   "id": "poisk3",
+   "format": "poisk",
+   "tags": [
+    "poisk"
+   ],
+   "zagolovok": "Новогодний корпоратив в Москве от 50 гостей под ключ",
+   "tekst": "Организуем праздник и согласуем программу, бюджет от 1 млн ₽. Смета на вашу дату.",
+   "podpis": "Корпоративы",
+   "v_stavke": false
+  },
+  {
+   "id": "tg1",
+   "format": "tg",
+   "tags": [
+    "rsya",
+    "retarget"
+   ],
+   "zagolovok": "Проведите новогодний тимбилдинг для команды",
+   "tekst": "Сценарий, реквизит и ведущие наши. От 299 000 ₽, от 50 человек. Расчёт за 10 минут.",
+   "kartinka": {
+    "src": "img/formaty/tg1.jpg",
+    "w": 640,
+    "h": 360
+   },
+   "v_stavke": false
+  },
+  {
+   "id": "tg2",
+   "format": "tg",
+   "tags": [
+    "rsya"
+   ],
+   "zagolovok": "Проведите тимбилдинг WOW Башня на Новый год",
+   "tekst": "Команда собирает арт-объект и запускает его в финале. От 30 до 1 000 человек.",
+   "kartinka": {
+    "src": "img/formaty/tg2.jpg",
+    "w": 640,
+    "h": 360
+   },
+   "v_stavke": false
+  },
+  {
+   "id": "tg3",
+   "format": "tg",
+   "tags": [
+    "rsya",
+    "retarget"
+   ],
+   "zagolovok": "Проведите новогодний корпоратив в Москве",
+   "tekst": "Сценарий и смета на вашу дату. От 1 млн ₽, от 50 гостей.",
+   "kartinka": {
+    "src": "img/formaty/tg3.jpg",
+    "w": 640,
+    "h": 360
+   },
+   "v_stavke": false
+  },
+  {
+   "id": "ban1",
+   "format": "ban",
+   "tags": [
+    "rsya",
+    "retarget"
+   ],
+   "zagolovok": "Новогодний тимбилдинг вашей мечты, светлый фон",
+   "razmery": [
+    {
+     "razmer": "300×250",
+     "nazvanie": "Квадратный 300×250",
+     "orient": "kv",
+     "src": "img/formaty/ban1-300x250.jpg",
+     "w": 300,
+     "h": 250
+    },
+    {
+     "razmer": "300×600",
+     "nazvanie": "Высокий 300×600",
+     "orient": "ver",
+     "src": "img/formaty/ban1-300x600.jpg",
+     "w": 300,
+     "h": 600
+    },
+    {
+     "razmer": "728×90",
+     "nazvanie": "Лента 728×90",
+     "orient": "gor",
+     "src": "img/formaty/ban1-728x90.jpg",
+     "w": 640,
+     "h": 79
+    },
+    {
+     "razmer": "240×400",
+     "nazvanie": "Узкий 240×400",
+     "orient": "ver",
+     "src": "img/formaty/ban1-240x400.jpg",
+     "w": 240,
+     "h": 400
+    },
+    {
+     "razmer": "1080×607",
+     "nazvanie": "Широкий 16:9",
+     "orient": "gor",
+     "src": "img/formaty/ban1-1080x607.jpg",
+     "w": 640,
+     "h": 360
+    },
+    {
+     "razmer": "1080×1080",
+     "nazvanie": "Квадрат 1:1",
+     "orient": "kv",
+     "src": "img/formaty/ban1-1080x1080.jpg",
+     "w": 640,
+     "h": 640
+    }
+   ],
+   "v_stavke": true
+  },
+  {
+   "id": "ban2",
+   "format": "ban",
+   "tags": [
+    "rsya",
+    "retarget"
+   ],
+   "zagolovok": "Новогодний тимбилдинг вашей мечты, зелёный фон",
+   "razmery": [
+    {
+     "razmer": "300×250",
+     "nazvanie": "Квадратный 300×250",
+     "orient": "kv",
+     "src": "img/formaty/ban2-300x250.jpg",
+     "w": 300,
+     "h": 250
+    },
+    {
+     "razmer": "300×600",
+     "nazvanie": "Высокий 300×600",
+     "orient": "ver",
+     "src": "img/formaty/ban2-300x600.jpg",
+     "w": 300,
+     "h": 600
+    },
+    {
+     "razmer": "728×90",
+     "nazvanie": "Лента 728×90",
+     "orient": "gor",
+     "src": "img/formaty/ban2-728x90.jpg",
+     "w": 640,
+     "h": 79
+    },
+    {
+     "razmer": "240×400",
+     "nazvanie": "Узкий 240×400",
+     "orient": "ver",
+     "src": "img/formaty/ban2-240x400.jpg",
+     "w": 240,
+     "h": 400
+    },
+    {
+     "razmer": "1080×607",
+     "nazvanie": "Широкий 16:9",
+     "orient": "gor",
+     "src": "img/formaty/ban2-1080x607.jpg",
+     "w": 640,
+     "h": 360
+    },
+    {
+     "razmer": "1080×1080",
+     "nazvanie": "Квадрат 1:1",
+     "orient": "kv",
+     "src": "img/formaty/ban2-1080x1080.jpg",
+     "w": 640,
+     "h": 640
+    }
+   ],
+   "v_stavke": false
+  },
+  {
+   "id": "video1",
+   "format": "video",
+   "tags": [
+    "rsya",
+    "retarget"
+   ],
+   "zagolovok": "Проведите тимбилдинг WOW Башня на Новый год",
+   "tekst": "Команда собирает арт-объект и запускает его в финале.",
+   "kartinka": {
+    "src": "img/formaty/video1.jpg",
+    "w": 640,
+    "h": 360
+   },
+   "video": "https://cdn.kp-catalyst.ru/previews/reklama-video-v4-2026-11-25/K1-16x9-v4.mp4",
+   "v_stavke": false
+  },
+  {
+   "id": "video2",
+   "format": "video",
+   "tags": [
+    "rsya",
+    "retarget"
+   ],
+   "zagolovok": "Проведите тимбилдинг «WOW Пицца»",
+   "tekst": "За 2 часа команда готовит пиццу в огромной печи. От 50 до 200 человек.",
+   "kartinka": {
+    "src": "img/formaty/video2.jpg",
+    "w": 640,
+    "h": 360
+   },
+   "video": "https://cdn.kp-catalyst.ru/previews/reklama-video-v4-2026-11-25/K2-16x9-v4.mp4",
+   "v_stavke": false
+  },
+  {
+   "id": "video3",
+   "format": "video",
+   "tags": [
+    "rsya",
+    "retarget"
+   ],
+   "zagolovok": "Проведите тимбилдинг «Мегаполис»",
+   "tekst": "Каждый отдел строит квартал, вместе получается город.",
+   "kartinka": {
+    "src": "img/formaty/video3.jpg",
+    "w": 640,
+    "h": 360
+   },
+   "video": "https://cdn.kp-catalyst.ru/previews/reklama-video-v4-2026-11-25/K3-16x9-v4.mp4",
+   "v_stavke": false
+  },
+  {
+   "id": "pb1",
+   "format": "pb",
+   "tags": [
+    "poisk"
+   ],
+   "zagolovok": "Баннер 240×400 на странице поиска",
+   "kartinka": {
+    "src": "img/formaty/poiskban1.jpg",
+    "w": 240,
+    "h": 400
+   },
+   "v_stavke": false
+  },
+  {
+   "id": "pb2",
+   "format": "pb",
+   "tags": [
+    "poisk"
+   ],
+   "zagolovok": "Баннер 240×400 на странице поиска",
+   "kartinka": {
+    "src": "img/formaty/poiskban2.jpg",
+    "w": 240,
+    "h": 400
+   },
+   "v_stavke": false
+  },
+  {
+   "id": "pb3",
+   "format": "pb",
+   "tags": [
+    "poisk"
+   ],
+   "zagolovok": "Баннер 240×400 на странице поиска",
+   "kartinka": {
+    "src": "img/formaty/poiskban3.jpg",
+    "w": 240,
+    "h": 400
+   },
+   "v_stavke": false
+  },
+  {
+   "id": "cpm1",
+   "format": "cpm",
+   "tags": [
+    "rsya"
+   ],
+   "zagolovok": "Медийный баннер, оплата за 1000 показов",
+   "kartinka": {
+    "src": "img/formaty/cpm1.jpg",
+    "w": 480,
+    "h": 320
+   },
+   "v_stavke": false
+  },
+  {
+   "id": "cpm2",
+   "format": "cpm",
+   "tags": [
+    "rsya",
+    "retarget"
+   ],
+   "zagolovok": "Медийный баннер, оплата за 1000 показов",
+   "kartinka": {
+    "src": "img/formaty/cpm2.jpg",
+    "w": 240,
+    "h": 400
+   },
+   "v_stavke": false
+  }
+ ]
+}
