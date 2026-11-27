@@ -1,6 +1,6 @@
 {
  "api": "https://api.kp-catalyst.ru/zavod/tot",
- "sobrano": "2026-11-26T13:30:19Z",
+ "sobrano": "2026-11-27T10:20:21Z",
  "sezon": {
   "id": "2026-S1",
   "nazvanie": "Сезон 1: ноябрь 2026 - май 2027",
@@ -58,42 +58,50 @@
    ],
    "status": "otkryta",
    "tek": {
-    "obnovleno": "2026-11-26T13:29:42Z",
+    "obnovleno": "2026-11-27T10:20:19Z",
     "fakt": [
      {
-      "id": "NY1",
-      "shows": 5112,
-      "clicks": 16,
+      "id": "NY4",
+      "shows": 74,
+      "clicks": 2,
       "zayavki": 0,
-      "ctr": 0.313,
-      "rel": 1.124332
+      "ctr": 2.703,
+      "rel": 2.319723
      },
      {
       "id": "NY5",
-      "shows": 930,
-      "clicks": 3,
+      "shows": 3148,
+      "clicks": 24,
       "zayavki": 0,
-      "ctr": 0.323,
-      "rel": 0.782766
-     },
-     {
-      "id": "NY3n",
-      "shows": 3294,
-      "clicks": 6,
-      "zayavki": 0,
-      "ctr": 0.182,
-      "rel": 0.715053
+      "ctr": 0.762,
+      "rel": 0.883488
      },
      {
       "id": "NY2",
-      "shows": 2101,
-      "clicks": 10,
+      "shows": 6733,
+      "clicks": 44,
       "zayavki": 0,
-      "ctr": 0.476,
-      "rel": 0.701593
+      "ctr": 0.653,
+      "rel": 0.727523
+     },
+     {
+      "id": "NY1",
+      "shows": 6444,
+      "clicks": 22,
+      "zayavki": 0,
+      "ctr": 0.341,
+      "rel": 0.49674
+     },
+     {
+      "id": "NY3n",
+      "shows": 5179,
+      "clicks": 8,
+      "zayavki": 0,
+      "ctr": 0.154,
+      "rel": 0.260668
      }
     ],
-    "uslovnyj": false
+    "uslovnyj": true
    },
    "itog": null,
    "claude": {
