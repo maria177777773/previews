@@ -183,10 +183,3 @@ body.lb-open{overflow:hidden}
 .imgbtn img{display:block;width:100%}
 .gimgs>img{flex:1 1 0;min-width:0}
 .mo-badge-i,.it-win-cup,.ld-cup,.it-cup{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
-
-.todo{margin:18px 0 8px;padding:14px 16px;background:var(--pn);border-radius:12px;font-size:18px;line-height:1.4}
-details.how{padding:0}
-details.how>summary{cursor:pointer;padding:14px 20px;font-weight:700;min-height:44px}
-details.how[open]{padding:0 20px 20px}
-details.how[open]>summary{padding:14px 0}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

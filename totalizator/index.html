@@ -21,16 +21,14 @@
     </div>
     <div class="top-me">
       <button class="chip me-chip" id="meChip" type="button">Выберите имя</button>
-      <button class="chip snd-chip" id="sndBtn" type="button" aria-pressed="true" hidden>Звук вкл</button>
+      <button class="chip snd-chip" id="sndBtn" type="button" aria-pressed="true">Звук вкл</button>
     </div>
   </div>
 </header>
 
 <main class="wrap">
-  <p class="todo"><b>Что делать:</b> выберите имя и тур, отметьте лучшие и худшие баннеры, нажмите «Отправить ставку».</p>
-  <details class="how" id="how">
-    <summary>Правила и очки</summary>
-    <h2 id="howH" class="sr">Как играем</h2>
+  <section class="how" id="how" aria-labelledby="howH">
+    <h2 id="howH">Как <span class="g">играем</span></h2>
     <ol class="how-steps">
       <li><span class="n">1</span><span>Выберите имя и тур: Новогодние или Обычные. Если открыта прошлая неделя, она отмечена отдельно.</span></li>
       <li><span class="n">2</span><span>Отметьте лучшие баннеры и одного фаворита со звёздой. Новогодние: 2 лучших, Обычные: 5.</span></li>
@@ -39,7 +37,7 @@
       <li><span class="n">5</span><span>Через неделю смотрим цифры Директа и считаем очки. Баннер сравниваем с другими баннерами его же кампании, поэтому условия у всех равные.</span></li>
     </ol>
     <p class="how-ex"><b>Очки:</b> лучшие 1 очко каждая, худшие 1 очко каждая, фаворит +2, цвет +3. Пример: угадали 3 лучших, 2 худших и фаворита, получили 3 + 2 + 2 = 7 очков. Максимум: Обычные 12, Новогодние 9.</p>
-  </details>
+  </section>
 
   <section class="week" id="week" aria-live="off">
     <div class="week-main" id="weekMain">Загружаем неделю…</div>
