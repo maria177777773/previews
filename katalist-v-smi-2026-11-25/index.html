@@ -1999,11 +1999,13 @@ class="t-form__errorbox-text t-text t-text_md"> <li class="t-form__errorbox-item
 
 <script>
 /* Клик по карточке публикации открывает саму публикацию (ссылка target=_blank).
-   Общий загрузчик сайта (_lead.js) слушает все клики по <a> на document и открывает окно заявки, если в тексте ссылки есть
-   «сколько стоит», «рассчитать стоимость», «заказать КП» и т.п. В заголовках публикаций такие слова бывают.
-   Гасим всплытие клика на границе блока #smi: до document он не доходит, сама ссылка открывается как обычно. */
+   Причина бага: общий загрузчик сайта (_lead.js, обработчик «CTA в бот») слушает click на document в фазе capture и открывает окно
+   «Заказать тимбилдинг» для любой ссылки, в тексте которой есть «сколько стоит», «рассчитать стоимость», «заказать КП» и т.п.
+   В заголовках публикаций такие слова бывают («Сколько стоит корпоратив…»). Обработчик на самом #smi в фазе bubble опаздывает.
+   Поэтому слушаем window в фазе capture (она раньше document) и гасим дальнейшее всплытие только для ссылок внутри #smi.
+   preventDefault не вызываем: сама ссылка открывается в новой вкладке как обычно. */
 (function(){var s=document.getElementById('smi');if(!s)return;
-s.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(a&&s.contains(a))e.stopPropagation();});})();
+window.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(a&&s.contains(a))e.stopPropagation();},true);})();
 </script>
 <div id="rec550200401" class="r t-rec" style=" " data-record-type="215"> <a name="contacts" style="font-size:0;"></a> </div> <!--SHARED:contacts--><section class="ctc ctc-vt" id="contacts" aria-labelledby="ctc-h">
 <style>
