@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Подменю «О компании»: 3 варианта</title>
+<meta name="robots" content="noindex">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#141414;font:400 16px/1.5 Roboto,Arial,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:40px 16px 80px}
+h1{font:700 32px/1.15 Roboto,Arial,sans-serif;margin:0 0 8px}
+.lead{margin:0 0 32px;color:#4a4a45;max-width:720px}
+.v{margin:0 0 48px}
+.v h2{font:700 22px/1.2 Roboto,Arial,sans-serif;margin:0 0 6px}
+.v p.d{margin:0 0 16px;color:#4a4a45;max-width:760px}
+.rec{display:inline-block;margin-left:10px;padding:4px 12px;border-radius:999px;background:#0aba59;color:#fff;font:500 14px/1.3 Roboto,Arial,sans-serif;vertical-align:middle}
+.page{border:1px solid #e3e5dc;border-radius:24px;padding:20px 24px 32px;background:#fff}
+.crumbs{font-size:14px;margin:0 0 10px}.crumbs a{color:#141414;text-decoration:underline;text-underline-offset:3px}
+.hero{margin-top:20px;border-radius:24px;background:#f3f2ed;padding:32px;font:700 28px/1.1 Roboto,Arial,sans-serif}
+.hero b{color:#0aba59}
+.states{display:flex;flex-wrap:wrap;gap:24px;margin:16px 0 0;font-size:14px;color:#4a4a45}
+/* общий сброс ссылок меню */
+.sub a{cursor:pointer;text-decoration:none;font:500 16px/1 Roboto,Arial,sans-serif;color:#141414}
+.sub a:focus-visible{outline:2px solid #0aba59;outline-offset:2px}
+/* 1. капсулы как в шапке */
+.s1{display:flex;flex-wrap:wrap;gap:8px}
+.s1 a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:999px;background:transparent;transition:background .18s,color .18s}
+.s1 a:hover,.s1 a.h{background:#f3f2ed;color:#0aba59}
+.s1 a[aria-current]{background:#e3f7ea;color:#141414}
+.s1 a[aria-current]:hover{color:#0aba59}
+/* 2. переключатель */
+.s2{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:999px;background:#f3f2ed}
+.s2 a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:999px;transition:background .18s,color .18s,box-shadow .18s}
+.s2 a:hover,.s2 a.h{color:#0aba59}
+.s2 a[aria-current]{background:#fff;box-shadow:0 1px 4px rgba(20,20,20,.16)}
+/* 3. вкладки с линией */
+.s3{display:flex;flex-wrap:wrap;gap:0 28px;border-bottom:1px solid #e3e5dc}
+.s3 a{display:inline-flex;align-items:center;min-height:48px;padding:0 2px;border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .18s,border-color .18s}
+.s3 a:hover,.s3 a.h{color:#0aba59;border-bottom-color:#bfe9d0}
+.s3 a[aria-current]{border-bottom-color:#0aba59}
+@media(max-width:480px){.s1 a,.s2 a{padding:0 14px;font-size:15px}.s3{gap:0 18px}.hero{font-size:22px;padding:20px}}
+</style></head><body><div class="wrap">
+<h1>Подменю «О компании»</h1>
+<p class="lead">Сейчас пункты «Агентствам», «Контакты», «Пресса» выглядят как красный текст в строке. Ниже три способа сделать из них понятное меню в стиле сайта: курсор-рука, наведение, выделенный текущий пункт. Все три можно нажимать.</p>
+
+<section class="v"><h2>Вариант 1. Капсулы как в меню шапки <span class="rec">Рекомендую</span></h2>
+<p class="d">Те же скруглённые капсулы и тот же светло-зелёный фон активного пункта, что в верхнем меню сайта. Читается как меню без объяснений, ничего нового для глаза.</p>
+<div class="page"><p class="crumbs"><a href="#">Главная</a> → О компании</p>
+<nav class="sub s1" aria-label="Разделы компании"><a href="#v1" aria-current="page">О компании</a><a href="#v1">Агентствам</a><a href="#v1">Контакты</a><a href="#v1">Пресса</a></nav>
+<div class="hero"><b>Каталист —</b> агентство организации тимбилдингов</div></div>
+<div class="states"><span>Покой: прозрачная капсула</span><span>Наведение: серая капсула, зелёный текст</span><span>Текущий: светло-зелёная капсула</span></div></section>
+
+<section class="v"><h2>Вариант 2. Переключатель в общей плашке</h2>
+<p class="d">Все пункты лежат в одной серой плашке, текущий пункт белой кнопкой с тенью. Похоже на переключатель в приложениях. Заметнее варианта 1, но чуть тяжелее.</p>
+<div class="page"><p class="crumbs"><a href="#">Главная</a> → О компании</p>
+<nav class="sub s2" aria-label="Разделы компании"><a href="#v2" aria-current="page">О компании</a><a href="#v2">Агентствам</a><a href="#v2">Контакты</a><a href="#v2">Пресса</a></nav>
+<div class="hero"><b>Каталист —</b> агентство организации тимбилдингов</div></div>
+<div class="states"><span>Покой: текст в серой плашке</span><span>Наведение: зелёный текст</span><span>Текущий: белая кнопка с тенью</span></div></section>
+
+<section class="v"><h2>Вариант 3. Вкладки с линией</h2>
+<p class="d">Текст на тонкой линии, у текущего пункта зелёное подчёркивание. Самый лёгкий и строгий вариант, но меньше похож на кнопки шапки.</p>
+<div class="page"><p class="crumbs"><a href="#">Главная</a> → О компании</p>
+<nav class="sub s3" aria-label="Разделы компании"><a href="#v3" aria-current="page">О компании</a><a href="#v3">Агентствам</a><a href="#v3">Контакты</a><a href="#v3">Пресса</a></nav>
+<div class="hero"><b>Каталист —</b> агентство организации тимбилдингов</div></div>
+<div class="states"><span>Покой: тёмный текст</span><span>Наведение: зелёный текст и светлая линия</span><span>Текущий: зелёная линия</span></div></section>
+</div>
+<script>document.querySelectorAll('.sub a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var n=a.parentNode;n.querySelectorAll('a').forEach(function(x){x.removeAttribute('aria-current')});a.setAttribute('aria-current','page')})})</script>
+</body></html>
